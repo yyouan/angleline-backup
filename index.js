@@ -29,9 +29,9 @@ var bot = linebot({
  */
 
 //------------check conn-------------
-bot.on('message',(event)=>{
+/**bot.on('message',(event)=>{
     console.log(event);
-});
+});**/
 //--------------deal with mess-------------
 bot.on('message',(event)=>{
     if(event.message.type = 'text'){
