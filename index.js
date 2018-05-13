@@ -46,12 +46,12 @@ bot.on('message',(event)=>{
     }
 });**/
 
-/**setTimeout(function(){
-    var userId = '使用者 ID';
-    var sendMsg = '要發送的文字';
+setTimeout(function(){
+    var userId = 'Ud8227c6ad00a55cf3a6b7f4fa4e5ac7e';
+    var sendMsg = 'hello';
     bot.push(userId,sendMsg);
     console.log('send: '+sendMsg);
-},5000);**/
+},5000);
 
 const app = express(); //建立一個express 伺服器
 const linebotParser = bot.parser();
