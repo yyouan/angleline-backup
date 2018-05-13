@@ -73,20 +73,20 @@ function linebotParser(req ,res){
             request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
                   // Print out the response body
-                  //console.log(body);
-                  var form = new FormData();
-                  form.append("image", body );
-                  form.append("type", "file");
+                  //console.log(body);                  
 
                   var imurg_options = {
                     url: "https://api.imgur.com/3/image ",
                     method: 'POST',
                     headers: {
                       //'Content-Type':  'application/json', 
-                      'Authorization':'Client-ID ' +'8a38e76916407b6',
-                      'content-type':'multipart/form-data'
+                      'Authorization':'Client-ID ' +'72cb7e9c1af69b4',
+                      //'content-type':'multipart/form-data'
                     },
-                    form:form        
+                    formData: {
+                        image: body,
+                        type: 'file'
+                    }       
                   };
                   
                 request(imurg_options, function (error, response, body) {                    
