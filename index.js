@@ -8,9 +8,42 @@ var bot = linebot({
 });
 //update Token after 24 hr past
 
+
+//event will like:
+/**
+ * 
+{ type: 'message',
+  replyToken: 'xxxxxxx',
+  source: 
+    { userId: 'xxxxxxx',
+      type: 'user',
+      profile: [Function] },
+  timestamp: 1484472609833,
+  message: 
+    { type: 'text',
+      id: 'xxxxxxxxxx',
+      text: 'hihi',
+      content: [Function] },
+  reply: [Function] }
+}
+ */
+
 //------------check conn-------------
 bot.on('message',(event)=>{
     console.log(event);
+});
+//--------------deal with mess-------------
+bot.on('message',(event)=>{
+    if(event.message.type = 'text'){
+        var msg = event.message.text;
+        event.reply(msg).then((data)=>{
+            //success
+            console.log(msg);
+        }).catch((error)=>{
+            //error
+            console.log('error');
+        });        
+    }
 });
 
 const app = express(); //建立一個express 伺服器
