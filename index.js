@@ -29,11 +29,11 @@ var bot = linebot({
  */
 
 //------------check conn-------------
-/**bot.on('message',(event)=>{
+bot.on('message',(event)=>{
     console.log(event);
-});**/
+});
 //--------------deal with mess-------------
-bot.on('message', function(event) {
+/**bot.on('message', function(event) {
     if (event.message.type = 'text') {
       var msg = event.message.text;
       event.reply(msg).then(function(data) {
@@ -44,7 +44,14 @@ bot.on('message', function(event) {
         console.log('error');
       });
     }
-});
+});**/
+
+/**setTimeout(function(){
+    var userId = '使用者 ID';
+    var sendMsg = '要發送的文字';
+    bot.push(userId,sendMsg);
+    console.log('send: '+sendMsg);
+},5000);**/
 
 const app = express(); //建立一個express 伺服器
 const linebotParser = bot.parser();
