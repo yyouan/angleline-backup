@@ -29,11 +29,11 @@ var bot = linebot({
  */
 
 //------------check conn-------------
-bot.on('message',(event)=>{
+/**bot.on('message',(e)=>{
     var CHANNEL_ACCESS_TOKEN = '你的 Channel access token';
     var msg= JSON.parse(e.postData.contents);
     console.log(msg);
-});
+});**/
 //--------------deal with mess-------------
 /**bot.on('message', function(event) {
     if (event.message.type = 'text') {
@@ -48,7 +48,7 @@ bot.on('message',(event)=>{
     }
 });**/
 
-setTimeout(function(){
+bot.on('message',(e)=>{
     var CHANNEL_ACCESS_TOKEN = 'BOpCS2JXlx/6DfqGmLVD9vU8FmjviF0TV/QJoLfkN0C465BHYiKtyfzP1Ov4wEIcF7xFvwu64T/RrO64+cai0dY7Th5yno/goN9+dJVa4EsLoNC5JV4mYF7ROws6Og6vfHByaSO/qQRZR8sy5Bz/twdB04t89/1O/w1cDnyilFU=';
   var msg = JSON.parse(e.postData.contents);
   console.log(msg);
