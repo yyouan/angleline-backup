@@ -85,7 +85,7 @@ function linebotParser(req ,res){
                       'Authorization':'Client-ID ' +'8a38e76916407b6',
                       //'content-type':'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
                     },
-                    json:{'img': body}        
+                    json:{'image': body}        
                   };
                   
                 request(imurg_options, function (error, response, body) {                    
