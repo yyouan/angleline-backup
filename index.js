@@ -70,13 +70,14 @@ function linebotParser(req ,res){
               'Content-Length': postData.length ,
               'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
             },
-            json:{
+            body: {
                 'replyToken': replyToken,
                 'messages': [{
                     'type' : 'text',
                     'text' :userMessage
                 }]
-            }
+            },
+            json:true
           };
           
         request(options, function (error, response, body) {
