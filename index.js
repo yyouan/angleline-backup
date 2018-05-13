@@ -78,13 +78,13 @@ function linebotParser(req ,res){
               if (!error && response.statusCode == 200) {
                   // Print out the response body
                   console.log(body);
-                  var filename ="temp/"+ post.events[0].message.id +".png";
+                  /**var filename ="temp/"+ post.events[0].message.id +".png";
                   fs.writeFile(filename,body, function (err) {
                     if (err)
                         console.log(err);
                     else
                         console.log('Write operation complete.');
-                  });
+                  });**/
               }else{
                 console.log("!!!!!error when recpt image!!!!!");                
               }
