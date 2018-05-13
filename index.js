@@ -71,17 +71,16 @@ function linebotParser(req ,res){
         });
           
         var options = {
-            url: url,
+            url: "https://api.line.me/v2/bot/message/reply ",
             method: 'POST',
             headers: {
               'Content-Type':  'application/json; charset=UTF-8',
               'Content-Length': postData.length ,
               'Authorization':'Bearer' + CHANNEL_ACCESS_TOKEN
-            }
+            },
+            form:postData
           };
           
-        var  url='https://example.com/passdb/api/v1/cred/?format=json';
-
         request(options, function (error, response, body) {
             if (error) throw error;
             console.log(body);
