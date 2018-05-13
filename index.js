@@ -3,7 +3,7 @@ var querystring = require('querystring');
 var request = require('request');
 var CHANNEL_ACCESS_TOKEN = 'BOpCS2JXlx/6DfqGmLVD9vU8FmjviF0TV/QJoLfkN0C465BHYiKtyfzP1Ov4wEIcF7xFvwu64T/RrO64+cai0dY7Th5yno/goN9+dJVa4EsLoNC5JV4mYF7ROws6Og6vfHByaSO/qQRZR8sy5Bz/twdB04t89/1O/w1cDnyilFU=';
 const line = require('@line/bot-sdk');
-
+var fs = require('fs');
 const client = new line.Client({
   channelAccessToken: 'CHANNEL_ACCESS_TOKEN'
 });
@@ -61,7 +61,37 @@ function linebotParser(req ,res){
 
         if (typeof replyToken === 'undefined') {
             return;
-        }     
+        }
+        
+        if(post.events[0].message.type == 'image'){
+            // Configure the request
+            var options = {
+              url: 'https://api.line.me/v2/bot/message/'+ post.events[0].message.id +'/content',
+              method: 'GET',
+              headers: {                
+                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+              }
+            }
+
+            // Start the request
+            request(options, function (error, response, body) {
+              if (!error && response.statusCode == 200) {
+                  // Print out the response body
+                  console.log(body);
+                  var filename ="temp/"+ post.events[0].message.id +".png";
+                  fs.writeFile(filename,body, function (err) {
+                    if (err)
+                        console.log(err);
+                    else
+                        console.log('Write operation complete.');
+                  });
+              }else{
+                console.log("!!!!!error when recpt image!!!!!");                
+              }
+            })
+
+          
+        }
         
         var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
