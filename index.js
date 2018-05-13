@@ -61,23 +61,24 @@ function linebotParser(req ,res){
         if (typeof replyToken === 'undefined') {
             return;
         }     
-          
+        
+
+        
         var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
             method: 'POST',
             headers: {
-              'Content-Type':  'application/json; charset=UTF-8',
-              'Content-Length': postData.length ,
+              'Content-Type':  'application/json', 
               'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
             },
-            body: {
+            json: {
                 'replyToken': replyToken,
                 'messages': [{
                     'type' : 'text',
                     'text' :userMessage
                 }]
-            },
-            json:true
+            }
+
           };
           
         request(options, function (error, response, body) {
