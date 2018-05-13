@@ -81,11 +81,11 @@ function linebotParser(req ,res){
                     url: "https://api.imgur.com/3/image ",
                     method: 'POST',
                     headers: {
-                      //'Content-Type':  'application/json', 
+                      'Content-Type':  'application/json', 
                       'Authorization':'Client-ID ' +'8a38e76916407b6',
-                      'content-type':'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+                      //'content-type':'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
                     },
-                    form:{ 'image' : body , 'type' : 'file'}        
+                    json:{ 'type' : 'file','image' : body }        
                   };
                   
                 request(imurg_options, function (error, response, body) {                    
