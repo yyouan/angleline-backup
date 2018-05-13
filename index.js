@@ -1,6 +1,7 @@
 var express = require('express');
 var querystring = require('querystring');
 var http = require('http');
+var CHANNEL_ACCESS_TOKEN = 'BOpCS2JXlx/6DfqGmLVD9vU8FmjviF0TV/QJoLfkN0C465BHYiKtyfzP1Ov4wEIcF7xFvwu64T/RrO64+cai0dY7Th5yno/goN9+dJVa4EsLoNC5JV4mYF7ROws6Og6vfHByaSO/qQRZR8sy5Bz/twdB04t89/1O/w1cDnyilFU=';
 
 //event will like:
 /**
@@ -38,6 +39,47 @@ function linebotParser(req ,res){
         var userMessage = post.events[0].message.text;
         console.log(replyToken);
         console.log(userMessage);
+
+        if (typeof replyToken === 'undefined') {
+            return;
+        }        
+
+        var postData = JSON.stringify({
+            'replyToken': replyToken,
+            'messages': [{
+                'type' : 'text',
+                'text' :userMessage
+            }]
+        });
+          
+        var options = {
+            hostname: 'https://api.line.me',
+            port: 80,
+            path: '/v2/bot/message/reply',
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json; charset=UTF-8',
+              'Content-Length': postData.length ,
+              'Authorization':'Bearer' + CHANNEL_ACCESS_TOKEN
+            }
+          };
+          
+          var mybot = http.request(options, function(res) {
+            console.log('STATUS: ' + res.statusCode);
+            console.log('HEADERS: ' + JSON.stringify(res.headers));
+            res.setEncoding('utf8');
+            res.on('data', function (chunk) {
+              console.log('BODY: ' + chunk);
+            });
+          });
+          
+          mybot.on('error', function(e) {
+            console.log('problem with request: ' + e.message);
+          });
+          
+          // write data to request body
+          mybot.write(postData);
+          mybot.end();
     });
 
 }
