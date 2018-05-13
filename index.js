@@ -54,15 +54,13 @@ function linebotParser(req ,res){
     req.on('end', function(){    
         post = JSON.parse(post);
         var replyToken = post.events[0].replyToken;
-        var userMessage = post.events[0].message.text;
+        /**var userMessage = post.events[0].message.text;
         console.log(replyToken);
-        console.log(userMessage);
+        console.log(userMessage);**/
 
         if (typeof replyToken === 'undefined') {
             return;
         }     
-        
-
         
         var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
@@ -73,10 +71,7 @@ function linebotParser(req ,res){
             },
             json: {
                 'replyToken': replyToken,
-                'messages': [{
-                    'type' : 'text',
-                    'text' :userMessage
-                }]
+                'messages': [post.events[0].message]
             }
 
           };
