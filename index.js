@@ -1,7 +1,25 @@
 var express = require('express');
 var querystring = require('querystring');
-var http = require('http');
+var https = require('https');
 var CHANNEL_ACCESS_TOKEN = 'BOpCS2JXlx/6DfqGmLVD9vU8FmjviF0TV/QJoLfkN0C465BHYiKtyfzP1Ov4wEIcF7xFvwu64T/RrO64+cai0dY7Th5yno/goN9+dJVa4EsLoNC5JV4mYF7ROws6Og6vfHByaSO/qQRZR8sy5Bz/twdB04t89/1O/w1cDnyilFU=';
+const line = require('@line/bot-sdk');
+
+const client = new line.Client({
+  channelAccessToken: 'CHANNEL_ACCESS_TOKEN'
+});
+
+/**const message = {
+  type: 'text',
+  text: 'Hello World!'
+};
+
+client.replyMessage('<replyToken>', message)
+  .then(() => {
+    ...
+  })
+  .catch((err) => {
+    // error handling
+  });**/
 
 //event will like:
 /**
@@ -64,7 +82,7 @@ function linebotParser(req ,res){
             }
           };
           
-          var mybot = http.request(options, function(res) {
+          var mybot = https.request(options, function(res) {
             console.log('STATUS: ' + res.statusCode);
             console.log('HEADERS: ' + JSON.stringify(res.headers));
             res.setEncoding('utf8');
@@ -85,7 +103,7 @@ function linebotParser(req ,res){
 }
 
 const app = express(); //建立一個express 伺服器
-app.post('/' , linebotParser); // POST 方法
+app.post('/' , linebotParser); // POST 方法**/
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen((process.env.PORT || 8080), function() {
