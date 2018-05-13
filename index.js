@@ -60,15 +60,7 @@ function linebotParser(req ,res){
 
         if (typeof replyToken === 'undefined') {
             return;
-        }        
-
-        var postData = JSON.stringify({
-            'replyToken': replyToken,
-            'messages': [{
-                'type' : 'text',
-                'text' :userMessage
-            }]
-        });
+        }     
           
         var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
@@ -78,7 +70,13 @@ function linebotParser(req ,res){
               'Content-Length': postData.length ,
               'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
             },
-            json:postData
+            json:{
+                'replyToken': replyToken,
+                'messages': [{
+                    'type' : 'text',
+                    'text' :userMessage
+                }]
+            }
           };
           
         request(options, function (error, response, body) {
