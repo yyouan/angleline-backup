@@ -76,7 +76,7 @@ function linebotParser(req ,res){
             headers: {
               'Content-Type':  'application/json; charset=UTF-8',
               'Content-Length': postData.length ,
-              'Authorization':'Bearer' + CHANNEL_ACCESS_TOKEN
+              'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
             },
             form:postData
           };
