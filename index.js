@@ -78,7 +78,7 @@ function linebotParser(req ,res){
               'Content-Length': postData.length ,
               'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
             },
-            form:postData
+            json:postData
           };
           
         request(options, function (error, response, body) {
