@@ -53,7 +53,7 @@ function linebotParser(req ,res){
         });
           
         var options = {
-            hostname: 'https://api.line.me',
+            hostname: 'api.line.me',
             port: 80,
             path: '/v2/bot/message/reply',
             method: 'POST',
