@@ -73,7 +73,7 @@ function linebotParser(req ,res){
             request(options, function (error, response, body2) {
               if (!error && response.statusCode == 200) {
                   // Print out the response body
-                  console.log(body2);                  
+                  //console.log(body2);                  
 
                   var imurg_options = {
                     url: "https://api.imgur.com/3/image ",
@@ -81,10 +81,10 @@ function linebotParser(req ,res){
                     headers: {
                       //'Content-Type':  'application/json', 
                       'Authorization':'Client-ID ' +'72cb7e9c1af69b4',
-                      //'content-type':'multipart/form-data'
+                      'Cache-Control': 'no-cache',
+                      'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body:body2,
-                    encoding:null       
+                    body: body2      
                   };
                   
                 request(imurg_options, function (error, response, body) {                    
