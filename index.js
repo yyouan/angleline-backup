@@ -40,6 +40,8 @@ client.replyMessage('<replyToken>', message)
 }
  */
 var nwimg;
+const domain="https://angleline.herokuapp.com";  
+var adrr='/';
 //------------build TCP/IP-------------
 function linebotParser(req ,res){
     // 定义了一个post变量，用于暂存请求体的信息
@@ -57,12 +59,14 @@ function linebotParser(req ,res){
         /**var userMessage = post.events[0].message.text;
         console.log(replyToken);
         console.log(userMessage);**/
-
         if (typeof replyToken === 'undefined') {
             return;
         }
-        var imgurl="https://angleline.herokuapp.com/img.jpg";
+        //var imgurl="https://angleline.herokuapp.com/img.jpg";
         if(post.events[0].message.type == 'image'){
+            //set adrr
+            adrr+=post.events[0].message.id;
+            adrr+='.jpg';
             // Configure the request
             var getimage=new Promise((resolve,reject)=>{
               var options = {
@@ -124,8 +128,8 @@ function linebotParser(req ,res){
             }
           };
           if(post.events[0].message.type == 'image'){
-                options.json.messages[0].originalContentUrl=imgurl;
-                options.json.messages[0].previewImageUrl=imgurl;
+                options.json.messages[0].originalContentUrl=(domain+adrr);
+                options.json.messages[0].previewImageUrl=(domain+adrr);
           }  
           request(options, function (error, response, body) {
               if (error) throw error;
@@ -139,7 +143,7 @@ function linebotParser(req ,res){
 
 const app = express(); //建立一個express 伺服器
 app.post('/' , linebotParser); // POST 方法**/
-app.get('/img.jpg',(req,res)=>{
+app.get(adrr,(req,res)=>{
     //res.sendFile(__dirname+"/img.jpg");    
     res.writeHead(200, {'Content-Type': 'image/jpeg' });
     res.end(nwimg, 'binary');
