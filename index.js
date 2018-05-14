@@ -82,7 +82,13 @@ function linebotParser(req ,res){
                       console.log("the file was saved");
                     }
                   });
-
+                  fs.readFile("img.png",(err,file)=>{
+                    if(err){
+                      console.log(err);
+                    }else{
+                      console.log(file);
+                    }
+                  })
                   var imurg_options = {
                     url: "https://api.imgur.com/3/image ",
                     method: 'POST',
@@ -94,9 +100,9 @@ function linebotParser(req ,res){
                     },
                     formData: 
                     { image: 
-                     { value: 'fs.createReadStream("C:\\Users\\安\\Pictures\\imurg_LI.jpg")',
+                     { value: 'fs.createReadStream("img.png")',
                       options: 
-                      { filename: 'img.png',
+                      { filename: "img.png",
                         contentType: null } } } };     
                 
                   
