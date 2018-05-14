@@ -90,15 +90,15 @@ function linebotParser(req ,res){
             
             getimage            
             .then((body)=>{
-              fs.writeFile(__dirname+"/img.jpg","");
-              fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
+              //fs.writeFile(__dirname+"/img.jpg","");
+              /**fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
                 if(err){
                   console.log("(writefile)"+err);
                 }else{                  
                   console.log("the file was saved");
                   //console.log(body);
                 }
-              });              
+              });**/              
               return Promise.resolve(body); 
             })
             .then(sendmessage)
