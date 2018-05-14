@@ -59,7 +59,7 @@ function linebotParser(req ,res){
         if (typeof replyToken === 'undefined') {
             return;
         }
-        var imgurl="";
+        var imgurl="https://angleline.herokuapp.com/img.jpg";
         if(post.events[0].message.type == 'image'){
             // Configure the request
             var options = {
@@ -76,51 +76,26 @@ function linebotParser(req ,res){
                   // Print out the response body
                   //console.log(body);
                   //console.log(response);
-                  console.log(__dirname+"/img.txt");                  
-                  fs.writeFile(__dirname+"/img.txt",body,(err)=>{
+                  console.log(__dirname+"/img.jpg");                  
+                  fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
                     if(err){
                       console.log(err);
                     }else{
                       console.log("the file was saved");
                     }
                   });
-                  fs.readFile(__dirname+"/img.txt",(err,file)=>{
+                  fs.readFile(__dirname+"/img.jpg",(err,file)=>{
                     if(err){
                       console.log(err);
                     }else{
                       console.log(file);
                     }
-                  })
-                  var imurg_options = {
-                    url: "https://api.imgur.com/3/image ",
-                    method: 'POST',
-                    headers: {
-                      //'Content-Type':  'application/json', 
-                      'Authorization':'Client-ID ' +'72cb7e9c1af69b4',
-                      //'Cache-Control': 'no-cache',
-                      //'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    formData: 
-                    { image: 
-                     { value: 'fs.createReadStream(body)',
-                      options: 
-                      { filename: __dirname+"/img.txt",
-                        contentType: null } } } 
-                    ,encoding : null  
-                   };     
-                
-                  
-                request(imurg_options, function (error, response, body) {                    
-                    if (error) throw error;
-                    console.log(body);
-                    imgurl=body.link;
-                });
+                  })                
+
               }else{
                 console.log("!!!!!error when recpt image!!!!!");                
               }
-            })
-
-          
+            })          
         }
         
         var options = {
@@ -149,8 +124,8 @@ function linebotParser(req ,res){
 
 const app = express(); //建立一個express 伺服器
 app.post('/' , linebotParser); // POST 方法**/
-app.get('/img.txt',(req,res)=>{
-    res.sendFile(__dirname+"/img.txt");
+app.get('/img.jpg',(req,res)=>{
+    res.sendFile(__dirname+"/img.jpg");
 });
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
