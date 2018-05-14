@@ -64,65 +64,61 @@ function linebotParser(req ,res){
         var imgurl="https://angleline.herokuapp.com/img.jpg";
         if(post.events[0].message.type == 'image'){
             // Configure the request
-            /**var options = {
-              url: 'https://api.line.me/v2/bot/message/'+ post.events[0].message.id +'/content',
-              method: 'GET',
-              headers: {                
-                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+            var getimage=new Promise((resolve,reject)=>{
+              var options = {
+                url: 'https://api.line.me/v2/bot/message/'+ post.events[0].message.id +'/content',
+                method: 'GET',
+                headers: {                
+                  'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+                }
               }
-            }
-
-            // Start the request
-            request(options, function (error, response, body) {
-              if (!error && response.statusCode == 200) {
-                  // Print out the response body
-                  //console.log(body);
-                  //console.log(response);
-                  nwimg = body;
-                  console.log(__dirname+"/img.jpg");                  
-                  fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
-                    if(err){
-                      console.log(err);
-                    }else{
-                      console.log("the file was saved");
-                    }
-                  });                               
-
-              }else{
-                console.log("!!!!!error when recpt image!!!!!");                
-              }
-            })**/
-            client.getMessageContent(post.events[0].message.id)
-            .then((stream) => {
-              console.log("(id)"+post.events[0].message.id);
-              stream.on('data', (chunk) => {
-                nwimg+=chunk;
-                console.log(chunk);                
-              });
-              stream.on('error', (err) => {
-                // error handling
-                console.log("!!!!!error when recpt image!!!!!"); 
-              });
-              return Promise.resolve(nwimg);
-            })
-            .then((nwimg)=>{
-              fs.writeFile(__dirname+"/img.jpg",nwimg,(err)=>{
+  
+              // Start the request
+              request(options, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    // Print out the response body
+                    //console.log(body);
+                    //console.log(response);
+                    nwimg = body;
+                    console.log(__dirname+"/img.jpg");                  
+                    fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
+                      if(err){
+                        console.log(err);
+                      }else{
+                        console.log("the file was saved");
+                      }
+                    });
+                    resolve(body);                              
+  
+                }else{
+                  //console.log();
+                  reject("!!!!!error when recpt image!!!!!");                
+                }
+              })              
+            });
+            
+            getimage            
+            .then((body)=>{
+              fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
                 if(err){
                   console.log("(writefile)"+err);
-                }else{
+                }else{                  
                   console.log("the file was saved");
                 }
               });
-              return Promise.resolve(nwimg); 
+              nwimg=body;
+              return Promise.resolve(body); 
             })
-            .then(sendmessage(nwimg))
+            .then(sendmessage(body))
             .catch((err)=>{
               console.log("(linebotpromise)"+err.message);
             }
             );          
+        }else{
+          sendmessage(nwimg);
         }
 
-        function sendmessage(nwimg){
+        function sendmessage(recpt){
           var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
             method: 'POST',
