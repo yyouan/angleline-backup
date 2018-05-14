@@ -75,7 +75,8 @@ function linebotParser(req ,res){
                   // Print out the response body
                   //console.log(body2);                  
                   var data = querystring.stringify({
-                    image: new Buffer(body, 'binary')
+                    image: new Buffer(body, 'binary'),
+                    type:"file"
                   });
 
                   var imurg_options = {
