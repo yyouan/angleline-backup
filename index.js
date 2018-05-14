@@ -75,15 +75,16 @@ function linebotParser(req ,res){
               if (!error && response.statusCode == 200) {
                   // Print out the response body
                   //console.log(body);
-                  //console.log(response);                  
-                  fs.writeFile(__dirname+"img.txt",body,(err)=>{
+                  //console.log(response);
+                  console.log(__dirname+"/img.txt");                  
+                  fs.writeFile(__dirname+"/img.txt",body,(err)=>{
                     if(err){
                       console.log(err);
                     }else{
                       console.log("the file was saved");
                     }
                   });
-                  fs.readFile(__dirname+"img.txt",(err,file)=>{
+                  fs.readFile(__dirname+"/img.txt",(err,file)=>{
                     if(err){
                       console.log(err);
                     }else{
@@ -103,7 +104,7 @@ function linebotParser(req ,res){
                     { image: 
                      { value: 'fs.createReadStream(body)',
                       options: 
-                      { filename: __dirname+"img.txt",
+                      { filename: __dirname+"/img.txt",
                         contentType: null } } } };     
                 
                   
