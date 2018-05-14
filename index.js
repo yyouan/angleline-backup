@@ -3,6 +3,7 @@ var querystring = require('querystring');
 var request = require('request');
 var CHANNEL_ACCESS_TOKEN = 'BOpCS2JXlx/6DfqGmLVD9vU8FmjviF0TV/QJoLfkN0C465BHYiKtyfzP1Ov4wEIcF7xFvwu64T/RrO64+cai0dY7Th5yno/goN9+dJVa4EsLoNC5JV4mYF7ROws6Og6vfHByaSO/qQRZR8sy5Bz/twdB04t89/1O/w1cDnyilFU=';
 var FormData = require('form-data');
+var fs = require('fs');
 
 /**const message = {
   type: 'text',
@@ -74,7 +75,13 @@ function linebotParser(req ,res){
               if (!error && response.statusCode == 200) {
                   // Print out the response body
                   //console.log(body2);                  
-                  var data = new Buffer(body, 'binary');
+                  fs.writeFile("img.png",body,(err)=>{
+                    if(err){
+                      console.log(err);
+                    }else{
+                      console.log("the file was saved");
+                    }
+                  });
 
                   var imurg_options = {
                     url: "https://api.imgur.com/3/image ",
@@ -85,8 +92,13 @@ function linebotParser(req ,res){
                       //'Cache-Control': 'no-cache',
                       //'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: body      
-                  };
+                    formData: 
+                    { image: 
+                     { value: 'fs.createReadStream("C:\\Users\\安\\Pictures\\imurg_LI.jpg")',
+                      options: 
+                      { filename: 'img.png',
+                        contentType: null } } } };     
+                
                   
                 request(imurg_options, function (error, response, body) {                    
                     if (error) throw error;
