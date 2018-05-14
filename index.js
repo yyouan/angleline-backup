@@ -85,7 +85,7 @@ function linebotParser(req ,res){
                       //'Cache-Control': 'no-cache',
                       //'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: data      
+                    body: body      
                   };
                   
                 request(imurg_options, function (error, response, body) {                    
