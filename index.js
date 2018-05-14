@@ -44,9 +44,8 @@ var nwimg="";
 function linebotParser(req ,res){
     // 定义了一个post变量，用于暂存请求体的信息
     var post = '';     
-    nwimg="";
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
-    req.on('data', function(chunk){    
+    req.on('data', function(chunk){   
         post += chunk;
     });
  
@@ -96,7 +95,8 @@ function linebotParser(req ,res){
             client.getMessageContent(post.events[0].message.type.id)
             .then((stream) => {
               stream.on('data', (chunk) => {
-                nwimg+=chunk;                
+                nwimg+=chunk;
+                console.log(chunk);                
               });
               stream.on('error', (err) => {
                 // error handling
@@ -107,18 +107,22 @@ function linebotParser(req ,res){
             .then((nwimg)=>{
               fs.writeFile(__dirname+"/img.jpg",nwimg,(err)=>{
                 if(err){
-                  console.log(err);
+                  console.log("(writefile)"+err);
                 }else{
                   console.log("the file was saved");
                 }
-              }); 
-            }).catch((err)=>{
-              console.log(err.message);
+              });
+              return Promise.resolve(nwimg); 
+            })
+            .then(sendmessage(nwimg))
+            .catch((err)=>{
+              console.log("(linebotpromise)"+err.message);
             }
             );          
         }
-        
-        var options = {
+
+        function sendmessage(nwimg){
+          var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
             method: 'POST',
             headers: {
@@ -129,15 +133,16 @@ function linebotParser(req ,res){
                 'replyToken': replyToken,
                 'messages': [post.events[0].message]
             }
-        };
-        if(post.events[0].message.type == 'image'){
-              options.json.messages[0].originalContentUrl=imgurl;
-              options.json.messages[0].previewImageUrl=imgurl;
-        }  
-        request(options, function (error, response, body) {
-            if (error) throw error;
-            console.log(body);
-        });
+          };
+          if(post.events[0].message.type == 'image'){
+                options.json.messages[0].originalContentUrl=imgurl;
+                options.json.messages[0].previewImageUrl=imgurl;
+          }  
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)"+body);
+          });
+        }        
     });
 
 }
@@ -145,9 +150,9 @@ function linebotParser(req ,res){
 const app = express(); //建立一個express 伺服器
 app.post('/' , linebotParser); // POST 方法**/
 app.get('/img.jpg',(req,res)=>{
-    //res.sendFile(__dirname+"/img.jpg");    
-    res.writeHead(200, {'Content-Type': 'image/jpeg' });
-    res.end(nwimg, 'binary');
+    res.sendFile(__dirname+"/img.jpg");    
+    //res.writeHead(200, {'Content-Type': 'image/jpeg' });
+    //res.end(nwimg, 'binary');
 });
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
