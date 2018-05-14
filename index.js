@@ -59,7 +59,7 @@ function linebotParser(req ,res){
         if (typeof replyToken === 'undefined') {
             return;
         }
-        var imgurl= 'https://api.line.me/v2/bot/message/'+ post.events[0].message.id +'/content';//"https://angleline.herokuapp.com/img.jpg";
+        var imgurl="https://angleline.herokuapp.com/img.jpg";
         if(post.events[0].message.type == 'image'){
             // Configure the request
             var options = {
