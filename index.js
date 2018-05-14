@@ -74,8 +74,8 @@ function linebotParser(req ,res){
             request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
                   // Print out the response body
-                  console.log(body);
-                  console.log(response);                  
+                  //console.log(body);
+                  //console.log(response);                  
                   fs.writeFile(__dirname+"img.txt",body,(err)=>{
                     if(err){
                       console.log(err);
