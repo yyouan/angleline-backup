@@ -120,7 +120,7 @@ const app = express(); //建立一個express 伺服器
 app.post('/' , linebotParser); // POST 方法**/
 app.get('/img.jpg',(req,res)=>{
     //res.sendFile(__dirname+"/img.jpg");
-    res.writeHead(200, {'Content-Type': 'image/gif' });
+    res.writeHead(200, {'Content-Type': 'image/jpeg' });
     res.end(nwimg, 'binary');
 });
 
