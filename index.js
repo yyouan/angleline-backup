@@ -109,7 +109,7 @@ function linebotParser(req ,res){
               nwimg=body;
               return Promise.resolve(body); 
             })
-            .then(sendmessage(body))
+            .then(sendmessage)
             .catch((err)=>{
               console.log("(linebotpromise)"+err.message);
             }
