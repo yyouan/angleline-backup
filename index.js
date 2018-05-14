@@ -94,6 +94,7 @@ function linebotParser(req ,res){
             })**/
             client.getMessageContent(post.events[0].message.id)
             .then((stream) => {
+              console.log("(id)"+post.events[0].message.id);
               stream.on('data', (chunk) => {
                 nwimg+=chunk;
                 console.log(chunk);                
