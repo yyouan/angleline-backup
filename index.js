@@ -70,7 +70,7 @@ function linebotParser(req ,res){
             }
 
             // Start the request
-            request(options, function (error, response, body2) {
+            request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
                   // Print out the response body
                   //console.log(body2);                  
@@ -81,10 +81,10 @@ function linebotParser(req ,res){
                     headers: {
                       //'Content-Type':  'application/json', 
                       'Authorization':'Client-ID ' +'72cb7e9c1af69b4',
-                      'Cache-Control': 'no-cache',
-                      'Content-Type': 'application/x-www-form-urlencoded',
+                      //'Cache-Control': 'no-cache',
+                      //'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: body2      
+                    body: body      
                   };
                   
                 request(imurg_options, function (error, response, body) {                    
