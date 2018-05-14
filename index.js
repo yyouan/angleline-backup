@@ -92,7 +92,7 @@ function linebotParser(req ,res){
                 console.log("!!!!!error when recpt image!!!!!");                
               }
             })**/
-            client.getMessageContent(post.events[0].message.type.id)
+            client.getMessageContent(post.events[0].message.id)
             .then((stream) => {
               stream.on('data', (chunk) => {
                 nwimg+=chunk;
@@ -140,7 +140,8 @@ function linebotParser(req ,res){
           }  
           request(options, function (error, response, body) {
               if (error) throw error;
-              console.log("(line)"+body);
+              console.log("(line)");
+              console.log(body);
           });
         }        
     });
