@@ -69,9 +69,9 @@ function linebotParser(req ,res){
                 url: 'https://api.line.me/v2/bot/message/'+ post.events[0].message.id +'/content',
                 method: 'GET',
                 headers: {                
-                  'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN,
-                  encoding: null
-                }
+                  'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
+                },
+                encoding: null
               }
   
               // Start the request
