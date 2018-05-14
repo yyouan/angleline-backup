@@ -39,7 +39,7 @@ client.replyMessage('<replyToken>', message)
   reply: [Function] }
 }
  */
-var nwimg="";
+var nwimg;
 //------------build TCP/IP-------------
 function linebotParser(req ,res){
     // 定义了一个post变量，用于暂存请求体的信息
@@ -69,27 +69,18 @@ function linebotParser(req ,res){
                 url: 'https://api.line.me/v2/bot/message/'+ post.events[0].message.id +'/content',
                 method: 'GET',
                 headers: {                
-                  'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+                  'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN,
+                  encoding: null
                 }
               }
   
               // Start the request
+
               request(options, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    // Print out the response body
-                    console.log(body);
-                    //console.log(response);
-                    nwimg = body;
-                    console.log(__dirname+"/img.jpg");                  
-                    fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
-                      if(err){
-                        console.log(err);
-                      }else{
-                        console.log("the file was saved");
-                      }
-                    });
-                    resolve(body);                              
-  
+                  nwimg = body;
+                  console.log(body);
+                  resolve(body);                  
                 }else{
                   //console.log();
                   reject("!!!!!error when recpt image!!!!!");                
@@ -99,12 +90,13 @@ function linebotParser(req ,res){
             
             getimage            
             .then((body)=>{
+              fs.writeFile(__dirname+"/img.jpg","");
               fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
                 if(err){
                   console.log("(writefile)"+err);
                 }else{                  
                   console.log("the file was saved");
-                  console.log(body);
+                  //console.log(body);
                 }
               });              
               return Promise.resolve(body); 
