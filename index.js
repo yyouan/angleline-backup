@@ -68,7 +68,7 @@ function linebotParser(req ,res){
             return;
         }
         //var imgurl="https://angleline.herokuapp.com/img.jpg";
-        if(post.events[0].message.type == 'image'){
+        if(post.events[0].message.type == 'image' || post.events[0].message.type == 'video'){
             //set adrr
             adrr+=String(post.events[0].message.id);
             adrr+=".jpg";
@@ -133,7 +133,7 @@ function linebotParser(req ,res){
                 'messages': [post.events[0].message]
             }
           };
-          if(post.events[0].message.type == 'image'){
+          if(post.events[0].message.type == 'image' || post.events[0].message.type == 'video'){
                 options.json.messages[0].originalContentUrl=(domain+adrr);
                 options.json.messages[0].previewImageUrl=(domain+adrr);
                 app.get(adrr,(req,res)=>{
