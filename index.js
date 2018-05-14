@@ -37,11 +37,11 @@ client.replyMessage('<replyToken>', message)
 }
  */
 var nwimg="";
-var id='';
 //------------build TCP/IP-------------
 function linebotParser(req ,res){
-    // 定义了一个post变量，用于暂存请求体的信息         
-    var post = '';
+    // 定义了一个post变量，用于暂存请求体的信息
+    var post = '';     
+ 
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
     req.on('data', function(chunk){    
         post += chunk;
@@ -52,7 +52,6 @@ function linebotParser(req ,res){
         post = JSON.parse(post);
         console.log(post.events[0]);
         var replyToken = post.events[0].replyToken;
-        id=post.events[0].message.id;
         /**var userMessage = post.events[0].message.text;
         console.log(replyToken);
         console.log(userMessage);**/
@@ -92,37 +91,9 @@ function linebotParser(req ,res){
 const app = express(); //建立一個express 伺服器
 app.post('/' , linebotParser); // POST 方法**/
 app.get('/img.jpg',(req,res)=>{
-    //res.sendFile(__dirname+"/img.jpg");
-     // Configure the request
-     var options = {
-      url: 'https://api.line.me/v2/bot/message/'+ id +'/content',
-      method: 'GET',
-      headers: {                
-        'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-      }
-    }
-
-    // Start the request
-    request(options, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-          // Print out the response body
-          //console.log(body);
-          //console.log(response);          
-          console.log(__dirname+"/img.jpg");                  
-          fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
-            if(err){
-              console.log(err);
-            }else{
-              console.log("the file was saved");
-            }
-          });                               
-          res.writeHead(200, {'Content-Type': 'image/jpeg' });
-          res.end(body);
-      }else{
-        console.log("!!!!!error when recpt image!!!!!");                
-      }
-    })    
-    
+    //res.sendFile(__dirname+"/img.jpg");    
+    res.writeHead(200, {'Content-Type': 'image/jpeg' });
+    res.end(nwimg,'binary');
 });
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
