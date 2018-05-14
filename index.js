@@ -8,6 +8,11 @@ const line = require('@line/bot-sdk');
 const client = new line.Client({
   channelAccessToken:CHANNEL_ACCESS_TOKEN
 });
+
+
+const app = express(); //建立一個express 伺服器
+app.post('/' , linebotParser); // POST 方法**/
+
 /**const message = {
   type: 'text',
   text: 'Hello World!'
@@ -41,7 +46,7 @@ client.replyMessage('<replyToken>', message)
  */
 var nwimg;
 const domain="https://angleline.herokuapp.com";  
-var adrr='/';
+var adrr="/";
 //------------build TCP/IP-------------
 function linebotParser(req ,res){
     // 定义了一个post变量，用于暂存请求体的信息
@@ -65,8 +70,9 @@ function linebotParser(req ,res){
         //var imgurl="https://angleline.herokuapp.com/img.jpg";
         if(post.events[0].message.type == 'image'){
             //set adrr
-            adrr+=post.events[0].message.id;
-            adrr+='.jpg';
+            adrr+=String(post.events[0].message.id);
+            adrr+=".jpg";
+            console.log(adrr);
             // Configure the request
             var getimage=new Promise((resolve,reject)=>{
               var options = {
@@ -130,24 +136,25 @@ function linebotParser(req ,res){
           if(post.events[0].message.type == 'image'){
                 options.json.messages[0].originalContentUrl=(domain+adrr);
                 options.json.messages[0].previewImageUrl=(domain+adrr);
+                app.get(adrr,(req,res)=>{
+                  //res.sendFile(__dirname+"/img.jpg");    
+                  res.writeHead(200, {'Content-Type': 'image/jpeg' });
+                  res.end(nwimg, 'binary');
+                });
           }  
           request(options, function (error, response, body) {
               if (error) throw error;
               console.log("(line)");
               console.log(body);
           });
+          //create server
+          
         }        
     });
 
 }
 
-const app = express(); //建立一個express 伺服器
-app.post('/' , linebotParser); // POST 方法**/
-app.get(adrr,(req,res)=>{
-    //res.sendFile(__dirname+"/img.jpg");    
-    res.writeHead(200, {'Content-Type': 'image/jpeg' });
-    res.end(nwimg, 'binary');
-});
+
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen((process.env.PORT || 8080), function() {
