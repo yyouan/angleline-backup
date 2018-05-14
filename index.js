@@ -55,21 +55,6 @@ function linebotParser(req ,res){
         /**var userMessage = post.events[0].message.text;
         console.log(replyToken);
         console.log(userMessage);**/
-        var options = {
-          url: "https://api.line.me/v2/bot/message/reply ",
-          method: 'POST',
-          headers: {
-            'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-          },
-          json: {
-              'replyToken': replyToken,
-              'messages': [post.events[0].message]
-          }
-      };
-      if(post.events[0].message.type == 'image'){
-            
-      }
 
         if (typeof replyToken === 'undefined') {
             return;
@@ -91,61 +76,66 @@ function linebotParser(req ,res){
                   // Print out the response body
                   console.log(body2);
                   console.log(response);                  
-                  fs.writeFile(__dirname+"/img.txt",body,(err)=>{
+                  fs.writeFile(__dirname+"img.txt",body,(err)=>{
                     if(err){
                       console.log(err);
                     }else{
                       console.log("the file was saved");
                     }
-                  }).then(
-                    function(){
-
-                      readFile((__dirname+"/img.txt",(err,file)=>{
-                        if(err){
-                          console.log(err);
-                        }else{
-                          console.log(file);
-                        }
-                      }))
-
-                      var imurg_options = {
-                        url: "https://api.imgur.com/3/image ",
-                        method: 'POST',
-                        headers: {
-                          //'Content-Type':  'application/json', 
-                          'Authorization':'Client-ID ' +'72cb7e9c1af69b4',
-                          //'Cache-Control': 'no-cache',
-                          //'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        formData: 
-                        { image: 
-                         { value: 'fs.createReadStream(body)',
-                          options: 
-                          { filename: __dirname+"/img.txt",
-                            contentType: null } } } };     
-                    
-                      
-                    request(imurg_options, function (error, response, body) {                    
-                        if (error) throw error;
-                        console.log(body);
-                        imgurl=body.link;
-                    });
+                  });
+                  fs.readFile(__dirname+"img.txt",(err,file)=>{
+                    if(err){
+                      console.log(err);
+                    }else{
+                      console.log(file);
+                    }
                   })
+                  var imurg_options = {
+                    url: "https://api.imgur.com/3/image ",
+                    method: 'POST',
+                    headers: {
+                      //'Content-Type':  'application/json', 
+                      'Authorization':'Client-ID ' +'72cb7e9c1af69b4',
+                      //'Cache-Control': 'no-cache',
+                      //'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    formData: 
+                    { image: 
+                     { value: 'fs.createReadStream(body)',
+                      options: 
+                      { filename: __dirname+"img.txt",
+                        contentType: null } } } };     
+                
+                  
+                request(imurg_options, function (error, response, body) {                    
+                    if (error) throw error;
+                    console.log(body);
+                    imgurl=body.link;
+                });
               }else{
                 console.log("!!!!!error when recpt image!!!!!");                
               }
-            }).then(function(){
+            })
+
+          
+        }
+        
+        var options = {
+            url: "https://api.line.me/v2/bot/message/reply ",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+            },
+            json: {
+                'replyToken': replyToken,
+                'messages': [post.events[0].message]
+            }
+        };
+        if(post.events[0].message.type == 'image'){
               options.json.messages[0].originalContentUrl=imgurl;
               options.json.messages[0].previewImageUrl=imgurl;
-              request(options, function (error, response, body) {
-                if (error) throw error;
-                console.log(body);
-              });
-            }              
-            )
-            return;          
-        }        
-          
+        }  
         request(options, function (error, response, body) {
             if (error) throw error;
             console.log(body);
