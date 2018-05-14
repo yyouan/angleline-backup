@@ -76,7 +76,7 @@ function linebotParser(req ,res){
                   // Print out the response body
                   //console.log(body);
                   //console.log(response);
-                  nwimg=body;
+                  nwimg = body;
                   console.log(__dirname+"/img.jpg");                  
                   fs.writeFile(__dirname+"/img.jpg",body,(err)=>{
                     if(err){
@@ -120,8 +120,12 @@ const app = express(); //建立一個express 伺服器
 app.post('/' , linebotParser); // POST 方法**/
 app.get('/img.jpg',(req,res)=>{
     //res.sendFile(__dirname+"/img.jpg");
-    res.writeHead(200, {'Content-Type': 'image/jpeg' });
-    res.end(nwimg, 'binary');
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('<html><body><img src="data:image/jpeg;base64,')
+    res.write(Buffer.from(nwimg).toString('base64'));
+    res.end('"/></body></html>');
+    //res.writeHead(200, {'Content-Type': 'image/jpeg' });
+    //res.end(nwimg, 'binary');
 });
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
