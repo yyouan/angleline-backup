@@ -1,13 +1,36 @@
-const pg = require('pg');
-
-console.log(process.env.DATABASE_URL);
-pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  console.log(err+"!!!!!!!!!!!!!!!");
- client.query('SELECT * FROM your_table', function(err, result) {
-   done();
-   if(err) return console.error(err);
-   console.log(result.rows);
-   client.end();
- });
+var express = require('express');
+var request = require('request');
+const querystring = require('querystring');
+var CHANNEL_ACCESS_TOKEN = 'BOpCS2JXlx/6DfqGmLVD9vU8FmjviF0TV/QJoLfkN0C465BHYiKtyfzP1Ov4wEIcF7xFvwu64T/RrO64+cai0dY7Th5yno/goN9+dJVa4EsLoNC5JV4mYF7ROws6Og6vfHByaSO/qQRZR8sy5Bz/twdB04t89/1O/w1cDnyilFU=';
+var fs = require('fs');
+const { Client } = require('pg');
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    //ssl: true,
 });
-//'SELECT angle_id FROM ACCOUNT WHERE angle_nickname=\'友安\';'
+
+const app = express(); //建立一個express 伺服器
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,  
+                    //postgres://slyodakbbttdhs:968361395e30506915fb61997e79852b3a6f633c110d503411a4fdbc1aea8b9c@ec2-107-21-103-146.compute-1.amazonaws.com:5432/d8inumnm21ppuh
+  ssl: true,
+});
+console.log(process.env.DATABASE_URL);
+client.connect();
+
+client.query('SELECT angle_id FROM ACCOUNT WHERE angle_nickname=\'友安\';', (err, res) => {
+  if (err) throw err;
+  console.log(err);
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen((process.env.PORT || 8080), function() {
+  var port = server.address().port;
+  console.log("App now running on port", port);
+});
+//!!!
