@@ -44,11 +44,14 @@ client.replyMessage('<replyToken>', message)
   reply: [Function] }
 }
  */
-var nwimg;
-const domain="https://angleline.herokuapp.com";  
-var adrr="/";
+
 //------------build TCP/IP-------------
 function linebotParser(req ,res){
+    //route
+    var nwimg;
+    const domain="https://angleline.herokuapp.com";  
+    var adrr="/";
+    
     // 定义了一个post变量，用于暂存请求体的信息
     var post = '';     
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
@@ -68,7 +71,7 @@ function linebotParser(req ,res){
             return;
         }
         //var imgurl="https://angleline.herokuapp.com/img.jpg";
-        if(post.events[0].message.type == 'image' || post.events[0].message.type == 'video'){
+        if(post.events[0].message.type == 'image'){
             //set adrr
             adrr+=String(post.events[0].message.id);
             adrr+=".jpg";
@@ -133,7 +136,7 @@ function linebotParser(req ,res){
                 'messages': [post.events[0].message]
             }
           };
-          if(post.events[0].message.type == 'image' || post.events[0].message.type == 'video'){
+          if(post.events[0].message.type == 'image'){
                 options.json.messages[0].originalContentUrl=(domain+adrr);
                 options.json.messages[0].previewImageUrl=(domain+adrr);
                 app.get(adrr,(req,res)=>{
