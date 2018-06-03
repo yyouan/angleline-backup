@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@line/bot-sdk": "^6.0.1",
+    "dom-parser": "^0.1.5",
     "express": "^4.16.3",
     "form-data": "^2.3.2",
     "fs": "0.0.1-security",
