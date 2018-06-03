@@ -26,8 +26,8 @@ request(options, function (error, response, body) {
       console.log(body);
       console.log(typeof(body));
       var doc = new DOMParser().parseFromString(body,'text/xml');
-      console.log(typeof(body));
-      for (let value of body.getElementByTagName("tr")[1].getElementByTagName("td")){
+      console.log(typeof(doc));
+      for (let value of doc.getElementByTagName("tr")[1].getElementByTagName("td")){
         console.log(value.innerHTML);
       } 
                        
