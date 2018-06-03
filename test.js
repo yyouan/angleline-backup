@@ -22,8 +22,8 @@ sqlclient.connect();
 sqlclient.query('SELECT angle_id FROM ACCOUNT WHERE student_id=\'b05202030\';', (err, res) => {
   if (err) throw err;
   //console.log(err);
-  console.log(rows[0]);
-  console.log(rows[0].angle_id);
+  console.log(res.rows[0]);
+  console.log(res.rows[0].angle_id);
   for (let row of res.rows) {
     //console.log(JSON.stringify(row));
     console.log(row);
