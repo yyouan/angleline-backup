@@ -8,6 +8,7 @@ const sqlclient = new Client({
     connectionString: process.env.DATABASE_URL,
     //ssl: true,
 });
+var DOMParser = require('xmldom').DOMParser;
 
 const app = express(); //建立一個express 伺服器
 
@@ -24,7 +25,8 @@ request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log(body);
       console.log(typeof(body));
-      //console.log($(body).body);
+      var doc = new DOMParser().parseFromString(body,'text/xml');
+      console.log(typeof(body));
       for (let value of body.getElementByTagName("tr")[1].getElementByTagName("td")){
         console.log(value.innerHTML);
       } 
