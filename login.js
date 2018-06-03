@@ -50,7 +50,7 @@ function record_student_id(id,student_id){
     psql("UPDATE ACCOUNT SET student_id=\'"+ student_id +"\' WHERE angle_id=\'" + id +"\';");
 }
 function passtopsql(id){
-        var std_id = psql()[2];
+        var std_id = psql('SELECT student_id FROM ACCOUNT WHERE angle_id=\''+ id +'\';')[2];
 }
 
 function psql(command){

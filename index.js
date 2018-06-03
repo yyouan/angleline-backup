@@ -93,7 +93,7 @@ function linebotParser(req ,res){
                   //console.log();
                   reject("!!!!!error when recpt image!!!!!");                
                 }
-              })              
+              });              
             });
             
             getimage            
