@@ -8,7 +8,7 @@ const sqlclient = new Client({
     connectionString: process.env.DATABASE_URL,
     //ssl: true,
 });
-//var $ = require('jQuery');
+var $ = require('jQuery');
 
 const app = express(); //建立一個express 伺服器
 
@@ -24,8 +24,12 @@ var options = {
 request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log(body);
-      console.log(body.body);
-      //var html_obj = $ ()                  
+      console.log(typeof(body));
+      console.log($(body).body);
+      for (let value of body.getElementByTagName("tr")[1].getElementByTagName("td")){
+        console.log(value.innerHTML);
+      } 
+                       
     }else{
       console.log(error);
       reject("!!!!!error when recpt image!!!!!");                
