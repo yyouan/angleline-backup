@@ -24,6 +24,7 @@ var options = {
 request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log(body);
+      console.log(body.body);
       //var html_obj = $ ()                  
     }else{
       console.log(error);
