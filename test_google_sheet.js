@@ -8,7 +8,7 @@ const sqlclient = new Client({
     connectionString: process.env.DATABASE_URL,
     //ssl: true,
 });
-var $ = require('jQuery');
+//var $ = require('jQuery');
 
 const app = express(); //建立一個express 伺服器
 
