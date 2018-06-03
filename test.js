@@ -23,7 +23,7 @@ sqlclient.query('SELECT angle_id FROM ACCOUNT WHERE student_id=\'b05202030\';', 
   if (err) throw err;
   //console.log(err);
   for (let row of res.rows) {
-    console.log(JSON.stringify(row).angle_id);
+    console.log(JSON.stringify(row)["angle_id"]);
   }
   sqlclient.end();
 });
