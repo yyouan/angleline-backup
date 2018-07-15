@@ -135,7 +135,7 @@ function linebotParser(req ,res){
               'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
             },
             json: {
-                "replyToken": "\""+replyToken+"\"",
+                "replyToken": replyToken,
                 "messages": [post.events[0].message]
             }
           };
