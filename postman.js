@@ -122,7 +122,7 @@ function linebotParser(req ,res){
             }
             );          
         }else{
-          sendmessage(nwimg);
+          //sendmessage(nwimg);
         }
 
         function sendmessage(recpt){
