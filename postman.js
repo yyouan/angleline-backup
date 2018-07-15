@@ -126,7 +126,7 @@ function linebotParser(req ,res){
         }
 
         function sendmessage(recpt){
-          console.log(replyToken);
+          
           var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
             method: 'POST',
@@ -135,10 +135,11 @@ function linebotParser(req ,res){
               'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
             },
             json: {
-                'replyToken': replyToken,
-                'messages': [post.events[0].message]
+                "replyToken": "\""+replyToken+"\"",
+                "messages": [post.events[0].message]
             }
           };
+          console.log(options);
           if(post.events[0].message.type == 'image'){
                 options.json.messages[0].originalContentUrl=(domain+adrr);
                 options.json.messages[0].previewImageUrl=(domain+adrr);
