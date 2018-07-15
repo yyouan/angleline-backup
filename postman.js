@@ -126,6 +126,7 @@ function linebotParser(req ,res){
         }
 
         function sendmessage(recpt){
+          console.log(replyToken);
           var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
             method: 'POST',
