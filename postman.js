@@ -7,13 +7,14 @@ var fs = require('fs');
 
 const app = express(); //建立一個express 伺服器
 app.post('/' , linebotParser); // POST 方法**/
-app.post('/angle',anglebot);
+/**app.post('/angle',anglebot);
 app.post('/master',masterbot);
 app.post('/hall',hallbot);
 app.get('/monitor',monitorhtml);
 app.get('/mailflush',mailflush);
 app.post('/id',monitormail); //give line push
 app.get('/give_id',giving_id_bot); //if call this bot will push line_id
+**/
 /**const message = {
   type: 'text',
   text: 'Hello World!'
