@@ -48,7 +48,7 @@ const googleform= {
             {
               "type": "uri",
               "label": "填寫",
-              "data": querystring.stringify(psy)
+              "uri": "https://goo.gl/forms/SMeGF57RpvTGOtNp1"
             }
         ]
     }
