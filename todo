@@ -1,0 +1,31 @@
+no-work:
+
+    make detailed test list    
+    
+in-work:
+    
+
+mutual-work:
+    hall.js
+
+change-token:
+
+to-test:
+    <Login era>
+    login.js:form part
+    upload.html : cookie_part
+    idle.js    
+
+    <Choose era>
+    choose_master.js:1.test len>3 2.test len=<3
+    past_intro.js (with past problem)
+
+    <Message era>
+    hall.js : hate article supervisor and add it to group
+    postman.js:img-message-exchange
+    info.js: 1.include "receive cookie-game" 2.problem-send/someone-ask-problem 3.location game 4.name-card-game 5.make supervisor group
+    
+    <Finish era>
+    exchange_id.js
+
+other todo:
