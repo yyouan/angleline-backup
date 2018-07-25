@@ -126,7 +126,7 @@ function loginParser(req ,res){
                         if(post.events[0].message.type == 'text'){
                             var email = post.events[0].message.text;
                             psql("SELECT * FROM ACCOUNT WHERE email=\'" + email +"\';").then(recpt=>{
-                                if( recpt.length == 1 && recpt.angle_id.replace(/\s+/g, "") == '')
+                                if( recpt.length == 1 && recpt[0].angle_id.replace(/\s+/g, "") == '')
                                 {
                                     let msg =[];
                                     let text ={
@@ -276,6 +276,13 @@ function loginParser(req ,res){
                                         ()=>{replymessage([text]);}                                        
                                     );
                                     
+                                }else if(recpt.length == 0){
+                                    let text ={
+                                        "type":"text",
+                                        "text":""
+                                    }
+                                    text.text ="輸入的郵件信箱錯誤";
+                                    replymessage([text]);                        
                                 }else{
                                     let text ={
                                         "type":"text",
@@ -290,7 +297,7 @@ function loginParser(req ,res){
                                 "type":"text",
                                 "text":""
                             }
-                            text.text ="EASTER_EGG!請輸入正確訊息";
+                            text.text ="EASTER_EGG!請輸入註冊的郵件信箱";
                             replymessage([text]);
                         }                        
 
