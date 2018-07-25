@@ -370,7 +370,7 @@ function FormReceiver(req,res){
     // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
     req.on('end', function(){
         post = querystring.parse(post);    
-        console.log("-----------post:"+ String(post));
+        console.log(post);
         psql("INSERT INTO ACCOUNT (email) VALUES (\'"+ post.email +"\');").then(
             res =>{
                 psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
@@ -404,7 +404,7 @@ function imgReceiver(req,res){
     // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
     req.on('end', function(){
         post = querystring.parse(post);    
-        console.log("-----------post:" + String(post));
+        console.log(post);
         psql("UPDATE ACCOUNT SET times=\'"+ post.url +"\' WHERE email=\'" + post.email +"\';");        
     });
 }
