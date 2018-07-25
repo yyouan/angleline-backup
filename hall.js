@@ -379,8 +379,8 @@ function chatParser(req ,res){
                         );
                       }
                 };
-                function inner_word();
-                function adventure();
+                function inner_word(){};
+                function adventure(){};
     
                 
             }
