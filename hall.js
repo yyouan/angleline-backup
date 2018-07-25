@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 const querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+const game_item = require('./game_item.js');
 const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'JeHZW0fzS1rQX9yHvGRz0ZZqC+ENFDhsf/30grCHGk80MBiNjqDz76oj+ETgTnAXPjFCp/P/1EzYYbq4Ptz6U8tLCUxBHBlLeH4iozbORQOq1zYSc2cKosq8esu3/ttrZdeRRo0wsBoWI4gjTeEjuQdB04t89/1O/w1cDnyilFU=', 
     'BOpCS2JXlx/6DfqGmLVD9vU8FmjviF0TV/QJoLfkN0C465BHYiKtyfzP1Ov4wEIcF7xFvwu64T/RrO64+cai0dY7Th5yno/goN9+dJVa4EsLoNC5JV4mYF7ROws6Og6vfHByaSO/qQRZR8sy5Bz/twdB04t89/1O/w1cDnyilFU=',  
@@ -489,7 +490,7 @@ function GameProceessor(req,res){
                                         psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                         //go to next problem
                                         //send next problem to partner
-                                        psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                        psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                         let msg = [
                                             {
                                                 "type":"text",
@@ -497,7 +498,7 @@ function GameProceessor(req,res){
                                             },
                                             {
                                                 "type":"text",
-                                                "text":"下一關的題目："+gameproblem[(res[0].problem+1)%gameproblem.length]
+                                                "text":"下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
                                             }
                                         ]
                                         pushmessage([msg],res[0].angle_id);
@@ -512,7 +513,7 @@ function GameProceessor(req,res){
                                             },
                                             {
                                                 "type":"text",
-                                                "text":"提醒題目："+gameproblem[res[0].problem]
+                                                "text":"提醒題目："+game_item.gameproblem[res[0].problem]
                                             }
                                         ]
                                         pushmessage([msg],res[0].angle_id);
@@ -522,7 +523,7 @@ function GameProceessor(req,res){
                             );
                         }else{
                             psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
-                            psql("UPDATE ACCOUNT SET problem="+ String((req[0].problem+1)%gameproblem.length) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                            psql("UPDATE ACCOUNT SET problem="+ String((req[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                             let msg = [
                                 {
                                     "type":"text",
@@ -530,7 +531,7 @@ function GameProceessor(req,res){
                                 },
                                 {
                                     "type":"text",
-                                    "text":"下一關的題目："+gameproblem[(req[0].problem+1)%gameproblem.length]
+                                    "text":"下一關的題目："+game_item.gameproblem[(req[0].problem+1)%game_item.gameproblem.length]
                                 }
                             ]
                             pushmessage([msg],req[0].angle_id);
@@ -548,7 +549,7 @@ function GameProceessor(req,res){
                         },
                         {
                             "type":"text",
-                            "text":"提醒題目："+gameproblem[req[0].problem]
+                            "text":"提醒題目："+game_item.gameproblem[req[0].problem]
                         }
                     ]
                     pushmessage([msg],req[0].angle_id);
@@ -562,7 +563,7 @@ function GameProceessor(req,res){
 //會有other隨便亂數出來的ANSWER去扣點數
 
 console.log("Game URL:");
-for(let name of gameanswer){
+for(let name of game_item.gameanswer){
     console.log("https://informationdesk.herokuapp.com/game?name="+encodeURIComponent(name));
 }
 
