@@ -297,24 +297,21 @@ function chatParser(req ,res){
                 } 
 
         }else{
+            let reply_id = line_id;
 
                 if(post.events[0].message.type == 'text'){
 
-                    var email = post.events[0].message.text;
-                    let reply_id ="";
+                    var email = post.events[0].message.text;                    
                     
                     if(email.substr(0,1)=="@"){
                         console.log(email);
                         let rawdata = email.substr(1);
                         let data = querystring.parse(rawdata);
-                        reply_id = data.from_id;                    
-                    }else{
-                        reply_id = line_id;                    
-                    }
-                }else{
-                    reply_id = line_id;
+                        reply_id = data.from_id;
+                    }                    
+                    
                 }
-    
+
                 let text ={
                     "type":"text",
                     "text":"收到了，待會會回覆您"
