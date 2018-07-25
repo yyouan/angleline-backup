@@ -405,6 +405,6 @@ function imgReceiver(req,res){
     req.on('end', function(){
         post = querystring.parse(post);    
         console.log(post);
-        psql("UPDATE ACCOUNT SET times=\'"+ post.url +"\' WHERE email=\'" + post.email +"\';");        
+        psql("UPDATE ACCOUNT SET head_url=\'"+ post.url +"\' WHERE email=\'" + post.email +"\';");        
     });
 }
