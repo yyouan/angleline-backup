@@ -97,7 +97,7 @@ function pushmessage(recpt,id){
     recpt.forEach(element => {
         console.log("pushmessage:"+element);
     });
-  
+    console.log("to_id"+id);
     var options = {
         url: "https://api.line.me/v2/bot/message/push",
         method: 'POST',
@@ -406,9 +406,9 @@ function chatParser(req ,res){
                                 
                                     pushmessage([text]);
                                 
-                                pushmessage([msg],group_id);
+                                pushmessage([msg],group.group_id);
                                 
-                                    pushmessage([reply_button], group_id);
+                                    pushmessage([reply_button], group.group_id);
                                 
                             }                            
                         }
