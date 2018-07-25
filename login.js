@@ -256,7 +256,7 @@ function loginParser(req ,res){
                                                               "action": {
                                                                 "type": "uri",
                                                                 "label": "按我加好友",
-                                                                "uri": "https://line.me/R/ti/p/%40ugr1160s"
+                                                                "uri": "https://line.me/R/ti/p/%40hzg9436s"
                                                               },
                                                               "style": "primary",
                                                               "color": "#ff3333"
@@ -305,7 +305,7 @@ function loginParser(req ,res){
                         
                             let text ={
                                 "type":"text",
-                                "text":"您已經註冊過了喔~!"
+                                "text":"您已經註冊了，註冊階段本站功能尚未啟用，敬請見諒"
                             }
                             replymessage([text]); 
                                                  
