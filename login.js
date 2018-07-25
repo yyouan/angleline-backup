@@ -108,6 +108,9 @@ function loginParser(req ,res){
         var replyToken = post.events[0].replyToken;
         var posttype = post.events[0].type;
         var line_id = post.events[0].source.userId;
+        if( post.events[0].source.type == 'group'){
+            line_id = post.events[0].source.groupId;
+        } 
         /**var userMessage = post.events[0].message.text;
         console.log(replyToken);
         console.log(userMessage);**/
@@ -339,7 +342,7 @@ function loginParser(req ,res){
                 'messages': recpt
             }
           };
-          if(post.events[0].message.type == 'image'){
+          if(posttype=='message' && post.events[0].message.type == 'image'){
                 options.json.messages[0].originalContentUrl=(domain+adrr);
                 options.json.messages[0].previewImageUrl=(domain+adrr);
                 app.get(adrr,(req,res)=>{
