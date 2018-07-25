@@ -126,7 +126,7 @@ function loginParser(req ,res){
                         if(post.events[0].message.type == 'text'){
                             var email = post.events[0].message.text;
                             psql("SELECT * FROM ACCOUNT WHERE email=\'" + email +"\';").then(recpt=>{
-                                if( recpt.length == 1 && recpt.angle_id == '')
+                                if( recpt.length == 1 && recpt.angle_id.replace(/\s+/g, "") == '')
                                 {
                                     let msg =[];
                                     let text ={
@@ -377,7 +377,7 @@ function FormReceiver(req,res){
                 psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET angle_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
-                psql("UPDATE ACCOUNT SET self_intro=\'"+ post.self-intro +"\' WHERE email=\'" + post.email +"\';");
+                psql("UPDATE ACCOUNT SET self_intro=\'"+ post['self-intro'] +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET score=0 WHERE email=\'" + post.email +"\';");                
                 psql("UPDATE ACCOUNT SET name=\'"+ post.name +"\' WHERE email=\'" + post.email +"\';"); 
