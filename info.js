@@ -489,6 +489,7 @@ function GameProceessor(req,res){
     let game_name = q.query.name;
     let game_index =gameanswer.indexOf(game_name);    
         let cookie = req.headers.cookie;
+        console.log(req.headers);
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+cookie+"\';") //use angle_id to be the team's score
         .then(
             (req)=>{
@@ -497,7 +498,11 @@ function GameProceessor(req,res){
                         psql("SELECT * FROM SUPERVISOR;").then(
                             (groups) =>{
                                 for(let group of groups){
-                                    pushmessage([text3],group.group_id);
+                                    let text ={
+                                        "type":"text",
+                                        "text":"有game問題出錯"
+                                    } 
+                                    pushmessage([text],group.group_id);
                                 }                            
                             }
                         );
