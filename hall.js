@@ -564,7 +564,7 @@ function GameProceessor(req,res){
 
 console.log("Game URL:");
 for(let name of game_item.gameanswer){
-    console.log("https://informationdesk.herokuapp.com/game?name="+encodeURIComponent(name));
+    console.log("https://angleline-hall.herokuapp.com/game?name="+encodeURIComponent(name));
 }
 
 
