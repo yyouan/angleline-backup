@@ -462,7 +462,7 @@ function GameProceessor(req,res){
     
     let game_name = q.query.name;
     let game_index =game_item.gameanswer.indexOf(game_name);    
-        let cookie = req.cookies;
+        let cookie = req.cookies.email;
         //console.log(req.headers);
         console.log(req.cookies);
         //console.log(req);
@@ -557,7 +557,7 @@ function GameProceessor(req,res){
                     pushmessage([msg],req[0].master_id);
                 }
         });
-    res.sendFile('./game.html');
+    res.sendFile(__dirname+'/game.html');
     
 }
 
