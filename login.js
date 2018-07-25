@@ -273,7 +273,7 @@ function loginParser(req ,res){
                                     .catch(
                                         ()=>{text.text ="還沒有填表單喔!";msg.push(text);}
                                     ).then(
-                                        ()=>{replymessage([text]);}                                        
+                                        ()=>{replymessage(msg);}                                        
                                     );
                                     
                                 }else if(recpt.length == 0){
