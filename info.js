@@ -201,8 +201,9 @@ function chatParser(req ,res){
           return;
       }
 
-      if (posttype == 'join' && post.events[0].source.type =="group"){
+      if (posttype == 'join' ){ //&& post.events[0].source.type =="group"
         
+        console.log('join');
         psql("INSERT INTO SUPERVISOR (group_id) VALUES (\'"+ post.line_id +"\');");
 
         let text ={
