@@ -167,10 +167,7 @@ function chatParser(req ,res){
       var line_id = post.events[0].source.userId;
       if( post.events[0].source.type == 'group'){
           line_id = post.events[0].source.groupId;
-      }
-      let msg = post.events[0].message;                                    
-      let type = msg.type;
-      let msgid = msg.id;
+      }      
       
       let finish_button =
         {
@@ -197,7 +194,9 @@ function chatParser(req ,res){
       }
             
     if (posttype == 'message' && post.events[0].source.type != 'group'){
-
+            let msg = post.events[0].message;                                    
+            let type = msg.type;
+            let msgid = msg.id;
             if(post.events[0].source.userId in channel_array){
 
                 let msg = post.events[0].message;                                    

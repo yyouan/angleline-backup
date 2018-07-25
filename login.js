@@ -113,7 +113,19 @@ function loginParser(req ,res){
         console.log(userMessage);**/
         if (typeof replyToken === 'undefined') {
             return;
-        }        
+        }
+        
+        if (posttype == 'join' && post.events[0].source.type =="group"){ 
+        
+            console.log('join');
+            psql("INSERT INTO SUPERVISOR (group_id) VALUES (\'"+ line_id +"\');");
+    
+            let text ={
+                "type":"text",
+                "text":"完成管理員群組登錄"
+            }
+            replymessage([text]);            
+        }
 
         if (posttype == 'message'){
             

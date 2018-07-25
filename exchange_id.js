@@ -124,9 +124,7 @@ function psql(command){
         if( post.events[0].source.type == 'group'){
             line_id = post.events[0].source.groupId;
         }
-        let msg = post.events[0].message;                                    
-        let type = msg.type;
-        let msgid = msg.id;
+        
          
         /**var userMessage = post.events[0].message.text;
         console.log(replyToken);
@@ -264,6 +262,9 @@ function psql(command){
 
       if (posttype == 'message'){
           
+        let msg = post.events[0].message;                                    
+        let type = msg.type;
+        let msgid = msg.id;  
         let gate = false;
                   
         if(gate == false){
