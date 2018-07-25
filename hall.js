@@ -462,7 +462,8 @@ function GameProceessor(req,res){
     
     let game_name = q.query.name;
     let game_index =game_item.gameanswer.indexOf(game_name);    
-        let cookie = req.cookies.email;
+        req.cookie('isVisit', 1);
+        let cookie = req.cookies;
         //console.log(req.headers);
         console.log(req);
         //console.log(req);
