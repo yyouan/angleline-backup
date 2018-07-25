@@ -171,10 +171,7 @@ function chatParser(req ,res){
       var line_id = post.events[0].source.userId;
       if( post.events[0].source.type == 'group'){
           line_id = post.events[0].source.groupId;
-      }
-      let msg = post.events[0].message;                                    
-      let type = msg.type;
-      let msgid = msg.id;
+      }      
                     
         let finish_button =
         {
@@ -214,6 +211,10 @@ function chatParser(req ,res){
     }
             
     if (posttype == 'message'){
+
+        let msg = post.events[0].message;                                    
+        let type = msg.type;
+        let msgid = msg.id;
 
         if(type == 'location'){
             psql("SELECT * FROM ACCOUNT WHERE line_id=\'" + line_id +"\';").then(
