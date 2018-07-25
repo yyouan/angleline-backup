@@ -296,7 +296,11 @@ function chatParser(req ,res){
 
                 }else{
                     pushmessage([msg],receiver_id);
-                    replymessage([finish_button]);
+                    let text ={
+                        "type":"text",
+                        "text":"繼續回覆："
+                    }
+                    replymessage([finish_button,text]);
                 } 
 
         }else{
@@ -432,15 +436,23 @@ function chatParser(req ,res){
 
         if("reply_id" in data) {
             
-            channel_array[post.events[0].source.userId] = data.reply_id;            
-            replymessage([finish_button]);
+            channel_array[post.events[0].source.userId] = data.reply_id;
+            let text ={
+                "type":"text",
+                "text":"開始回覆："
+            }            
+            replymessage([finish_button,text]);
 
         }else if("finish" in data){
 
             if( post.events[0].source.userId in channel_array){
                 delete channel_array[post.events[0].source.userId];
+            }
+            let text ={
+                "type":"text",
+                "text":"結束回覆"
             }            
-
+            replymessage([text]);
         }
          
     }
