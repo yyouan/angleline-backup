@@ -87,7 +87,7 @@ function psql(command){
                 "altText": "找台手機開啟",
                 "template": {
                     "type": "buttons",                            
-                    "text": "謝謝您參加本次小天使與小主人，如果希望提供line資訊及聯絡電話給對方，可以按給~~",                            
+                    "text": "謝謝您參加本次小天使與小主人，如果希望提供聯絡資訊給對方，可以按\"給\"~~",                            
                     "actions": [
                         {
                         "type": "postback",
@@ -261,6 +261,91 @@ function psql(command){
           }
            
       }
+
+      if (posttype == 'message'){
+          
+        let gate = false;
+                  
+        if(gate == false){
+
+            psql("SELECT * FROM ACCOUNT WHERE "+mode+"=\'"+line_id+"\';").then(
+              (writers)=>{
+                if(writers.length==1){                    
+                  let msg = post.events[0].message;                                    
+                  let type = msg.type;
+                  let msgid = msg.id;                                
+                  let receiver_id = (mode=="angle_id")?writers[0].master_id:writers[0].angle_id;
+
+                  if(type == 'image'){
+                    //set adrr
+                    adrr+=String(msgid);
+                    adrr+=".jpg";
+                    console.log(adrr);
+                    // Configure the request
+                    let getimage=new Promise((resolve,reject)=>{
+                    let options = {
+                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                        method: 'GET',
+                        headers: {                
+                        'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
+                        },
+                        encoding: null
+                    }
+        
+                    // Start the request
+
+                    request(options, function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                        nwimg = body;
+                        console.log(body);
+                        resolve(body);                  
+                        }else{
+                        //console.log();
+                        reject("!!!!!error when recpt image!!!!!");                
+                        }
+                    });              
+                    });
+                    
+                    getimage
+                    .then((body)=>{imgpusher(msg,receiver_id,body);})
+                    .catch((err)=>{
+                    console.log("(linebotpromise)"+err);
+                    }
+                    );
+
+                  }else{
+                      pushmessage([msg],receiver_id);
+                  }                    
+
+                }else{ //bug detecter
+                  let text ={
+                    "type":"text",
+                    "text":""
+                  }
+                  text.text ="======HunDow 迷路了======\n發生程式錯誤，請到詢問站確認工程師已經在處理";
+                  let text2 ={
+                    "type":"text",
+                    "text":""
+                  }
+                  text2.text ="如果詢問台沒有新訊息，請將以下訊息手動傳到詢問站";
+                  let text3 ={
+                    "type":"text",
+                    "text":""
+                  }
+                  text3.text ="@promblem=多重帳號錯誤&from_id="+line_id+"&to_id="+receiver_id+"&code=postman.js:247";
+                  replymessage([text,text2,text3]);
+                  
+                  psql("SELECT * FROM SUPERVISOR;").then(
+                    (groups) =>{
+                      pushmessage([text3],groups.group_id);
+                    }
+                  );
+                }
+              }
+            );
+        }
+     
+    }
         function replymessage(recpt){ //recpt is message object
           var options = {
             url: "https://api.line.me/v2/bot/message/reply ",
@@ -285,3 +370,11 @@ function psql(command){
     });
   
   }
+
+
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen((process.env.PORT || 8080), function() {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+});
+//!!!240

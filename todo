@@ -1,6 +1,6 @@
 no-work:
 
-    make detailed test list    
+   
     
 in-work:
     
@@ -10,22 +10,57 @@ mutual-work:
 
 change-token:
 
+
 to-test:
     <Login era>
+    [github-angle]  idle.js
+    [github-master] idle.js
+    [github-hall]   login.js
+    [github-info]   info.js
+
     login.js:form part
     upload.html : cookie_part
-    idle.js    
+    idle.js
+    info.js: 1.include "receive cookie-game" 2.problem-send/someone-ask-problem 3.location game 4.name-card-game 5.make supervisor group    
 
+---------<use psql check everyone "complete" their login          >------
     <Choose era>
-    choose_master.js:1.test len>3 2.test len=<3
-    past_intro.js (with past problem)
+    [github-angle]  idle.js
+    [github-master] idle.js
+    [github-hall]   choose_master.js
+    [github-info]   info.js
 
+    choose_master.js:1.test len>3 2.test len=<3
+
+---------<use psql check everyone "complete" their choose         >------
+    <past era>
+    [github-angle]  past_intro.js
+    [github-master] past_intro.js
+    [github-hall]   hall.js
+    [github-info]   info.js
+
+    past_intro.js (with past problem)
+    hall.js : hate article supervisor and add it to group
+------------------------------------------------------------------------
     <Message era>
+    [github-angle]  postman.js
+    [github-master] postman.js
+    [github-hall]   hall.js
+    [github-info]   info.js
+
     hall.js : hate article supervisor and add it to group
     postman.js:img-message-exchange
     info.js: 1.include "receive cookie-game" 2.problem-send/someone-ask-problem 3.location game 4.name-card-game 5.make supervisor group
-    
+------------------------------------------------------------------------    
     <Finish era>
-    exchange_id.js
+    [github-angle]  exchange_id.js 
+    [github-master] exchange_id.js 
+    [github-hall]   hall.js
+    [github-info]   info.js
 
+    exchange_id.js
+    check postman.js part is OK
+
+-------------------------------------------------------------------------
 other todo:
+    make everyone QR code and special QR code card
