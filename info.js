@@ -380,11 +380,11 @@ function chatParser(req ,res){
                                         "text" : "來自小隊員："
                                     }
                                     
-                                        pushmessage([text],group_id);
+                                        pushmessage([text],group.group_id);
                                     
-                                    imgpusher(msg,group_id,body);
+                                    imgpusher(msg,group.group_id,body);
                                     
-                                        pushmessage([reply_button],group_id);
+                                        pushmessage([reply_button],group.group_id);
                                     
                                 }                            
                             }
