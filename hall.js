@@ -464,7 +464,7 @@ function GameProceessor(req,res){
     let game_index =game_item.gameanswer.indexOf(game_name);    
         let cookie = req.cookies.email;
         //console.log(req.headers);
-        console.log(req.cookies);
+        console.log(req);
         //console.log(req);
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+cookie+"\';") //use angle_id to be the team's score
         .then(
