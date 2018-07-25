@@ -119,7 +119,7 @@ function loginParser(req ,res){
             
             if(true){
                 
-                psql("SELECT * FROM ACCOUNT WHERE line_id=\'" + line_id +"\';")
+                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + line_id +"\';")
                 .then( recpt =>{
                     if( recpt.length == 0)   
                     {
