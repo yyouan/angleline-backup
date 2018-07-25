@@ -463,10 +463,10 @@ function GameProceessor(req,res){
     
     let game_name = q.query.name;
     let game_index =game_item.gameanswer.indexOf(game_name);    
-        req.cookie('isVisit', 1);
+        //req.cookie('isVisit', 1);
         let cookie = req.cookies;
         //console.log(req.headers);
-        console.log(req);
+        console.log(req.cookies);
         //console.log(req);
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+cookie+"\';") //use angle_id to be the team's score
         .then(
