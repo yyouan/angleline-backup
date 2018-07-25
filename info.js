@@ -198,16 +198,16 @@ function chatParser(req ,res){
           return;
       }
 
-      if (posttype == 'join' ){ //&& post.events[0].source.type =="group"
+      if (posttype == 'join' && post.events[0].source.type =="group"){ 
         
         console.log('join');
-        psql("INSERT INTO SUPERVISOR (group_id) VALUES (\'"+ post.line_id +"\');");
+        psql("INSERT INTO SUPERVISOR (group_id) VALUES (\'"+ line_id +"\');");
 
         let text ={
             "type":"text",
             "text":"完成管理員群組登錄"
         }
-        replymessage([req,text]);            
+        replymessage([text]);            
     }
             
     if (posttype == 'message'){
