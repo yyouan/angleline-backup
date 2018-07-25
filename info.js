@@ -583,7 +583,7 @@ function GameProceessor(req,res){
 
 console.log("Game URL:");
 for(let name of gameanswer){
-    console.log("https://informationdesk.herokuapp.com/?name="+encodeURIComponent(name));
+    console.log("https://informationdesk.herokuapp.com/game?name="+encodeURIComponent(name));
 }
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換

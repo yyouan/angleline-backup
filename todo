@@ -20,7 +20,7 @@ to-test:
     login.js:form part
     upload.html : cookie_part
     idle.js
-    info.js: 1.include "receive cookie-game" 2.problem-send/someone-ask-problem 3.location game 4.name-card-game 5.make supervisor group    
+    info.js: 1.include "receive cookie-game" 2.problem-send/someone-ask-problem 3.location game 4.name-card-game     
 
 ---------<use psql check everyone "complete" their login          >------
     <Choose era>
