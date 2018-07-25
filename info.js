@@ -179,11 +179,11 @@ function chatParser(req ,res){
             "altText": "找台手機開啟",
             "template": {
                 "type": "buttons",                            
-                "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
+                "text": "請按結束結束回覆",                            
                 "actions": [
                     {
                     "type": "postback",
-                    "label": "回覆",
+                    "label": "結束",
                     "data": "finish=1"
                     }
                 ]
