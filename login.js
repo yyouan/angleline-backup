@@ -126,7 +126,7 @@ function loginParser(req ,res){
                         if(post.events[0].message.type == 'text'){
                             var email = post.events[0].message.text;
                             psql("SELECT * FROM ACCOUNT WHERE email=\'" + email +"\';").then(recpt=>{
-                                if( recpt.length == 0 )
+                                if( recpt.length == 1 && recpt.angle_id == '')
                                 {
                                     let msg =[];
                                     let text ={
@@ -298,7 +298,7 @@ function loginParser(req ,res){
                         
                             let text ={
                                 "type":"text",
-                                "text":"功能尚未開啟"
+                                "text":"您已經註冊過了喔~!"
                             }
                             replymessage([text]); 
                                                  
@@ -375,8 +375,9 @@ function FormReceiver(req,res){
         psql("INSERT INTO ACCOUNT (email) VALUES (\'"+ post.email +"\');").then(
             res =>{
                 psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
+                psql("UPDATE ACCOUNT SET angle_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
-                psql("UPDATE ACCOUNT SET self_intro=\'"+ post.self_intro +"\' WHERE email=\'" + post.email +"\';");
+                psql("UPDATE ACCOUNT SET self_intro=\'"+ post.self-intro +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET score=0 WHERE email=\'" + post.email +"\';");                
                 psql("UPDATE ACCOUNT SET name=\'"+ post.name +"\' WHERE email=\'" + post.email +"\';"); 
