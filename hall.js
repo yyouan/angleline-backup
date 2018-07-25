@@ -20,9 +20,10 @@ const pool = new Pool({
 });
 
 const app = express(); //建立一個express 伺服器
+app.use(cookieParser());
 app.post('/' , chatParser); // POST 方法**/
 app.get('/game',GameProceessor);
-app.use(cookieParser());
+
 /**app.post('/angle',anglebot);
 app.post('/master',masterbot);
 app.post('/hall',hallbot);
