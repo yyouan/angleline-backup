@@ -296,6 +296,7 @@ function chatParser(req ,res){
 
                 }else{
                     pushmessage([msg],receiver_id);
+                    replymessage([finish_button]);
                 } 
 
         }else{
@@ -380,11 +381,11 @@ function chatParser(req ,res){
                                         "text" : "來自小隊員："
                                     }
                                     
-                                        pushmessage([text],group.group_id);
+                                    pushmessage([text],group.group_id);
                                     
                                     imgpusher(msg,group.group_id,body);
                                     
-                                        pushmessage([reply_button],group.group_id);
+                                    pushmessage([reply_button],group.group_id);
                                     
                                 }                            
                             }
@@ -404,11 +405,11 @@ function chatParser(req ,res){
                                     "text" : "來自小隊員："
                                 }
                                 
-                                    pushmessage([text],group.group_id);
+                                    pushmessage([text,msg,reply_button],group.group_id);
                                 
-                                pushmessage([msg],group.group_id);
+                                //pushmessage([msg],group.group_id);
                                 
-                                    pushmessage([reply_button], group.group_id);
+                                    //pushmessage([reply_button], group.group_id);
                                 
                             }                            
                         }
