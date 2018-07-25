@@ -432,3 +432,115 @@ function imgReceiver(req,res){
         psql("UPDATE ACCOUNT SET head_url=\'"+ post.url +"\' WHERE email=\'" + post.email +"\';");        
     });
 }
+
+function GameProceessor(req,res){
+    let q = url.parse(req.url,true);
+    console.log(q.query); //?game_name=
+    
+    let game_name = q.query.name;
+    let game_index =gameanswer.indexOf(game_name);    
+        let cookie = req.cookies;
+        //console.log(req.headers);
+        console.log(req.cookies);
+        //console.log(req);
+        psql("SELECT * FROM ACCOUNT WHERE email=\'"+cookie+"\';") //use angle_id to be the team's score
+        .then(
+            (req)=>{
+                if(game_index!=-1){
+                    if(req.length!=1){
+                        psql("SELECT * FROM SUPERVISOR;").then(
+                            (groups) =>{
+                                for(let group of groups){
+                                    let text ={
+                                        "type":"text",
+                                        "text":"有game問題出錯"
+                                    } 
+                                    pushmessage([text],group.group_id);
+                                }                            
+                            }
+                        );
+                    }else{
+                        //0.one of pair know the person will win the score 1                        
+                        if(req[0].problem != game_index){
+                            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+req[0].master_id+"\';").then(
+                                (res)=>{
+                                    if(res[0].problem == game_index){
+                                        psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                        //go to next problem
+                                        //send next problem to partner
+                                        psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                        let msg = [
+                                            {
+                                                "type":"text",
+                                                "text":"恭喜破關!現在小組分數為"+String(res[0].score+20)
+                                            },
+                                            {
+                                                "type":"text",
+                                                "text":"下一關的題目："+gameproblem[(res[0].problem+1)%gameproblem.length]
+                                            }
+                                        ]
+                                        pushmessage([msg],res[0].angle_id);
+                                        pushmessage([msg],res[0].master_id);
+                                    }else{
+                                        psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                        psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                                        let msg = [
+                                            {
+                                                "type":"text",
+                                                "text":"問錯人了!現在小組分數為"+String(res[0].score-1)
+                                            },
+                                            {
+                                                "type":"text",
+                                                "text":"提醒題目："+gameproblem[res[0].problem]
+                                            }
+                                        ]
+                                        pushmessage([msg],res[0].angle_id);
+                                        pushmessage([msg],res[0].master_id);
+                                    }
+                                }
+                            );
+                        }else{
+                            psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                            psql("UPDATE ACCOUNT SET problem="+ String((req[0].problem+1)%gameproblem.length) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                            let msg = [
+                                {
+                                    "type":"text",
+                                    "text":"恭喜破關!現在小組分數為"+String(req[0].score+20)
+                                },
+                                {
+                                    "type":"text",
+                                    "text":"下一關的題目："+gameproblem[(req[0].problem+1)%gameproblem.length]
+                                }
+                            ]
+                            pushmessage([msg],req[0].angle_id);
+                            pushmessage([msg],req[0].master_id);            
+                        }                        
+                        
+                    }
+                }else{ //4.wrong answer will let score descrese by 1
+                    psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE email=\'"+cookie+"\';");
+                    psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE angle_id=\'"+req[0].master_id+"\';");
+                    let msg = [
+                        {
+                            "type":"text",
+                            "text":"問錯人了!現在小組分數為"+String(req[0].score-1)
+                        },
+                        {
+                            "type":"text",
+                            "text":"提醒題目："+gameproblem[req[0].problem]
+                        }
+                    ]
+                    pushmessage([msg],req[0].angle_id);
+                    pushmessage([msg],req[0].master_id);
+                }
+        });
+    
+}
+
+
+//會有other隨便亂數出來的ANSWER去扣點數
+
+console.log("Game URL:");
+for(let name of gameanswer){
+    console.log("https://informationdesk.herokuapp.com/game?name="+encodeURIComponent(name));
+}
