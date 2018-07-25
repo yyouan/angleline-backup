@@ -488,8 +488,10 @@ function GameProceessor(req,res){
     
     let game_name = q.query.name;
     let game_index =gameanswer.indexOf(game_name);    
-        let cookie = req.headers.cookie;
+        let cookie = req.cookies;
         console.log(req.headers);
+        console.log(req.cookies);
+        console.log(req);
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+cookie+"\';") //use angle_id to be the team's score
         .then(
             (req)=>{
