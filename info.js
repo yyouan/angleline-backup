@@ -404,7 +404,7 @@ function chatParser(req ,res){
                                     "text" : "來自小隊員："
                                 }
                                 
-                                    pushmessage([text]);
+                                    pushmessage([text],group.group_id);
                                 
                                 pushmessage([msg],group.group_id);
                                 
