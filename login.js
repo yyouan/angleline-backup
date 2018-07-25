@@ -130,7 +130,7 @@ function loginParser(req ,res){
             replymessage([text]);            
         }
 
-        if (posttype == 'message'){
+        if (posttype == 'message' && post.events[0].source.type !="group"){
             
             if(true){
                 
