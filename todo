@@ -13,8 +13,8 @@ change-token:
 
 to-test:
     <Login era>
-    [github-angle]  idle.js
-    [github-master] idle.js
+    [github-angle]  idle.js :change channel token to "AngleToken"
+    [github-master] idle.js :change channel token to "MasterToken"
     [github-hall]   login.js
     [github-info]   info.js
 

@@ -22,8 +22,8 @@ app.post('/' , idleParser); // POST 方法**/
 function idleParser(req ,res){
     //route
     var nwimg;
-    var domain="https://angleline"+(mode=="angle_id")?"":"-master"+".herokuapp.com";  
-    var adrr="/";
+    //var domain="https://angleline"+(mode=="angle_id")?"":"-master"+".herokuapp.com";  
+    //var adrr="/";
     
     // 定义了一个post变量，用于暂存请求体的信息
     var post = '';     
