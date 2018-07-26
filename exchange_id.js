@@ -50,7 +50,40 @@ function psql(command){
         });
     });
   }
+  function pushToSuv(recpt){
+    psql("SELECT * FROM SUPERVISOR;").then(
   
+      (groups) =>{
+  
+        for(group of groups){
+  
+          recpt.forEach(element => {
+            console.log("pushmessage:"+element);
+          });
+      
+          var options = {
+              url: "https://api.line.me/v2/bot/message/push",
+              method: 'POST',
+              headers: {
+                'Content-Type':  'application/json', 
+                'Authorization':'Bearer ' + InfoToken
+              },
+              json: {
+                  "to": group.group_id.replace(/\s+/g, ""),
+                  'messages': recpt
+              }
+            };
+          console.log(options);
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+  
+        }      
+      }
+    );
+  }
   function pushmessage(recpt,id){
     recpt.forEach(element => {
         console.log("pushmessage:"+element);
@@ -84,7 +117,7 @@ function psql(command){
             let give_button =
             {
                 "type": "template",
-                "altText": "找台手機開啟",
+                "altText": "HunDow有消息，請借台手機開啟",
                 "template": {
                     "type": "buttons",                            
                     "text": "謝謝您參加本次小天使與小主人，如果希望提供聯絡資訊給對方，可以按\"給\"~~",                            
@@ -340,12 +373,7 @@ function psql(command){
                   }
                   text3.text ="@promblem=多重帳號錯誤&from_id="+line_id+"&to_id="+receiver_id+"&code=postman.js:247";
                   replymessage([text,text2,text3]);
-                  
-                  psql("SELECT * FROM SUPERVISOR;").then(
-                    (groups) =>{
-                      pushmessage([text3],groups.group_id);
-                    }
-                  );
+                  pushToSuv([text3]);                  
                 }
               }
             );

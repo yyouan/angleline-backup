@@ -119,7 +119,83 @@ function pushmessage(recpt,id){
       });
   
 }
+function pushToSuv(recpt){
+    psql("SELECT * FROM SUPERVISOR;").then(
+  
+      (groups) =>{
+  
+        for(group of groups){
+  
+          recpt.forEach(element => {
+            console.log("pushmessage:"+element);
+          });
+      
+          var options = {
+              url: "https://api.line.me/v2/bot/message/push",
+              method: 'POST',
+              headers: {
+                'Content-Type':  'application/json', 
+                'Authorization':'Bearer ' + InfoToken
+              },
+              json: {
+                  "to": group.group_id.replace(/\s+/g, ""),
+                  'messages': recpt
+              }
+            };
+          console.log(options);
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+  
+        }      
+      }
+    );
+  }
+function imgpusherS(recpt,img){
+    recpt.originalContentUrl=(domain+adrr);
+    recpt.json.messages[0].previewImageUrl=(domain+adrr);
 
+    psql("SELECT * FROM SUPERVISOR;").then(
+  
+        (groups) =>{
+    
+          for(group of groups){
+            var options = {
+                url: "https://api.line.me/v2/bot/message/push",
+                method: 'POST',
+                headers: {
+                'Content-Type':  'application/json', 
+                'Authorization':'Bearer ' + InfoToken
+                },
+                json: {
+                    'to':group.group_id.replace(/\s+/g, ""),
+                    'messages': [recpt]
+                }
+              };             
+              
+                   
+              app.get(adrr,(req,res)=>{
+                  //res.sendFile(__dirname+"/img.jpg");    
+                  res.writeHead(200, {'Content-Type': 'image/jpeg' });
+                  res.end(img, 'binary');
+              });        
+              
+              request(options, function (error, response, body) {
+                  if (error) throw error;
+                  console.log("(line)");
+                  console.log(body);
+              });
+          }
+          
+        }
+
+    );
+
+    return recpt;
+
+}  
 function imgpusher(recpt,id,img){
     var options = {
       url: "https://api.line.me/v2/bot/message/push",
@@ -338,23 +414,14 @@ function chatParser(req ,res){
                         
                         getimage
                         .then((body)=>{
-                            psql("SELECT * FROM SUPERVISOR;").then(
-                                (groups)=>{
-                                    for(let group of groups){
-                                        let text ={
-                                            "type" : "text",
-                                            "text" : "黑特審核："
-                                        }
-                                        
-                                        pushmessage([text], group_id);
-                                        
-                                        var messagestored =imgpusher(msg,group_id,body);
-                                        reply_button.template.actions[1].data +=("&msg="+querystring.stringify(messagestored));
-                                        pushmessage([reply_button], group_id);
-                                        
-                                    }                            
-                                }
-                            );                   
+                            let text ={
+                                "type" : "text",
+                                "text" : "黑特審核："
+                            }
+                            pushToSuv([text]);
+                            var messagestored =imgpusherS(msg,body);
+                            reply_button.template.actions[1].data +=("&msg="+querystring.stringify(messagestored));
+                            pushToSuv([reply_button]);                                               
                         })
                         .catch((err)=>{
                         console.log("(linebotpromise)"+err);
@@ -362,24 +429,13 @@ function chatParser(req ,res){
                         );
         
                       }else{
+                        let text ={
+                            "type" : "text",
+                            "text" : "黑特審核："
+                        }
+                        reply_button.template.actions[1].data +=("&msg="+querystring.stringify(msg));
 
-                        psql("SELECT * FROM SUPERVISOR;").then(
-                            (groups)=>{
-                                for(let group of groups){
-                                    let text ={
-                                        "type" : "text",
-                                        "text" : "黑特審核："
-                                    }
-                                    
-                                    pushmessage([text],group_id);
-                                    
-                                    pushmessage([msg],group_id);
-                                    reply_button.template.actions[1].data +=("&msg="+querystring.stringify(messagestored));
-                                    pushmessage([reply_button], group_id);
-                                    
-                                }                            
-                            }
-                        );
+                        pushToSuv([text,msg,reply_button]);                        
                       }
                 };
                 function inner_word(){};
@@ -473,17 +529,12 @@ function GameProceessor(req,res){
             (req)=>{
                 if(game_index!=-1){
                     if(req.length!=1){
-                        psql("SELECT * FROM SUPERVISOR;").then(
-                            (groups) =>{
-                                for(let group of groups){
-                                    let text ={
-                                        "type":"text",
-                                        "text":"有game問題出錯"
-                                    } 
-                                    pushmessage([text],group.group_id);
-                                }                            
-                            }
-                        );
+                        let text ={
+                            "type":"text",
+                            "text":"有game問題出錯"
+                        }
+                        pushToSuv([text]);
+
                     }else{
                         //0.one of pair know the person will win the score 1                        
                         if(req[0].problem != game_index){

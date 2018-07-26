@@ -93,6 +93,40 @@ function psql(command){
   
   
 }
+function pushToSuv(recpt){
+    psql("SELECT * FROM SUPERVISOR;").then(
+  
+      (groups) =>{
+  
+        for(group of groups){
+  
+          recpt.forEach(element => {
+            console.log("pushmessage:"+element);
+          });
+      
+          var options = {
+              url: "https://api.line.me/v2/bot/message/push",
+              method: 'POST',
+              headers: {
+                'Content-Type':  'application/json', 
+                'Authorization':'Bearer ' + InfoToken
+              },
+              json: {
+                  "to": group.group_id.replace(/\s+/g, ""),
+                  'messages': recpt
+              }
+            };
+          console.log(options);
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+  
+        }      
+      }
+    );
+  }
 function pushmessage(recpt,id){
     recpt.forEach(element => {
         console.log("pushmessage:"+element);
@@ -118,7 +152,45 @@ function pushmessage(recpt,id){
       });
   
 }
+function imgpusherS(recpt,img){
 
+    psql("SELECT * FROM SUPERVISOR;").then(
+  
+        (groups) =>{
+    
+          for(group of groups){
+            var options = {
+                url: "https://api.line.me/v2/bot/message/push",
+                method: 'POST',
+                headers: {
+                'Content-Type':  'application/json', 
+                'Authorization':'Bearer ' + InfoToken
+                },
+                json: {
+                    'to':group.group_id.replace(/\s+/g, ""),
+                    'messages': [recpt]
+                }
+              };
+              
+              options.json.messages[0].originalContentUrl=(domain+adrr);
+              options.json.messages[0].previewImageUrl=(domain+adrr);
+                   
+              app.get(adrr,(req,res)=>{
+                  //res.sendFile(__dirname+"/img.jpg");    
+                  res.writeHead(200, {'Content-Type': 'image/jpeg' });
+                  res.end(img, 'binary');
+              });        
+              
+              request(options, function (error, response, body) {
+                  if (error) throw error;
+                  console.log("(line)");
+                  console.log(body);
+              });
+          }
+
+        }
+    );
+}
 function imgpusher(recpt,id,img){
     var options = {
       url: "https://api.line.me/v2/bot/message/push",
@@ -391,23 +463,13 @@ function chatParser(req ,res){
                     
                     getimage
                     .then((body)=>{
-                        psql("SELECT * FROM SUPERVISOR;").then(
-                            (groups)=>{
-                                for(let group of groups){
-                                    let text ={
-                                        "type" : "text",
-                                        "text" : "來自小隊員："
-                                    }
-                                    
-                                    pushmessage([text],group.group_id);
-                                    
-                                    imgpusher(msg,group.group_id,body);
-                                    
-                                    pushmessage([reply_button],group.group_id);
-                                    
-                                }                            
-                            }
-                        );                   
+                        let text ={
+                            "type" : "text",
+                            "text" : "來自小隊員："
+                        }
+                        pushToSuv([text]);
+                        imgpusherS(msg,body);
+                        pushToSuv([reply_button]);                                         
                     })
                     .catch((err)=>{
                     console.log("(linebotpromise)"+err);
@@ -415,23 +477,11 @@ function chatParser(req ,res){
                     );
     
                   }else{
-                    psql("SELECT * FROM SUPERVISOR;").then(
-                        (groups)=>{
-                            for(let group of groups){
-                                let text ={
-                                    "type" : "text",
-                                    "text" : "來自小隊員："
-                                }
-                                
-                                    pushmessage([text,msg,reply_button],group.group_id);
-                                
-                                //pushmessage([msg],group.group_id);
-                                
-                                    //pushmessage([reply_button], group.group_id);
-                                
-                            }                            
-                        }
-                    );
+                    let text ={
+                        "type" : "text",
+                        "text" : "來自小隊員："
+                    }
+                    pushToSuv([text,msg,reply_button]);                    
                   }
             }
                 

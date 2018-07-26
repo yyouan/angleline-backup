@@ -7,9 +7,10 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'chRfdlc9nHQJyi8BLGXxExjrfNoGBMfH8DPqevbDaPYsgvP1WsZ8Aqi17HRS4dpfjtSLU5QD3G6b/RjZ4GflCh4N/hIhqWhBPPUJ56dhzxAfqRtgSPYadNTsTbcV/Hm1l4YUiJHYoDqaWO2o2qY/yAdB04t89/1O/w1cDnyilFU=',
     'bE7q3TnTG/MO9rE+0sME3betLgGFgqUpYCOv0OrmW/Uefjldl9a5am6xNyC0VRcnL87qKx1GMoPzGLKQDX/PRiERLTdZ2uIf5txK+1+JhIFsSIGwI00lGGaGavvCzkyKfy5A6QrqWZdfeu0J08SJDAdB04t89/1O/w1cDnyilFU='
   ]
-var CHANNEL_ACCESS_TOKEN = AngleToken;
+
 const modetype =["angle_id","master_id"];
 const mode = modetype[0];
+var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleToken:MasterToken);
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -86,6 +87,41 @@ function psql(command){
           .catch(e => {client.release(); console.error("(psql):" + e.stack);reject(e);});            
       });
   });
+}
+
+function pushToSuv(recpt){
+  psql("SELECT * FROM SUPERVISOR;").then(
+
+    (groups) =>{
+
+      for(group of groups){
+
+        recpt.forEach(element => {
+          console.log("pushmessage:"+element);
+        });
+    
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + InfoToken
+            },
+            json: {
+                "to": group.group_id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+        console.log(options);
+        request(options, function (error, response, body) {
+            if (error) throw error;
+            console.log("(line)");
+            console.log(body);
+        });
+
+      }      
+    }
+  );
 }
 
 function pushmessage(recpt,id){
@@ -288,14 +324,14 @@ function chatParser(req ,res){
                             });
                             
                             getimage
-                            .then((body)=>{pushmessage([head_msg,text],receiver_id);imgpusher(msg,receiver_id,body);})
+                            .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
                             .catch((err)=>{
                             console.log("(linebotpromise)"+err);
                             }
                             );
       
                           }else{
-                              pushmessage([head_msg,text,msg],receiver_id);
+                              pushmessage([head_msg,msg],receiver_id);
                           } 
                         }
                       )
@@ -321,11 +357,7 @@ function chatParser(req ,res){
                     text3.text ="@promblem=多重帳號錯誤&from_id="+line_id+"&to_id="+receiver_id+"&code=postman.js:247";
                     replymessage([text,text2,text3]);
                     
-                    psql("SELECT * FROM SUPERVISOR;").then(
-                      (groups) =>{
-                        pushmessage([text3],groups.group_id);
-                      }
-                    );
+                    pushToSuv([text3]);                    
                   }
                 }
               );
