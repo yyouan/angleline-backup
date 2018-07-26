@@ -1,8 +1,7 @@
 var express = require('express');
 var request = require('request');
-var url = require('url');
 const querystring = require('querystring');
-const game_item = require('./game_item.js');
+
 const gameproblem = game_item.gameproblem;
 const gamelocation = game_item.gamelocation;
 const gameanswer = game_item.gameanswer;
@@ -218,7 +217,7 @@ function chatParser(req ,res){
         let msgid = msg.id;
 
         if(type == 'location'){
-            psql("SELECT * FROM ACCOUNT WHERE line_id=\'" + line_id +"\';").then(
+            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + line_id +"\';").then(
                 (res)=>{
                     let text ={
                         "type":"text",
