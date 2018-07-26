@@ -308,8 +308,8 @@ function choose_Parser(req ,res){
                             let image =
                             {//頭貼
                                 "type": "image",
-                                "originalContentUrl":"https://i.imgur.com/VE3A1vt.jpg" ,
-                                "previewImageUrl":"https://i.imgur.com/VE3A1vt.jpg"
+                                "originalContentUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg" ,
+                                "previewImageUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg"
                             };
                             let msg ={  
                                 "type": "flex",
