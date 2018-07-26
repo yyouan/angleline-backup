@@ -318,7 +318,7 @@ function choose_Parser(req ,res){
                 var department = data.dept;
                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                     res => {
-                        if(res.master_id.replace(/\s+/g, "")!=""){
+                        if(res[0].master_id.replace(/\s+/g, "")!=""){
 
                             let text ={
                                 "type":"text",
