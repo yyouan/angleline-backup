@@ -229,7 +229,7 @@ function chatParser(req ,res){
                         "layout": "vertical",
                         "contents": [{
                           "type": "text",
-                          "text": ""
+                          "text": "HunDow傳訊~~~~"
                         }]
                       },
                       "hero": {
