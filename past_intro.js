@@ -85,7 +85,7 @@ function psql(command){
                 "text":"遊戲問題\n"
             }
 
-            if(mode == 'angle_id'){
+            if(mode == 'master_id'){
                 
                 psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+member.master_id+"\';").then(
                     (masters)=>{
