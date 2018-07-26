@@ -43,7 +43,7 @@ psql("SELECT * FROM ACCOUNT;").then(
             let len = dept[member.department.replace(/\s+/g, "")].length;
             
             a = Math.floor(Math.random()*len);
-            let len2=((Math.floor(len/2)-2)<0 )?"0":(Math.floor(len/3)-2);
+            let len2=((Math.floor(len/2)-2)<0 )?"0":(Math.floor(len/2)-2);
             console.log(len2);            
             b=Math.floor((Math.random()*len2+1)+a)%(len);
             c=Math.floor((Math.random()*len2+1)+b)%(len);
@@ -59,18 +59,8 @@ psql("SELECT * FROM ACCOUNT;").then(
                 }                
             }
             for(let index of index_arr){
-                console.log("(index)"+index); 
-                            let image =
-                            {//頭貼
-                                "type": "image",
-                                "originalContentUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "") ,
-                                "previewImageUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "")
-                            };
-
-                            let text ={
-                                "type":"text",
-                                "text":"jsijfiosd"
-                            };
+                console.log("(index)"+index);
+                            
 
                 let bubble ={
                     "type": "bubble",
@@ -92,24 +82,32 @@ psql("SELECT * FROM ACCOUNT;").then(
                       "type": "box",
                       "layout": "vertical",
                       "contents": [
-                        {
-                          "type": "text",
-                          "text": "Body text",
+                        {//暱稱
+                            "type": "text",
+                            "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].nickname,
+                        },                
+                        {//自我介紹
+                              "type": "text",
+                              "text": "自我介紹： "+ dept[member.department.replace(/\s+/g, "")][index].self_intro,
                         }
                       ]
                     },
                     "footer": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "Footer text",
-                        }
-                      ]
-                    },
-                    "styles": {
-                      "comment": "See the example of a bubble style object"
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                  "type": "postback",
+                                  "label": "我要這個小主人",
+                                  "data":"master_id="+dept[member.department.replace(/\s+/g, "")][index].angle_id+"&dept="+member.department.replace(/\s+/g, ""),
+                                  "text":"選了"
+                                },
+                                "style": "primary",
+                                "color": "#0000ff"
+                              }
+                        ]
                     }
                 };
 
@@ -173,9 +171,8 @@ psql("SELECT * FROM ACCOUNT;").then(
                     }
                 };
 
-                pushmessage([image],to_id);
-                pushmessage([text],to_id);
-                console.log(msg.contents.body.contents[0]);
+                pushmessage([msg],to_id);                
+                //console.log(msg.contents.body.contents[0]);
             }
         }
         return Promise.resolve();
