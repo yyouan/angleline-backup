@@ -227,7 +227,10 @@ function chatParser(req ,res){
                       "header": {
                         "type": "box",
                         "layout": "vertical",
-                        "contents": []
+                        "contents": [{
+                          "type": "text",
+                          "text": ""
+                        }]
                       },
                       "hero": {
                         "type": "image",
