@@ -156,7 +156,7 @@ function loginParser(req ,res){
                                             msg.push(text);
                                             var ad_msg_angle = {  
                                                 "type": "flex",
-                                                "altText": "this is a flex message",
+                                                "altText": "大講堂有消息，請借台手機開啟",
                                                 "contents":
                                                     {
                                                         "type": "bubble",
@@ -198,7 +198,7 @@ function loginParser(req ,res){
                                             };
                                             var ad_msg_master = {  
                                                 "type": "flex",
-                                                "altText": "this is a flex message",
+                                                "altText": "大講堂有消息，請借台手機開啟",
                                                 "contents":
                                                     {
                                                         "type": "bubble",
@@ -240,7 +240,7 @@ function loginParser(req ,res){
                                             };
                                             var ad_msg_info = {  
                                                 "type": "flex",
-                                                "altText": "this is a flex message",
+                                                "altText": "大講堂有消息，請借台手機開啟",
                                                 "contents":
                                                     {
                                                         "type": "bubble",

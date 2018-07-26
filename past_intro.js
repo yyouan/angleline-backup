@@ -80,42 +80,46 @@ function psql(command){
       (members)=>{
           for(let member of members){
 
+            let bubble ={
+                "type": "bubble",
+                "header": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "你的"+(c_mode == 'master_id')?"小主人":"小天使"
+                    }
+                  ]
+                },
+                "hero": {
+                  "type": "image",
+                  "url": member[c_mode].head_url.replace(/\s+/g, ""),
+                },
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    
+                        {//暱稱
+                            "type": "text",
+                            "text": "暱稱： "+member[c_mode].nickname,
+                          },                
+                          {//自我介紹
+                              "type": "text",
+                              "text": "自我介紹： "+ member[c_mode].self_intro,
+                          }
+                  ]
+                }
+                
+            };
+
             let msg ={  
                 "type": "flex",
-                "altText": "this is a flex message",
-                "contents": {
-                    "type": "bubble",
-                    "header": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "你的"+(c_mode == 'master_id')?"小主人":"小天使"
-                        }
-                      ]
-                    },
-                    "body": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {//頭貼
-                          "type": "image",
-                          "originalContentUrl":member[c_mode].head_url.replace(/\s+/g, "") ,
-                          "previewImageUrl":member[c_mode].head_url.replace(/\s+/g, "")
-                        },
-                        {//暱稱
-                          "type": "text",
-                          "text": "暱稱： "+member[c_mode].nickname,
-                        },                
-                        {//自我介紹
-                            "type": "text",
-                            "text": "自我介紹： "+ member[c_mode].self_intro,
-                        }                
-                      ]                  
-                    }            
-                }
+                "altText": "大講堂有消息，請借台手機開啟",
+                "contents":bubble 
             };
+            
             let text ={
                 "type":"text",
                 "text":"遊戲問題\n"

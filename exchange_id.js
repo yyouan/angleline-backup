@@ -153,91 +153,96 @@ function psql(command){
         
             request(options, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-        
+                    
+                    let bubble_to_master ={
+                        "type": "bubble",
+                        "header": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "你的小天使真實身分"
+                            }
+                          ]
+                        },
+                        "hero": {
+                          "type": "image",
+                          "url": body.pictureUrl,
+                        },
+                        "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {//暱稱
+                                "type": "text",
+                                "text": "line稱呼： "+body.displayName,
+                              },                
+                              {//自我介紹
+                                  "type": "text",
+                                  "text": "狀態： "+ body.statusMessage,
+                              },
+                              {//手機號碼
+                                  "type":"text",
+                                  "text":"手機號碼: "+data.phone  
+                              }
+                          ]
+                        }
+                    };
+    
                     let msg_to_master ={  
                         "type": "flex",
-                        "altText": "this is a flex message",
-                        "contents": {
-                            "type": "bubble",
-                            "header": {
-                              "type": "box",
-                              "layout": "vertical",
-                              "contents": [
-                                {
+                        "altText": "HunDow有消息，請借台手機開啟",
+                        "contents":bubble_to_master 
+                    };
+                    
+                    let bubble_to_angle ={
+                        "type": "bubble",
+                        "header": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "你的小主人真實身分"
+                            }
+                          ]
+                        },
+                        "hero": {
+                          "type": "image",
+                          "url": body.pictureUrl,
+                        },
+                        "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {//暱稱
+                                "type": "text",
+                                "text": "line稱呼： "+body.displayName,
+                              },                
+                              {//自我介紹
                                   "type": "text",
-                                  "text": "你的小天使真實身分"
-                                }
-                              ]
-                            },
-                            "body": {
-                              "type": "box",
-                              "layout": "vertical",
-                              "contents": [
-                                {//頭貼
-                                  "type": "image",
-                                  "originalContentUrl":body.pictureUrl ,
-                                  "previewImageUrl":body.pictureUrl
-                                },
-                                {//暱稱
-                                  "type": "text",
-                                  "text": "line稱呼： "+body.displayName,
-                                },                
-                                {//自我介紹
-                                    "type": "text",
-                                    "text": "狀態： "+ body.statusMessage,
-                                },
-                                {//手機號碼
-                                    "type":"text",
-                                    "text":"手機號碼: "+data.phone  
-                                }                
-                              ]                  
-                            }            
+                                  "text": "狀態： "+ body.statusMessage,
+                              },
+                              {//手機號碼
+                                  "type":"text",
+                                  "text":"手機號碼: "+data.phone  
+                              }
+                          ]
                         }
                     };
+    
                     let msg_to_angle ={  
                         "type": "flex",
-                        "altText": "this is a flex message",
-                        "contents": {
-                            "type": "bubble",
-                            "header": {
-                              "type": "box",
-                              "layout": "vertical",
-                              "contents": [
-                                {
-                                  "type": "text",
-                                  "text": "你的小主人真實身分"
-                                }
-                              ]
-                            },
-                            "body": {
-                              "type": "box",
-                              "layout": "vertical",
-                              "contents": [
-                                {//頭貼
-                                  "type": "image",
-                                  "originalContentUrl":body.pictureUrl ,
-                                  "previewImageUrl":body.pictureUrl
-                                },
-                                {//暱稱
-                                  "type": "text",
-                                  "text": "line稱呼： "+body.displayName,
-                                },                
-                                {//自我介紹
-                                    "type": "text",
-                                    "text": "狀態： "+ body.statusMessage,
-                                },
-                                {//手機號碼
-                                    "type":"text",
-                                    "text":"手機號碼: "+data.phone  
-                                }                
-                              ]                  
-                            }            
-                        }
+                        "altText": "HunDow有消息，請借台手機開啟",
+                        "contents":bubble_to_angle 
                     };
+
                     let text ={
                         "type":"text",
                         "text":"已經傳送!"
                     }
+                    
                     if(mode == 'angle_id'){
 
                         pushmessage([msg_to_master],data.master_id);
