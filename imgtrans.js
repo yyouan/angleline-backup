@@ -35,7 +35,8 @@ exports.getjpgurl = function(app,url,domain,line_id){
 
                     reject("!!!!!error when recpt image!!!!!");                
                 }
-            });            
+            });
+            
     
         }else{
             resolve(url);

@@ -80,56 +80,102 @@ function psql(command){
       (members)=>{
           for(let member of members){
 
-            let bubble ={
-                "type": "bubble",
-                "header": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "你的"+(c_mode == 'master_id')?"小主人":"小天使"
-                    }
-                  ]
-                },
-                "hero": {
-                  "type": "image",
-                  "url": member[c_mode].head_url.replace(/\s+/g, ""),
-                },
-                "body": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    
-                        {//暱稱
-                            "type": "text",
-                            "text": "暱稱： "+member[c_mode].nickname,
-                          },                
-                          {//自我介紹
-                              "type": "text",
-                              "text": "自我介紹： "+ member[c_mode].self_intro,
-                          }
-                  ]
-                }
-                
-            };
-
-            let msg ={  
-                "type": "flex",
-                "altText": "大講堂有消息，請借台手機開啟",
-                "contents":bubble 
-            };
-            
             let text ={
                 "type":"text",
                 "text":"遊戲問題\n"
             }
+
             if(mode == 'angle_id'){
-                text.text +=game_item.gameproblem[member.problem];
-                pushmessage([msg,text],member[mode]);
+                
+                psql("SELECT * WHERE master_id=\'"+member.master_id+"\';").then(
+                    (masters)=>{
+                        var master = masters[0];
+                        let bubble ={
+                            "type": "bubble",
+                            "header": {
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": "你的小主人"
+                                }
+                              ]
+                            },
+                            "hero": {
+                              "type": "image",
+                              "url": master.head_url.replace(/\s+/g, ""),
+                            },
+                            "body": {
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
+                                
+                                    {//暱稱
+                                        "type": "text",
+                                        "text": "暱稱： "+master.nickname,
+                                      },                
+                                      {//自我介紹
+                                          "type": "text",
+                                          "text": "自我介紹： "+ master.self_intro,
+                                      }
+                              ]
+                            }
+                            
+                        };
+            
+                        let msg ={  
+                            "type": "flex",
+                            "altText": "大講堂有消息，請借台手機開啟",
+                            "contents":bubble 
+                        };
+                        text.text +=game_item.gameproblem[member.problem];
+                        pushmessage([msg,text],member[mode]);
+                    }
+                ); 
+
             }else{
                 psql("SELECT * WHERE master_id=\'"+member.master_id+"\';").then(
                     (angles)=>{
+                        let bubble ={
+                            "type": "bubble",
+                            "header": {
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": "你的小天使"
+                                }
+                              ]
+                            },
+                            "hero": {
+                              "type": "image",
+                              "url": angles[0].head_url.replace(/\s+/g, ""),
+                            },
+                            "body": {
+                              "type": "box",
+                              "layout": "vertical",
+                              "contents": [
+                                
+                                    {//暱稱
+                                        "type": "text",
+                                        "text": "暱稱： "+angles[0].nickname,
+                                      },                
+                                      {//自我介紹
+                                          "type": "text",
+                                          "text": "自我介紹： "+ angles[0].self_intro,
+                                      }
+                              ]
+                            }
+                            
+                        };
+            
+                        let msg ={  
+                            "type": "flex",
+                            "altText": "大講堂有消息，請借台手機開啟",
+                            "contents":bubble 
+                        };
                         text.text +=game_item.gameproblem[angles[0].problem];
                         pushmessage([msg,text],member[mode]);
                     }
