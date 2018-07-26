@@ -9,7 +9,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
   ]
 
 const modetype =["angle_id","master_id"];
-const mode = modetype[1];
+const mode = modetype[0];
 var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleToken:MasterToken);
 
 const { Pool } = require('pg');
