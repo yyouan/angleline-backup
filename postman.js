@@ -227,6 +227,15 @@ function chatParser(req ,res){
                       "header": {
                         "type": "box",
                         "layout": "vertical",
+                        "contents": []
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": writers[0].head_url.replace(/\s+/g, ""),
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
                         "contents": [
                           {
                             "type": "text",
@@ -234,10 +243,6 @@ function chatParser(req ,res){
                           }
                         ]
                       },
-                      "hero": {
-                        "type": "image",
-                        "url": writers[0].head_url.replace(/\s+/g, ""),
-                      }
                   };
   
                   let head_msg ={  
