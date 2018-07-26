@@ -87,7 +87,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                             }
                           ]
                         },
-                    "body": {
+                        "body": {
                           "type": "box",
                           "layout": "vertical",
                           "contents": [
@@ -128,7 +128,7 @@ psql("SELECT * FROM ACCOUNT;").then(
 
                 pushmessage([image],to_id);
                 pushmessage([text],to_id);
-                console.log(msg.body.contents[0]);
+                console.log(msg.contents.body.contents[0]);
             }
         }
         return Promise.resolve();
