@@ -33,8 +33,8 @@ to-test:
 
 ---------<use psql check everyone "complete" their choose         >------
     <past era>
-    [github-angle]  past_intro.js
-    [github-master] past_intro.js
+    [github-angle]  past_intro.js :1.change key 2.change mode 3.change package.json
+    [github-master] past_intro.js :1.change key 2.change mode 3.change package.json
     [github-hall]   hall.js
     [github-info]   info.js
 

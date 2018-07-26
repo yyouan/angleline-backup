@@ -10,8 +10,8 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
   ]
 var CHANNEL_ACCESS_TOKEN = MasterToken;
 const modetype =["angle_id","master_id"];
-const mode = modetype[0];
-const c_mode = modetype[1];
+const mode = modetype[1];
+const c_mode = modetype[0];
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -113,7 +113,7 @@ function psql(command){
                                 
                                     {//暱稱
                                         "type": "text",
-                                        "text": "暱稱： "+master.nickname,
+                                        "text": "暱稱： "+master.angle_nickname,
                                       },                
                                       {//自我介紹
                                           "type": "text",
@@ -160,7 +160,7 @@ function psql(command){
                                 
                                     {//暱稱
                                         "type": "text",
-                                        "text": "暱稱： "+angles[0].nickname,
+                                        "text": "暱稱： "+angles[0].angle_nickname,
                                       },                
                                       {//自我介紹
                                           "type": "text",
