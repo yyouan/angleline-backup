@@ -282,6 +282,9 @@ function choose_Parser(req ,res){
             var replyToken = post.events[0].replyToken;
             var posttype = post.events[0].type;
             var line_id = post.events[0].source.userId;
+            if( post.events[0].source.type == 'group'){
+                line_id = post.events[0].source.groupId;
+            }  
             /**var userMessage = post.events[0].message.text;
             console.log(replyToken);
             console.log(userMessage);**/
@@ -492,7 +495,20 @@ function choose_Parser(req ,res){
 
                 
 
-            }     
+            }
+            
+            if (posttype == 'message' && post.events[0].source.type != 'group'){            
+                var msg = {
+                    "type":"text",
+                    "text":"抱歉，現在不能傳一般訊息!"
+                }
+                var msg2 = {
+                    "type":"text",
+                    "text":"有問題可以洽\"詢問台\"!"
+                }
+                replymessage([msg,msg2]);
+            }
+            
         });
     
     }
