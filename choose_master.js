@@ -71,6 +71,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                                 "type":"text",
                                 "text":"jsijfiosd"
                             };
+
                 let bubble ={
                     "type": "bubble",
                     "header": {
@@ -115,7 +116,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                 let msg ={  
                     "type": "flex",
                     "altText": "this is a flex message",
-                    "contents":bubble; 
+                    "contents":bubble 
                 };
 
                 let msg2 ={  
@@ -490,3 +491,10 @@ function choose_Parser(req ,res){
         });
     
     }
+
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen((process.env.PORT || 8080), function() {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+});
+//!!!240
