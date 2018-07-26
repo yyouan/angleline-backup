@@ -333,7 +333,7 @@ function chatParser(req ,res){
 
                     var email = post.events[0].message.text;                                      
                     
-                    if(email=="@匿名黑特"){
+                    if(email=="@匿名發文"){
                         channel_array[post.events[0].source.userId]="匿名黑特";
                         hate();                                            
                     }else if(email=="@真心話"){
