@@ -106,7 +106,7 @@ function pushmessage(recpt,id){
           'messages': recpt
       }
     };
-      
+    console.log(options);
     request(options, function (error, response, body) {
         if (error) throw error;
         console.log("(line)");
@@ -121,7 +121,7 @@ function imgpusher(recpt,id,img){
     method: 'POST',
     headers: {
     'Content-Type':  'application/json', 
-    'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+    'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken
     },
     json: {
         'to': id.replace(/\s+/g, ""),
@@ -204,7 +204,7 @@ function chatParser(req ,res){
                           url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
                           method: 'GET',
                           headers: {                
-                          'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
+                          'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken                  
                           },
                           encoding: null
                       }
@@ -270,7 +270,7 @@ function chatParser(req ,res){
           method: 'POST',
           headers: {
             'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken
+            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
           },
           json: {
               'replyToken': replyToken,
