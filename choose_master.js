@@ -60,7 +60,7 @@ psql("SELECT * FROM ACCOUNT;").then(
             }
             for(let index of index_arr){
                 console.log("(index)"+index);
-                console.log(dept[member.department.replace(/\s+/g, "")][index]);
+                console.log(dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, ""));
                 let msg ={  
                     "type": "flex",
                     "altText": "this is a flex message",
