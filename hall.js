@@ -286,46 +286,21 @@ function chatParser(req ,res){
                 let msgid = msg.id;                                
                 let receiver_id = channel_array[post.events[0].source.userId];
 
-                if(type == 'image'){
-                  //set adrr
-                  adrr+=String(msgid);
-                  adrr+=".jpg";
-                  console.log(adrr);
-                  // Configure the request
-                  let getimage=new Promise((resolve,reject)=>{
-                  let options = {
-                      url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                      method: 'GET',
-                      headers: {                
-                      'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                      },
-                      encoding: null
-                  }
-      
-                  // Start the request
+                if(post.events[0].message.type == 'text'){
 
-                  request(options, function (error, response, body) {
-                      if (!error && response.statusCode == 200) {
-                      nwimg = body;
-                      console.log(body);
-                      resolve(body);                  
-                      }else{
-                      //console.log();
-                      reject("!!!!!error when recpt image!!!!!");                
-                      }
-                  });              
-                  });
-                  
-                  getimage
-                  .then((body)=>{imgpusher(msg,receiver_id,body);})
-                  .catch((err)=>{
-                  console.log("(linebotpromise)"+err);
-                  }
-                  );
-
-                }else{
-                    pushmessage([msg],receiver_id);
-                } 
+                    var email = post.events[0].message.text;                                      
+                    
+                    if(email=="@匿名發文"){
+                        channel_array[post.events[0].source.userId]="匿名黑特";
+                        hate();                                            
+                    }else if(email=="@真心話"){
+                        channel_array[post.events[0].source.userId]="真心話";
+                        inner_word(); 
+                    }else if(email=="@大冒險"){
+                        channel_array[post.events[0].source.userId]="大冒險";
+                        adventure();                         
+                    }                    
+                }
 
             }else{
 
@@ -356,94 +331,91 @@ function chatParser(req ,res){
                         "text":"尚未選擇模式，請按視窗下方按鈕，可以匿名黑特、真心話、大冒險"
                     };
                     replymessage([text]);
-                }
-                
-                function hate(){
-
-                    let reply_button =
-                    {
-                        "type": "template",
-                        "altText": "大講堂有消息，請借台手機開啟",
-                        "template": {
-                            "type": "buttons",                            
-                            "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
-                            "actions": [
-                                {
-                                    "type": "postback",
-                                    "label": "寄出",
-                                    "data": "send=1"
-                                },
-                                {
-                                    "type": "postback",
-                                    "label": "拒絕且回覆",
-                                    "data": "reply_id="+line_id     
-                                }
-                            ]
-                        }
-                    };                   
-
-                    if(type == 'image'){
-                        //set adrr
-                        adrr+=String(msgid);
-                        adrr+=".jpg";
-                        console.log(adrr);
-                        // Configure the request
-                        let getimage=new Promise((resolve,reject)=>{
-                        let options = {
-                            url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                            method: 'GET',
-                            headers: {                
-                            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                            },
-                            encoding: null
-                        }
+                }              
+            }
             
-                        // Start the request
+            function hate(){
+
+                let reply_button =
+                {
+                    "type": "template",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "template": {
+                        "type": "buttons",                            
+                        "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "寄出",
+                                "data": "send=1"
+                            },
+                            {
+                                "type": "postback",
+                                "label": "拒絕且回覆",
+                                "data": "reply_id="+line_id     
+                            }
+                        ]
+                    }
+                };                   
+
+                if(type == 'image'){
+                    //set adrr
+                    adrr+=String(msgid);
+                    adrr+=".jpg";
+                    console.log(adrr);
+                    // Configure the request
+                    let getimage=new Promise((resolve,reject)=>{
+                    let options = {
+                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                        method: 'GET',
+                        headers: {                
+                        'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
+                        },
+                        encoding: null
+                    }
         
-                        request(options, function (error, response, body) {
-                            if (!error && response.statusCode == 200) {
-                            nwimg = body;
-                            console.log(body);
-                            resolve(body);                  
-                            }else{
-                            //console.log();
-                            reject("!!!!!error when recpt image!!!!!");                
-                            }
-                        });              
-                        });
-                        
-                        getimage
-                        .then((body)=>{
-                            let text ={
-                                "type" : "text",
-                                "text" : "黑特審核："
-                            }
-                            pushToSuv([text]);
-                            var messagestored =imgpusherS(msg,body);
-                            reply_button.template.actions[1].data +=("&msg="+querystring.stringify(messagestored));
-                            pushToSuv([reply_button]);                                               
-                        })
-                        .catch((err)=>{
-                        console.log("(linebotpromise)"+err);
+                    // Start the request
+    
+                    request(options, function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                        nwimg = body;
+                        console.log(body);
+                        resolve(body);                  
+                        }else{
+                        //console.log();
+                        reject("!!!!!error when recpt image!!!!!");                
                         }
-                        );
-        
-                      }else{
+                    });              
+                    });
+                    
+                    getimage
+                    .then((body)=>{
                         let text ={
                             "type" : "text",
                             "text" : "黑特審核："
                         }
-                        reply_button.template.actions[1].data +=("&msg="+querystring.stringify(msg));
-
-                        pushToSuv([text,msg,reply_button]);                        
-                      }
-                };
-                function inner_word(){};
-                function adventure(){};
+                        pushToSuv([text]);
+                        var messagestored =imgpusherS(msg,body);
+                        reply_button.template.actions[1].data +=("&msg="+querystring.stringify(messagestored));
+                        pushToSuv([reply_button]);                                               
+                    })
+                    .catch((err)=>{
+                    console.log("(linebotpromise)"+err);
+                    }
+                    );
     
-                
-            }
-          
+                  }else{
+                    let text ={
+                        "type" : "text",
+                        "text" : "黑特審核："
+                    }
+                    reply_button.template.actions[1].data +=("&msg="+querystring.stringify(msg));
+
+                    pushToSuv([text,msg,reply_button]);                        
+                  }
+            };
+            function inner_word(){};
+            function adventure(){};
             
 
             
