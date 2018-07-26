@@ -102,7 +102,6 @@ psql("SELECT * FROM ACCOUNT;").then(
                                   "type": "postback",
                                   "label": "我要這個小主人",
                                   "data":"master_id="+dept[member.department.replace(/\s+/g, "")][index].angle_id+"&dept="+member.department.replace(/\s+/g, ""),
-                                  "text":"選了"
                                 },
                                 "style": "primary",
                                 "color": "#0000ff"
@@ -121,13 +120,11 @@ psql("SELECT * FROM ACCOUNT;").then(
                 //console.log(msg.contents.body.contents[0]);
             }
         }
-        return Promise.resolve();
+
+        app.post('/' , choose_Parser); // POST 方法**/  
+              
     }
-).then(
-    ()=>{
-        app.post('/' , choose_Parser); // POST 方法**/
-    }    
-)
+);
 
 //------------SQL----------------------
 
@@ -352,7 +349,7 @@ function choose_Parser(req ,res){
                                               "type": "postback",
                                               "label": "我要這個小主人",
                                               "data":"master_id="+dept[department][index].angle_id+"&dept="+department,
-                                              "text":"選了"
+                                            
                                             },
                                             "style": "primary",
                                             "color": "#0000ff"
@@ -411,8 +408,7 @@ function choose_Parser(req ,res){
                                             "action": {
                                               "type": "postback",
                                               "label": "我要這個小主人",
-                                              "data":"master_id="+cand.angle_id+"&dept="+department,
-                                              "text":"選了"
+                                              "data":"master_id="+cand.angle_id+"&dept="+department,                                             
                                             },
                                             "style": "primary",
                                             "color": "#0000ff"
@@ -434,6 +430,7 @@ function choose_Parser(req ,res){
                 }else{    
                     psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
                     dept[department].splice(dept[department].find((ele)=>{return ele.angle_id=master_id}),1);
+                    console.log("choose successful");
                 }
             }     
         });
