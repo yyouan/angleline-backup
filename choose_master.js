@@ -59,7 +59,19 @@ psql("SELECT * FROM ACCOUNT;").then(
                 }                
             }
             for(let index of index_arr){
-                console.log("(index)"+index);                
+                console.log("(index)"+index); 
+                            let image =
+                            {//頭貼
+                                "type": "image",
+                                "originalContentUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg" ,
+                                "previewImageUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg"
+                            };
+
+                            let text ={
+                                "type":"text",
+                                "text":"jsijfiosd"
+                            };
+                
                 let msg ={  
                     "type": "flex",
                     "altText": "this is a flex message",
@@ -114,8 +126,9 @@ psql("SELECT * FROM ACCOUNT;").then(
                     }
                 };
 
-                pushmessage([msg],to_id);
-                console.log(msg.contents.body.contents[0].originalContentUrl);
+                pushmessage([image],to_id);
+                pushmessage([text],to_id);
+                console.log(msg);
             }
         }
         return Promise.resolve();
@@ -305,17 +318,7 @@ function choose_Parser(req ,res){
                         for(let index of index_arr){
 
                             console.log(dept[member.department][index].head_url.replace(/\s+/g, ""));
-                            let image =
-                            {//頭貼
-                                "type": "image",
-                                "originalContentUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg" ,
-                                "previewImageUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg"
-                            };
-
-                            let text ={
-                                "type":"text",
-                                "text":"jsijfiosd"
-                            }
+                            
                             let msg ={  
                                 "type": "flex",
                                 "altText": "this is a flex message",
@@ -370,8 +373,7 @@ function choose_Parser(req ,res){
                                 }
                             };
             
-                            pushmessage([image],to_id);
-                            console.log(image);
+                            pushmessage([msg],to_id);                            
                         }
 
                     }else{
