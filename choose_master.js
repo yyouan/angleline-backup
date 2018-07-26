@@ -28,9 +28,9 @@ psql("SELECT * FROM ACCOUNT;").then(
     members =>{
         
         for(let member of members){
-            if(member.department=='phys'){
+            if(member.department.replace(/\s+/g, "")=='phys'){
                 dept['phys'].push(member);
-            }else if(member.department=='psy'){
+            }else if(member.department.replace(/\s+/g, "")=='psy'){
                 dept['psy'].push(member);
             }else{
                 console.log("department problem choose_master.js:33");
