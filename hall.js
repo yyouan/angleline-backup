@@ -468,7 +468,7 @@ function GameProceessor(req,res){
         //console.log(req.headers);
         console.log(req.cookies);
         //console.log(req);
-        psql("SELECT * FROM ACCOUNT WHERE email=\'"+cookie+"\';") //use angle_id to be the team's score
+        psql("SELECT * FROM ACCOUNT WHERE email=\'"+cookie.email+"\';") //use angle_id to be the team's score
         .then(
             (req)=>{
                 if(game_index!=-1){
