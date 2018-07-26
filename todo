@@ -49,7 +49,7 @@ to-test:
 
     hall.js : hate article supervisor and add it to group
     postman.js:img-message-exchange
-    info.js: 1.include "receive cookie-game" 2.problem-send/someone-ask-problem 3.location game 4.name-card-game 5.make supervisor group
+    info.js:location game 4.name-card-game 
 ------------------------------------------------------------------------    
     <Finish era>
     [github-angle]  exchange_id.js 
