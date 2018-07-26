@@ -47,7 +47,11 @@ psql("SELECT * FROM ACCOUNT;").then(
 
             let to_id = member.angle_id;
             let index_arr = [a,b,c];
+            console.log(index_arr);
+            console.log("(dept):" + dept);
             for(let index of index_arr){
+                console.log("(index)"+index);
+                console.log(dept[member.department.replace(/\s+/g, "")][index]);
                 let msg ={  
                     "type": "flex",
                     "altText": "this is a flex message",
