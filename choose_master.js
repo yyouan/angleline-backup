@@ -103,7 +103,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                                 "action": {
                                   "type": "postback",
                                   "label": "我要這個小主人",
-                                  "data":"master_id="+dept[member.department.replace(/\s+/g, "")][index].angle_id+"&dept="+member.department.replace(/\s+/g, ""),
+                                  "data":"master_id="+dept[member.department.replace(/\s+/g, "")][index].angle_id.replace(/\s+/g, "")+"&dept="+member.department.replace(/\s+/g, ""),
                                 },
                                 "style": "primary",
                                 "color": "#0000ff"
@@ -355,7 +355,7 @@ function choose_Parser(req ,res){
                                             "action": {
                                               "type": "postback",
                                               "label": "我要這個小主人",
-                                              "data":"master_id="+dept[department][index].angle_id+"&dept="+department,
+                                              "data":"master_id="+dept[department][index].angle_id.replace(/\s+/g, "")+"&dept="+department,
                                             
                                             },
                                             "style": "primary",
@@ -415,7 +415,7 @@ function choose_Parser(req ,res){
                                             "action": {
                                               "type": "postback",
                                               "label": "我要這個小主人",
-                                              "data":"master_id="+cand.angle_id+"&dept="+department,                                             
+                                              "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department,                                             
                                             },
                                             "style": "primary",
                                             "color": "#0000ff"
