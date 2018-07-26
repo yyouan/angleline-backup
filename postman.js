@@ -211,7 +211,7 @@ function chatParser(req ,res){
                       "contents":bubble 
                   };
                     
-                    if(mode =='angle_id'){
+                    if(mode =='master_id'){
                       receiver_id = writers[0].master_id;
                       if(type == 'image'){
                         //set adrr
