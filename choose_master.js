@@ -70,7 +70,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                       "contents": [
                         {
                           "type": "text",
-                          "text": "Header text"
+                          "text": "跟你有緣的小主人"
                         }
                       ]
                     },
