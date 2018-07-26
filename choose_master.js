@@ -84,7 +84,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                       "contents": [
                         {//暱稱
                             "type": "text",
-                            "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].nickname,
+                            "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].angle_nickname,
                         },                
                         {//自我介紹
                               "type": "text",
@@ -116,61 +116,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                     "altText": "this is a flex message",
                     "contents":bubble 
                 };
-
-                let msg2 ={  
-                    "type": "flex",
-                    "altText": "this is a flex message",
-                    "contents": {
-                        "type": "bubble",
-                        "header": {
-                          "type": "box",
-                          "layout": "vertical",
-                          "contents": [
-                            {
-                              "type": "text",
-                              "text": "跟你有緣的小主人"
-                            }
-                          ]
-                        },
-                        "body": {
-                          "type": "box",
-                          "layout": "vertical",
-                          "contents": [
-                            {//頭貼
-                              "type": "image",
-                              "originalContentUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "") ,
-                              "previewImageUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "")
-                            },
-                            {//暱稱
-                              "type": "text",
-                              "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].nickname,
-                            },                
-                            {//自我介紹
-                                "type": "text",
-                                "text": "自我介紹： "+ dept[member.department.replace(/\s+/g, "")][index].self_intro,
-                            }                
-                          ],
-                          "footer": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                                {
-                                    "type": "button",
-                                    "action": {
-                                      "type": "postback",
-                                      "label": "我要這個小主人",
-                                      "data":"master_id="+dept[member.department.replace(/\s+/g, "")][index].angle_id+"&dept="+member.department.replace(/\s+/g, ""),
-                                      "text":"選了"
-                                    },
-                                    "style": "primary",
-                                    "color": "#0000ff"
-                                  }
-                            ]
-                          }
-                        }            
-                    }
-                };
-
+                
                 pushmessage([msg],to_id);                
                 //console.log(msg.contents.body.contents[0]);
             }
