@@ -8,6 +8,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'bE7q3TnTG/MO9rE+0sME3betLgGFgqUpYCOv0OrmW/Uefjldl9a5am6xNyC0VRcnL87qKx1GMoPzGLKQDX/PRiERLTdZ2uIf5txK+1+JhIFsSIGwI00lGGaGavvCzkyKfy5A6QrqWZdfeu0J08SJDAdB04t89/1O/w1cDnyilFU='
   ]
 var CHANNEL_ACCESS_TOKEN = HallToken;
+var iscompleted = false;
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -121,8 +122,8 @@ psql("SELECT * FROM ACCOUNT;").then(
             }
         }
 
-        app.post('/' , choose_Parser); // POST 方法**/  
-              
+        //app.post('/' , choose_Parser); // POST 方法**/  
+        iscompleted = true;
     }
 );
 
@@ -182,75 +183,80 @@ function psql(command){
     
   }
   function idleParser(req ,res){
-    //route
-    var nwimg;
-    const domain="https://angleline.herokuapp.com";  
-    var adrr="/";
-    
-    // 定义了一个post变量，用于暂存请求体的信息
-    var post = '';     
-    // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
-    req.on('data', function(chunk){   
-        post += chunk;
-    });
- 
-    // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
-    req.on('end', function(){    
-        post = JSON.parse(post);
-        console.log(post.events[0]);
-        var replyToken = post.events[0].replyToken;
-        var posttype = post.events[0].type;
-        /**var userMessage = post.events[0].message.text;
-        console.log(replyToken);
-        console.log(userMessage);**/
-        if (typeof replyToken === 'undefined') {
-            return;
-        }        
 
-        if (posttype == 'message'){            
-            var msg = {
-                "type":"text",
-                "text":"抱歉，現在不能傳一般訊息!"
+    if(iscompleted){
+        choose_Parser(req,res);
+    }else{
+        //route
+        var nwimg;
+        const domain="https://angleline.herokuapp.com";  
+        var adrr="/";
+        
+        // 定义了一个post变量，用于暂存请求体的信息
+        var post = '';     
+        // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
+        req.on('data', function(chunk){   
+            post += chunk;
+        });
+    
+        // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
+        req.on('end', function(){    
+            post = JSON.parse(post);
+            console.log(post.events[0]);
+            var replyToken = post.events[0].replyToken;
+            var posttype = post.events[0].type;
+            /**var userMessage = post.events[0].message.text;
+            console.log(replyToken);
+            console.log(userMessage);**/
+            if (typeof replyToken === 'undefined') {
+                return;
+            }        
+
+            if (posttype == 'message'){            
+                var msg = {
+                    "type":"text",
+                    "text":"抱歉，現在不能傳一般訊息!"
+                }
+                var msg2 = {
+                    "type":"text",
+                    "text":"有問題可以洽\"詢問台\"!"
+                }
+                replymessage([msg,msg2]);
             }
-            var msg2 = {
-                "type":"text",
-                "text":"有問題可以洽\"詢問台\"!"
+            if(posttype == 'postback'){
+                var msg = {
+                    "type":"text",
+                    "text":"抱歉，請等待系統完成程序(一會兒後)，再按下按鈕!"
+                }
+                var msg2 = {
+                    "type":"text",
+                    "text":"有問題可以洽\"詢問台\"!"
+                }
+                replymessage([msg,msg2]);
             }
-            replymessage([msg,msg2]);
-        }
-        if(posttype == 'postback'){
-            var msg = {
-                "type":"text",
-                "text":"抱歉，請等待系統完成程序(一會兒後)，再按下按鈕!"
-            }
-            var msg2 = {
-                "type":"text",
-                "text":"有問題可以洽\"詢問台\"!"
-            }
-            replymessage([msg,msg2]);
-        }
-        function replymessage(recpt){ //recpt is message object
-          var options = {
-            url: "https://api.line.me/v2/bot/message/reply ",
-            method: 'POST',
-            headers: {
-              'Content-Type':  'application/json', 
-              'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-            },
-            json: {
-                'replyToken': replyToken,
-                'messages': recpt
-            }
-          };
+            function replymessage(recpt){ //recpt is message object
+            var options = {
+                url: "https://api.line.me/v2/bot/message/reply ",
+                method: 'POST',
+                headers: {
+                'Content-Type':  'application/json', 
+                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+                },
+                json: {
+                    'replyToken': replyToken,
+                    'messages': recpt
+                }
+            };
+                
+            request(options, function (error, response, body) {
+                if (error) throw error;
+                console.log("(line)");
+                console.log(body);
+            });
             
-          request(options, function (error, response, body) {
-              if (error) throw error;
-              console.log("(line)");
-              console.log(body);
-          });
-          
-        }        
-    });
+            }        
+        });
+    }   
 
 }
 
