@@ -187,15 +187,30 @@ function chatParser(req ,res){
                     let type = msg.type;
                     let msgid = msg.id;                                
                     let receiver_id;
-                    let head ={
-                      "type": "image",
-                      "originalContentUrl": writers[0].head_url.replace(/\s+/g, ""),
-                      "previewImageUrl": writers[0].head_url.replace(/\s+/g, "")
-                    }
-                    let text={
-                      "type":"text",
-                      "text":writers[0].angle_nickname+":"
-                    }
+                    let bubble ={
+                      "type": "bubble",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "來自 "+writers[0].angle_nickname.replace(/\s+/g, "")+" :"
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": writers[0].head_url.replace(/\s+/g, ""),
+                      }
+                  };
+  
+                  let head_msg ={  
+                      "type": "flex",
+                      "altText": "大講堂有消息，請借台手機開啟",
+                      "contents":bubble 
+                  };
+                    
                     if(c_mode =='angle_id'){
                       receiver_id = writers[0].master_id;
                       if(type == 'image'){
@@ -229,14 +244,14 @@ function chatParser(req ,res){
                         });
                         
                         getimage
-                        .then((body)=>{pushmessage([head,text],receiver_id);imgpusher(msg,receiver_id,body);})
+                        .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
                         .catch((err)=>{
                         console.log("(linebotpromise)"+err);
                         }
                         );
   
                       }else{
-                          pushmessage([head,text,msg],receiver_id);                          
+                          pushmessage([head_msg,msg],receiver_id);                          
                       } 
                     }
                     else{
@@ -274,14 +289,14 @@ function chatParser(req ,res){
                             });
                             
                             getimage
-                            .then((body)=>{pushmessage([head,text],receiver_id);imgpusher(msg,receiver_id,body);})
+                            .then((body)=>{pushmessage([head_msg,text],receiver_id);imgpusher(msg,receiver_id,body);})
                             .catch((err)=>{
                             console.log("(linebotpromise)"+err);
                             }
                             );
       
                           }else{
-                              pushmessage([head,text,msg],receiver_id);
+                              pushmessage([head_msg,text,msg],receiver_id);
                           } 
                         }
                       )
