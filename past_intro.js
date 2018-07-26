@@ -115,22 +115,24 @@ function psql(command){
                                         "type": "text",
                                         "text": "暱稱： "+master.angle_nickname,
                                       },                
-                                      {//自我介紹
-                                          "type": "text",
-                                          "text": "自我介紹： "+ master.self_intro,
-                                      }
+                                      
                               ]
                             }
                             
                         };
-            
+                        
+                        let self_intro={//自我介紹
+                            "type": "text",
+                            "text": "自我介紹： "+ master.self_intro,
+                        }
+
                         let msg ={  
                             "type": "flex",
                             "altText": "大講堂有消息，請借台手機開啟",
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[member.problem];
-                        pushmessage([msg,text],member[mode]);
+                        pushmessage([msg,self_intro,text],member[mode]);
                     }
                 ); 
 
@@ -161,23 +163,25 @@ function psql(command){
                                     {//暱稱
                                         "type": "text",
                                         "text": "暱稱： "+angles[0].angle_nickname,
-                                      },                
-                                      {//自我介紹
-                                          "type": "text",
-                                          "text": "自我介紹： "+ angles[0].self_intro,
-                                      }
+                                      },
                               ]
                             }
                             
                         };
-            
+                        
+                        let self_intro =                
+                        {//自我介紹
+                            "type": "text",
+                            "text": "自我介紹： "+ angles[0].self_intro,
+                        };
+
                         let msg ={  
                             "type": "flex",
                             "altText": "大講堂有消息，請借台手機開啟",
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[angles[0].problem];
-                        pushmessage([msg,text],member[mode]);
+                        pushmessage([msg,self_intro,text],member[mode]);
                     }
                 );
             }

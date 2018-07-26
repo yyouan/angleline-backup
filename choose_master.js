@@ -87,11 +87,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                         {//暱稱
                             "type": "text",
                             "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].angle_nickname,
-                        },                
-                        {//自我介紹
-                              "type": "text",
-                              "text": "自我介紹： "+ dept[member.department.replace(/\s+/g, "")][index].self_intro,
-                        }
+                        },
                       ]
                     },
                     "footer": {
@@ -112,13 +108,19 @@ psql("SELECT * FROM ACCOUNT;").then(
                     }
                 };
 
+                let self_intro =                
+                {//自我介紹
+                      "type": "text",
+                      "text": "自我介紹： "+ dept[member.department.replace(/\s+/g, "")][index].self_intro,
+                };
+
                 let msg ={  
                     "type": "flex",
                     "altText": "大講堂有消息，請借台手機開啟",
                     "contents":bubble 
                 };
                 
-                pushmessage([msg],to_id);                
+                pushmessage([msg,self_intro],to_id);                
                 //console.log(msg.contents.body.contents[0]);
             }
         }
@@ -377,10 +379,7 @@ function choose_Parser(req ,res){
                                                     "type": "text",
                                                     "text": "暱稱： "+dept[department][index].angle_nickname,
                                                 },                
-                                                {//自我介紹
-                                                      "type": "text",
-                                                      "text": "自我介紹： "+ dept[department][index].self_intro,
-                                                }
+                                                
                                               ]
                                             },
                                             "footer": {
@@ -401,14 +400,17 @@ function choose_Parser(req ,res){
                                                 ]
                                             }
                                         };
-                        
+                                        let self_intro ={//自我介紹
+                                            "type": "text",
+                                            "text": "自我介紹： "+ dept[department][index].self_intro,
+                                        };
                                         let msg ={  
                                             "type": "flex",
                                             "altText": "大講堂有消息，請借台手機開啟",
                                             "contents":bubble 
                                         };
                         
-                                        pushmessage([msg],to_id);                            
+                                        pushmessage([msg,self_intro],to_id);                            
                                     }
             
                                 }else{
@@ -438,10 +440,7 @@ function choose_Parser(req ,res){
                                                     "type": "text",
                                                     "text": "暱稱： "+cand.angle_nickname,
                                                 },                
-                                                {//自我介紹
-                                                      "type": "text",
-                                                      "text": "自我介紹： "+ cand.self_intro,
-                                                }
+                                                
                                               ]
                                             },
                                             "footer": {
@@ -461,17 +460,20 @@ function choose_Parser(req ,res){
                                                 ]
                                             }
                                         };
-                        
+                                        let self_intro ={//自我介紹
+                                            "type": "text",
+                                            "text": "自我介紹： "+ cand.self_intro,
+                                        };
                                         let msg ={  
                                             "type": "flex",
                                             "altText": "大講堂有消息，請借台手機開啟",
                                             "contents":bubble 
                                         };
                         
-                                        pushmessage([msg],to_id);
+                                        pushmessage([msg,self_intro],to_id);
                                     }
                                 }
-                                
+
                                 let text ={
                                     "type":"text",
                                     "text":"太可惜了，你選定的小主人被選走了，再選一個有緣的吧!(上一輪出現的也可以再選喔)"
