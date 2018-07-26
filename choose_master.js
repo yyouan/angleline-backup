@@ -8,9 +8,9 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'bE7q3TnTG/MO9rE+0sME3betLgGFgqUpYCOv0OrmW/Uefjldl9a5am6xNyC0VRcnL87qKx1GMoPzGLKQDX/PRiERLTdZ2uIf5txK+1+JhIFsSIGwI00lGGaGavvCzkyKfy5A6QrqWZdfeu0J08SJDAdB04t89/1O/w1cDnyilFU='
   ]
 var CHANNEL_ACCESS_TOKEN = HallToken;
-var fs = require('fs');
-const { Client } = require('pg');
-const client = new Client({
+
+const { Pool } = require('pg');
+const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     //ssl: true,
 });
