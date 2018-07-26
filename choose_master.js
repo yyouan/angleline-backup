@@ -63,8 +63,8 @@ psql("SELECT * FROM ACCOUNT;").then(
                             let image =
                             {//頭貼
                                 "type": "image",
-                                "originalContentUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg" ,
-                                "previewImageUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg"
+                                "originalContentUrl":"https://i.imgur.com/1s2jStI.png" ,
+                                "previewImageUrl":"https://i.imgur.com/1s2jStI.png"
                             };
 
                             let text ={
