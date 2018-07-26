@@ -99,7 +99,7 @@ function pushmessage(recpt,id){
       method: 'POST',
       headers: {
         'Content-Type':  'application/json', 
-        'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken
+        'Authorization':'Bearer ' + ((c_mode=='angle_id')?AngleToken:MasterToken)
       },
       json: {
           "to": id.replace(/\s+/g, ""),
@@ -121,7 +121,7 @@ function imgpusher(recpt,id,img){
     method: 'POST',
     headers: {
     'Content-Type':  'application/json', 
-    'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken
+    'Authorization':'Bearer ' + ((c_mode=='angle_id')?AngleToken:MasterToken)
     },
     json: {
         'to': id.replace(/\s+/g, ""),
@@ -149,7 +149,7 @@ function imgpusher(recpt,id,img){
 function chatParser(req ,res){
   //route
   var nwimg;
-  var domain="https://angleline"+(mode=="angle_id")?"":"-master"+".herokuapp.com";    
+  var domain="https://angleline"+((mode=="angle_id")?"":"-master")+".herokuapp.com";    
   var adrr="/";
   
   // 定义了一个post变量，用于暂存请求体的信息
@@ -204,7 +204,7 @@ function chatParser(req ,res){
                           url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
                           method: 'GET',
                           headers: {                
-                          'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken                  
+                          'Authorization':'Bearer ' + ((c_mode=='angle_id')?AngleToken:MasterToken)                  
                           },
                           encoding: null
                       }
