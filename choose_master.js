@@ -311,6 +311,11 @@ function choose_Parser(req ,res){
                                 "originalContentUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg" ,
                                 "previewImageUrl":"https://i.ytimg.com/vi/RTfvXkEXa-k/maxresdefault.jpg"
                             };
+
+                            let text ={
+                                "type":"text",
+                                "text":"jsijfiosd"
+                            }
                             let msg ={  
                                 "type": "flex",
                                 "altText": "this is a flex message",
@@ -365,7 +370,8 @@ function choose_Parser(req ,res){
                                 }
                             };
             
-                            pushmessage([img],to_id);
+                            pushmessage([image],to_id);
+                            console.log(image);
                         }
 
                     }else{
