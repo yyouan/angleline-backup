@@ -341,6 +341,7 @@ function choose_Parser(req ,res){
             
                                 let a,b,c;
                                 let len = dept[department].length;
+                                let to_id = line_id;
             
                                 if(len>3){                        
                                     
@@ -348,9 +349,8 @@ function choose_Parser(req ,res){
                                     let len2=((Math.floor(len/2)-2)<0 )?"0":(Math.floor(len/2)-2);
                                     console.log(len2);            
                                     b=Math.floor((Math.random()*len2+1)+a)%(len);
-                                    c=Math.floor((Math.random()*len2+1)+b)%(len);
-            
-                                    let to_id = line_id;
+                                    c=Math.floor((Math.random()*len2+1)+b)%(len);            
+                                    
                                     let index_arr = [a,b,c];
             
                                     for(let index of index_arr){
