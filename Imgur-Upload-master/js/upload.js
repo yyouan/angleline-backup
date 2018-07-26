@@ -14,9 +14,18 @@ var feedback = function(res) {
             //+ '<input name=\"url\" style=\"visibility : hidden\" type=\'text\' value=\''+get_link+'\'>'
             +'<input id=\"subbut\" type=\'button\' value=\"\">';
         $("#subbut").click(()=>{
+            let array = decodeURIComponent(document.cookie).split(';');
+            let jsonthing={}
+            for(let str of array){
+                let raw = str.split('=');
+                if(raw.length == 2){
+                    jsonthing[raw[0]]=raw[1];
+                }
+            }
             $.post("/img",
             {
-                email: document.cookie,
+                
+                email: jsonthing['email'],
                 url: get_link
             },
             function(data,status){                

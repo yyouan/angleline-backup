@@ -43,7 +43,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<div class="login-form">
 				<script>
 					function cook(){
-						document.cookie = "email:"+document.getElementById("key").value;
+						document.cookie = "email="+document.getElementById("key").value;
 						alert("確認 email : "+String(document.getElementById("key").value));
 						//window.open('https://angleline-hall.herokuapp.com/uploadhtml');
 					}
