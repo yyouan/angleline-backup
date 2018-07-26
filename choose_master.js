@@ -289,11 +289,9 @@ function choose_Parser(req ,res){
                 return;
             } 
 
-            if (posttype == 'postback'){
-                var q = url.parse(req.url,true);
-                console.log(q.query); //?dev_name=....&alarm=.....
+            if (posttype == 'postback'){                
 
-                var data = q.query;
+                var data = querystring.parse(post.events[0].postback.data);
                 var master_id = data.master_id;
                 var department = data.dept;
                 if( dept[department].find((ele)=>{return ele.angle_id = master_id}) == -1 ){
