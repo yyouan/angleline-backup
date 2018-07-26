@@ -303,6 +303,7 @@ function choose_Parser(req ,res){
                         let index_arr = [a,b,c];
 
                         for(let index of index_arr){
+                            console.log(dept[member.department][index].head_url.replace(/\s+/g, ""));
                             let msg ={  
                                 "type": "flex",
                                 "altText": "this is a flex message",
