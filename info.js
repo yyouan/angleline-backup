@@ -1,7 +1,7 @@
 var express = require('express');
 var request = require('request');
 const querystring = require('querystring');
-
+const game_item = require('./game_item.js');
 const gameproblem = game_item.gameproblem;
 const gamelocation = game_item.gamelocation;
 const gameanswer = game_item.gameanswer;
