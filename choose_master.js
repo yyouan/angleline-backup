@@ -29,26 +29,36 @@ psql("SELECT * FROM ACCOUNT;").then(
         
         for(let member of members){
             if(member.department.replace(/\s+/g, "")=='phys'){
-                dept['phys'].push(member);
-            }else if(member.department.replace(/\s+/g, "")=='psy'){
                 dept['psy'].push(member);
+            }else if(member.department.replace(/\s+/g, "")=='psy'){
+                dept['phys'].push(member);
             }else{
                 console.log("department problem choose_master.js:33");
             }
         }
 
-        for(let member of members){
+        for(let member of members){            
+
             let a,b,c;
             let len = dept[member.department.replace(/\s+/g, "")].length;
-            a=Math.floor(Math.random()*len);
-            len=Math.floor(len/2)-2;
-            b=Math.floor((Math.random()*len+1)+a)%(members.length);
-            c=Math.floor((Math.random()*len+1)+b)%(members.length);
+            
+            a = Math.floor(Math.random()*len);
+            let len2=((Math.floor(len/2)-3)<0 )?"0":(Math.floor(len/3)-2);
+            console.log(len2);            
+            b=Math.floor((Math.random()*len2+1)+a)%(len);
+            c=Math.floor((Math.random()*len2+1)+b)%(len);
 
             let to_id = member.angle_id;
             let index_arr = [a,b,c];
             console.log(index_arr);
-            console.log("(dept):" + dept);
+            console.log("(dept):");
+            for(dep of dept){
+                console.log("(dept-group)");
+                for(mem of dep){
+                    console.log(mem);
+                }
+                
+            }
             for(let index of index_arr){
                 console.log("(index)"+index);
                 console.log(dept[member.department.replace(/\s+/g, "")][index]);
