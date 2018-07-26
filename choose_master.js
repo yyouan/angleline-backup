@@ -331,7 +331,7 @@ function choose_Parser(req ,res){
 
                         }else{
 
-                            if( dept[department].find((ele)=>{return ele.angle_id == master_id}) == -1 ){
+                            if(typeof dept[department].find((ele)=>{return ele.angle_id.replace(/\s+/g, "") == master_id}) == 'undefined' ){
 
                                 let text ={
                                     "type":"text",
@@ -478,8 +478,9 @@ function choose_Parser(req ,res){
             
                             }else{    
                                 psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
+                                console.log(dept[department][dept[department].find((ele)=>{return ele.angle_id.replace(/\s+/g, "")==master_id})]);
                                 console.log(dept[department].length);
-                                dept[department].splice(dept[department].find((ele)=>{return ele.angle_id==master_id}),1);
+                                dept[department].splice(dept[department].find((ele)=>{return ele.angle_id.replace(/\s+/g, "")==master_id}),1);
                                 console.log("choose successful");
                                 console.log(dept[department].length);
                                 let text ={
