@@ -152,6 +152,31 @@ function pushmessage(recpt,id){
       });
   
 }
+function pushtoHall(recpt,id){
+    recpt.forEach(element => {
+        console.log("pushmessage:"+element);
+    });
+    console.log("to_id"+id);
+    var options = {
+        url: "https://api.line.me/v2/bot/message/push",
+        method: 'POST',
+        headers: {
+          'Content-Type':  'application/json', 
+          'Authorization':'Bearer ' + HallToken
+        },
+        json: {
+            "to": id.replace(/\s+/g, ""),
+            'messages': recpt
+        }
+      };
+        
+      request(options, function (error, response, body) {
+          if (error) throw error;
+          console.log("(line)");
+          console.log(body);
+      });
+  
+}
 function imgpusherS(recpt,img){
 
     psql("SELECT * FROM SUPERVISOR;").then(
@@ -517,6 +542,22 @@ function chatParser(req ,res){
                 "text":"結束回覆"
             }            
             replymessage([text]);
+
+        }else if("send" in data){
+
+            console.log("send");
+            let msg_stored = data.msg;
+
+            psql("SELECT * FROM ACCOUNT;").then(
+                (members)=>{
+                    for(let member of members){
+                        pushtoHall([msg_stored],member.angle_id);
+                        console.log(msg_stored);
+                        console.log(member.angle_id);
+                    }
+                }
+            )
+
         }
          
     }

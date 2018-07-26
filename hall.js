@@ -421,40 +421,7 @@ function chatParser(req ,res){
             
       }        
 
-    if (posttype == 'postback'){
-
-        // record userId,reply_id pair
-        let rawdata = post.events[0].postback.data;
-        let data = querystring.parse(rawdata);
-
-        if("reply_id" in data) {
-            
-            channel_array[post.events[0].source.userId] = data.reply_id;
-            replymessage([finish_button]);
-
-        }else if("finish" in data){
-
-            if( post.events[0].source.userId in channel_array){
-                delete channel_array[post.events[0].source.userId];
-            }
-
-        }else if("send" in data){
-            console.log("send");
-            let msg_stored = data.msg;
-
-            psql("SELECT * FROM ACCOUNT;").then(
-                (members)=>{
-                    for(let member of members){
-                        pushmessage([msg_stored],member.angle_id);
-                        console.log(msg_stored);
-                        console.log(member.angle_id);
-                    }
-                }
-            )
-
-        }
-         
-    }
+    
       function replymessage(recpt){ //recpt is message object
         var options = {
           url: "https://api.line.me/v2/bot/message/reply ",
