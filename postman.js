@@ -196,7 +196,7 @@ function chatParser(req ,res){
                       "type":"text",
                       "text":writers[0].angle_nickname+":"
                     }
-                    if(mode =='angle_id'){
+                    if(c_mode =='angle_id'){
                       receiver_id = writers[0].master_id;
                       if(type == 'image'){
                         //set adrr
