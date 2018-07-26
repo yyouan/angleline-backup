@@ -101,8 +101,8 @@ function psql(command){
                       "contents": [
                         {//頭貼
                           "type": "image",
-                          "originalContentUrl":member[c_mode].head_url ,
-                          "previewImageUrl":member[c_mode].head_url
+                          "originalContentUrl":member[c_mode].head_url.replace(/\s+/g, "") ,
+                          "previewImageUrl":member[c_mode].head_url.replace(/\s+/g, "")
                         },
                         {//暱稱
                           "type": "text",

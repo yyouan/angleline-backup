@@ -43,7 +43,7 @@ psql("SELECT * FROM ACCOUNT;").then(
             let len = dept[member.department.replace(/\s+/g, "")].length;
             
             a = Math.floor(Math.random()*len);
-            let len2=((Math.floor(len/2)-3)<0 )?"0":(Math.floor(len/3)-2);
+            let len2=((Math.floor(len/2)-2)<0 )?"0":(Math.floor(len/3)-2);
             console.log(len2);            
             b=Math.floor((Math.random()*len2+1)+a)%(len);
             c=Math.floor((Math.random()*len2+1)+b)%(len);
@@ -82,8 +82,8 @@ psql("SELECT * FROM ACCOUNT;").then(
                           "contents": [
                             {//頭貼
                               "type": "image",
-                              "originalContentUrl":dept[member.department.replace(/\s+/g, "")][index].head_url ,
-                              "previewImageUrl":dept[member.department.replace(/\s+/g, "")][index].head_url
+                              "originalContentUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "") ,
+                              "previewImageUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "")
                             },
                             {//暱稱
                               "type": "text",
@@ -324,8 +324,8 @@ function choose_Parser(req ,res){
                                     "contents": [
                                         {//頭貼
                                         "type": "image",
-                                        "originalContentUrl":dept[member.department][index].head_url ,
-                                        "previewImageUrl":dept[member.department][index].head_url
+                                        "originalContentUrl":dept[member.department][index].head_url.replace(/\s+/g, "") ,
+                                        "previewImageUrl":dept[member.department][index].head_url.replace(/\s+/g, "")
                                         },
                                         {//暱稱
                                         "type": "text",
@@ -383,8 +383,8 @@ function choose_Parser(req ,res){
                                     "contents": [
                                         {//頭貼
                                         "type": "image",
-                                        "originalContentUrl":cand.head_url ,
-                                        "previewImageUrl":cand.head_url
+                                        "originalContentUrl":cand.head_url.replace(/\s+/g, "") ,
+                                        "previewImageUrl":cand.head_url.replace(/\s+/g, "")
                                         },
                                         {//暱稱
                                         "type": "text",

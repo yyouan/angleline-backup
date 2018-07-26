@@ -189,8 +189,8 @@ function chatParser(req ,res){
                     let receiver_id = (mode=="angle_id")?writers[0].master_id:writers[0].angle_id;
                     let head ={
                       "type": "image",
-                      "originalContentUrl": writers[0].head_url,
-                      "previewImageUrl": writers[0].head_url
+                      "originalContentUrl": writers[0].head_url.replace(/\s+/g, ""),
+                      "previewImageUrl": writers[0].head_url.replace(/\s+/g, "")
                     }
                     
                     if(type == 'image'){
