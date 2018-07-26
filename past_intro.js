@@ -87,7 +87,7 @@ function psql(command){
 
             if(mode == 'angle_id'){
                 
-                psql("SELECT * WHERE master_id=\'"+member.master_id+"\';").then(
+                psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+member.master_id+"\';").then(
                     (masters)=>{
                         var master = masters[0];
                         let bubble ={
@@ -135,7 +135,7 @@ function psql(command){
                 ); 
 
             }else{
-                psql("SELECT * WHERE master_id=\'"+member.master_id+"\';").then(
+                psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+member.master_id+"\';").then(
                     (angles)=>{
                         let bubble ={
                             "type": "bubble",
