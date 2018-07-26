@@ -63,16 +63,62 @@ psql("SELECT * FROM ACCOUNT;").then(
                             let image =
                             {//頭貼
                                 "type": "image",
-                                "originalContentUrl":"https://i.imgur.com/1s2jStI.png" ,
-                                "previewImageUrl":"https://i.imgur.com/1s2jStI.png"
+                                "originalContentUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "") ,
+                                "previewImageUrl":dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, "")
                             };
 
                             let text ={
                                 "type":"text",
                                 "text":"jsijfiosd"
                             };
-                
+                let bubble ={
+                    "type": "bubble",
+                    "header": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Header text"
+                        }
+                      ]
+                    },
+                    "hero": {
+                      "type": "image",
+                      "url": dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, ""),
+                    },
+                    "body": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Body text",
+                        }
+                      ]
+                    },
+                    "footer": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Footer text",
+                        }
+                      ]
+                    },
+                    "styles": {
+                      "comment": "See the example of a bubble style object"
+                    }
+                };
+
                 let msg ={  
+                    "type": "flex",
+                    "altText": "this is a flex message",
+                    "contents":bubble; 
+                };
+
+                let msg2 ={  
                     "type": "flex",
                     "altText": "this is a flex message",
                     "contents": {
