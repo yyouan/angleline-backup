@@ -99,7 +99,7 @@ function pushmessage(recpt,id){
       method: 'POST',
       headers: {
         'Content-Type':  'application/json', 
-        'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+        'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken
       },
       json: {
           "to": id.replace(/\s+/g, ""),
@@ -270,7 +270,7 @@ function chatParser(req ,res){
           method: 'POST',
           headers: {
             'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+            'Authorization':'Bearer ' + (c_mode=='angle_id')?AngleToken:MasterToken
           },
           json: {
               'replyToken': replyToken,
