@@ -39,7 +39,7 @@ psql("SELECT * FROM ACCOUNT;").then(
 
         for(let member of members){
             let a,b,c;
-            let len = dept[member.department].length;
+            let len = dept[member.department.replace(/\s+/g, "")].length;
             a=Math.floor(Math.random()*len);
             len=Math.floor(len/2)-2;
             b=Math.floor((Math.random()*len+1)+a)%(members.length);
@@ -69,16 +69,16 @@ psql("SELECT * FROM ACCOUNT;").then(
                           "contents": [
                             {//頭貼
                               "type": "image",
-                              "originalContentUrl":dept[member.department][index].head_url ,
-                              "previewImageUrl":dept[member.department][index].head_url
+                              "originalContentUrl":dept[member.department.replace(/\s+/g, "")][index].head_url ,
+                              "previewImageUrl":dept[member.department.replace(/\s+/g, "")][index].head_url
                             },
                             {//暱稱
                               "type": "text",
-                              "text": "暱稱： "+dept[member.department][index].nickname,
+                              "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].nickname,
                             },                
                             {//自我介紹
                                 "type": "text",
-                                "text": "自我介紹： "+ dept[member.department][index].self_intro,
+                                "text": "自我介紹： "+ dept[member.department.replace(/\s+/g, "")][index].self_intro,
                             }                
                           ],
                           "footer": {
@@ -90,7 +90,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                                     "action": {
                                       "type": "postback",
                                       "label": "我要這個小主人",
-                                      "data":"master_id="+dept[member.department][index].angle_id+"&dept="+member.department,
+                                      "data":"master_id="+dept[member.department.replace(/\s+/g, "")][index].angle_id+"&dept="+member.department.replace(/\s+/g, ""),
                                       "text":"選了"
                                     },
                                     "style": "primary",
