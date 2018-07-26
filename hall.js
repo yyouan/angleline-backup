@@ -396,7 +396,7 @@ function chatParser(req ,res){
                         }
                         pushToSuv([text]);
                         var messagestored =imgpusherS(msg,body);
-                        reply_button.template.actions[0].data +=("&msg="+querystring.stringify(messagestored));
+                        reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
                         pushToSuv([reply_button]);                                               
                     })
                     .catch((err)=>{
@@ -409,7 +409,7 @@ function chatParser(req ,res){
                         "type" : "text",
                         "text" : "黑特審核："
                     }
-                    reply_button.template.actions[0].data +=("&msg="+querystring.stringify(msg));
+                    reply_button.template.actions[0].data +=("&msg="+JSON.stringify(msg));
 
                     pushToSuv([text,msg,reply_button]);                        
                   }

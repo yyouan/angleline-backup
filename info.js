@@ -546,7 +546,7 @@ function chatParser(req ,res){
         }else if("send" in data){
 
             console.log("send");
-            let msg_stored = data.msg;
+            let msg_stored = JSON.parse(data.msg);
 
             psql("SELECT * FROM ACCOUNT;").then(
                 (members)=>{
