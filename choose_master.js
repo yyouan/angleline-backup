@@ -287,156 +287,211 @@ function choose_Parser(req ,res){
             console.log(userMessage);**/
             if (typeof replyToken === 'undefined') {
                 return;
-            } 
+            }
+            
+            function replymessage(recpt){ //recpt is message object
+                var options = {
+                    url: "https://api.line.me/v2/bot/message/reply ",
+                    method: 'POST',
+                    headers: {
+                    'Content-Type':  'application/json', 
+                    'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+                    },
+                    json: {
+                        'replyToken': replyToken,
+                        'messages': recpt
+                    }
+                };
+                    
+                request(options, function (error, response, body) {
+                    if (error) throw error;
+                    console.log("(line)");
+                    console.log(body);
+                });
+                
+            }
 
             if (posttype == 'postback'){                
 
                 var data = querystring.parse(post.events[0].postback.data);
                 var master_id = data.master_id;
                 var department = data.dept;
-                if( dept[department].find((ele)=>{return ele.angle_id = master_id}) == -1 ){
+                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
+                    res => {
+                        if(res.master_id.replace(/\s+/g, "")!=""){
 
-                    let a,b,c;
-                    let len = dept[department].length;
+                            let text ={
+                                "type":"text",
+                                "text":"你已經選過了，不能再按按鈕了喔!"
+                            }
+                            replymessage([text]);
 
-                    if(len>3){                        
+                        }else{
+
+                            if( dept[department].find((ele)=>{return ele.angle_id = master_id}) == -1 ){
+
+                                let text ={
+                                    "type":"text",
+                                    "text":"太可惜了，你選定的小主人被選走了，再選一個有緣的吧!(上一輪出現的也可以再選喔)"
+                                }
+                                replymessage([text]);
+            
+                                let a,b,c;
+                                let len = dept[department].length;
+            
+                                if(len>3){                        
+                                    
+                                    a = Math.floor(Math.random()*len);
+                                    let len2=((Math.floor(len/2)-2)<0 )?"0":(Math.floor(len/2)-2);
+                                    console.log(len2);            
+                                    b=Math.floor((Math.random()*len2+1)+a)%(len);
+                                    c=Math.floor((Math.random()*len2+1)+b)%(len);
+            
+                                    let to_id = line_id;
+                                    let index_arr = [a,b,c];
+            
+                                    for(let index of index_arr){
+            
+                                        //console.log(dept[member.department][index].head_url.replace(/\s+/g, ""));
+                                        
+                                        let bubble ={
+                                            "type": "bubble",
+                                            "header": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "跟你有緣的小主人"
+                                                }
+                                              ]
+                                            },
+                                            "hero": {
+                                              "type": "image",
+                                              "url": dept[department][index].head_url.replace(/\s+/g, ""),
+                                            },
+                                            "body": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {//暱稱
+                                                    "type": "text",
+                                                    "text": "暱稱： "+dept[department][index].angle_nickname,
+                                                },                
+                                                {//自我介紹
+                                                      "type": "text",
+                                                      "text": "自我介紹： "+ dept[department][index].self_intro,
+                                                }
+                                              ]
+                                            },
+                                            "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                        "type": "button",
+                                                        "action": {
+                                                          "type": "postback",
+                                                          "label": "我要這個小主人",
+                                                          "data":"master_id="+dept[department][index].angle_id.replace(/\s+/g, "")+"&dept="+department,
+                                                        
+                                                        },
+                                                        "style": "primary",
+                                                        "color": "#0000ff"
+                                                      }
+                                                ]
+                                            }
+                                        };
                         
-                        a = Math.floor(Math.random()*len);
-                        let len2=((Math.floor(len/2)-2)<0 )?"0":(Math.floor(len/2)-2);
-                        console.log(len2);            
-                        b=Math.floor((Math.random()*len2+1)+a)%(len);
-                        c=Math.floor((Math.random()*len2+1)+b)%(len);
-
-                        let to_id = line_id;
-                        let index_arr = [a,b,c];
-
-                        for(let index of index_arr){
-
-                            //console.log(dept[member.department][index].head_url.replace(/\s+/g, ""));
-                            
-                            let bubble ={
-                                "type": "bubble",
-                                "header": {
-                                  "type": "box",
-                                  "layout": "vertical",
-                                  "contents": [
-                                    {
-                                      "type": "text",
-                                      "text": "跟你有緣的小主人"
+                                        let msg ={  
+                                            "type": "flex",
+                                            "altText": "大講堂有消息，請借台手機開啟",
+                                            "contents":bubble 
+                                        };
+                        
+                                        pushmessage([msg],to_id);                            
                                     }
-                                  ]
-                                },
-                                "hero": {
-                                  "type": "image",
-                                  "url": dept[department][index].head_url.replace(/\s+/g, ""),
-                                },
-                                "body": {
-                                  "type": "box",
-                                  "layout": "vertical",
-                                  "contents": [
-                                    {//暱稱
-                                        "type": "text",
-                                        "text": "暱稱： "+dept[department][index].angle_nickname,
-                                    },                
-                                    {//自我介紹
-                                          "type": "text",
-                                          "text": "自我介紹： "+ dept[department][index].self_intro,
-                                    }
-                                  ]
-                                },
-                                "footer": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                              "type": "postback",
-                                              "label": "我要這個小主人",
-                                              "data":"master_id="+dept[department][index].angle_id.replace(/\s+/g, "")+"&dept="+department,
-                                            
+            
+                                }else{
+            
+                                    for(let cand of dept[department]){
+                                        let bubble ={
+                                            "type": "bubble",
+                                            "header": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "跟你有緣的小主人"
+                                                }
+                                              ]
                                             },
-                                            "style": "primary",
-                                            "color": "#0000ff"
-                                          }
-                                    ]
-                                }
-                            };
-            
-                            let msg ={  
-                                "type": "flex",
-                                "altText": "大講堂有消息，請借台手機開啟",
-                                "contents":bubble 
-                            };
-            
-                            pushmessage([msg],to_id);                            
-                        }
-
-                    }else{
-                        for(let cand of dept[department]){
-                            let bubble ={
-                                "type": "bubble",
-                                "header": {
-                                  "type": "box",
-                                  "layout": "vertical",
-                                  "contents": [
-                                    {
-                                      "type": "text",
-                                      "text": "跟你有緣的小主人"
-                                    }
-                                  ]
-                                },
-                                "hero": {
-                                  "type": "image",
-                                  "url": cand.head_url.replace(/\s+/g, ""),
-                                },
-                                "body": {
-                                  "type": "box",
-                                  "layout": "vertical",
-                                  "contents": [
-                                    {//暱稱
-                                        "type": "text",
-                                        "text": "暱稱： "+cand.angle_nickname,
-                                    },                
-                                    {//自我介紹
-                                          "type": "text",
-                                          "text": "自我介紹： "+ cand.self_intro,
-                                    }
-                                  ]
-                                },
-                                "footer": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                              "type": "postback",
-                                              "label": "我要這個小主人",
-                                              "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department,                                             
+                                            "hero": {
+                                              "type": "image",
+                                              "url": cand.head_url.replace(/\s+/g, ""),
                                             },
-                                            "style": "primary",
-                                            "color": "#0000ff"
-                                          }
-                                    ]
+                                            "body": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {//暱稱
+                                                    "type": "text",
+                                                    "text": "暱稱： "+cand.angle_nickname,
+                                                },                
+                                                {//自我介紹
+                                                      "type": "text",
+                                                      "text": "自我介紹： "+ cand.self_intro,
+                                                }
+                                              ]
+                                            },
+                                            "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                        "type": "button",
+                                                        "action": {
+                                                          "type": "postback",
+                                                          "label": "我要這個小主人",
+                                                          "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department,                                             
+                                                        },
+                                                        "style": "primary",
+                                                        "color": "#0000ff"
+                                                      }
+                                                ]
+                                            }
+                                        };
+                        
+                                        let msg ={  
+                                            "type": "flex",
+                                            "altText": "大講堂有消息，請借台手機開啟",
+                                            "contents":bubble 
+                                        };
+                        
+                                        pushmessage([msg],to_id);
+                                    }
+                                }                    
+            
+                            }else{    
+                                psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
+                                console.log(dept[department].length);
+                                dept[department].splice(dept[department].find((ele)=>{return ele.angle_id=master_id}),1);
+                                console.log("choose successful");
+                                console.log(dept[department].length);
+                                let text ={
+                                    "type":"text",
+                                    "text":"恭喜你選到你的小主人!"
                                 }
-                            };
-            
-                            let msg ={  
-                                "type": "flex",
-                                "altText": "大講堂有消息，請借台手機開啟",
-                                "contents":bubble 
-                            };
-            
-                            pushmessage([msg],to_id);
-                        }
-                    }                    
+                                replymessage([text]);
+                            }
 
-                }else{    
-                    psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
-                    dept[department].splice(dept[department].find((ele)=>{return ele.angle_id=master_id}),1);
-                    console.log("choose successful");
-                }
+                        }
+                    }
+                )
+
+                
+
             }     
         });
     

@@ -398,6 +398,7 @@ function FormReceiver(req,res){
             res =>{
                 psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET angle_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
+                psql("UPDATE ACCOUNT SET master_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET self_intro=\'"+ post['self-intro'] +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
