@@ -7,10 +7,10 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'chRfdlc9nHQJyi8BLGXxExjrfNoGBMfH8DPqevbDaPYsgvP1WsZ8Aqi17HRS4dpfjtSLU5QD3G6b/RjZ4GflCh4N/hIhqWhBPPUJ56dhzxAfqRtgSPYadNTsTbcV/Hm1l4YUiJHYoDqaWO2o2qY/yAdB04t89/1O/w1cDnyilFU=',
     'bE7q3TnTG/MO9rE+0sME3betLgGFgqUpYCOv0OrmW/Uefjldl9a5am6xNyC0VRcnL87qKx1GMoPzGLKQDX/PRiERLTdZ2uIf5txK+1+JhIFsSIGwI00lGGaGavvCzkyKfy5A6QrqWZdfeu0J08SJDAdB04t89/1O/w1cDnyilFU='
   ]
-var CHANNEL_ACCESS_TOKEN = MasterToken;
+var CHANNEL_ACCESS_TOKEN = AngleToken;
 const modetype =["angle_id","master_id"];
-const mode = modetype[1];
-const c_mode = modetype[0];
+const mode = modetype[0];
+const c_mode = modetype[1];
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -99,7 +99,7 @@ function pushmessage(recpt,id){
       method: 'POST',
       headers: {
         'Content-Type':  'application/json', 
-        'Authorization':'Bearer ' + ((c_mode=='angle_id')?MasterToken:AngleToken)
+        'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)
       },
       json: {
           "to": id.replace(/\s+/g, ""),
@@ -121,7 +121,7 @@ function imgpusher(recpt,id,img){
     method: 'POST',
     headers: {
     'Content-Type':  'application/json', 
-    'Authorization':'Bearer ' + ((c_mode=='angle_id')?MasterToken:AngleToken)
+    'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)
     },
     json: {
         'to': id.replace(/\s+/g, ""),
@@ -211,7 +211,7 @@ function chatParser(req ,res){
                       "contents":bubble 
                   };
                     
-                    if(c_mode =='angle_id'){
+                    if(mode =='angle_id'){
                       receiver_id = writers[0].master_id;
                       if(type == 'image'){
                         //set adrr
@@ -224,7 +224,7 @@ function chatParser(req ,res){
                             url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
                             method: 'GET',
                             headers: {                
-                            'Authorization':'Bearer ' + ((c_mode=='angle_id')?MasterToken:AngleToken)                  
+                            'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)                  
                             },
                             encoding: null
                         }
@@ -269,7 +269,7 @@ function chatParser(req ,res){
                                 url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
                                 method: 'GET',
                                 headers: {                
-                                'Authorization':'Bearer ' + ((c_mode=='angle_id')?MasterToken:AngleToken)                  
+                                'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)                  
                                 },
                                 encoding: null
                             }
