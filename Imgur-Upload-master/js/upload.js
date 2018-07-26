@@ -19,7 +19,7 @@ var feedback = function(res) {
             for(let str of array){
                 let raw = str.split('=');
                 if(raw.length == 2){
-                    jsonthing[raw[0]]=raw[1];
+                    jsonthing[raw[0].replace(/\s+/g, "")]=raw[1];
                 }
             }
             $.post("/img",
