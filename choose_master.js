@@ -52,12 +52,11 @@ psql("SELECT * FROM ACCOUNT;").then(
             let index_arr = [a,b,c];
             console.log(index_arr);
             console.log("(dept):");
-            for(let dep of dept){
+            for(let dep in dept){
                 console.log("(dept-group)");
-                for(let mem of dep){
+                for(let mem of dept[dep]){
                     console.log(mem);
-                }
-                
+                }                
             }
             for(let index of index_arr){
                 console.log("(index)"+index);
