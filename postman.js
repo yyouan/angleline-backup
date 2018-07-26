@@ -180,59 +180,114 @@ function chatParser(req ,res){
                     
           if(gate == false){
 
-              psql("SELECT * FROM ACCOUNT WHERE "+mode+"=\'"+line_id+"\';").then(
+              psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                 (writers)=>{
                   if(writers.length==1){                    
                     let msg = post.events[0].message;                                    
                     let type = msg.type;
                     let msgid = msg.id;                                
-                    let receiver_id = (mode=="angle_id")?writers[0].master_id:writers[0].angle_id;
+                    let receiver_id;
                     let head ={
                       "type": "image",
                       "originalContentUrl": writers[0].head_url.replace(/\s+/g, ""),
                       "previewImageUrl": writers[0].head_url.replace(/\s+/g, "")
                     }
-                    
-                    if(type == 'image'){
-                      //set adrr
-                      adrr+=String(msgid);
-                      adrr+=".jpg";
-                      console.log(adrr);
-                      // Configure the request
-                      let getimage=new Promise((resolve,reject)=>{
-                      let options = {
-                          url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                          method: 'GET',
-                          headers: {                
-                          'Authorization':'Bearer ' + ((c_mode=='angle_id')?AngleToken:MasterToken)                  
-                          },
-                          encoding: null
-                      }
-          
-                      // Start the request
-
-                      request(options, function (error, response, body) {
-                          if (!error && response.statusCode == 200) {
-                          nwimg = body;
-                          console.log(body);
-                          resolve(body);                  
+                    let text={
+                      "type":"text",
+                      "text":writers[0].angle_nickname+":"
+                    }
+                    if(mode =='angle_id'){
+                      receiver_id = writers[0].master_id;
+                      if(type == 'image'){
+                        //set adrr
+                        adrr+=String(msgid);
+                        adrr+=".jpg";
+                        console.log(adrr);
+                        // Configure the request
+                        let getimage=new Promise((resolve,reject)=>{
+                        let options = {
+                            url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                            method: 'GET',
+                            headers: {                
+                            'Authorization':'Bearer ' + ((c_mode=='angle_id')?AngleToken:MasterToken)                  
+                            },
+                            encoding: null
+                        }
+            
+                        // Start the request
+  
+                        request(options, function (error, response, body) {
+                            if (!error && response.statusCode == 200) {
+                            nwimg = body;
+                            console.log(body);
+                            resolve(body);                  
+                            }else{
+                            //console.log();
+                            reject("!!!!!error when recpt image!!!!!");                
+                            }
+                        });              
+                        });
+                        
+                        getimage
+                        .then((body)=>{pushmessage([head,text],receiver_id);imgpusher(msg,receiver_id,body);})
+                        .catch((err)=>{
+                        console.log("(linebotpromise)"+err);
+                        }
+                        );
+  
+                      }else{
+                          pushmessage([head,text,msg],receiver_id);                          
+                      } 
+                    }
+                    else{
+                      psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+writers[0].angle_id+"\';").then(
+                        (res)=>{
+                          receiver_id = res[0].angle_id;
+                          if(type == 'image'){
+                            //set adrr
+                            adrr+=String(msgid);
+                            adrr+=".jpg";
+                            console.log(adrr);
+                            // Configure the request
+                            let getimage=new Promise((resolve,reject)=>{
+                            let options = {
+                                url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                method: 'GET',
+                                headers: {                
+                                'Authorization':'Bearer ' + ((c_mode=='angle_id')?AngleToken:MasterToken)                  
+                                },
+                                encoding: null
+                            }
+                
+                            // Start the request
+      
+                            request(options, function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                nwimg = body;
+                                console.log(body);
+                                resolve(body);                  
+                                }else{
+                                //console.log();
+                                reject("!!!!!error when recpt image!!!!!");                
+                                }
+                            });              
+                            });
+                            
+                            getimage
+                            .then((body)=>{pushmessage([head,text],receiver_id);imgpusher(msg,receiver_id,body);})
+                            .catch((err)=>{
+                            console.log("(linebotpromise)"+err);
+                            }
+                            );
+      
                           }else{
-                          //console.log();
-                          reject("!!!!!error when recpt image!!!!!");                
-                          }
-                      });              
-                      });
-                      
-                      getimage
-                      .then((body)=>{pushmessage([head],receiver_id);imgpusher(msg,receiver_id,body);})
-                      .catch((err)=>{
-                      console.log("(linebotpromise)"+err);
-                      }
-                      );
-
-                    }else{
-                        pushmessage([head,msg],receiver_id);
-                    }                    
+                              pushmessage([head,text,msg],receiver_id);
+                          } 
+                        }
+                      )
+                    }
+                    
+                                       
 
                   }else{ //bug detecter
                     let text ={
