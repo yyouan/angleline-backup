@@ -59,8 +59,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                 }                
             }
             for(let index of index_arr){
-                console.log("(index)"+index);
-                console.log(dept[member.department.replace(/\s+/g, "")][index].head_url.replace(/\s+/g, ""));
+                console.log("(index)"+index);                
                 let msg ={  
                     "type": "flex",
                     "altText": "this is a flex message",
@@ -116,6 +115,7 @@ psql("SELECT * FROM ACCOUNT;").then(
                 };
 
                 pushmessage([msg],to_id);
+                console.log(msg.contents.body.contents[0].originalContentUrl);
             }
         }
         return Promise.resolve();
