@@ -333,11 +333,7 @@ function choose_Parser(req ,res){
 
                             if(dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "") == master_id}) == -1 ){
 
-                                let text ={
-                                    "type":"text",
-                                    "text":"太可惜了，你選定的小主人被選走了，再選一個有緣的吧!(上一輪出現的也可以再選喔)"
-                                }
-                                replymessage([text]);
+                                
             
                                 let a,b,c;
                                 let len = dept[department].length;
@@ -474,7 +470,13 @@ function choose_Parser(req ,res){
                         
                                         pushmessage([msg],to_id);
                                     }
-                                }                    
+                                }
+                                
+                                let text ={
+                                    "type":"text",
+                                    "text":"太可惜了，你選定的小主人被選走了，再選一個有緣的吧!(上一輪出現的也可以再選喔)"
+                                }
+                                replymessage([text]);                    
             
                             }else{    
                                 psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
