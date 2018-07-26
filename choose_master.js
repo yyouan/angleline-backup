@@ -305,7 +305,12 @@ function choose_Parser(req ,res){
                         for(let index of index_arr){
 
                             console.log(dept[member.department][index].head_url.replace(/\s+/g, ""));
-                            
+                            let image =
+                            {//頭貼
+                                "type": "image",
+                                "originalContentUrl":"https://i.imgur.com/VE3A1vt.jpg" ,
+                                "previewImageUrl":"https://i.imgur.com/VE3A1vt.jpg"
+                            };
                             let msg ={  
                                 "type": "flex",
                                 "altText": "this is a flex message",
@@ -360,7 +365,7 @@ function choose_Parser(req ,res){
                                 }
                             };
             
-                            pushmessage([msg],to_id);
+                            pushmessage([img],to_id);
                         }
 
                     }else{
