@@ -372,9 +372,9 @@ function psql(command){
                     receiver_id = writers[0].master_id;
                     if(type == 'image'){
                       //set adrr
-                      adrr+=String(msgid);
-                      adrr+=".jpg";
-                      console.log(adrr);
+                      //adrr+=String(msgid);
+                      //adrr+=".jpg";
+                      //console.log(adrr);
                       // Configure the request
                       let getimage=new Promise((resolve,reject)=>{
                       let options = {
@@ -417,9 +417,9 @@ function psql(command){
                         receiver_id = res[0].angle_id;
                         if(type == 'image'){
                           //set adrr
-                          adrr+=String(msgid);
-                          adrr+=".jpg";
-                          console.log(adrr);
+                          //adrr+=String(msgid);
+                          //adrr+=".jpg";
+                          //console.log(adrr);
                           // Configure the request
                           let getimage=new Promise((resolve,reject)=>{
                           let options = {

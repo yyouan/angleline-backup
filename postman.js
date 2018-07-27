@@ -185,7 +185,7 @@ function chatParser(req ,res){
   //route
   var nwimg;
       
-  var adrr="/";
+  //var adrr="/";
   
   // 定义了一个post变量，用于暂存请求体的信息
   var post = '';     
@@ -256,11 +256,12 @@ function chatParser(req ,res){
                     
                     if(mode =='master_id'){
                       receiver_id = writers[0].master_id;
+
                       if(type == 'image'){
                         //set adrr
-                        adrr+=String(msgid);
-                        adrr+=".jpg";
-                        console.log(adrr);
+                        //adrr+=String(msgid);
+                        //adrr+=".jpg";
+                        //console.log(adrr);
                         // Configure the request
                         let getimage=new Promise((resolve,reject)=>{
                         let options = {
@@ -303,9 +304,9 @@ function chatParser(req ,res){
                           receiver_id = res[0].angle_id;
                           if(type == 'image'){
                             //set adrr
-                            adrr+=String(msgid);
-                            adrr+=".jpg";
-                            console.log(adrr);
+                            //adrr+=String(msgid);
+                            //adrr+=".jpg";
+                            //console.log(adrr);
                             // Configure the request
                             let getimage=new Promise((resolve,reject)=>{
                             let options = {

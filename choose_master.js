@@ -64,6 +64,14 @@ psql("SELECT * FROM ACCOUNT;").then(
                 console.log("(index)"+index);
                             
 
+                
+
+                let self_intro =                
+                {//自我介紹
+                      "type": "text",
+                      "text": "自我介紹： "+ dept[member.department.replace(/\s+/g, "")][index].self_intro,
+                };
+
                 let bubble ={
                     "type": "bubble",
                     "header": {
@@ -106,12 +114,6 @@ psql("SELECT * FROM ACCOUNT;").then(
                               }
                         ]
                     }
-                };
-
-                let self_intro =                
-                {//自我介紹
-                      "type": "text",
-                      "text": "自我介紹： "+ dept[member.department.replace(/\s+/g, "")][index].self_intro,
                 };
 
                 let msg ={  
@@ -193,7 +195,7 @@ function psql(command){
         //route
         var nwimg;
         const domain="https://angleline.herokuapp.com";  
-        var adrr="/";
+        //var adrr="/";
         
         // 定义了一个post变量，用于暂存请求体的信息
         var post = '';     
@@ -268,7 +270,7 @@ function choose_Parser(req ,res){
         //route
         var nwimg;
         const domain="https://angleline-hall.herokuapp.com";  
-        var adrr="/";
+        //var adrr="/";
         
         // 定义了一个post变量，用于暂存请求体的信息
         var post = '';     

@@ -92,7 +92,7 @@ function loginParser(req ,res){
     //route
     var nwimg;
     const domain="https://angleline-hall.herokuapp.com";  
-    var adrr="/";
+    //var adrr="/";
     
     // 定义了一个post变量，用于暂存请求体的信息
     var post = '';     
@@ -341,16 +341,7 @@ function loginParser(req ,res){
                 'replyToken': replyToken,
                 'messages': recpt
             }
-          };
-          if(posttype=='message' && post.events[0].message.type == 'image'){
-                options.json.messages[0].originalContentUrl=(domain+adrr);
-                options.json.messages[0].previewImageUrl=(domain+adrr);
-                app.get(adrr,(req,res)=>{
-                  //res.sendFile(__dirname+"/img.jpg");    
-                  res.writeHead(200, {'Content-Type': 'image/jpeg' });
-                  res.end(nwimg, 'binary');
-                });
-          }  
+          };  
           request(options, function (error, response, body) {
               if (error) throw error;
               console.log("(line)");

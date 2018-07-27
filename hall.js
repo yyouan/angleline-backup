@@ -12,6 +12,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
   ]
 var CHANNEL_ACCESS_TOKEN = HallToken;
 var channel_array ={};
+const domain="https://angleline-hall.herokuapp.com";
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -153,7 +154,9 @@ function pushToSuv(recpt){
       }
     );
   }
-function imgpusherS(recpt,img){
+function imgpusherS(recpt,img,replyToken){
+
+    let adrr ="/"+replyToken+".jpg";
     recpt.originalContentUrl=(domain+adrr);
     recpt.json.messages[0].previewImageUrl=(domain+adrr);
 
@@ -196,7 +199,8 @@ function imgpusherS(recpt,img){
     return recpt;
 
 }  
-function imgpusher(recpt,id,img){
+function imgpusher(recpt,id,img,replyToken){
+    let adrr ="/"+replyToken+".jpg";
     var options = {
       url: "https://api.line.me/v2/bot/message/push",
       method: 'POST',
@@ -230,8 +234,8 @@ function imgpusher(recpt,id,img){
 function chatParser(req ,res){
   //route
   var nwimg;
-  const domain="https://angleline-hall.herokuapp.com";  
-  var adrr="/";
+    
+  //var adrr="/";
   
   // 定义了一个post变量，用于暂存请求体的信息
   var post = '';     
@@ -376,9 +380,9 @@ function chatParser(req ,res){
 
                 if(type == 'image'){
                     //set adrr
-                    adrr+=String(msgid);
-                    adrr+=".jpg";
-                    console.log(adrr);
+                    //adrr+=String(msgid);
+                    //adrr+=".jpg";
+                    //console.log(adrr);
                     // Configure the request
                     let getimage=new Promise((resolve,reject)=>{
                     let options = {
@@ -411,7 +415,7 @@ function chatParser(req ,res){
                             "text" : "黑特審核："
                         }
                         pushToSuv([text]);
-                        var messagestored =imgpusherS(msg,body);
+                        var messagestored =imgpusherS(msg,body,replyToken);
                         reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
                         pushToSuv([reply_button]);                                               
                     })

@@ -178,7 +178,9 @@ function pushtoHall(recpt,id){
       });
   
 }
-function imgpusherS(recpt,img){
+function imgpusherS(recpt,img,replyToken){
+
+    let adrr ="/"+replyToken+".jpg";
 
     psql("SELECT * FROM SUPERVISOR;").then(
   
@@ -217,7 +219,9 @@ function imgpusherS(recpt,img){
         }
     );
 }
-function imgpusher(recpt,id,img){
+function imgpusher(recpt,id,img,replyToken){
+
+    let adrr ="/"+replyToken+".jpg";
     var options = {
       url: "https://api.line.me/v2/bot/message/push",
       method: 'POST',
@@ -251,7 +255,7 @@ function chatParser(req ,res){
   //route
   var nwimg;
     
-  var adrr="/";
+  //var adrr="/";
   
   // 定义了一个post变量，用于暂存请求体的信息
   var post = '';     
@@ -371,9 +375,9 @@ function chatParser(req ,res){
 
                 if(type == 'image'){
                   //set adrr
-                  adrr+=String(msgid);
-                  adrr+=".jpg";
-                  console.log(adrr);
+                  //+=String(msgid);
+                  //adrr+=".jpg";
+                  //console.log(adrr);
                   // Configure the request
                   let getimage=new Promise((resolve,reject)=>{
                   let options = {
@@ -400,7 +404,7 @@ function chatParser(req ,res){
                   });
                   
                   getimage
-                  .then((body)=>{imgpusher(msg,receiver_id,body);})
+                  .then((body)=>{imgpusher(msg,receiver_id,body,replyToken);})
                   .catch((err)=>{
                   console.log("(linebotpromise)"+err);
                   }
@@ -459,9 +463,9 @@ function chatParser(req ,res){
 
                 if(type == 'image'){
                     //set adrr
-                    adrr+=String(msgid);
-                    adrr+=".jpg";
-                    console.log(adrr);
+                    //adrr+=String(msgid);
+                    //adrr+=".jpg";
+                    //console.log(adrr);
                     // Configure the request
                     let getimage=new Promise((resolve,reject)=>{
                     let options = {
@@ -494,7 +498,7 @@ function chatParser(req ,res){
                             "text" : "來自小隊員："
                         }
                         pushToSuv([text]);
-                        imgpusherS(msg,body);
+                        imgpusherS(msg,body,replyToken);
                         pushToSuv([reply_button]);                                         
                     })
                     .catch((err)=>{
