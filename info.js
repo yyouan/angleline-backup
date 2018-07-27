@@ -13,6 +13,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
   ]
 var CHANNEL_ACCESS_TOKEN = InfoToken;
 var channel_array ={};
+const domain="https://informationdesk.herokuapp.com";
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -249,7 +250,7 @@ function imgpusher(recpt,id,img){
 function chatParser(req ,res){
   //route
   var nwimg;
-  const domain="https://informationdesk.herokuapp.com";  
+    
   var adrr="/";
   
   // 定义了一个post变量，用于暂存请求体的信息

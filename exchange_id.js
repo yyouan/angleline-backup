@@ -9,7 +9,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'bE7q3TnTG/MO9rE+0sME3betLgGFgqUpYCOv0OrmW/Uefjldl9a5am6xNyC0VRcnL87qKx1GMoPzGLKQDX/PRiERLTdZ2uIf5txK+1+JhIFsSIGwI00lGGaGavvCzkyKfy5A6QrqWZdfeu0J08SJDAdB04t89/1O/w1cDnyilFU='
   ]
 const modetype =["angle_id","master_id"];
-const mode = modetype[1];
+const mode = modetype[0];
 var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?MasterToken:AngleToken);
 
 const { Pool } = require('pg');
@@ -108,8 +108,10 @@ function psql(command){
       });
   
   }
-  
-  function imgpusher(recpt,id,img){
+
+  function imgpusher(recpt,id,img,replyToken){
+
+    var domain="https://angleline"+((mode=="angle_id")?"":"-master")+".herokuapp.com";
     var options = {
       url: "https://api.line.me/v2/bot/message/push",
       method: 'POST',
@@ -122,7 +124,7 @@ function psql(command){
           'messages': [recpt]
       }
     };
-    
+    var adrr ="/"+replyToken+".jpg";
     options.json.messages[0].originalContentUrl=(domain+adrr);
     options.json.messages[0].previewImageUrl=(domain+adrr);
          
@@ -399,7 +401,7 @@ function psql(command){
                       });
                       
                       getimage
-                      .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
+                      .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
                       .catch((err)=>{
                       console.log("(linebotpromise)"+err);
                       }
@@ -444,7 +446,7 @@ function psql(command){
                           });
                           
                           getimage
-                          .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
+                          .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
                           .catch((err)=>{
                           console.log("(linebotpromise)"+err);
                           }

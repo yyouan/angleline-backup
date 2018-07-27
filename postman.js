@@ -11,7 +11,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
 const modetype =["angle_id","master_id"];
 const mode = modetype[0];
 var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleToken:MasterToken); //for reply
-
+var domain="https://angleline"+((mode=="angle_id")?"":"-master")+".herokuapp.com";
 const { Pool } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -150,7 +150,7 @@ function pushmessage(recpt,id){
 
 }
 
-function imgpusher(recpt,id,img){
+function imgpusher(recpt,id,img,replyToken){
   var options = {
     url: "https://api.line.me/v2/bot/message/push",
     method: 'POST',
@@ -163,7 +163,7 @@ function imgpusher(recpt,id,img){
         'messages': [recpt]
     }
   };
-  
+  var adrr ="/"+replyToken+".jpg";
   options.json.messages[0].originalContentUrl=(domain+adrr);
   options.json.messages[0].previewImageUrl=(domain+adrr);
        
@@ -184,7 +184,7 @@ function imgpusher(recpt,id,img){
 function chatParser(req ,res){
   //route
   var nwimg;
-  var domain="https://angleline"+((mode=="angle_id")?"":"-master")+".herokuapp.com";    
+      
   var adrr="/";
   
   // 定义了一个post变量，用于暂存请求体的信息
@@ -287,7 +287,7 @@ function chatParser(req ,res){
                         });
                         
                         getimage
-                        .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
+                        .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
                         .catch((err)=>{
                         console.log("(linebotpromise)"+err);
                         }
@@ -332,7 +332,7 @@ function chatParser(req ,res){
                             });
                             
                             getimage
-                            .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
+                            .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
                             .catch((err)=>{
                             console.log("(linebotpromise)"+err);
                             }
