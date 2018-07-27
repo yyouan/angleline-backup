@@ -10,7 +10,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
 
 const modetype =["angle_id","master_id"];
 const mode = modetype[0];
-var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleToken:MasterToken);
+var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleToken:MasterToken); //for reply
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -156,7 +156,7 @@ function imgpusher(recpt,id,img){
     method: 'POST',
     headers: {
     'Content-Type':  'application/json', 
-    'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)
+    'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken) 
     },
     json: {
         'to': id.replace(/\s+/g, ""),

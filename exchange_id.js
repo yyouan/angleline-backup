@@ -8,10 +8,9 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'chRfdlc9nHQJyi8BLGXxExjrfNoGBMfH8DPqevbDaPYsgvP1WsZ8Aqi17HRS4dpfjtSLU5QD3G6b/RjZ4GflCh4N/hIhqWhBPPUJ56dhzxAfqRtgSPYadNTsTbcV/Hm1l4YUiJHYoDqaWO2o2qY/yAdB04t89/1O/w1cDnyilFU=',
     'bE7q3TnTG/MO9rE+0sME3betLgGFgqUpYCOv0OrmW/Uefjldl9a5am6xNyC0VRcnL87qKx1GMoPzGLKQDX/PRiERLTdZ2uIf5txK+1+JhIFsSIGwI00lGGaGavvCzkyKfy5A6QrqWZdfeu0J08SJDAdB04t89/1O/w1cDnyilFU='
   ]
-var CHANNEL_ACCESS_TOKEN = AngleToken;
 const modetype =["angle_id","master_id"];
 const mode = modetype[0];
-const c_mode = modetype[1];
+var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?MasterToken:AngleToken);
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -300,61 +299,141 @@ function psql(command){
 
       if (posttype == 'message'){
           
-        let msg = post.events[0].message;                                    
-        let type = msg.type;
-        let msgid = msg.id;  
         let gate = false;
                   
         if(gate == false){
 
-            psql("SELECT * FROM ACCOUNT WHERE "+mode+"=\'"+line_id+"\';").then(
+            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
               (writers)=>{
                 if(writers.length==1){                    
                   let msg = post.events[0].message;                                    
                   let type = msg.type;
                   let msgid = msg.id;                                
-                  let receiver_id = (mode=="angle_id")?writers[0].master_id:writers[0].angle_id;
-
-                  if(type == 'image'){
-                    //set adrr
-                    adrr+=String(msgid);
-                    adrr+=".jpg";
-                    console.log(adrr);
-                    // Configure the request
-                    let getimage=new Promise((resolve,reject)=>{
-                    let options = {
-                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                        method: 'GET',
-                        headers: {                
-                        'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                        },
-                        encoding: null
-                    }
-        
-                    // Start the request
-
-                    request(options, function (error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                        nwimg = body;
-                        console.log(body);
-                        resolve(body);                  
-                        }else{
-                        //console.log();
-                        reject("!!!!!error when recpt image!!!!!");                
+                  let receiver_id;
+                  let bubble ={
+                    "type": "bubble",
+                    "header": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [{
+                        "type": "text",
+                        "text": "HunDow傳訊~~~~"
+                      }]
+                    },
+                    "hero": {
+                      "type": "image",
+                      "url": writers[0].head_url.replace(/\s+/g, ""),
+                    },
+                    "body": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "來自 "+writers[0].angle_nickname.replace(/\s+/g, "")+" :"
                         }
-                    });              
-                    });
-                    
-                    getimage
-                    .then((body)=>{imgpusher(msg,receiver_id,body);})
-                    .catch((err)=>{
-                    console.log("(linebotpromise)"+err);
-                    }
-                    );
+                      ]
+                    },
+                };
 
-                  }else{
-                      pushmessage([msg],receiver_id);
-                  }                    
+                let head_msg ={  
+                    "type": "flex",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "contents":bubble 
+                };
+                  
+                  if(mode =='master_id'){
+                    receiver_id = writers[0].master_id;
+                    if(type == 'image'){
+                      //set adrr
+                      adrr+=String(msgid);
+                      adrr+=".jpg";
+                      console.log(adrr);
+                      // Configure the request
+                      let getimage=new Promise((resolve,reject)=>{
+                      let options = {
+                          url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                          method: 'GET',
+                          headers: {                
+                          'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)                  
+                          },
+                          encoding: null
+                      }
+          
+                      // Start the request
+
+                      request(options, function (error, response, body) {
+                          if (!error && response.statusCode == 200) {
+                          nwimg = body;
+                          console.log(body);
+                          resolve(body);                  
+                          }else{
+                          //console.log();
+                          reject("!!!!!error when recpt image!!!!!");                
+                          }
+                      });              
+                      });
+                      
+                      getimage
+                      .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
+                      .catch((err)=>{
+                      console.log("(linebotpromise)"+err);
+                      }
+                      );
+
+                    }else{
+                        pushmessage([head_msg,msg],receiver_id);                          
+                    } 
+                  }
+                  else{
+                    psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+writers[0].angle_id+"\';").then(
+                      (res)=>{
+                        receiver_id = res[0].angle_id;
+                        if(type == 'image'){
+                          //set adrr
+                          adrr+=String(msgid);
+                          adrr+=".jpg";
+                          console.log(adrr);
+                          // Configure the request
+                          let getimage=new Promise((resolve,reject)=>{
+                          let options = {
+                              url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                              method: 'GET',
+                              headers: {                
+                              'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)                  
+                              },
+                              encoding: null
+                          }
+              
+                          // Start the request
+    
+                          request(options, function (error, response, body) {
+                              if (!error && response.statusCode == 200) {
+                              nwimg = body;
+                              console.log(body);
+                              resolve(body);                  
+                              }else{
+                              //console.log();
+                              reject("!!!!!error when recpt image!!!!!");                
+                              }
+                          });              
+                          });
+                          
+                          getimage
+                          .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body);})
+                          .catch((err)=>{
+                          console.log("(linebotpromise)"+err);
+                          }
+                          );
+    
+                        }else{
+                            pushmessage([head_msg,msg],receiver_id);
+                        } 
+                      }
+                    )
+                  }
+                  
+                                     
 
                 }else{ //bug detecter
                   let text ={
@@ -373,7 +452,8 @@ function psql(command){
                   }
                   text3.text ="@promblem=多重帳號錯誤&from_id="+line_id+"&to_id="+receiver_id+"&code=postman.js:247";
                   replymessage([text,text2,text3]);
-                  pushToSuv([text3]);                  
+                  
+                  pushToSuv([text3]);                    
                 }
               }
             );
@@ -386,7 +466,7 @@ function psql(command){
             method: 'POST',
             headers: {
               'Content-Type':  'application/json', 
-              'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+              'Authorization':'Bearer ' + ((mode=='angle_id')?AngleToken:MasterToken)
             },
             json: {
                 'replyToken': replyToken,
