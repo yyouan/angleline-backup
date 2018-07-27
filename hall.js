@@ -154,9 +154,9 @@ function pushToSuv(recpt){
       }
     );
   }
-function imgpusherS(recpt,img,replyToken){
+function imgpusherS(recpt,img,msgid){
 
-    let adrr ="/"+replyToken+".jpg";
+    let adrr ="/"+msgid+".jpg";
     recpt.originalContentUrl=(domain+adrr);
     recpt.json.messages[0].previewImageUrl=(domain+adrr);
 
@@ -199,8 +199,8 @@ function imgpusherS(recpt,img,replyToken){
     return recpt;
 
 }  
-function imgpusher(recpt,id,img,replyToken){
-    let adrr ="/"+replyToken+".jpg";
+function imgpusher(recpt,id,img,msgid){
+    let adrr ="/"+msgid+".jpg";
     var options = {
       url: "https://api.line.me/v2/bot/message/push",
       method: 'POST',
@@ -415,7 +415,7 @@ function chatParser(req ,res){
                             "text" : "黑特審核："
                         }
                         pushToSuv([text]);
-                        var messagestored =imgpusherS(msg,body,replyToken);
+                        var messagestored =imgpusherS(msg,body,msgid);
                         reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
                         pushToSuv([reply_button]);                                               
                     })

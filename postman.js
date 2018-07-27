@@ -150,7 +150,7 @@ function pushmessage(recpt,id){
 
 }
 
-function imgpusher(recpt,id,img,replyToken){
+function imgpusher(recpt,id,img,msgid){
   var options = {
     url: "https://api.line.me/v2/bot/message/push",
     method: 'POST',
@@ -163,7 +163,7 @@ function imgpusher(recpt,id,img,replyToken){
         'messages': [recpt]
     }
   };
-  var adrr ="/"+replyToken+".jpg";
+  var adrr ="/"+msgid+".jpg";
   options.json.messages[0].originalContentUrl=(domain+adrr);
   options.json.messages[0].previewImageUrl=(domain+adrr);
        
@@ -288,7 +288,7 @@ function chatParser(req ,res){
                         });
                         
                         getimage
-                        .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
+                        .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
                         .catch((err)=>{
                         console.log("(linebotpromise)"+err);
                         }
@@ -333,7 +333,7 @@ function chatParser(req ,res){
                             });
                             
                             getimage
-                            .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
+                            .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
                             .catch((err)=>{
                             console.log("(linebotpromise)"+err);
                             }

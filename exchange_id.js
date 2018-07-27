@@ -109,7 +109,7 @@ function psql(command){
   
   }
 
-  function imgpusher(recpt,id,img,replyToken){
+  function imgpusher(recpt,id,img,msgid){
 
     var domain="https://angleline"+((mode=="angle_id")?"":"-master")+".herokuapp.com";
     var options = {
@@ -124,7 +124,7 @@ function psql(command){
           'messages': [recpt]
       }
     };
-    var adrr ="/"+replyToken+".jpg";
+    var adrr ="/"+msgid+".jpg";
     options.json.messages[0].originalContentUrl=(domain+adrr);
     options.json.messages[0].previewImageUrl=(domain+adrr);
          
@@ -401,7 +401,7 @@ function psql(command){
                       });
                       
                       getimage
-                      .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
+                      .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
                       .catch((err)=>{
                       console.log("(linebotpromise)"+err);
                       }
@@ -446,7 +446,7 @@ function psql(command){
                           });
                           
                           getimage
-                          .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,replyToken);})
+                          .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
                           .catch((err)=>{
                           console.log("(linebotpromise)"+err);
                           }

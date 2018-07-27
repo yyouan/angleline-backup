@@ -178,9 +178,9 @@ function pushtoHall(recpt,id){
       });
   
 }
-function imgpusherS(recpt,img,replyToken){
+function imgpusherS(recpt,img,msgid){
 
-    let adrr ="/"+replyToken+".jpg";
+    let adrr ="/"+msgid+".jpg";
 
     psql("SELECT * FROM SUPERVISOR;").then(
   
@@ -219,9 +219,9 @@ function imgpusherS(recpt,img,replyToken){
         }
     );
 }
-function imgpusher(recpt,id,img,replyToken){
+function imgpusher(recpt,id,img,msgid){
 
-    let adrr ="/"+replyToken+".jpg";
+    let adrr ="/"+msgid+".jpg";
     var options = {
       url: "https://api.line.me/v2/bot/message/push",
       method: 'POST',
@@ -404,7 +404,7 @@ function chatParser(req ,res){
                   });
                   
                   getimage
-                  .then((body)=>{imgpusher(msg,receiver_id,body,replyToken);})
+                  .then((body)=>{imgpusher(msg,receiver_id,body,msgid);})
                   .catch((err)=>{
                   console.log("(linebotpromise)"+err);
                   }
@@ -498,7 +498,7 @@ function chatParser(req ,res){
                             "text" : "來自小隊員："
                         }
                         pushToSuv([text]);
-                        imgpusherS(msg,body,replyToken);
+                        imgpusherS(msg,body,msgid);
                         pushToSuv([reply_button]);                                         
                     })
                     .catch((err)=>{
