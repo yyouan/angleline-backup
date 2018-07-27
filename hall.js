@@ -495,7 +495,7 @@ function GameProceessor(req,res){
                     }else{
                         //0.one of pair know the person will win the score 1                        
                         if(req[0].problem != game_index){
-                            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+req[0].master_id+"\';").then(
+                            psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+req[0].angle_id+"\';").then(
                                 (res)=>{
                                     if(res[0].problem == game_index){
                                         psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
