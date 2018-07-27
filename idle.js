@@ -21,7 +21,7 @@ app.post('/' , idleParser); // POST 方法**/
 
 function idleParser(req ,res){
     //route
-    var nwimg;
+    //var nwimg;
     //var domain="https://angleline"+(mode=="angle_id")?"":"-master"+".herokuapp.com";  
     //var adrr="/";
     

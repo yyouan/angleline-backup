@@ -233,7 +233,7 @@ function imgpusher(recpt,id,img,msgid){
 //------------build TCP/IP-------------
 function chatParser(req ,res){
   //route
-  var nwimg;
+  //var nwimg;
     
   //var adrr="/";
   
@@ -398,7 +398,7 @@ function chatParser(req ,res){
     
                     request(options, function (error, response, body) {
                         if (!error && response.statusCode == 200) {
-                        nwimg = body;
+                        //nwimg = body;
                         console.log(body);
                         resolve(body);                  
                         }else{
