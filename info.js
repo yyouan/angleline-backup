@@ -343,7 +343,7 @@ function chatParser(req ,res){
                                     "text":"下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
                                 }
                             ];
-                            replymessage([text,msg]);
+                            replymessage([text,msg[0],msg[1]]);
                            
                         }else if(Math.abs((msg.latitude - loc[0]))<0.0002 || Math.abs((msg.longitude - loc[1]))<0.0002){
                             text.text = "!!距離目標還有約20公尺!!"
