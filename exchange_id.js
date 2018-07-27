@@ -183,9 +183,9 @@ function psql(command){
         
             // Start the request
         
-            request(options, function (error, response, body) {
+            request(options, function (error, response, rawbody) {
                 if (!error && response.statusCode == 200) {
-                    body = JSON.parse(body);
+                    var body = JSON.parse(rawbody);
                     console.log(body);
                     let bubble_to_master ={
                         "type": "bubble",
