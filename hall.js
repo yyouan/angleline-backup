@@ -307,7 +307,8 @@ function chatParser(req ,res){
                     gate=true;
                 }
 
-                if(gate){
+                if(gate==true){
+                    console.log(channel_array[post.events[0].source.userId]);
                     if(channel_array[post.events[0].source.userId]=="匿名發文"){
                         hate();
                     }else if(channel_array[post.events[0].source.userId]=="真心話"){
