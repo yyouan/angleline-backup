@@ -394,7 +394,7 @@ function psql(command){
                           console.log(body);
                           resolve(body);                  
                           }else{
-                          //console.log();
+                          console.log(error);
                           reject("!!!!!error when recpt image!!!!!");                
                           }
                       });              
@@ -439,7 +439,7 @@ function psql(command){
                               console.log(body);
                               resolve(body);                  
                               }else{
-                              //console.log();
+                              console.log(error);
                               reject("!!!!!error when recpt image!!!!!");                
                               }
                           });              
