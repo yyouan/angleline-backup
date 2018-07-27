@@ -193,7 +193,7 @@ function psql(command){
         choose_Parser(req,res);
     }else{
         //route
-        var nwimg;
+        //var nwimg;
         const domain="https://angleline.herokuapp.com";  
         //var adrr="/";
         
@@ -268,7 +268,7 @@ function psql(command){
 //2.choose
 function choose_Parser(req ,res){
         //route
-        var nwimg;
+        //var nwimg;
         const domain="https://angleline-hall.herokuapp.com";  
         //var adrr="/";
         

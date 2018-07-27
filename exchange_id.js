@@ -390,7 +390,7 @@ function psql(command){
 
                       request(options, function (error, response, body) {
                           if (!error && response.statusCode == 200) {
-                          nwimg = body;
+                          //nwimg = body;
                           console.log(body);
                           resolve(body);                  
                           }else{
@@ -435,7 +435,7 @@ function psql(command){
     
                           request(options, function (error, response, body) {
                               if (!error && response.statusCode == 200) {
-                              nwimg = body;
+                              //nwimg = body;
                               console.log(body);
                               resolve(body);                  
                               }else{
