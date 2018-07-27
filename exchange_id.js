@@ -177,7 +177,7 @@ function psql(command){
                 url: 'https://api.line.me/v2/bot/profile/'+ line_id,
                 method: 'GET',
                 headers: {                
-                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
+                'Authorization':'Bearer ' + ((mode=='angle_id')?AngleToken:MasterToken)                  
                 }               
             }
         
