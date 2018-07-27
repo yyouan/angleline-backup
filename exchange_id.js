@@ -200,10 +200,6 @@ function psql(command){
                             }
                           ]
                         },
-                        "hero": {
-                          "type": "image",
-                          "url": "https://images.schoolspecialty.com/images/086667_4E374008705B4079BE37EFB5C6583206.jpg",
-                        },
                         "body": {
                           "type": "box",
                           "layout": "vertical",
@@ -241,10 +237,6 @@ function psql(command){
                               "text": "你的小主人真實身分"
                             }
                           ]
-                        },
-                        "hero": {
-                            "type": "image",
-                            "url": body.pictureUrl,
                         },
                         "body": {
                           "type": "box",
