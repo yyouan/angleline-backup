@@ -9,7 +9,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
     'bE7q3TnTG/MO9rE+0sME3betLgGFgqUpYCOv0OrmW/Uefjldl9a5am6xNyC0VRcnL87qKx1GMoPzGLKQDX/PRiERLTdZ2uIf5txK+1+JhIFsSIGwI00lGGaGavvCzkyKfy5A6QrqWZdfeu0J08SJDAdB04t89/1O/w1cDnyilFU='
   ]
 const modetype =["angle_id","master_id"];
-const mode = modetype[0];
+const mode = modetype[1];
 var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?MasterToken:AngleToken);
 
 const { Pool } = require('pg');
