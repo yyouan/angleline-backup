@@ -108,6 +108,36 @@ function psql(command){
       });
   
   }
+  
+  function imgpusher(recpt,id,img){
+    var options = {
+      url: "https://api.line.me/v2/bot/message/push",
+      method: 'POST',
+      headers: {
+      'Content-Type':  'application/json', 
+      'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken) 
+      },
+      json: {
+          'to': id.replace(/\s+/g, ""),
+          'messages': [recpt]
+      }
+    };
+    
+    options.json.messages[0].originalContentUrl=(domain+adrr);
+    options.json.messages[0].previewImageUrl=(domain+adrr);
+         
+    app.get(adrr,(req,res)=>{
+        //res.sendFile(__dirname+"/img.jpg");    
+        res.writeHead(200, {'Content-Type': 'image/jpeg' });
+        res.end(img, 'binary');
+    });        
+    
+    request(options, function (error, response, body) {
+        if (error) throw error;
+        console.log("(line)");
+        console.log(body);
+    });
+  }
 
   //------------main code------------------
   psql("SELECT * FROM ACCOUNT;").then(
