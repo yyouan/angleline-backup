@@ -458,7 +458,8 @@ function chatParser(req ,res){
     
                 if(post.events[0].source.type != "group"){
                     replymessage([text]);
-                }            
+                }
+
             if(post.events[0].source.type != "group"){
 
                 if(type == 'image'){
@@ -481,7 +482,7 @@ function chatParser(req ,res){
     
                     request(options, function (error, response, body) {
                         if (!error && response.statusCode == 200) {
-                        nwimg = body;
+                        //nwimg = body;
                         console.log(body);
                         resolve(body);                  
                         }else{
