@@ -269,7 +269,7 @@ function psql(command){
                         "text":"已經傳送!"
                     }
                     
-                    if(mode == 'angle_id'){
+                    if(mode == 'master_id'){
 
                         pushmessage([msg_to_master],data.master_id);
                         replymessage([text]);
