@@ -187,6 +187,7 @@ function psql(command){
                 if (!error && response.statusCode == 200) {
                     var body = JSON.parse(rawbody);
                     console.log(body);
+                    console.log(body.pictureUrl);
                     let bubble_to_master ={
                         "type": "bubble",
                         "header": {
@@ -201,7 +202,7 @@ function psql(command){
                         },
                         "hero": {
                           "type": "image",
-                          "url": body.pictureUrl,
+                          "url": "https://images.schoolspecialty.com/images/086667_4E374008705B4079BE37EFB5C6583206.jpg",
                         },
                         "body": {
                           "type": "box",
@@ -242,8 +243,8 @@ function psql(command){
                           ]
                         },
                         "hero": {
-                          "type": "image",
-                          "url": body.pictureUrl,
+                            "type": "image",
+                            "url": body.pictureUrl,
                         },
                         "body": {
                           "type": "box",
