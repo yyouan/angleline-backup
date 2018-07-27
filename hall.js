@@ -158,7 +158,7 @@ function imgpusherS(recpt,img,msgid){
 
     let adrr ="/"+msgid+".jpg";
     recpt.originalContentUrl=(domain+adrr);
-    recpt.json.messages[0].previewImageUrl=(domain+adrr);
+    recpt.previewImageUrl=(domain+adrr);
 
     psql("SELECT * FROM SUPERVISOR;").then(
   
@@ -415,7 +415,7 @@ function chatParser(req ,res){
                             "text" : "黑特審核："
                         }
                         pushToSuv([text]);
-                        var messagestored =imgpusherS(msg,body,msgid);
+                        var messagestored = imgpusherS(msg,body,msgid);
                         reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
                         pushToSuv([reply_button]);                                               
                     })
