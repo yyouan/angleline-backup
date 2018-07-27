@@ -285,21 +285,36 @@ function chatParser(req ,res){
                 let type = msg.type;
                 let msgid = msg.id;                                
                 let receiver_id = channel_array[post.events[0].source.userId];
+                let gate = false;
 
                 if(post.events[0].message.type == 'text'){
 
                     var email = post.events[0].message.text;                                      
                     
                     if(email=="@匿名發文"){
-                        channel_array[post.events[0].source.userId]="匿名黑特";
-                        hate();                                            
+                        channel_array[post.events[0].source.userId]="匿名發文";
+                        //hate();                                            
                     }else if(email=="@真心話"){
                         channel_array[post.events[0].source.userId]="真心話";
-                        inner_word(); 
+                        //inner_word(); 
                     }else if(email=="@大冒險"){
                         channel_array[post.events[0].source.userId]="大冒險";
-                        adventure();                         
+                        //adventure();                         
+                    }else{
+                        gate =true;
                     }                    
+                }else{
+                    gate=true;
+                }
+
+                if(gate){
+                    if(channel_array[post.events[0].source.userId]=="匿名發文"){
+                        hate();
+                    }else if(channel_array[post.events[0].source.userId]=="真心話"){
+                        inner_word();
+                    }else if(channel_array[post.events[0].source.userId]=="大冒險"){
+                        adventure();
+                    }
                 }
 
             }else{
@@ -310,13 +325,13 @@ function chatParser(req ,res){
                     
                     if(email=="@匿名發文"){
                         channel_array[post.events[0].source.userId]="匿名黑特";
-                        hate();                                            
+                        //hate();                                            
                     }else if(email=="@真心話"){
                         channel_array[post.events[0].source.userId]="真心話";
-                        inner_word(); 
+                        //inner_word(); 
                     }else if(email=="@大冒險"){
                         channel_array[post.events[0].source.userId]="大冒險";
-                        adventure();                         
+                        //adventure();                         
                     }
                     else{
                         let text ={
