@@ -120,6 +120,56 @@ function pushmessage(recpt,id){
       });
   
 }
+function pushtoMaster(recpt,id){
+    recpt.forEach(element => {
+        console.log("pushmessage:"+element);
+    });
+  
+    var options = {
+        url: "https://api.line.me/v2/bot/message/push",
+        method: 'POST',
+        headers: {
+          'Content-Type':  'application/json', 
+          'Authorization':'Bearer ' + MasterToken
+        },
+        json: {
+            "to": id.replace(/\s+/g, ""),
+            'messages': recpt
+        }
+      };
+        
+      request(options, function (error, response, body) {
+          if (error) throw error;
+          console.log("(line)");
+          console.log(body);
+      });
+  
+}
+function pushtoAngle(recpt,id){
+    recpt.forEach(element => {
+        console.log("pushmessage:"+element);
+    });
+  
+    var options = {
+        url: "https://api.line.me/v2/bot/message/push",
+        method: 'POST',
+        headers: {
+          'Content-Type':  'application/json', 
+          'Authorization':'Bearer ' + AngleToken
+        },
+        json: {
+            "to": id.replace(/\s+/g, ""),
+            'messages': recpt
+        }
+      };
+        
+      request(options, function (error, response, body) {
+          if (error) throw error;
+          console.log("(line)");
+          console.log(body);
+      });
+  
+}
 function pushToSuv(recpt){
     psql("SELECT * FROM SUPERVISOR;").then(
   
@@ -516,8 +566,8 @@ function GameProceessor(req,res){
                                                 "text":"下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
                                             }
                                         ]
-                                        pushmessage(msg,res[0].angle_id);
-                                        pushmessage(msg,res[0].master_id);
+                                        pushtoMaster(msg,res[0].angle_id);
+                                        pushtoAngle(msg,res[0].master_id);
                                     }else{
                                         psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                         psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
@@ -531,8 +581,8 @@ function GameProceessor(req,res){
                                                 "text":"提醒題目："+game_item.gameproblem[res[0].problem]
                                             }
                                         ]
-                                        pushmessage(msg,res[0].angle_id);
-                                        pushmessage(msg,res[0].master_id);
+                                        pushtoMaster(msg,res[0].angle_id);
+                                        pushtoAngle(msg,res[0].master_id);
                                     }
                                 }
                             );
@@ -549,8 +599,8 @@ function GameProceessor(req,res){
                                     "text":"下一關的題目："+game_item.gameproblem[(req[0].problem+1)%game_item.gameproblem.length]
                                 }
                             ]
-                            pushmessage(msg,req[0].angle_id);
-                            pushmessage(msg,req[0].master_id);            
+                            pushtoMaster(msg,req[0].angle_id);
+                            pushtoAngle(msg,req[0].master_id);            
                         }                        
                         
                     }
@@ -567,8 +617,8 @@ function GameProceessor(req,res){
                             "text":"提醒題目："+game_item.gameproblem[req[0].problem]
                         }
                     ]
-                    pushmessage(msg,req[0].angle_id);
-                    pushmessage(msg,req[0].master_id);
+                    pushtoMaster(msg,req[0].angle_id);
+                    pushtoAngle(msg,req[0].master_id);
                 }
         });
     res.sendFile(__dirname+'/game.html');
