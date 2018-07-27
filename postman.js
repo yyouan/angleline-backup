@@ -268,7 +268,7 @@ function chatParser(req ,res){
                             url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
                             method: 'GET',
                             headers: {                
-                            'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)                  
+                            'Authorization':'Bearer ' + ((mode=='angle_id')?AngleToken:MasterToken)                   
                             },
                             encoding: null
                         }
@@ -313,7 +313,7 @@ function chatParser(req ,res){
                                 url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
                                 method: 'GET',
                                 headers: {                
-                                'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)                  
+                                'Authorization':'Bearer ' + ((mode=='angle_id')?AngleToken:MasterToken)                   
                                 },
                                 encoding: null
                             }
