@@ -495,7 +495,7 @@ function psql(command){
               'Authorization':'Bearer ' + ((mode=='angle_id')?AngleToken:MasterToken)
             },
             json: {
-                'replyToken': replyToken,
+                'replyToken': post.events[0].replyToken,
                 'messages': recpt
             }
           };
