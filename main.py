@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import webbrowser
+import time
 
 #interface variable
 name=""  
@@ -29,7 +30,7 @@ def write_package_json(filename):
     with open('package.json', 'r') as f:
         data = json.load(f)
 
-    data["main"] = "hall.js"
+    data["main"] = filename
 
     # Writing JSON data
     with open('package.json', 'w') as f:
@@ -40,12 +41,16 @@ if(__name__ == "__main__"):
 
 if name == "login":
     write_package_json("idle.js")
-    print(os.popen("git add .;git commit -m \"login\";git push https://github.com/yyouan/angleline.git master"))
-    print(os.popen("git add .;git commit -m \"login\";git push https://github.com/yyouan/angleline-master.git master"))
+    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline.git master"))
+    time.sleep(5)
+    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline-master.git master"))
+    time.sleep(5)
     write_package_json("login.js")
-    print(os.popen("git add .;git commit -m \"login\";git push https://github.com/yyouan/angleline-hall.git master"))
+    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
     write_package_json("info.js")
-    print(os.popen("git add .;git commit -m \"login\";git push https://github.com/yyouan/angleline-info.git master"))
+    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline-info.git master"))
+    time.sleep(5)
 '''elif name == "choose": 
 elif name == "past_intro":elif name == "message":elif name == "finish":'''
 
