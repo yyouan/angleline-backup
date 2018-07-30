@@ -99,12 +99,12 @@ elif name == "message":
     time.sleep(5)
 
 elif name == "finish":
-    write_package_json("exchage_id_angle.js")
+    write_package_json("exchamge_id_angle.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline.git master"))
     time.sleep(5)
-    write_package_json("exchage_id_master.js")
+    write_package_json("exchange_id_master.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
