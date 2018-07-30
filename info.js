@@ -636,8 +636,7 @@ function chatParser(req ,res){
 
         }else if("complete" in data){
             console.log("complete");
-            let msg_stored = JSON.parse(data.msg);
-            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+msg_stored.complete+"\';").then(
+            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+data.complete+"\';").then(
                 res =>{
                     psql("UPDATE ACCOUNT SET ticket="+ (res[0].ticket-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                 }
