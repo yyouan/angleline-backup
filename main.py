@@ -41,15 +41,23 @@ if(__name__ == "__main__"):
 
 if name == "login":
     write_package_json("idle.js")
-    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline.git master"))
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline.git master"))
     time.sleep(5)
-    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline-master.git master"))
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
     time.sleep(5)
     write_package_json("login.js")
-    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline-hall.git master"))
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
     time.sleep(5)
     write_package_json("info.js")
-    print(os.popen("git add .\ngit commit -m \"login\"\ngit push https://github.com/yyouan/angleline-info.git master"))
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
 '''elif name == "choose": 
 elif name == "past_intro":elif name == "message":elif name == "finish":'''
