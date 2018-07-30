@@ -505,7 +505,7 @@ function chatParser(req ,res){
                         "type":"text",
                         "text":""
                     };
-                    text.text ="真心話只能傳文字訊息?!SORRY";
+                    text.text ="大冒險只能傳文字訊息?!SORRY";
                     replymessage([text]);
                 }else{
                     psql("SELECT * FROM ACCOUNT WHERE angle_id='\'"+line_id+"'\';").then(
