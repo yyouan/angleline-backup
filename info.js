@@ -291,7 +291,22 @@ function chatParser(req ,res){
                 ]
             }
         };                
-                                 
+        let finish_name_button =
+        {
+            "type": "template",
+            "altText": "管理員有消息，請借台手機開啟",
+            "template": {
+                "type": "buttons",                            
+                "text": "請按結束停止輸入姓名",                            
+                "actions": [
+                    {
+                    "type": "postback",
+                    "label": "結束",
+                    "data": "finish=1"
+                    }
+                ]
+            }
+        };                         
       
       /**var userMessage = post.events[0].message.text;
       console.log(replyToken);
@@ -411,13 +426,67 @@ function chatParser(req ,res){
                   }
                   );
 
-                }else{
-                    pushmessage([msg],receiver_id);
-                    let text ={
-                        "type":"text",
-                        "text":"繼續回覆："
+                }else{                    
+                    if(receiver_id == "@加卷"){
+                        psql("SELECT * FROM ACCOUNT WHERE name=\'"+msg.text+"\';").then(
+                            res =>{
+                                if(res.length == 0){
+                                    let text ={
+                                        "type":"text",
+                                        "text":"沒有這個人，請重新輸入"
+                                    }
+                                    replymessage([finish_name_button,text]);
+                                }else if(res.length == 1){
+                                    psql("UPDATE ACCOUNT SET ticket="+ (res[0].ticket+3) +" WHERE name=\'"+msg.text+"\';");
+                                    let text ={
+                                        "type":"text",
+                                        "text":"完成加卷"
+                                    }                                   
+                                    replymessage([finish_name_button,text]);
+                                }else{
+                                    let text ={
+                                        "type":"text",
+                                        "text":"有兩個人以上同名同姓，請改輸入email"
+                                    }
+                                    channel_array[post.events[0].source.userId] ="@email";
+                                    replymessage([finish_name_button,text]);
+                                }
+                            }
+                        )
+                    }else if(receiver_id == "@email"){
+                        psql("SELECT * FROM ACCOUNT WHERE name=\'"+msg.text+"\';").then(
+                            res =>{
+                                if(res.length == 0){
+                                    let text ={
+                                        "type":"text",
+                                        "text":"沒有郵件，請重新輸入"
+                                    }
+                                    replymessage([finish_name_button,text]);
+                                }else if(res.length ==1){
+                                    psql("UPDATE ACCOUNT SET ticket="+ (res[0].ticket+3) +" WHERE email=\'"+msg.text+"\';");
+                                    let text ={
+                                        "type":"text",
+                                        "text":"完成加卷"
+                                    }                                   
+                                    replymessage([finish_name_button,text]);
+                                }else{
+                                    let text ={
+                                        "type":"text",
+                                        "text":"系統同email錯誤"
+                                    }
+                                    replymessage([finish_name_button,text]);
+                                }
+                            }
+                        )
                     }
-                    replymessage([finish_button,text]);
+                    else{
+                        pushmessage([msg],receiver_id);
+                        let text ={
+                            "type":"text",
+                            "text":"繼續回覆："
+                        }
+                        replymessage([finish_button,text]);
+                    }                    
                 } 
 
         }else{
@@ -565,6 +634,20 @@ function chatParser(req ,res){
                 }
             )
 
+        }else if("complete" in data){
+            console.log("complete");
+            let msg_stored = JSON.parse(data.msg);
+            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+msg_stored.complete+"\';").then(
+                res =>{
+                    psql("UPDATE ACCOUNT SET ticket="+ (res[0].ticket-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                }
+            )          
+            channel_array[post.events[0].source.userId] ="@加卷" ;
+            let text ={
+                "type":"text",
+                "text":"輸入完成要求者姓名："
+            }            
+            replymessage([finish_button,text]);
         }
          
     }

@@ -485,6 +485,22 @@ function chatParser(req ,res){
                   }
             };
             function inner_word(){
+                let reply_button =
+                {
+                    "type": "template",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "template": {
+                        "type": "buttons",                            
+                        "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
+                        "actions": [                            
+                            {
+                                "type": "postback",
+                                "label": "拒絕且回覆",
+                                "data": "reply_id="+line_id     
+                            }
+                        ]
+                    }
+                };
                 let text={
                     "type":"text",
                     "text":"已收到真心話"
@@ -497,7 +513,7 @@ function chatParser(req ,res){
                     "type":"text",
                     "text":"真心話："
                 };
-                pushToSuv([text2,msg]);
+                pushToSuv([text2,msg,reply_button]);
             };
             function adventure(){
                 if(type != 'text'){
@@ -511,15 +527,31 @@ function chatParser(req ,res){
                     psql("SELECT * FROM ACCOUNT WHERE angle_id='\'"+line_id+"'\';").then(
                         (members)=>{
                             var ticket = members[0].ticket;
-                            if(ticket<=-1){
+                            
+                            if(ticket<=-2){
                                 let text={
                                     "type":"text",
-                                    "text":"命令卷不足"
+                                    "text":"命令卷不足(<=-2)"
                                 } ;
                                 replymessage([text]);
                             }
                             else{
-                                members[0].ticket=ticket-1;
+                                let reply_button =
+                                {
+                                    "type": "template",
+                                    "altText": "大講堂有消息，請借台手機開啟",
+                                    "template": {
+                                        "type": "buttons",                            
+                                        "text": "如果這個大冒險被執行，請按底下的按鈕",                            
+                                        "actions": [
+                                            {
+                                                "type": "postback",
+                                                "label": "大冒險已完成",
+                                                "data": "complete="+line_id
+                                            }
+                                        ]
+                                    }
+                                };
                                 let text={
                                     "type":"text",
                                     "text":"已收到大冒險"
@@ -529,7 +561,7 @@ function chatParser(req ,res){
                                     "type":"text",
                                     "text":"大冒險："
                                 };
-                                pushToSuv([text2,msg]);
+                                pushToSuv([text2,msg,reply_button]);
                             }
                             
                         }
