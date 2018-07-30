@@ -524,7 +524,7 @@ function chatParser(req ,res){
                     text.text ="大冒險只能傳文字訊息?!SORRY";
                     replymessage([text]);
                 }else{
-                    psql("SELECT * FROM ACCOUNT WHERE angle_id='\'"+line_id+"'\';").then(
+                    psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                         (members)=>{
                             var ticket = members[0].ticket;
                             
