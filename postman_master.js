@@ -9,7 +9,7 @@ const [AngleToken,MasterToken,HallToken,InfoToken] = [
   ]
 
 const modetype =["angle_id","master_id"];
-const mode = modetype[0];
+const mode = modetype[1];
 var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleToken:MasterToken); //for reply
 var domain="https://angleline"+((mode=="angle_id")?"":"-master")+".herokuapp.com";
 const { Pool } = require('pg');

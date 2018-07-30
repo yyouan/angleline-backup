@@ -42,11 +42,12 @@ if name =="console":
     print("打開的分頁依序為：我的小天使、我的小主人、大祭司講堂、詢問站的伺服器後台")
 
 elif name == "login":
-    write_package_json("idle.js")
+    write_package_json("idle_angle.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline.git master"))
     time.sleep(5)
+    write_package_json("idle_master.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
@@ -62,13 +63,51 @@ elif name == "login":
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
 elif name == "choose":    
-    write_package_json("login.js")
+    write_package_json("choose_master.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
     time.sleep(5)
 
-elif name == "past_intro":elif name == "message":elif name == "finish":'''
+elif name == "past":
+    write_package_json("past_intro_angle.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline.git master"))
+    time.sleep(5)
+    write_package_json("past_intro_master.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
+    time.sleep(5)
+    write_package_json("hall.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
 
+elif name == "message":
+    write_package_json("postman_angle.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline.git master"))
+    time.sleep(5)
+    write_package_json("postman_master.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
+    time.sleep(5)
+
+elif name == "finish":
+    write_package_json("exchage_id_angle.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline.git master"))
+    time.sleep(5)
+    write_package_json("exchage_id_master.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
+    time.sleep(5)
 
 
