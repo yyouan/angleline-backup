@@ -1,0 +1,4 @@
+1.https://www.enterprisedb.com/downloads/postgres-postgresql-downloads#windows (Heroku psql local)
+2.https://devcenter.heroku.com/articles/heroku-cli#download-and-install (Heroku cli)
+3.https://www.python.org/ftp/python/3.6.6/python-3.6.6-amd64-webinstall.exe (Python)
+4.https://git-scm.com/download/win (git)
