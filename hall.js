@@ -489,6 +489,9 @@ function chatParser(req ,res){
                     "type":"text",
                     "text":"已收到真心話"
                 } ;
+                if(type != 'text'){
+                    text.text ="真心話只能傳文字訊息?!SORRY"
+                }
                 replymessage([text]);
                 let text2={
                     "type":"text",
@@ -497,32 +500,42 @@ function chatParser(req ,res){
                 pushToSuv([text2,msg]);
             };
             function adventure(){
-                psql("SELECT * FROM ACCOUNT WHERE angle_id='\'"+line_id+"'\';").then(
-                    (members)=>{
-                        var ticket = members[0].ticket;
-                        if(ticket<=-1){
-                            let text={
-                                "type":"text",
-                                "text":"命令卷不足"
-                            } ;
-                            replymessage([text]);
+                if(type != 'text'){
+                    let text={
+                        "type":"text",
+                        "text":""
+                    };
+                    text.text ="真心話只能傳文字訊息?!SORRY";
+                    replymessage([text]);
+                }else{
+                    psql("SELECT * FROM ACCOUNT WHERE angle_id='\'"+line_id+"'\';").then(
+                        (members)=>{
+                            var ticket = members[0].ticket;
+                            if(ticket<=-1){
+                                let text={
+                                    "type":"text",
+                                    "text":"命令卷不足"
+                                } ;
+                                replymessage([text]);
+                            }
+                            else{
+                                members[0].ticket=ticket-1;
+                                let text={
+                                    "type":"text",
+                                    "text":"已收到大冒險"
+                                } ;
+                                replymessage([text]);
+                                let text2={
+                                    "type":"text",
+                                    "text":"大冒險："
+                                };
+                                pushToSuv([text2,msg]);
+                            }
+                            
                         }
-                        else{
-                            members[0].ticket=ticket-1;
-                            let text={
-                                "type":"text",
-                                "text":"已收到大冒險"
-                            } ;
-                            replymessage([text]);
-                            let text2={
-                                "type":"text",
-                                "text":"大冒險："
-                            };
-                            pushToSuv([text2,msg]);
-                        }
-                        
-                    }
-                )
+                    )
+                }
+                
             };
             
 
