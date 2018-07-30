@@ -4,10 +4,10 @@ import sys
 import webbrowser
 import time
 
+##please "按照順序 cosole => login => choose => past => message => finish"
+
 #interface variable
 name=""  
-
-
 
 #user interface
 def main():
@@ -19,11 +19,7 @@ def main():
         sys.exit(1)       #
     global name
     name = sys.argv[2]
-    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
-    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-master/logs")
-    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
-    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
-    print("打開的分頁依序為：我的小天使、我的小主人、大祭司講堂、詢問站的伺服器後台")
+    
 
 def write_package_json(filename):
     # Reading data back
@@ -38,8 +34,14 @@ def write_package_json(filename):
 
 if(__name__ == "__main__"):
     main()
+if name =="console":
+    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
+    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-master/logs")
+    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
+    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
+    print("打開的分頁依序為：我的小天使、我的小主人、大祭司講堂、詢問站的伺服器後台")
 
-if name == "login":
+elif name == "login":
     write_package_json("idle.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
@@ -59,7 +61,13 @@ if name == "login":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
-'''elif name == "choose": 
+elif name == "choose":    
+    write_package_json("login.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
+
 elif name == "past_intro":elif name == "message":elif name == "finish":'''
 
 
