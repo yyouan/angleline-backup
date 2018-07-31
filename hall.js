@@ -653,7 +653,7 @@ function GameProceessor(req,res){
                                         pushtoAngle(msg,res[0].master_id);
                                     }else{
                                         psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                                        psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                                        psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                                         let msg = [
                                             {
                                                 "type":"text",
