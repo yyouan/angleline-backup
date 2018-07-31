@@ -40,6 +40,9 @@ if name =="console":
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
     print("打開的分頁依序為：我的小天使、我的小主人、大祭司講堂、詢問站的伺服器後台")
+    print("等一會，在angleline::DATABASE=>後輸入","SELECT * FROM ACCOUNT;")
+    print(os.system("heroku pg:psql --app angleline"))
+        
 
 elif name == "login":
     write_package_json("idle_angle.js")
