@@ -40,6 +40,7 @@ if name =="console":
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
     
+    print(os.system("git config --global user.name \"yyouan\""))    
     print(os.system("heroku pg:psql --app angleline"))
         
 
