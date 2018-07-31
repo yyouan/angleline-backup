@@ -41,7 +41,8 @@ if name =="console":
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
     
     print(os.system("git config --global user.name \"yyouan\""))
-    print(os.system("git pull https://github.com/yyouan/angleline.git master"))      
+    print(os.system("git pull https://github.com/yyouan/angleline-backup.git master"))
+    print("please fix conflict problem in package.json")      
     print(os.system("heroku pg:psql --app angleline"))
         
 
