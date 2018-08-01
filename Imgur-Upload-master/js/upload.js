@@ -37,7 +37,7 @@ var feedback = function(res) {
         document.getElementsByClassName('status')[0].style.position ='absolute';
         document.getElementsByClassName('status')[0].style.top ='20%'; 
         document.getElementsByClassName('status')[0].style.left ='25%';        
-        document.getElementById('subbut').style = "opacity: 0.0; width: 300%; padding: 300%; position: absolute; top: 0%; right:-100%" ;        
+        document.getElementById('subbut').style = "opacity: 0.0;heighy:600%; width: 300%; padding: 300%; position: absolute; top: 0%; right:-100%" ;        
     }
 };
 

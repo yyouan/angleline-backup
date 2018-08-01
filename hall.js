@@ -462,7 +462,7 @@ function chatParser(req ,res){
                     .then((body)=>{
                         let text ={
                             "type" : "text",
-                            "text" : "黑特審核："
+                            "text" : "$黑特審核："
                         }
                         pushToSuv([text]);
                         var messagestored = imgpusherS(msg,body,msgid);
@@ -477,7 +477,7 @@ function chatParser(req ,res){
                   }else{
                     let text ={
                         "type" : "text",
-                        "text" : "黑特審核："
+                        "text" : "$黑特審核："
                     }
                     reply_button.template.actions[0].data +=("&msg="+JSON.stringify(msg));
 
@@ -511,7 +511,7 @@ function chatParser(req ,res){
                 replymessage([text]);
                 let text2={
                     "type":"text",
-                    "text":"真心話："
+                    "text":"$真心話："
                 };
                 pushToSuv([text2,msg,reply_button]);
             };
@@ -559,7 +559,7 @@ function chatParser(req ,res){
                                 replymessage([text]);
                                 let text2={
                                     "type":"text",
-                                    "text":"大冒險："
+                                    "text":"$大冒險："
                                 };
                                 pushToSuv([text2,msg,reply_button]);
                             }

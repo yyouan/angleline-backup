@@ -479,7 +479,7 @@ function chatParser(req ,res){
                             }
                         )
                     }
-                    else{
+                    else{                        
                         pushmessage([msg],receiver_id);
                         let text ={
                             "type":"text",
@@ -532,58 +532,65 @@ function chatParser(req ,res){
 
             if(post.events[0].source.type != "group"){
 
-                if(type == 'image'){
-                    //set adrr
-                    //adrr+=String(msgid);
-                    //adrr+=".jpg";
-                    //console.log(adrr);
-                    // Configure the request
-                    let getimage=new Promise((resolve,reject)=>{
-                    let options = {
-                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                        method: 'GET',
-                        headers: {                
-                        'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                        },
-                        encoding: null
+                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
+                    res =>{
+                        let nick = res[0].angle_nickname;
+
+                        if(type == 'image'){
+                            //set adrr
+                            //adrr+=String(msgid);
+                            //adrr+=".jpg";
+                            //console.log(adrr);
+                            // Configure the request
+                            let getimage=new Promise((resolve,reject)=>{
+                            let options = {
+                                url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                method: 'GET',
+                                headers: {                
+                                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
+                                },
+                                encoding: null
+                            }
+                
+                            // Start the request
+            
+                            request(options, function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                //nwimg = body;
+                                console.log(body);
+                                resolve(body);                  
+                                }else{
+                                //console.log();
+                                reject("!!!!!error when recpt image!!!!!");                
+                                }
+                            });              
+                            });
+                            
+                            getimage
+                            .then((body)=>{
+                                let text ={
+                                    "type" : "text",
+                                    "text" : "##來自小隊員"+nick+"："
+                                }
+                                pushToSuv([text]);
+                                imgpusherS(msg,body,msgid);
+                                pushToSuv([reply_button]);                                         
+                            })
+                            .catch((err)=>{
+                            console.log("(linebotpromise)"+err);
+                            }
+                            );
+            
+                          }else{
+                            let text ={
+                                "type" : "text",
+                                "text" : "##來自小隊員 "+nick+"："
+                            }
+                            pushToSuv([text,msg,reply_button]);                    
+                          }
                     }
-        
-                    // Start the request
-    
-                    request(options, function (error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                        //nwimg = body;
-                        console.log(body);
-                        resolve(body);                  
-                        }else{
-                        //console.log();
-                        reject("!!!!!error when recpt image!!!!!");                
-                        }
-                    });              
-                    });
-                    
-                    getimage
-                    .then((body)=>{
-                        let text ={
-                            "type" : "text",
-                            "text" : "來自小隊員："
-                        }
-                        pushToSuv([text]);
-                        imgpusherS(msg,body,msgid);
-                        pushToSuv([reply_button]);                                         
-                    })
-                    .catch((err)=>{
-                    console.log("(linebotpromise)"+err);
-                    }
-                    );
-    
-                  }else{
-                    let text ={
-                        "type" : "text",
-                        "text" : "來自小隊員："
-                    }
-                    pushToSuv([text,msg,reply_button]);                    
-                  }
+                );
+                
             }
                 
             }
@@ -602,11 +609,15 @@ function chatParser(req ,res){
         if("reply_id" in data) {
             
             channel_array[post.events[0].source.userId] = data.reply_id;
-            let text ={
-                "type":"text",
-                "text":"開始回覆："
-            }            
-            replymessage([finish_button,text]);
+            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+data.reply_id+"\';").then(
+                res =>{
+                    let text ={
+                        "type":"text",
+                        "text":"##開始回覆"+res[0].angle_nickname+"："
+                    }            
+                    replymessage([finish_button,text]);
+                }
+            );            
 
         }else if("finish" in data){
 
@@ -615,7 +626,7 @@ function chatParser(req ,res){
             }
             let text ={
                 "type":"text",
-                "text":"結束回覆"
+                "text":"##結束回覆"
             }            
             replymessage([text]);
 
