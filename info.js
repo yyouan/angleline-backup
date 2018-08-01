@@ -342,10 +342,20 @@ function chatParser(req ,res){
         if(type == 'sticker' && msg.stickerId == '4' && msg.packageId == '1'){
             psql("SELECT * FROM MESSAGE;").then(
                 msgs=>{
-                    for(mg of msgs){
-                        mes = JSON.parse(mg.content.replace(/\s+/g, ""));
-                        pushmessage(mes,line_id);
+                    
+                    push(0);
+
+                    function push(index){
+                        if(index<msgs.length){
+                            mes = JSON.parse(msgs[index].content.replace(/\s+/g, ""));
+                            pushmessage(mes,line_id);
+                            index++;
+                            setTimeout(()=>{push(index);},100);
+                        }else{
+                            console.log("finish message push!")                            
+                        }
                     }
+                    
                 }
             )
         }
