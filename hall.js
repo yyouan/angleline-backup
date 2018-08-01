@@ -422,7 +422,7 @@ function chatParser(req ,res){
                             {
                                 "type": "postback",
                                 "label": "拒絕且回覆",
-                                "data": "reply_id="+line_id +"msgid="+msgid     
+                                "data": "reply_id="+line_id +"&msgid="+msgid     
                             }
                         ]
                     }
@@ -511,7 +511,7 @@ function chatParser(req ,res){
                             {
                                 "type": "postback",
                                 "label": "拒絕且回覆",
-                                "data": "reply_id="+line_id+"msgid="+msgid     
+                                "data": "reply_id="+line_id+"&msgid="+msgid     
                             }
                         ]
                     }
@@ -563,7 +563,7 @@ function chatParser(req ,res){
                                             {
                                                 "type": "postback",
                                                 "label": "大冒險已完成",
-                                                "data": "complete="+line_id +"msgid="+msgid
+                                                "data": "complete="+line_id +"&msgid="+msgid
                                             }
                                         ]
                                     }

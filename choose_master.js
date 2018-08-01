@@ -94,7 +94,7 @@ psql("SELECT * FROM ACCOUNT WHERE master_id='';").then(
                       "contents": [
                         {//暱稱
                             "type": "text",
-                            "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].angle_nickname,
+                            "text": "暱稱： "+dept[member.department.replace(/\s+/g, "")][index].angle_nickname.replace(/\s+/g, ""),
                         },
                       ]
                     },
@@ -379,7 +379,7 @@ function choose_Parser(req ,res){
                                               "contents": [
                                                 {//暱稱
                                                     "type": "text",
-                                                    "text": "暱稱： "+dept[department][index].angle_nickname,
+                                                    "text": "暱稱： "+dept[department][index].angle_nickname.replace(/\s+/g, ""),
                                                 },                
                                                 
                                               ]
@@ -440,7 +440,7 @@ function choose_Parser(req ,res){
                                               "contents": [
                                                 {//暱稱
                                                     "type": "text",
-                                                    "text": "暱稱： "+cand.angle_nickname,
+                                                    "text": "暱稱： "+cand.angle_nickname.replace(/\s+/g, ""),
                                                 },                
                                                 
                                               ]

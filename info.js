@@ -540,7 +540,7 @@ function chatParser(req ,res){
                             {
                             "type": "postback",
                             "label": "回覆",
-                            "data": "reply_id="+reply_id +"msgid="+msgid
+                            "data": "reply_id="+reply_id +"&msgid="+msgid
                             }
                         ]
                     }
@@ -554,7 +554,7 @@ function chatParser(req ,res){
 
                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                     res =>{
-                        let nick = res[0].angle_nickname;
+                        let nick = res[0].angle_nickname.replace(/\s+/g, "");
 
                         if(type == 'image'){
                             //set adrr
@@ -635,7 +635,7 @@ function chatParser(req ,res){
                 res =>{
                     let text ={
                         "type":"text",
-                        "text":"##開始回覆"+res[0].angle_nickname+"："
+                        "text":"##開始回覆"+res[0].angle_nickname.replace(/\s+/g, "")+"："
                     }            
                     replymessage([finish_button,text]);
                 }

@@ -113,7 +113,7 @@ function psql(command){
                                 
                                     {//暱稱
                                         "type": "text",
-                                        "text": "暱稱： "+master.angle_nickname,
+                                        "text": "暱稱： "+master.angle_nickname.replace(/\s+/g, ""),
                                       },                
                                       
                               ]
@@ -162,7 +162,7 @@ function psql(command){
                                 
                                     {//暱稱
                                         "type": "text",
-                                        "text": "暱稱： "+angles[0].angle_nickname,
+                                        "text": "暱稱： "+angles[0].angle_nickname.replace(/\s+/g, ""),
                                       },
                               ]
                             }

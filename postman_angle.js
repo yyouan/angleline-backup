@@ -249,7 +249,7 @@ function chatParser(req ,res){
                         "contents": [
                           {
                             "type": "text",
-                            "text": "來自 "+writers[0].angle_nickname.replace(/\s+/g, "")+" :"
+                            "text": "來自 "+writers[0].angle_nickname.replace(/\s+/g, "").replace(/\s+/g, "")+" :"
                           }
                         ]
                       },
