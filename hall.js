@@ -474,7 +474,7 @@ function chatParser(req ,res){
                         var messagestored = imgpusherS(msg,body,msgid);
                         reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
                         pushToSuv([reply_button]);
-                        psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
+                        psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
                     })
                     .catch((err)=>{
                     console.log("(linebotpromise)"+err);
@@ -489,7 +489,7 @@ function chatParser(req ,res){
                     reply_button.template.actions[0].data +=("&msg="+JSON.stringify(msg));
 
                     pushToSuv([text,msg,reply_button]);
-                    psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,msg,reply_button])+"\',\'"+msgid+"\');");                       
+                    psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,msg,reply_button])+"\',\'"+msgid+"\');");                       
                   }
             };
             function inner_word(){
@@ -522,7 +522,7 @@ function chatParser(req ,res){
                     "text":"$真心話："
                 };
                 pushToSuv([text2,msg,reply_button]);
-                psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
+                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
             };
             function adventure(){
                 if(type != 'text'){
@@ -571,7 +571,7 @@ function chatParser(req ,res){
                                     "text":"$大冒險："
                                 };
                                 pushToSuv([text2,msg,reply_button]);
-                                psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
+                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
                             }
                             
                         }

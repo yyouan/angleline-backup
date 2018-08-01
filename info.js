@@ -595,7 +595,7 @@ function chatParser(req ,res){
                                 pushToSuv([text]);
                                 let imagemsg=imgpusherS(msg,body,msgid);
                                 pushToSuv([reply_button]);
-                                psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,imagemsg,reply_button])+"\',\'"+msgid+"\');");                                         
+                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,imagemsg,reply_button])+"\',\'"+msgid+"\');");                                         
                             })
                             .catch((err)=>{
                             console.log("(linebotpromise)"+err);
@@ -608,7 +608,7 @@ function chatParser(req ,res){
                                 "text" : "##來自小隊員 "+nick+"："
                             }
                             pushToSuv([text,msg,reply_button]);
-                            psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,msg,reply_button])+"\',\'"+msgid+"\');");                    
+                            psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,msg,reply_button])+"\',\'"+msgid+"\');");                    
                           }
                     }
                 );
