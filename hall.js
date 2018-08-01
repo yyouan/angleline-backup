@@ -426,7 +426,13 @@ function chatParser(req ,res){
                             }
                         ]
                     }
-                };                   
+                };
+                                   
+                let text ={
+                    "type":"text",
+                    "text":"黑特已傳送"
+                }
+                replymessage([text])
 
                 if(type == 'image'){
                     //set adrr

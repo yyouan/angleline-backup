@@ -117,14 +117,31 @@ function loginParser(req ,res){
         if (typeof replyToken === 'undefined') {
             return;
         }
+
+        if(posttype == 'postback'){
+            let rawdata = post.events[0].postback.data;
+            let data = querystring.parse(rawdata);
+
+            if("clear" in data) {
+                psql("DELETE FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
+                    res=>{
+                        let text = {
+                            "type":"text",
+                            "text":"清空資料"
+                        }
+                        replymessage([text]);
+                    }                    
+                )
+            }
+        }
         
         if (posttype == 'join'){ 
             
             let text = {
                 "type":"text",
-                "text":"!!注意!!，填完表單後記得回到line對話框中輸入\"註冊所填的電子郵件信箱\"\n \
-                看到\"成功註冊\"的回覆訊息，才代表完成註冊\n \
-                by 台大物理－國北心諮 小天使與小主人 特別製作委員會"
+                "text":"!!注意!!，填完表單後記得回到line對話框中輸入\"註冊所填的電子郵件信箱\"\n\n \
+看到\"成功註冊\"的回覆訊息，才代表完成註冊\n\n \
+by 台大物理－國北心諮 小天使與小主人 特別製作委員會"
             }
 
             let login_button ={
@@ -132,7 +149,7 @@ function loginParser(req ,res){
                 "altText": "大講堂有消息，請借台手機開啟",
                 "template": {
                     "type": "buttons",
-                    "thumbnailImageUrl": "https://i.imgur.com/h5Zb9cK.jpg",
+                    "thumbnailImageUrl": "https://i.imgur.com/XQgkcW5.jpg",
                     "imageAspectRatio": "rectangle",
                     "imageSize": "cover",
                     "imageBackgroundColor": "#FFFFFF",
