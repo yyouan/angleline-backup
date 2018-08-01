@@ -4,7 +4,7 @@ import sys
 import webbrowser
 import time
 
-##please "按照順序 cosole => login => choose => past => message => finish"
+##please "cosole => login => choose => past => message => finish" (no need to in order)
 ##lang:
 '''
     python main.py --era console
@@ -93,13 +93,28 @@ elif name == "login":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
-elif name == "choose":
+elif name == "choose":   
     print(os.system("heroku pg:psql --app angleline < check_angle.sql"))
     print(os.system("heroku pg:psql --app angleline < check_head_url.sql"))    
     write_package_json("choose_master.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
+    write_package_json("idle_angle.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline.git master"))
+    time.sleep(5)
+    write_package_json("idle_master.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
+    time.sleep(5)
+    write_package_json("info.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
 
 elif name == "past":
@@ -119,6 +134,11 @@ elif name == "past":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
     time.sleep(5)
+    write_package_json("info.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
+    time.sleep(5)
 
 elif name == "message":
     write_package_json("postman_angle.js")
@@ -131,6 +151,16 @@ elif name == "message":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
     time.sleep(5)
+    write_package_json("hall.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
+    write_package_json("info.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
+    time.sleep(5)
 
 elif name == "finish":
     write_package_json("exchange_id_angle.js")
@@ -142,6 +172,16 @@ elif name == "finish":
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-master.git master"))
+    time.sleep(5)
+    write_package_json("hall.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
+    write_package_json("info.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
 
 
