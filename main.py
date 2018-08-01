@@ -49,7 +49,7 @@ if name =="console":
     print(os.system("git pull https://github.com/yyouan/informationdesk.git master"))
     print("please fix conflict problem in package.json") 
     print("please input:SELECT * FROM ACCOUNT; afer >>  (DELETE USE DELETE enter enter ;)")
-    print(os.system("heroku pg:psql main.sql --app angleline"))
+    print(os.system("heroku pg:psql --app angleline < main.sql"))
     
 
 elif name == "login":
