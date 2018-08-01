@@ -344,7 +344,7 @@ function chatParser(req ,res){
                 msgs=>{
                     for(mg of msgs){
                         mes = JSON.parse(mg.content);
-                        replymessage(mes);
+                        pushmessage(mes,line_id);
                     }
                 }
             )
