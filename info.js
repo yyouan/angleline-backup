@@ -95,6 +95,7 @@ function psql(command){
   
 }
 function pushToSuv(recpt){
+
     psql("SELECT * FROM SUPERVISOR;").then(
   
       (groups) =>{
@@ -181,6 +182,8 @@ function pushtoHall(recpt,id){
 function imgpusherS(recpt,img,msgid){
 
     let adrr ="/"+msgid+".jpg";
+    recpt.originalContentUrl=(domain+adrr);
+    recpt.previewImageUrl=(domain+adrr);
 
     psql("SELECT * FROM SUPERVISOR;").then(
   
@@ -198,10 +201,8 @@ function imgpusherS(recpt,img,msgid){
                     'to':group.group_id.replace(/\s+/g, ""),
                     'messages': [recpt]
                 }
-              };
+              };             
               
-              options.json.messages[0].originalContentUrl=(domain+adrr);
-              options.json.messages[0].previewImageUrl=(domain+adrr);
                    
               app.get(adrr,(req,res)=>{
                   //res.sendFile(__dirname+"/img.jpg");    
@@ -215,10 +216,15 @@ function imgpusherS(recpt,img,msgid){
                   console.log(body);
               });
           }
-
+          
         }
+
     );
+
+    return recpt;
+
 }
+
 function imgpusher(recpt,id,img,msgid){
 
     let adrr ="/"+msgid+".jpg";
@@ -332,6 +338,17 @@ function chatParser(req ,res){
         let msg = post.events[0].message;                                    
         let type = msg.type;
         let msgid = msg.id;
+
+        if(type == 'sticker' && msg.stickerId == '4' && msg.packageId == '1'){
+            psql("SELECT * FROM MESSAGE;").then(
+                msgs=>{
+                    for(mg of msgs){
+                        mes = JSON.parse(mg.content);
+                        replymessage(mes);
+                    }
+                }
+            )
+        }
 
         if(type == 'location'){
             psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + line_id +"\';").then(
@@ -491,6 +508,9 @@ function chatParser(req ,res){
 
         }else{
             let reply_id = line_id;
+            let msg = post.events[0].message;                                    
+            let type = msg.type;
+            let msgid = msg.id;
 
                 if(post.events[0].message.type == 'text'){
 
@@ -520,7 +540,7 @@ function chatParser(req ,res){
                             {
                             "type": "postback",
                             "label": "回覆",
-                            "data": "reply_id="+reply_id
+                            "data": "reply_id="+reply_id +"msgid="+msgid
                             }
                         ]
                     }
@@ -571,10 +591,11 @@ function chatParser(req ,res){
                                 let text ={
                                     "type" : "text",
                                     "text" : "##來自小隊員"+nick+"："
-                                }
+                                }                                
                                 pushToSuv([text]);
-                                imgpusherS(msg,body,msgid);
-                                pushToSuv([reply_button]);                                         
+                                let imagemsg=imgpusherS(msg,body,msgid);
+                                pushToSuv([reply_button]);
+                                psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,imagemsg,reply_button])+"\',\'"+msgid+"\');");                                         
                             })
                             .catch((err)=>{
                             console.log("(linebotpromise)"+err);
@@ -586,7 +607,8 @@ function chatParser(req ,res){
                                 "type" : "text",
                                 "text" : "##來自小隊員 "+nick+"："
                             }
-                            pushToSuv([text,msg,reply_button]);                    
+                            pushToSuv([text,msg,reply_button]);
+                            psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,msg,reply_button])+"\',\'"+msgid+"\');");                    
                           }
                     }
                 );
@@ -617,7 +639,8 @@ function chatParser(req ,res){
                     }            
                     replymessage([finish_button,text]);
                 }
-            );            
+            );
+            psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")            
 
         }else if("finish" in data){
 
@@ -658,8 +681,9 @@ function chatParser(req ,res){
                 "text":"輸入完成要求者姓名："
             }            
             replymessage([finish_button,text]);
+            psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
         }
-         
+                 
     }
       function replymessage(recpt){ //recpt is message object
         var options = {

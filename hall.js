@@ -422,12 +422,12 @@ function chatParser(req ,res){
                             {
                                 "type": "postback",
                                 "label": "拒絕且回覆",
-                                "data": "reply_id="+line_id     
+                                "data": "reply_id="+line_id +"msgid="+msgid     
                             }
                         ]
                     }
                 };
-                                   
+
                 let text ={
                     "type":"text",
                     "text":"黑特已傳送"
@@ -473,7 +473,8 @@ function chatParser(req ,res){
                         pushToSuv([text]);
                         var messagestored = imgpusherS(msg,body,msgid);
                         reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
-                        pushToSuv([reply_button]);                                               
+                        pushToSuv([reply_button]);
+                        psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
                     })
                     .catch((err)=>{
                     console.log("(linebotpromise)"+err);
@@ -487,7 +488,8 @@ function chatParser(req ,res){
                     }
                     reply_button.template.actions[0].data +=("&msg="+JSON.stringify(msg));
 
-                    pushToSuv([text,msg,reply_button]);                        
+                    pushToSuv([text,msg,reply_button]);
+                    psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text,msg,reply_button])+"\',\'"+msgid+"\');");                       
                   }
             };
             function inner_word(){
@@ -502,7 +504,7 @@ function chatParser(req ,res){
                             {
                                 "type": "postback",
                                 "label": "拒絕且回覆",
-                                "data": "reply_id="+line_id     
+                                "data": "reply_id="+line_id+"msgid="+msgid     
                             }
                         ]
                     }
@@ -520,6 +522,7 @@ function chatParser(req ,res){
                     "text":"$真心話："
                 };
                 pushToSuv([text2,msg,reply_button]);
+                psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
             };
             function adventure(){
                 if(type != 'text'){
@@ -553,7 +556,7 @@ function chatParser(req ,res){
                                             {
                                                 "type": "postback",
                                                 "label": "大冒險已完成",
-                                                "data": "complete="+line_id
+                                                "data": "complete="+line_id +"msgid="+msgid
                                             }
                                         ]
                                     }
@@ -568,6 +571,7 @@ function chatParser(req ,res){
                                     "text":"$大冒險："
                                 };
                                 pushToSuv([text2,msg,reply_button]);
+                                psql("INSERT INTO MESSAGE (content,msgid) VALUE (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
                             }
                             
                         }
