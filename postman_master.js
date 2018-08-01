@@ -212,7 +212,14 @@ function chatParser(req ,res){
       if (posttype == 'message'){
           
           let gate = false;
-                    
+          if(post.events[0].message.type == 'video' || post.events[0].message.type=='audio'){
+            let text={
+                "type":"text",
+                "text":"抱歉，尚未支援影片及音訊傳輸~~"
+            }
+            replymessage([text]);
+            gate=true;
+          }          
           if(gate == false){
 
               psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
