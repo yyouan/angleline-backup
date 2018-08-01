@@ -529,7 +529,7 @@ function chatParser(req ,res){
                     "text":"$真心話："
                 };
                 pushToSuv([text2,msg,reply_button]);
-                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
+                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text2,msg,reply_button])+"\',\'"+msgid+"\');");
             };
             function adventure(){
                 if(type != 'text'){
@@ -578,7 +578,7 @@ function chatParser(req ,res){
                                     "text":"$大冒險："
                                 };
                                 pushToSuv([text2,msg,reply_button]);
-                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text2,messagestored,reply_button])+"\',\'"+msgid+"\');");
+                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text2,msg,reply_button])+"\',\'"+msgid+"\');");
                             }
                             
                         }
