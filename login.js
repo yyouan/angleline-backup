@@ -132,7 +132,7 @@ function loginParser(req ,res){
                 "altText": "大講堂有消息，請借台手機開啟",
                 "template": {
                     "type": "buttons",
-                    "thumbnailImageUrl": "http://rr.img.line.naver.jp/mig?src=http%3A%2F%2Fimgcc.line.naver.jp%2Fkaze%2Fline_buddy_cms%2FUSER%2F20180720%2Fb7%2Fbuddy1532014097%2F0%2F408x408x394659692a460258b45a99f1.jpg&twidth=176&theight=176&op=sc&tpc=white",
+                    "thumbnailImageUrl": "https://i.imgur.com/h5Zb9cK.jpg",
                     "imageAspectRatio": "rectangle",
                     "imageSize": "cover",
                     "imageBackgroundColor": "#FFFFFF",
