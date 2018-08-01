@@ -4,7 +4,7 @@ import sys
 import webbrowser
 import time
 
-##please "place them in order cosole => login => choose => past => message => finish"
+##please "按照順序 cosole => login => choose => past => message => finish"
 
 #interface variable
 name=""  
@@ -38,11 +38,7 @@ if name =="console":
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-master/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
-    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
-    
-    print(os.system("git config --global user.name \"yyouan\""))
-    print(os.system("git pull https://github.com/yyouan/angleline-backup.git master"))
-    print("please fix conflict problem in package.json")      
+    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")    
     print(os.system("heroku pg:psql --app angleline"))
         
 
