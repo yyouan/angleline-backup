@@ -39,6 +39,8 @@ if name =="console":
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-master/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"ab\""))
     print(os.system("git pull https://github.com/yyouan/angleline-backup.git master"))
     print(os.system("git pull https://github.com/yyouan/angleline.git master"))
     print(os.system("git pull https://github.com/yyouan/angleline-master.git master"))
