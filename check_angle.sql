@@ -1,0 +1,2 @@
+SELECT * FROM ACCOUNT WHERE angle_id='';
+\q

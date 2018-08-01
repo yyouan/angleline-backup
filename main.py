@@ -5,6 +5,20 @@ import webbrowser
 import time
 
 ##please "按照順序 cosole => login => choose => past => message => finish"
+##lang:
+'''
+    python main.py --era console
+    python main.py --era login
+    python main.py --era check:angle
+    python main.py --era check:head_url
+    python main.py --era choose
+    python main.py --era check:master
+    python main.py --era past
+    python main.py --era message
+    python main.py --era finish
+
+    if check has problem call them to re-login or --era choose again
+'''
 
 #interface variable
 name=""  
@@ -51,6 +65,12 @@ if name =="console":
     print("please input:SELECT * FROM ACCOUNT; afer >>  (DELETE USE DELETE enter enter ;)")
     print(os.system("heroku pg:psql --app angleline < main.sql"))
     
+elif name == "check:master":
+    print(os.system("heroku pg:psql --app angleline < check_master.sql"))
+elif name == "check:angle":
+    print(os.system("heroku pg:psql --app angleline < check_angle.sql"))
+elif name == "check:head_url":
+    print(os.system("heroku pg:psql --app angleline < check_head_url.sql"))
 
 elif name == "login":
     write_package_json("idle_angle.js")
@@ -73,7 +93,9 @@ elif name == "login":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
-elif name == "choose":    
+elif name == "choose":
+    print(os.system("heroku pg:psql --app angleline < check_angle.sql"))
+    print(os.system("heroku pg:psql --app angleline < check_head_url.sql"))    
     write_package_json("choose_master.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
@@ -81,6 +103,7 @@ elif name == "choose":
     time.sleep(5)
 
 elif name == "past":
+    print(os.system("heroku pg:psql --app angleline < check_master.sql"))
     write_package_json("past_intro_angle.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))

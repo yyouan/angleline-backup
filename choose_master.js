@@ -26,7 +26,7 @@ var dept ={
 }
 
 //1.send candidate:
-psql("SELECT * FROM ACCOUNT;").then(
+psql("SELECT * FROM ACCOUNT WHERE master_id='';").then(
     members =>{
         
         for(let member of members){

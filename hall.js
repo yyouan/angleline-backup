@@ -329,7 +329,7 @@ function chatParser(req ,res){
           return;
       }
             
-    if (posttype == 'message' && post.events[0].source.type != 'group'){
+    if (posttype == 'message'){
             let msg = post.events[0].message;                                    
             let type = msg.type;
             let msgid = msg.id;

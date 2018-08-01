@@ -118,19 +118,65 @@ function loginParser(req ,res){
             return;
         }
         
-        if (posttype == 'join' && post.events[0].source.type =="group"){ 
-        
-            console.log('join');
-            psql("INSERT INTO SUPERVISOR (group_id) VALUES (\'"+ line_id +"\');");
-    
-            let text ={
+        if (posttype == 'join'){ 
+            
+            let text = {
                 "type":"text",
-                "text":"完成管理員群組登錄"
+                "text":"!!注意!!，填完表單後記得回到line對話框中輸入\"註冊所填的電子郵件信箱\"\n \
+                看到\"成功註冊\"的回覆訊息，才代表完成註冊\n \
+                by 台大物理－國北心諮 小天使與小主人 特別製作委員會"
             }
-            replymessage([text]);            
+
+            let login_button ={
+                "type": "template",
+                "altText": "大講堂有消息，請借台手機開啟",
+                "template": {
+                    "type": "buttons",
+                    "thumbnailImageUrl": "http://rr.img.line.naver.jp/mig?src=http%3A%2F%2Fimgcc.line.naver.jp%2Fkaze%2Fline_buddy_cms%2FUSER%2F20180720%2Fb7%2Fbuddy1532014097%2F0%2F408x408x394659692a460258b45a99f1.jpg&twidth=176&theight=176&op=sc&tpc=white",
+                    "imageAspectRatio": "rectangle",
+                    "imageSize": "cover",
+                    "imageBackgroundColor": "#FFFFFF",
+                    "text": "按我註冊",
+                    "defaultAction": {
+                        "type": "uri",
+                        "label": "註冊",
+                        "uri": "https://angleline-hall.herokuapp.com/formhtml"
+                    },
+                    "actions": [
+                        {
+                          "type": "uri",
+                          "label": "註冊",
+                          "uri": "https://angleline-hall.herokuapp.com/formhtml"
+                        }
+                    ]
+                }
+            }
+            let relogin_button =
+                {
+                    "type": "template",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "template": {
+                        "type": "buttons",                            
+                        "text": "如果註冊失敗，可按我重新註冊",                            
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "先按清空資料",
+                                "data": "clear=1"
+                            },
+                            {
+                                "type": "uri",
+                                "label": "再點我重新註冊",
+                                "uri":"https://angleline-hall.herokuapp.com/formhtml"     
+                            }
+                        ]
+                    }
+            };
+            replymessage([login_button,relogin_button,text])
+                       
         }
 
-        if (posttype == 'message' && post.events[0].source.type !="group"){
+        if (posttype == 'message'){
             
             if(true){
                 
