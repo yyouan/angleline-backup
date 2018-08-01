@@ -683,6 +683,7 @@ function GameProceessor(req,res){
                                         ]
                                         pushtoMaster(msg,res[0].angle_id);
                                         pushtoAngle(msg,res[0].master_id);
+                                        pushtoAngle(msg,req[0].master_id);
                                     }
                                 }
                             );
