@@ -343,7 +343,7 @@ function chatParser(req ,res){
             psql("SELECT * FROM MESSAGE;").then(
                 msgs=>{
                     for(mg of msgs){
-                        mes = JSON.parse(mg.content);
+                        mes = JSON.parse(mg.content.replace(/\s+/g, ""));
                         pushmessage(mes,line_id);
                     }
                 }
