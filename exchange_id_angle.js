@@ -161,8 +161,11 @@ function psql(command){
                     ]
                 }
             };
-
-            pushmessage([give_button],member.angle_id);
+            let text ={
+                "type":"text",
+                "text":"你的小天使是第 "+member.master_group+" 組的 "+member.master_name
+            }
+            pushmessage([give_button,text],member.angle_id);
         }
          
       }

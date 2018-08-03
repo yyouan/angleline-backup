@@ -496,6 +496,12 @@ function choose_Parser(req ,res){
                                 dept[department].splice(dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "")==master_id}),1);
                                 console.log("choose successful");
                                 console.log(dept[department].length);
+                                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+ master_id +"\';").then(
+                                    res =>{
+                                        psql("UPDATE ACCOUNT SET master_name=\'"+ res[0].name +"\' WHERE angle_id=\'" + line_id +"\';");
+                                        psql("UPDATE ACCOUNT SET master_group="+ res[0].group +" WHERE angle_id=\'" + line_id +"\';");
+                                    }
+                                );
                                 let text ={
                                     "type":"text",
                                     "text":"恭喜你選到你的小主人!"

@@ -48,6 +48,10 @@ def write_package_json(filename):
 
 if(__name__ == "__main__"):
     main()
+
+if name =="show":
+    print(os.system("heroku pg:psql --app angleline < main.sql > list.txt"))
+
 if name =="console":
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-master/logs")

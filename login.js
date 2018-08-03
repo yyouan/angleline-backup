@@ -460,7 +460,7 @@ function FormReceiver(req,res){
                 psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET score=0 WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET ticket=0 WHERE email=\'" + post.email +"\';");
-                psql("UPDATE ACCOUNT SET group="+post,group+" WHERE email=\'" + post.email +"\';");                
+                psql("UPDATE ACCOUNT SET groupindex="+post,group+" WHERE email=\'" + post.email +"\';");                
                 psql("UPDATE ACCOUNT SET name=\'"+ post.name +"\' WHERE email=\'" + post.email +"\';"); 
                 psql("UPDATE ACCOUNT SET phone=\'"+ post.phone +"\' WHERE email=\'" + post.email +"\';");  
             }
