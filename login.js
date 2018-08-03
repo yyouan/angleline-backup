@@ -34,9 +34,9 @@ app.post('')
 
 //SQL
 /**
-     angle_nickname |   angle_id    | master_nickname |  master_id   | department | email              | give_id | head_url |self_intro|name  |phone       | received_intro? |score  |ticket
+     angle_nickname |   angle_id    | master_name     |master_group|  master_id   | department | email              | give_id | head_url |self_intro|name  |phone           |score  |ticket |Group
     ----------------+---------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------
-    友安            | 0123456789012 | 主人             | 123456789012 | phys/psy   |xu.6u.30@gmail.com   | bool   |url      |longtext  |劉友安 |0926372361  | bool            |0      |0
+    友安            | 0123456789012 | 另友安           |        7   | 123456789012 | phys/psy   |xu.6u.30@gmail.com   | bool   |url      |longtext  |劉友安 |0926372361  |0      |0      |  8  
     /
 */  
 
@@ -453,12 +453,14 @@ function FormReceiver(req,res){
                 psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET angle_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET master_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
+                psql("UPDATE ACCOUNT SET master_name=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET head_url=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET self_intro=\'"+ post['self-intro'] +"\' WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
                 psql("UPDATE ACCOUNT SET score=0 WHERE email=\'" + post.email +"\';");
-                psql("UPDATE ACCOUNT SET ticket=0 WHERE email=\'" + post.email +"\';");                
+                psql("UPDATE ACCOUNT SET ticket=0 WHERE email=\'" + post.email +"\';");
+                psql("UPDATE ACCOUNT SET group="+post,group+" WHERE email=\'" + post.email +"\';");                
                 psql("UPDATE ACCOUNT SET name=\'"+ post.name +"\' WHERE email=\'" + post.email +"\';"); 
                 psql("UPDATE ACCOUNT SET phone=\'"+ post.phone +"\' WHERE email=\'" + post.email +"\';");  
             }
