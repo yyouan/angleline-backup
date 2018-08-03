@@ -161,8 +161,16 @@ function psql(command){
                     ]
                 }
             };
-
-            pushmessage([give_button],member.angle_id);
+            psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+master.angle_id+"\';").then(
+                res =>{
+                    let text ={
+                        "type":"text",
+                        "text":"你的小主人是第 "+res[0].groupindex+" 組的 "+res[0].name.replace(/\s+/g, "")
+                    }
+                    pushmessage([give_button,text],member.angle_id);
+                }
+            );
+            
         }
          
       }

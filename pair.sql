@@ -1,2 +1,2 @@
-SELECT name,master_name,score FROM ACCOUNT;
+SELECT name,group,master_name,master_group,score FROM ACCOUNT;
 \q
