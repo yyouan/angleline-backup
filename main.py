@@ -16,6 +16,7 @@ import time
     python main.py --era past
     python main.py --era message
     python main.py --era finish
+    python main.py --era show
 
     if check has problem call them to re-login or --era choose again
 '''
