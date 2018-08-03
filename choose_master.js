@@ -499,7 +499,7 @@ function choose_Parser(req ,res){
                                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+ master_id +"\';").then(
                                     res =>{
                                         psql("UPDATE ACCOUNT SET master_name=\'"+ res[0].name +"\' WHERE angle_id=\'" + line_id +"\';");
-                                        psql("UPDATE ACCOUNT SET master_group="+ res[0].group +" WHERE angle_id=\'" + line_id +"\';");
+                                        psql("UPDATE ACCOUNT SET master_group="+ res[0].groupindex +" WHERE angle_id=\'" + line_id +"\';");
                                     }
                                 );
                                 let text ={
