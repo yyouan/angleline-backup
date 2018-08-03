@@ -50,7 +50,9 @@ if(__name__ == "__main__"):
     main()
 
 if name =="show":
+    print("log out file is on list.txt")
     print(os.system("heroku pg:psql --app angleline < main.sql > list.txt"))
+    print(os.system("heroku pg:psql --app angleline < main.sql"))
 
 if name =="console":
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
