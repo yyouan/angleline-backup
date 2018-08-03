@@ -161,7 +161,7 @@ function psql(command){
                     ]
                 }
             };
-            psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+master.angle_id+"\';").then(
+            psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+member.angle_id+"\';").then(
                 res =>{
                     let text ={
                         "type":"text",
