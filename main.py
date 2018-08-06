@@ -57,7 +57,7 @@ if name =="show":
     print(os.system("notepad list.txt"))
 
 if name =="console":
-    print(os.system("C:\Program Files\Mozilla Firefox\firefox.exe"))    
+    print("please open browser first!")    
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-master/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
