@@ -56,8 +56,9 @@ if name =="show":
     print(os.system("heroku pg:psql --app angleline < main.sql"))
     print(os.system("notepad list.txt"))
 
-if name =="console":    
-    webbrowser.open_new("https://dashboard.heroku.com/apps/angleline/logs")
+if name =="console":
+    webbrowser.open("https://www.google.com")    
+    webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-master/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline-hall/logs")
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/informationdesk/logs")
