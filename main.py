@@ -56,6 +56,12 @@ if name =="show":
     print(os.system("heroku pg:psql --app angleline < main.sql"))
     print(os.system("notepad list.txt"))
 
+if name == "pair":
+    print("log out file is on pair.txt")
+    print(os.system("heroku pg:psql --app angleline < main.sql > pair.txt"))
+    print(os.system("heroku pg:psql --app angleline < pair.sql"))
+    print(os.system("notepad pair.txt"))
+
 if name =="console":
     print("please open browser first!")    
     webbrowser.open_new_tab("https://dashboard.heroku.com/apps/angleline/logs")
@@ -74,12 +80,15 @@ if name =="console":
     print("please input:SELECT * FROM ACCOUNT; afer >>  (DELETE USE DELETE enter enter ;)")
     print(os.system("heroku pg:psql --app angleline < main.sql"))
     
-elif name == "check:master":
-    print(os.system("heroku pg:psql --app angleline < check_master.sql"))
+elif name == "check:master":    
+    print(os.system("heroku pg:psql --app angleline < check_master.sql > list.txt"))    
+    print(os.system("notepad list.txt"))
 elif name == "check:angle":
-    print(os.system("heroku pg:psql --app angleline < check_angle.sql"))
+    print(os.system("heroku pg:psql --app angleline < check_angle.sql > list.txt"))    
+    print(os.system("notepad list.txt"))
 elif name == "check:head_url":
-    print(os.system("heroku pg:psql --app angleline < check_head_url.sql"))
+    print(os.system("heroku pg:psql --app angleline < check_head_url.sql > list.txt"))    
+    print(os.system("notepad list.txt"))
 
 elif name == "login":
     write_package_json("idle_angle.js")
