@@ -181,7 +181,7 @@ function psql(command){
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[angles[0].problem];
-                        pushmessage([msg,self_intro,text],member[mode]);
+                        pushmessage([msg,self_intro,text],member['master_id']);
                     }
                 );
             }
