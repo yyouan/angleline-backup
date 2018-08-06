@@ -14,6 +14,9 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     //ssl: true,
 });
+const graph_url = [
+
+]
 
 const app = express(); //建立一個express 伺服器
 app.use(express.static(__dirname)); //get every file

@@ -81,14 +81,14 @@ if name =="console":
     print(os.system("heroku pg:psql --app angleline < main.sql"))
     
 elif name == "check:master":    
-    print(os.system("heroku pg:psql --app angleline < check_master.sql > list.txt"))    
-    print(os.system("notepad list.txt"))
+    print(os.system("heroku pg:psql --app angleline < check_master.sql > master.txt"))    
+    print(os.system("notepad master.txt"))
 elif name == "check:angle":
-    print(os.system("heroku pg:psql --app angleline < check_angle.sql > list.txt"))    
-    print(os.system("notepad list.txt"))
+    print(os.system("heroku pg:psql --app angleline < check_angle.sql > angle.txt"))    
+    print(os.system("notepad angle.txt"))
 elif name == "check:head_url":
-    print(os.system("heroku pg:psql --app angleline < check_head_url.sql > list.txt"))    
-    print(os.system("notepad list.txt"))
+    print(os.system("heroku pg:psql --app angleline < check_head_url.sql > head_url.txt"))    
+    print(os.system("notepad head_url.txt"))
 
 elif name == "login":
     write_package_json("idle_angle.js")
