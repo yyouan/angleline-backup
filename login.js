@@ -356,8 +356,8 @@ function FormReceiver(req,res){
         post = querystring.parse(post);    
         console.log(post);
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+ post.email +"\';").then(
-            res =>{
-                if(res.length ==0 || res[0].angle_id==''){
+            angles =>{
+                if(angles.length ==0 || angles[0].angle_id==''){
                     res.end("你還沒有輸入電子郵件喔!")
                 }else{
                     psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
@@ -420,7 +420,7 @@ function FormReceiver(req,res){
                                             }             
                                         }
                                 };
-                                pushmessage([graph],res[0].angle_id);
+                                pushmessage([graph],angles[0].angle_id);
                             }
                             let text ={
                                 "type":"text",
@@ -472,7 +472,7 @@ function FormReceiver(req,res){
                             };
                             msg.push(text);
                             msg.push(upload_page);                            
-                            pushmessage(msg,res[0].angle_id);                                      
+                            pushmessage(msg,angles[0].angle_id);                                      
                         }
                     );
                 
