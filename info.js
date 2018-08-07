@@ -24,44 +24,8 @@ const pool = new Pool({
 const app = express(); //建立一個express 伺服器
 app.post('/' , chatParser); // POST 方法**/
 
-/**app.post('/angle',anglebot);
-app.post('/master',masterbot);
-app.post('/hall',hallbot);
-app.get('/monitor',monitorhtml);
-app.get('/mailflush',mailflush);
-app.post('/id',monitormail); //give line push
-app.get('/give_id',giving_id_bot); //if call this bot will push line_id
-**/
-/**const message = {
-  type: 'text',
-  text: 'Hello World!'
-};
-
-client.replyMessage('<replyToken>', message)
-  .then(() => {
-    ...
-  })
-  .catch((err) => {
-    // error handling
-  });**/
-
-//event will like:
-/**
- * 
-{ type: 'message',
-  replyToken: 'xxxxxxx',
-  source: 
-    { userId: 'xxxxxxx',
-      type: 'user',
-      profile: [Function] },
-  timestamp: 1484472609833,
-  message: 
-    { type: 'text',
-      id: 'xxxxxxxxxx',
-      text: 'hihi',
-      content: [Function] },
-  reply: [Function] }
-}
+/*
+可以使用 @delete_message清空所有訊息
  */
 //------------SQL----------------------
 
@@ -531,6 +495,9 @@ function chatParser(req ,res){
                         let rawdata = email.substr(1);
                         let data = querystring.parse(rawdata);
                         reply_id = data.from_id;
+
+                    }else if(email =="@delete_message"){
+                        psql("DELETE FROM MESSAGE;")
                     }                    
                     
                 }
