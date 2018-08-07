@@ -208,8 +208,7 @@ function loginParser(req ,res){
                                             let text2 = {
                                                 "type":"text",
                                                 "text":"成功註冊郵箱!"
-                                            }
-                                            replymessage([text2])
+                                            }                                            
 
                                             let text = {
                                                 "type":"text",
@@ -260,7 +259,7 @@ function loginParser(req ,res){
                                                         ]
                                                     }
                                             };
-                                            pushmessage([login_button,relogin_button,text,img],line_id)
+                                            pushmessage([text2,login_button,relogin_button,text,img],line_id)
                                             channel_array.push(line_id)
                                         }
                                     }else{
@@ -421,7 +420,7 @@ function FormReceiver(req,res){
                                             }             
                                         }
                                 };
-                                msg.push(graph);
+                                pushmessage([graph],res[0].angle_id);
                             }
                             let text ={
                                 "type":"text",
