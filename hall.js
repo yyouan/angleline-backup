@@ -367,6 +367,28 @@ function chatParser(req ,res){
                     
                     if(email=="@匿名發文"){
                         channel_array[post.events[0].source.userId]="匿名發文";
+                        let reply_button =
+                        {
+                            "type": "template",
+                            "altText": "大講堂有消息，請借台手機開啟",
+                            "template": {
+                                "type": "buttons",                            
+                                "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
+                                "actions": [
+                                    {
+                                        "type": "postback",
+                                        "label": "使用暱稱發文",
+                                        "data": "nick=1"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "完全匿名發文",
+                                        "data": "nick=0"     
+                                    }
+                                ]
+                            }
+                        };
+                        pushmessage([reply_button],line_id);
                         //hate();                                            
                     }else if(email=="@真心話"){
                         channel_array[post.events[0].source.userId]="真心話";
