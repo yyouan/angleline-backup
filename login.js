@@ -361,7 +361,6 @@ function FormReceiver(req,res){
                     res.end("你還沒有輸入電子郵件喔!")
                 }else{
                     psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET angle_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET master_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET master_name=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET head_url=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
