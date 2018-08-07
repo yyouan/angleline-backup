@@ -328,7 +328,27 @@ function chatParser(req ,res){
       if (typeof replyToken === 'undefined') {
           return;
       }
-            
+    if(posttype == 'postback'){
+        let rawdata = post.events[0].postback.data;
+        let data = querystring.parse(rawdata);
+
+        if("nick" in data) {
+            if(data.nick==1){
+                channel_array[post.events[0].source.userId]="暱稱發文";
+                let text ={
+                    "type":"text",
+                    "text":"使用暱稱，請輸入黑特訊息："
+                };
+                replymessage([text]); 
+            }else{
+                let text ={
+                    "type":"text",
+                    "text":"不使用暱稱，請輸入黑特訊息："
+                };
+                replymessage([text]);
+            }
+        }
+    }
     if (posttype == 'message'){
             let msg = post.events[0].message;                                    
             let type = msg.type;
@@ -365,6 +385,8 @@ function chatParser(req ,res){
                     console.log(channel_array[post.events[0].source.userId]);
                     if(channel_array[post.events[0].source.userId]=="匿名發文"){
                         hate();
+                    }else if(channel_array[post.events[0].source.userId]=="暱稱發文"){
+                        nick_hate();
                     }else if(channel_array[post.events[0].source.userId]=="真心話"){
                         inner_word();
                     }else if(channel_array[post.events[0].source.userId]=="大冒險"){
@@ -379,8 +401,31 @@ function chatParser(req ,res){
                     var email = post.events[0].message.text;                                      
                     
                     if(email=="@匿名發文"){
+
                         channel_array[post.events[0].source.userId]="匿名發文";
-                        //hate();                                            
+                        let reply_button =
+                        {
+                            "type": "template",
+                            "altText": "大講堂有消息，請借台手機開啟",
+                            "template": {
+                                "type": "buttons",                            
+                                "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
+                                "actions": [
+                                    {
+                                        "type": "postback",
+                                        "label": "使用暱稱發文",
+                                        "data": "nick=1"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "完全匿名發文",
+                                        "data": "nick=0"     
+                                    }
+                                ]
+                            }
+                        };
+                        pushmessage([reply_button],line_id);
+
                     }else if(email=="@真心話"){
                         channel_array[post.events[0].source.userId]="真心話";
                         //inner_word(); 
@@ -498,6 +543,110 @@ function chatParser(req ,res){
                     pushToSuv([text,msg,reply_button]);
                     psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,msg,reply_button])+"\',\'"+msgid+"\');");                       
                   }
+            };
+            function nick_hate(){
+
+                let reply_button =
+                {
+                    "type": "template",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "template": {
+                        "type": "buttons",                            
+                        "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
+                        "actions": [
+                            {
+                                "type": "postback",
+                                "label": "寄出",
+                                "data": "send=1"
+                            },
+                            {
+                                "type": "postback",
+                                "label": "拒絕且回覆",
+                                "data": "reply_id="+line_id +"&msgid="+msgid     
+                            }
+                        ]
+                    }
+                };
+                if(post.events[0].message.type == 'video' || post.events[0].message.type=='audio'){
+                    let text={
+                        "type":"text",
+                        "text":"抱歉，尚未支援影片及音訊傳輸~~"
+                    }
+                    replymessage([text]);
+                }else{
+                    let text ={
+                        "type":"text",
+                        "text":"黑特已傳送"
+                    }
+                    replymessage([text])
+                }                
+                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
+                    res =>{
+                        let nick={
+                            "type":"text",
+                            "text":"from "+res[0].angle_nickname.replace(/\s+/g, "")+" :"
+                        }
+                        let nickname =res[0].angle_nickname.replace(/\s+/g, "");
+                        if(type == 'image'){
+                            //set adrr
+                            //adrr+=String(msgid);
+                            //adrr+=".jpg";
+                            //console.log(adrr);
+                            // Configure the request
+                            let getimage=new Promise((resolve,reject)=>{
+                            let options = {
+                                url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                method: 'GET',
+                                headers: {                
+                                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
+                                },
+                                encoding: null
+                            }
+                
+                            // Start the request
+            
+                            request(options, function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                //nwimg = body;
+                                console.log(body);
+                                resolve(body);                  
+                                }else{
+                                //console.log();
+                                reject("!!!!!error when recpt image!!!!!");                
+                                }
+                            });              
+                            });
+                            
+                            getimage
+                            .then((body)=>{
+                                let text ={
+                                    "type" : "text",
+                                    "text" : "$黑特審核："
+                                }
+                                pushToSuv([text,nick]);
+                                var messagestored = imgpusherS(msg,body,msgid);
+                                reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored)+"&nick="+nickname);
+                                pushToSuv([reply_button]);
+                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,nick,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
+                            })
+                            .catch((err)=>{
+                            console.log("(linebotpromise)"+err);
+                            }
+                            );
+            
+                          }else{
+                            let text ={
+                                "type" : "text",
+                                "text" : "$黑特審核："
+                            }
+                            reply_button.template.actions[0].data +=("&msg="+JSON.stringify(msg)+"&nick="+nickname);
+        
+                            pushToSuv([text,nick,msg,reply_button]);
+                            psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,nick,msg,reply_button])+"\',\'"+msgid+"\');");                       
+                          }
+                    }
+                )
+                
             };
             function inner_word(){
                 let reply_button =

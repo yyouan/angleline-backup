@@ -664,19 +664,47 @@ function chatParser(req ,res){
             replymessage([text]);
 
         }else if("send" in data){
-
-            console.log("send");
-            let msg_stored = JSON.parse(data.msg);
-
-            psql("SELECT * FROM ACCOUNT;").then(
-                (members)=>{
-                    for(let member of members){
-                        pushtoHall([msg_stored],member.angle_id);
-                        console.log(msg_stored);
-                        console.log(member.angle_id);
-                    }
+            if("nick" in data){
+                console.log("nick_send");
+                let msg_stored = JSON.parse(data.msg);
+                let nickname = data.nick;
+                let hate_intro ={
+                    "type":"text",
+                    "text":"$$有卦看黑特$$\n__*__－－－__*__"
                 }
-            )
+                let nick={
+                    "type":"text",
+                    "text":"from "+nickname+" :"
+                }
+
+                psql("SELECT * FROM ACCOUNT;").then(
+                    (members)=>{
+                        for(let member of members){
+                            pushtoHall([hate_intro,nick,msg_stored],member.angle_id);
+                            console.log(msg_stored);
+                            console.log(member.angle_id);
+                        }
+                    }
+                )
+            }else{
+                console.log("send");
+                let msg_stored = JSON.parse(data.msg);
+                let hate_intro ={
+                    "type":"text",
+                    "text":"$$有卦看黑特$$\n__*__－－－__*__"
+                }
+
+                psql("SELECT * FROM ACCOUNT;").then(
+                    (members)=>{
+                        for(let member of members){
+                            pushtoHall([hate_intro,msg_stored],member.angle_id);
+                            console.log(msg_stored);
+                            console.log(member.angle_id);
+                        }
+                    }
+                )
+            };
+            
 
         }else if("complete" in data){
             console.log("complete");

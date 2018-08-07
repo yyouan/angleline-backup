@@ -26,17 +26,27 @@ var dept ={
 }
 
 //1.send candidate:
-psql("SELECT * FROM ACCOUNT WHERE master_id='';").then(
+psql("SELECT * FROM ACCOUNT WHERE master_id=\'\';").then(
     members =>{
         
+        
         for(let member of members){
-            if(member.department.replace(/\s+/g, "")=='phys'){
-                dept['psy'].push(member);
-            }else if(member.department.replace(/\s+/g, "")=='psy'){
-                dept['phys'].push(member);
-            }else{
-                console.log("department problem choose_master.js:33");
-            }
+
+            psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+member.angle_id+"\';").then(
+                angles =>{
+                    if(angles.length == 0){
+
+                        if(member.department.replace(/\s+/g, "")=='phys'){
+                            dept['psy'].push(member);
+                        }else if(member.department.replace(/\s+/g, "")=='psy'){
+                            dept['phys'].push(member);
+                        }else{
+                            console.log("department problem choose_master.js:33");
+                        }
+                        
+                    }
+                }
+            );            
         }
 
         for(let member of members){            
@@ -61,10 +71,8 @@ psql("SELECT * FROM ACCOUNT WHERE master_id='';").then(
                 }                
             }
             for(let index of index_arr){
-                console.log("(index)"+index);
-                            
 
-                
+                console.log("(index)"+index);     
 
                 let self_intro =                
                 {//自我介紹
@@ -337,8 +345,6 @@ function choose_Parser(req ,res){
 
                             if(dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "") == master_id}) == -1 ){
 
-                                
-            
                                 let a,b,c;
                                 let len = dept[department].length;
                                 let to_id = line_id;
@@ -415,9 +421,69 @@ function choose_Parser(req ,res){
                                         pushmessage([msg,self_intro],to_id);                            
                                     }
             
-                                }else{
+                                }else if(len>0){
             
                                     for(let cand of dept[department]){
+                                        let bubble ={
+                                            "type": "bubble",
+                                            "header": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "跟你有緣的小主人"
+                                                }
+                                              ]
+                                            },
+                                            "hero": {
+                                              "type": "image",
+                                              "url": cand.head_url.replace(/\s+/g, ""),
+                                            },
+                                            "body": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {//暱稱
+                                                    "type": "text",
+                                                    "text": "暱稱： "+cand.angle_nickname.replace(/\s+/g, ""),
+                                                },                
+                                                
+                                              ]
+                                            },
+                                            "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                        "type": "button",
+                                                        "action": {
+                                                          "type": "postback",
+                                                          "label": "我要這個小主人",
+                                                          "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department,                                             
+                                                        },
+                                                        "style": "primary",
+                                                        "color": "#0000ff"
+                                                      }
+                                                ]
+                                            }
+                                        };
+                                        let self_intro ={//自我介紹
+                                            "type": "text",
+                                            "text": "自我介紹： "+ cand.self_intro,
+                                        };
+                                        let msg ={  
+                                            "type": "flex",
+                                            "altText": "大講堂有消息，請借台手機開啟",
+                                            "contents":bubble 
+                                        };
+                        
+                                        pushmessage([msg,self_intro],to_id);
+                                    }
+                                }else{
+                                    let c_dept = (department == 'phys')? ('psy'):('phys')
+
+                                    for(let cand of dept[ c_dept ]){
                                         let bubble ={
                                             "type": "bubble",
                                             "header": {

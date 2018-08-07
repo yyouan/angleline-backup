@@ -46,12 +46,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					function cook(){
 						document.cookie = "email="+document.getElementById("key").value+";max-age=31536000;";
 						alert("確認 email : "+String(document.getElementById("key").value)+"\n底下有任何需要打勾的，\"請勿\"勾選");
-						//window.open('https://angleline-hall.herokuapp.com/uploadhtml');
+						window.open('https://line.me/R/ti/p/%40kni2367i');
 					}
-					//document.getElementById("postform").onsubmit=cookie();
-					function updateTextInput(val) {
-         			 	document.getElementById('textInput').innerHTML = "組別 "+val; 
-        			}
+					//document.getElementById("postform").onsubmit=cookie();					
 				</script>	
 				<form action="/form" id="postform" method="post" onsubmit="cook()">
 					<input type="email" id="key" name="email" placeholder="郵件信箱" maxlength="50" required="" />					
@@ -64,8 +61,18 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<div class="right-agileits">
 						<input type="text"  name="name" placeholder="姓名" required="" maxlength="13"/>						
 					</div>
-					<div style="color:wheat" id="textInput">組別 </div>
-					<input type="range" name="group" min="1" max="8" onchange="updateTextInput(this.value);"/>
+					<div class="left-w3-agile">						
+						<select class="form-control" name="group">
+							<option value="1">我是第1小隊</option>
+							<option value="2">我是第2小隊</option>
+							<option value="3">我是第3小隊</option>
+							<option value="4">我是第4小隊</option>
+							<option value="5">我是第5小隊</option>
+							<option value="6">我是第6小隊</option>
+							<option value="7">我是第7小隊</option>
+							<option value="8">我是第8小隊</option>							
+						</select>						
+					</div>
 					<input type="text"  name="nickname" placeholder="暱稱*" required="" maxlength="50"/>					
 					<textarea name="self-intro" rows="4" cols="50" required="" / minlength="15" maxlength="150" placeholder="自我介紹(15-150字)*"></textarea>
 					<input type="text"  name="phone" placeholder="連絡電話" required="" maxlength="10"/>

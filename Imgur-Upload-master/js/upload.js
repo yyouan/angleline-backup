@@ -8,11 +8,14 @@ var feedback = function(res) {
         document.querySelector('.status').classList.add('bg-success');      
        
         document.querySelector('.status').innerHTML =
-            '<img class="img" alt="Imgur-Upload" src=\"' + get_link + '\"/>'
-            //+'<form onsubmit=\'submit()\' action="/img?" method="post">'+
-              //'<input name=\"email\" style=\"visibility : hidden\" type=\'text\' value=\''+document.cookie+'\'>'
-            //+ '<input name=\"url\" style=\"visibility : hidden\" type=\'text\' value=\''+get_link+'\'>'
-            +'<input id=\"subbut\" type=\'button\' value=\"\">';
+            '<input id=\"subbut\" type=\'button\' value=\"確認上傳\">'
+            +'<input id=\"reload\" type=\'button\' value=\"重新上傳\">'
+            +'<img class="img" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
+        $("#reload").click(
+            ()=>{
+                window.location.reload();
+            }
+        )
         $("#subbut").click(()=>{
             let array = decodeURIComponent(document.cookie).split(';');
             let jsonthing={}
@@ -36,8 +39,10 @@ var feedback = function(res) {
         document.getElementsByClassName('dropzone')[0].style.visibility ='hidden';
         document.getElementsByClassName('status')[0].style.position ='absolute';
         document.getElementsByClassName('status')[0].style.top ='20%'; 
-        document.getElementsByClassName('status')[0].style.left ='25%';        
-        document.getElementById('subbut').style = "opacity: 0.0;heighy:600%; width: 300%; padding: 300%; position: absolute; top: 0%; right:-100%" ;        
+        document.getElementsByClassName('status')[0].style.left ='25%';
+        document.getElementsByClassName('img')[0].style ="position: fixed;top: 80%;left:1%"        
+        document.getElementById('subbut').style = "background-color:lightgray;color:black;border: 5px solid #FF0000;font-size:300%;position: fixed;top: 40%;left:15%" ;
+        document.getElementById('reload').style = "background-color:lightgray;color:black;border: 5px solid #8B4513;font-size:300%;position: fixed;top: 60%;left:15%" ;        
     }
 };
 

@@ -9,8 +9,8 @@ import time
 '''
     python main.py --era console
     python main.py --era login
-    python main.py --era check:angle
     python main.py --era check:head_url
+    python main.py --era check:login    
     python main.py --era choose
     python main.py --era check:master
     python main.py --era past
@@ -83,9 +83,21 @@ if name =="console":
 elif name == "check:master":    
     print(os.system("heroku pg:psql --app angleline < check_master.sql > master.txt"))    
     print(os.system("notepad master.txt"))
-elif name == "check:angle":
-    print(os.system("heroku pg:psql --app angleline < check_angle.sql > angle.txt"))    
-    print(os.system("notepad angle.txt"))
+    write_package_json("check_master.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
+
+elif name == "check:login":
+    print(os.system("heroku pg:psql --app angleline < check_self_intro.sql > self_intro.txt"))    
+    print(os.system("notepad self_intro.txt"))    
+    write_package_json("check.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    time.sleep(5)
+    
 elif name == "check:head_url":
     print(os.system("heroku pg:psql --app angleline < check_head_url.sql > head_url.txt"))    
     print(os.system("notepad head_url.txt"))
