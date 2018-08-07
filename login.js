@@ -636,7 +636,7 @@ function FormReceiver(req,res){
                                         
         
     });
-        
+    res.end("請關閉視窗!回到大祭司講堂選取頭貼圖片")    
 }
 function ImgGiver(req,res){
     res.sendFile(__dirname+'/Imgur-Upload-master/index.html');
