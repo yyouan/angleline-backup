@@ -46,7 +46,7 @@ psql("SELECT * FROM ACCOUNT WHERE self_intro=\'\';").then(
                 "type":"text",
                 "text":"下階段要開始了，請按按我註冊進行註冊，有問題請洽詢問站"
             }
-            pushmessage(text,member.angle_id)         
+            pushmessage([text],member.angle_id)         
         }
         
     }

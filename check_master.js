@@ -33,7 +33,7 @@ psql("SELECT * FROM ACCOUNT WHERE master_id=\'\';").then(
                 "type":"text",
                 "text":"下階段要開始了，請選擇小主人，有問題請洽詢問站"
             }
-            pushmessage(text,member.angle_id)         
+            pushmessage([text],member.angle_id)         
         }
         
     }
