@@ -330,7 +330,45 @@ function loginParser(req ,res){
                 "type":"text",
                 "text":"感謝您加入遊戲，請輸入您註冊的電子郵件地址(如：xu.6u.30@gmail.com):"
             }
-            replymessage([text])   
+            var ad_youtube = {  
+                "type": "flex",
+                "altText": "大講堂有消息，請借台手機開啟",
+                "contents":
+                    {
+                        "type": "bubble",
+                        "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                            "type": "text",
+                            "text": "可以先看功能介紹影片"
+                            }
+                        ]
+                        },
+                        "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                            "type": "spacer",
+                            "size": "xl"
+                            },
+                            {
+                            "type": "button",
+                            "action": {
+                                "type": "uri",
+                                "label": "看影片",
+                                "uri": "https://www.youtube.com/playlist?list=PLfJYz57jQuEn0ZaX7HdD8hGR9xudTxAuo"
+                            },
+                            "style": "primary",
+                            "color": "#ff3333"
+                            }
+                        ]
+                        }             
+                    }
+            };
+            replymessage([ad_youtube,text])   
         }
 
         if (posttype == 'message'){
