@@ -646,7 +646,7 @@ function imgReceiver(req,res){
                     msg.push(ad_msg_angle);
                     msg.push(ad_msg_master);
                     msg.push(ad_msg_info);
-                    pushmessage(msg,res[0].angle_id);
+                    setTimeout(()=>{pushmessage(msg,res[0].angle_id);},3000)                   
                 }
             ) 
             
