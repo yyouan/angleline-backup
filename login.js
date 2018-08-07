@@ -163,7 +163,7 @@ function loginParser(req ,res){
                     members =>{
 
                         let gate = false;
-                        if(members[0].head_url==''){gate=true};
+                        if(members[0].head_url.replace(/\s+/g, "")==''){gate=true};
 
                         psql("UPDATE ACCOUNT SET head_url=\'"+ data.url +"\' WHERE angle_id=\'" + line_id +"\';").then(
                             res=>{
@@ -663,7 +663,7 @@ function imgReceiver(req,res){
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+post.email+"\';").then(
             members =>{
                 let gate = false;
-                if(members[0].head_url==''){
+                if(members[0].head_url.replace(/\s+/g, "")==''){
                     gate = true;
                 }
                 
