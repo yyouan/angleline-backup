@@ -40,7 +40,8 @@ var feedback = function(res) {
         document.getElementsByClassName('status')[0].style.position ='absolute';
         document.getElementsByClassName('status')[0].style.top ='20%'; 
         document.getElementsByClassName('status')[0].style.left ='25%';
-        document.getElementsByClassName('img')[0].style ="position: fixed;top: 80%;left:1%"        
+        document.getElementsByClassName('img')[0].style ="position: fixed;top: 80%;left:1%"
+        document.getElementsByClassName('img')[0].width = "20%"        
         document.getElementById('subbut').style = "background-color:lightgray;color:black;border: 5px solid #FF0000;font-size:300%;position: fixed;top: 40%;left:15%" ;
         document.getElementById('reload').style = "background-color:lightgray;color:black;border: 5px solid #8B4513;font-size:300%;position: fixed;top: 60%;left:15%" ;        
     }
