@@ -25,7 +25,7 @@ const app = express(); //建立一個express 伺服器
 app.post('/' , chatParser); // POST 方法**/
 
 /*
-可以使用 @delete_message清空所有訊息
+可以使用 $delete_message清空所有訊息
  */
 //------------SQL----------------------
 
@@ -496,7 +496,8 @@ function chatParser(req ,res){
                         let data = querystring.parse(rawdata);
                         reply_id = data.from_id;
 
-                    }else if(email =="@delete_message"){
+                    }
+                    if(email =="$delete_message"){
                         psql("DELETE FROM MESSAGE;")
                     }                    
                     
