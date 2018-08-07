@@ -124,7 +124,7 @@ elif name == "login":
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
 elif name == "choose":   
-    print(os.system("heroku pg:psql --app angleline < check_angle.sql"))
+    print(os.system("heroku pg:psql --app angleline < check_self_intro.sql"))
     print(os.system("heroku pg:psql --app angleline < check_head_url.sql"))    
     write_package_json("choose_master.js")
     print(os.system("git add ."))
