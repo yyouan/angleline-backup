@@ -503,7 +503,7 @@ function chatParser(req ,res){
                 }else{
                     let text ={
                         "type":"text",
-                        "text":"黑特已傳送"
+                        "text":"黑特已交給管理員審核"
                     }
                     replymessage([text])
                 }                
@@ -598,7 +598,7 @@ function chatParser(req ,res){
                 }else{
                     let text ={
                         "type":"text",
-                        "text":"黑特已傳送"
+                        "text":"黑特已交給管理員審核"
                     }
                     replymessage([text])
                 }                
