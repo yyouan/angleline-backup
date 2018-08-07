@@ -160,11 +160,148 @@ function loginParser(req ,res){
             if("url" in data) {
                 psql("UPDATE ACCOUNT SET head_url=\'"+ data.url +"\' WHERE angle_id=\'" + line_id +"\';").then(
                     res=>{
-                        let text = {
+                        let text2 = {
                             "type":"text",
                             "text":"已選取圖片"
+                        }                        
+                        let msg =[text2];
+                        let text ={
+                            "type":"text",
+                            "text":""
                         }
-                        replymessage([text]);
+                        text.text ="成功註冊!";
+                        msg.push(text);
+                        var ad_msg_angle = {  
+                            "type": "flex",
+                            "altText": "大講堂有消息，請借台手機開啟",
+                            "contents":
+                                {
+                                    "type": "bubble",
+                                    "header": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                        "type": "text",
+                                        "text": "按按鈕加小天使為好友"
+                                        }
+                                    ]
+                                    },
+                                    "hero": {
+                                        "type": "image",
+                                        "url": "https://i.imgur.com/4Ut09xB.jpg", //use 圖片位址
+                                    } ,
+                                    "footer": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                        "type": "spacer",
+                                        "size": "xl"
+                                        },
+                                        {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "按我加好友",
+                                            "uri": "https://line.me/R/ti/p/%40ugr1160s"
+                                        },
+                                        "style": "primary",
+                                        "color": "#ff3333"
+                                        }
+                                    ]
+                                    }             
+                                }
+                        };
+                        var ad_msg_master = {  
+                            "type": "flex",
+                            "altText": "大講堂有消息，請借台手機開啟",
+                            "contents":
+                                {
+                                    "type": "bubble",
+                                    "header": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                        "type": "text",
+                                        "text": "按按鈕加小主人為好友"
+                                        }
+                                    ]
+                                    },
+                                    "hero": {
+                                        "type": "image",
+                                        "url": "https://i.imgur.com/vQB9JKi.jpg", //use 圖片位址
+                                    } ,
+                                    "footer": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                        "type": "spacer",
+                                        "size": "xl"
+                                        },
+                                        {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "按我加好友",
+                                            "uri": "https://line.me/R/ti/p/%40tgi5859x"
+                                        },
+                                        "style": "primary",
+                                        "color": "#ff3333"
+                                        }
+                                    ]
+                                    }             
+                                }
+                        };
+                        var ad_msg_info = {  
+                            "type": "flex",
+                            "altText": "大講堂有消息，請借台手機開啟",
+                            "contents":
+                                {
+                                    "type": "bubble",
+                                    "header": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                        "type": "text",
+                                        "text": "按按鈕加詢問站為好友"
+                                        }
+                                    ]
+                                    },
+                                    "hero": {
+                                        "type": "image",
+                                        "url": "https://i.imgur.com/xffIZIN.jpg", //use 圖片位址
+                                    } ,
+                                    "footer": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                        "type": "spacer",
+                                        "size": "xl"
+                                        },
+                                        {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "按我加好友",
+                                            "uri": "https://line.me/R/ti/p/%40hzg9436s"
+                                        },
+                                        "style": "primary",
+                                        "color": "#ff3333"
+                                        }
+                                    ]
+                                    }             
+                                }
+                        };
+
+                        msg.push(ad_msg_angle);
+                        msg.push(ad_msg_master);
+                        msg.push(ad_msg_info);
+                        pushmessage(msg,res[0].angle_id);
                     }                    
                 )
             }
@@ -409,11 +546,11 @@ function FormReceiver(req,res){
                                                 "type": "button",
                                                 "action": {
                                                     "type": "postback",
-                                                    "label": "按我加好友",
+                                                    "label": "按我選圖片",
                                                     "data": "url="+url
                                                 },
                                                 "style": "primary",
-                                                "color": "#ff3333"
+                                                "color": "#ffbb00"
                                                 }
                                             ]
                                             }             
@@ -471,7 +608,7 @@ function FormReceiver(req,res){
                             };
                             msg.push(text);
                             msg.push(upload_page);                            
-                            pushmessage(msg,angles[0].angle_id);                                      
+                            setTimeout(()=>{pushmessage(msg,angles[0].angle_id);},3000)                                                                  
                         }
                     );
                 
@@ -646,7 +783,7 @@ function imgReceiver(req,res){
                     msg.push(ad_msg_angle);
                     msg.push(ad_msg_master);
                     msg.push(ad_msg_info);
-                    setTimeout(()=>{pushmessage(msg,res[0].angle_id);},3000)                   
+                    pushmessage(msg,res[0].angle_id);
                 }
             ) 
             
