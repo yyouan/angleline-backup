@@ -621,11 +621,11 @@ function chatParser(req ,res){
                 res =>{
                     let text1={
                         "type":"text",
-                        "text":"管理員回覆此則訊息："
+                        "text":"##管理員回覆此則訊息："
                     }
                     let text2={
                         "type":"text",
-                        "text":"回覆如下："
+                        "text":"##回覆如下："
                     }
                     let content =JSON.parse(res[0].content)
                     let replied = (content.length == 3)?(content[1]):(content[2])                    
