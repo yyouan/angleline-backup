@@ -15,7 +15,7 @@ const pool = new Pool({
     //ssl: true,
 });
 const graph_url = [
-    "https://upload.wikimedia.org/wikipedia/commons/1/19/ESA_Planck_CMB.jpg",
+    "https://i.imgur.com/nn4NUI5.jpg",
     "https://i.imgur.com/EdQ8tTf.jpg",
     "https://i.imgur.com/UMmVO2T.jpg",
     "https://i.imgur.com/z92G7KI.jpg",
@@ -301,7 +301,7 @@ function loginParser(req ,res){
                         msg.push(ad_msg_angle);
                         msg.push(ad_msg_master);
                         msg.push(ad_msg_info);
-                        pushmessage(msg,res[0].angle_id);
+                        pushmessage(msg,line_id);
                     }                    
                 )
             }
