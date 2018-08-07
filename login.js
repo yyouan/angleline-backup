@@ -66,9 +66,33 @@ app.post('')
 
 //login message with recpt function:
 function create_member(email,line_id){
-    psql("INSERT INTO ACCOUNT (email,line_id) VALUES (\'"+email+"\',\'"+line_id+"\');");
+    psql("INSERT INTO ACCOUNT (email,angle_id) VALUES (\'"+email+"\',\'"+line_id+"\');");
 }
-
+function pushmessage(recpt,id){
+    recpt.forEach(element => {
+        console.log("pushmessage:"+element);
+    });
+  
+    var options = {
+        url: "https://api.line.me/v2/bot/message/push",
+        method: 'POST',
+        headers: {
+          'Content-Type':  'application/json', 
+          'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+        },
+        json: {
+            "to": id.replace(/\s+/g, ""),
+            'messages': recpt
+        }
+      };
+      console.log(options);
+      request(options, function (error, response, body) {
+          if (error) throw error;
+          console.log("(line)");
+          console.log(body);
+      });
+  
+}
 function psql(command){
    
     return new Promise((resolve,reject)=>{
