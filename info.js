@@ -659,8 +659,10 @@ function chatParser(req ,res){
                     let text2={
                         "type":"text",
                         "text":"回覆如下："
-                    }                    
-                    pushmessage([text1,JSON.parse(res[0].content)[1],text2] ,data.reply_id)
+                    }
+                    let content =JSON.parse(res[0].content)
+                    let replied = (content.length == 3)?(content[1]):(content[2])                    
+                    pushmessage([text1,replied,text2] ,data.reply_id)
                 }
             )
             psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")            
