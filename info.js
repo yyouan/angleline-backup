@@ -650,6 +650,19 @@ function chatParser(req ,res){
                     replymessage([finish_button,text]);
                 }
             );
+            psql("SELECT * FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';").then(
+                res =>{
+                    let text1={
+                        "type":"text",
+                        "text":"管理員回覆此則訊息："
+                    }
+                    let text2={
+                        "type":"text",
+                        "text":"回覆如下："
+                    }                    
+                    pushmessage([text1,JSON.parse(res[0].content)[1],text2] ,data.reply_id)
+                }
+            )
             psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")            
 
         }else if("finish" in data){

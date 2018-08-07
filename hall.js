@@ -723,6 +723,22 @@ function chatParser(req ,res){
                                 replymessage([text]);
                             }
                             else{
+                                let reply_button2 =
+                                    {
+                                        "type": "template",
+                                        "altText": "大講堂有消息，請借台手機開啟",
+                                        "template": {
+                                            "type": "buttons",                            
+                                            "text": "請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆",                            
+                                            "actions": [                            
+                                                {
+                                                    "type": "postback",
+                                                    "label": "拒絕且回覆",
+                                                    "data": "reply_id="+line_id+"&msgid="+msgid     
+                                                }
+                                            ]
+                                        }
+                                    };
                                 let reply_button =
                                 {
                                     "type": "template",
@@ -748,7 +764,7 @@ function chatParser(req ,res){
                                     "type":"text",
                                     "text":"$大冒險："
                                 };
-                                pushToSuv([text2,msg,reply_button]);
+                                pushToSuv([text2,msg,reply_button,reply_button2]);
                                 psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text2,msg,reply_button])+"\',\'"+msgid+"\');");
                             }
                             
