@@ -53,15 +53,17 @@ psql("SELECT * FROM ACCOUNT WHERE master_id=\'\';").then(
 
             let a,b,c;
             let len = dept[member.department.replace(/\s+/g, "")].length;
+            let department =member.department.replace(/\s+/g, "");
+            
             if(len>3){                        
                                     
                 a = Math.floor(Math.random()*len);
                 let len2=((Math.floor(len/2)-2)<0 )?"0":(Math.floor(len/2)-2);
                 console.log(len2);            
                 b=Math.floor((Math.random()*len2+1)+a)%(len);
-                c=Math.floor((Math.random()*len2+1)+b)%(len);            
+                c=Math.floor((Math.random()*len2+1)+b)%(len);         
                 
-                let department =member.department.replace(/\s+/g, "");
+                
                 let index_arr = [a,b,c];
 
                 for(let index of index_arr){
