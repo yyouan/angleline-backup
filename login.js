@@ -15,7 +15,8 @@ const pool = new Pool({
     //ssl: true,
 });
 const graph_url = [
-    "https://i.imgur.com/nn4NUI5.jpg",
+    "https://i.imgur.com/tuwOCYc.jpg",
+    "https://i.imgur.com/FXikX2G.jpg",
     "https://i.imgur.com/EdQ8tTf.jpg",
     "https://i.imgur.com/UMmVO2T.jpg",
     "https://i.imgur.com/z92G7KI.jpg",
@@ -158,152 +159,168 @@ function loginParser(req ,res){
             let data = querystring.parse(rawdata);
 
             if("url" in data) {
-                psql("UPDATE ACCOUNT SET head_url=\'"+ data.url +"\' WHERE angle_id=\'" + line_id +"\';").then(
-                    res=>{
-                        let text2 = {
-                            "type":"text",
-                            "text":"已選取圖片"
-                        }                        
-                        let msg =[text2];
-                        let text ={
-                            "type":"text",
-                            "text":""
-                        }
-                        text.text ="成功註冊!";
-                        msg.push(text);
-                        var ad_msg_angle = {  
-                            "type": "flex",
-                            "altText": "大講堂有消息，請借台手機開啟",
-                            "contents":
-                                {
-                                    "type": "bubble",
-                                    "header": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                        "type": "text",
-                                        "text": "按按鈕加小天使為好友"
-                                        }
-                                    ]
-                                    },
-                                    "hero": {
-                                        "type": "image",
-                                        "url": "https://i.imgur.com/4Ut09xB.jpg", //use 圖片位址
-                                    } ,
-                                    "footer": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                        "type": "spacer",
-                                        "size": "xl"
-                                        },
-                                        {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "uri",
-                                            "label": "按我加好友",
-                                            "uri": "https://line.me/R/ti/p/%40ugr1160s"
-                                        },
-                                        "style": "primary",
-                                        "color": "#ff3333"
-                                        }
-                                    ]
-                                    }             
-                                }
-                        };
-                        var ad_msg_master = {  
-                            "type": "flex",
-                            "altText": "大講堂有消息，請借台手機開啟",
-                            "contents":
-                                {
-                                    "type": "bubble",
-                                    "header": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                        "type": "text",
-                                        "text": "按按鈕加小主人為好友"
-                                        }
-                                    ]
-                                    },
-                                    "hero": {
-                                        "type": "image",
-                                        "url": "https://i.imgur.com/vQB9JKi.jpg", //use 圖片位址
-                                    } ,
-                                    "footer": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                        "type": "spacer",
-                                        "size": "xl"
-                                        },
-                                        {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "uri",
-                                            "label": "按我加好友",
-                                            "uri": "https://line.me/R/ti/p/%40tgi5859x"
-                                        },
-                                        "style": "primary",
-                                        "color": "#ff3333"
-                                        }
-                                    ]
-                                    }             
-                                }
-                        };
-                        var ad_msg_info = {  
-                            "type": "flex",
-                            "altText": "大講堂有消息，請借台手機開啟",
-                            "contents":
-                                {
-                                    "type": "bubble",
-                                    "header": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                        "type": "text",
-                                        "text": "按按鈕加詢問站為好友"
-                                        }
-                                    ]
-                                    },
-                                    "hero": {
-                                        "type": "image",
-                                        "url": "https://i.imgur.com/xffIZIN.jpg", //use 圖片位址
-                                    } ,
-                                    "footer": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                        "type": "spacer",
-                                        "size": "xl"
-                                        },
-                                        {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "uri",
-                                            "label": "按我加好友",
-                                            "uri": "https://line.me/R/ti/p/%40hzg9436s"
-                                        },
-                                        "style": "primary",
-                                        "color": "#ff3333"
-                                        }
-                                    ]
-                                    }             
-                                }
-                        };
+                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
+                    members =>{
 
-                        msg.push(ad_msg_angle);
-                        msg.push(ad_msg_master);
-                        msg.push(ad_msg_info);
-                        pushmessage(msg,line_id);
-                    }                    
+                        let gate = false;
+                        if(members[0].head_url==''){gate=true};
+
+                        psql("UPDATE ACCOUNT SET head_url=\'"+ data.url +"\' WHERE angle_id=\'" + line_id +"\';").then(
+                            res=>{
+                                let text2 = {
+                                    "type":"text",
+                                    "text":"已選取圖片"
+                                }                        
+                                let msg =[text2];
+                                
+                                if(gate){
+
+                                    let text ={
+                                        "type":"text",
+                                        "text":""
+                                    }
+                                    text.text ="成功註冊!";
+                                    msg.push(text);
+                                    var ad_msg_angle = {  
+                                        "type": "flex",
+                                        "altText": "大講堂有消息，請借台手機開啟",
+                                        "contents":
+                                            {
+                                                "type": "bubble",
+                                                "header": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "text",
+                                                    "text": "按按鈕加小天使為好友"
+                                                    }
+                                                ]
+                                                },
+                                                "hero": {
+                                                    "type": "image",
+                                                    "url": "https://i.imgur.com/4Ut09xB.jpg", //use 圖片位址
+                                                } ,
+                                                "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "spacer",
+                                                    "size": "xl"
+                                                    },
+                                                    {
+                                                    "type": "button",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "按我加好友",
+                                                        "uri": "https://line.me/R/ti/p/%40ugr1160s"
+                                                    },
+                                                    "style": "primary",
+                                                    "color": "#ff3333"
+                                                    }
+                                                ]
+                                                }             
+                                            }
+                                    };
+                                    var ad_msg_master = {  
+                                        "type": "flex",
+                                        "altText": "大講堂有消息，請借台手機開啟",
+                                        "contents":
+                                            {
+                                                "type": "bubble",
+                                                "header": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "text",
+                                                    "text": "按按鈕加小主人為好友"
+                                                    }
+                                                ]
+                                                },
+                                                "hero": {
+                                                    "type": "image",
+                                                    "url": "https://i.imgur.com/vQB9JKi.jpg", //use 圖片位址
+                                                } ,
+                                                "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "spacer",
+                                                    "size": "xl"
+                                                    },
+                                                    {
+                                                    "type": "button",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "按我加好友",
+                                                        "uri": "https://line.me/R/ti/p/%40tgi5859x"
+                                                    },
+                                                    "style": "primary",
+                                                    "color": "#ff3333"
+                                                    }
+                                                ]
+                                                }             
+                                            }
+                                    };
+                                    var ad_msg_info = {  
+                                        "type": "flex",
+                                        "altText": "大講堂有消息，請借台手機開啟",
+                                        "contents":
+                                            {
+                                                "type": "bubble",
+                                                "header": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "text",
+                                                    "text": "按按鈕加詢問站為好友"
+                                                    }
+                                                ]
+                                                },
+                                                "hero": {
+                                                    "type": "image",
+                                                    "url": "https://i.imgur.com/xffIZIN.jpg", //use 圖片位址
+                                                } ,
+                                                "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "spacer",
+                                                    "size": "xl"
+                                                    },
+                                                    {
+                                                    "type": "button",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "按我加好友",
+                                                        "uri": "https://line.me/R/ti/p/%40hzg9436s"
+                                                    },
+                                                    "style": "primary",
+                                                    "color": "#ff3333"
+                                                    }
+                                                ]
+                                                }             
+                                            }
+                                    };
+            
+                                    msg.push(ad_msg_angle);
+                                    msg.push(ad_msg_master);
+                                    msg.push(ad_msg_info);
+                                    
+                                }
+                                
+                                pushmessage(msg,line_id);
+                            }                    
+                        )
+                        
+                    }
                 )
+                
             }
         }
         
@@ -643,152 +660,169 @@ function imgReceiver(req,res){
     req.on('end', function(){
         post = querystring.parse(post);    
         console.log(post);
-        psql("UPDATE ACCOUNT SET head_url=\'"+ post.url +"\' WHERE email=\'" + post.email +"\';").then(
-         aa =>{
-            psql("SELECT * FROM ACCOUNT WHERE email=\'"+post.email+"\';").then(
-                res =>{
-                    let msg =[];
-                    let text ={
-                        "type":"text",
-                        "text":""
-                    }
-                    text.text ="成功註冊!";
-                    msg.push(text);
-                    var ad_msg_angle = {  
-                        "type": "flex",
-                        "altText": "大講堂有消息，請借台手機開啟",
-                        "contents":
-                            {
-                                "type": "bubble",
-                                "header": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                    "type": "text",
-                                    "text": "按按鈕加小天使為好友"
-                                    }
-                                ]
-                                },
-                                "hero": {
-                                    "type": "image",
-                                    "url": "https://i.imgur.com/4Ut09xB.jpg", //use 圖片位址
-                                } ,
-                                "footer": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                    "type": "spacer",
-                                    "size": "xl"
-                                    },
-                                    {
-                                    "type": "button",
-                                    "action": {
-                                        "type": "uri",
-                                        "label": "按我加好友",
-                                        "uri": "https://line.me/R/ti/p/%40ugr1160s"
-                                    },
-                                    "style": "primary",
-                                    "color": "#ff3333"
-                                    }
-                                ]
-                                }             
-                            }
-                    };
-                    var ad_msg_master = {  
-                        "type": "flex",
-                        "altText": "大講堂有消息，請借台手機開啟",
-                        "contents":
-                            {
-                                "type": "bubble",
-                                "header": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                    "type": "text",
-                                    "text": "按按鈕加小主人為好友"
-                                    }
-                                ]
-                                },
-                                "hero": {
-                                    "type": "image",
-                                    "url": "https://i.imgur.com/vQB9JKi.jpg", //use 圖片位址
-                                } ,
-                                "footer": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                    "type": "spacer",
-                                    "size": "xl"
-                                    },
-                                    {
-                                    "type": "button",
-                                    "action": {
-                                        "type": "uri",
-                                        "label": "按我加好友",
-                                        "uri": "https://line.me/R/ti/p/%40tgi5859x"
-                                    },
-                                    "style": "primary",
-                                    "color": "#ff3333"
-                                    }
-                                ]
-                                }             
-                            }
-                    };
-                    var ad_msg_info = {  
-                        "type": "flex",
-                        "altText": "大講堂有消息，請借台手機開啟",
-                        "contents":
-                            {
-                                "type": "bubble",
-                                "header": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                    "type": "text",
-                                    "text": "按按鈕加詢問站為好友"
-                                    }
-                                ]
-                                },
-                                "hero": {
-                                    "type": "image",
-                                    "url": "https://i.imgur.com/xffIZIN.jpg", //use 圖片位址
-                                } ,
-                                "footer": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                    "type": "spacer",
-                                    "size": "xl"
-                                    },
-                                    {
-                                    "type": "button",
-                                    "action": {
-                                        "type": "uri",
-                                        "label": "按我加好友",
-                                        "uri": "https://line.me/R/ti/p/%40hzg9436s"
-                                    },
-                                    "style": "primary",
-                                    "color": "#ff3333"
-                                    }
-                                ]
-                                }             
-                            }
-                    };
-                    msg.push(ad_msg_angle);
-                    msg.push(ad_msg_master);
-                    msg.push(ad_msg_info);
-                    pushmessage(msg,res[0].angle_id);
+        psql("SELECT * FROM ACCOUNT WHERE email=\'"+post.email+"\';").then(
+            members =>{
+                let gate = false;
+                if(members[0].head_url==''){
+                    gate = true;
                 }
-            ) 
-            
-         }
-        );        
+                
+                psql("UPDATE ACCOUNT SET head_url=\'"+ post.url +"\' WHERE email=\'" + post.email +"\';").then(
+                    aa =>{
+                       psql("SELECT * FROM ACCOUNT WHERE email=\'"+post.email+"\';").then(
+                           res =>{
+                                let text2 = {
+                                    "type":"text",
+                                    "text":"已上傳圖片為頭貼"
+                                }                        
+                                let msg =[text2];
+                                if(gate){
+                                    let text ={
+                                        "type":"text",
+                                        "text":""
+                                    }
+                                    text.text ="成功註冊!";
+                                    msg.push(text);
+                                    var ad_msg_angle = {  
+                                        "type": "flex",
+                                        "altText": "大講堂有消息，請借台手機開啟",
+                                        "contents":
+                                            {
+                                                "type": "bubble",
+                                                "header": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "text",
+                                                    "text": "按按鈕加小天使為好友"
+                                                    }
+                                                ]
+                                                },
+                                                "hero": {
+                                                    "type": "image",
+                                                    "url": "https://i.imgur.com/4Ut09xB.jpg", //use 圖片位址
+                                                } ,
+                                                "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "spacer",
+                                                    "size": "xl"
+                                                    },
+                                                    {
+                                                    "type": "button",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "按我加好友",
+                                                        "uri": "https://line.me/R/ti/p/%40ugr1160s"
+                                                    },
+                                                    "style": "primary",
+                                                    "color": "#ff3333"
+                                                    }
+                                                ]
+                                                }             
+                                            }
+                                    };
+                                    var ad_msg_master = {  
+                                        "type": "flex",
+                                        "altText": "大講堂有消息，請借台手機開啟",
+                                        "contents":
+                                            {
+                                                "type": "bubble",
+                                                "header": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "text",
+                                                    "text": "按按鈕加小主人為好友"
+                                                    }
+                                                ]
+                                                },
+                                                "hero": {
+                                                    "type": "image",
+                                                    "url": "https://i.imgur.com/vQB9JKi.jpg", //use 圖片位址
+                                                } ,
+                                                "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "spacer",
+                                                    "size": "xl"
+                                                    },
+                                                    {
+                                                    "type": "button",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "按我加好友",
+                                                        "uri": "https://line.me/R/ti/p/%40tgi5859x"
+                                                    },
+                                                    "style": "primary",
+                                                    "color": "#ff3333"
+                                                    }
+                                                ]
+                                                }             
+                                            }
+                                    };
+                                    var ad_msg_info = {  
+                                        "type": "flex",
+                                        "altText": "大講堂有消息，請借台手機開啟",
+                                        "contents":
+                                            {
+                                                "type": "bubble",
+                                                "header": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "text",
+                                                    "text": "按按鈕加詢問站為好友"
+                                                    }
+                                                ]
+                                                },
+                                                "hero": {
+                                                    "type": "image",
+                                                    "url": "https://i.imgur.com/xffIZIN.jpg", //use 圖片位址
+                                                } ,
+                                                "footer": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {
+                                                    "type": "spacer",
+                                                    "size": "xl"
+                                                    },
+                                                    {
+                                                    "type": "button",
+                                                    "action": {
+                                                        "type": "uri",
+                                                        "label": "按我加好友",
+                                                        "uri": "https://line.me/R/ti/p/%40hzg9436s"
+                                                    },
+                                                    "style": "primary",
+                                                    "color": "#ff3333"
+                                                    }
+                                                ]
+                                                }             
+                                            }
+                                    };
+                                    msg.push(ad_msg_angle);
+                                    msg.push(ad_msg_master);
+                                    msg.push(ad_msg_info);
+                                }
+                               
+                               pushmessage(msg,res[0].angle_id);
+                           }
+                       ) 
+                       
+                    }
+                   );
+            }
+        )
+                
     });
 }
 
