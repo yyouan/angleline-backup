@@ -54,7 +54,8 @@ psql("SELECT * FROM ACCOUNT WHERE master_id=\'\';").then(
             let a,b,c;
             let len = dept[member.department.replace(/\s+/g, "")].length;
             let department =member.department.replace(/\s+/g, "");
-            
+            let to_id = member.angle_id;
+
             if(len>3){                        
                                     
                 a = Math.floor(Math.random()*len);
