@@ -87,7 +87,7 @@ function psql(command){
 
             if(mode == 'master_id'){
                 
-                psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+member.master_id+"\';").then(
+                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+member.master_id+"\';").then(
                     (masters)=>{
                         var master = masters[0];
                         let bubble ={
@@ -132,7 +132,7 @@ function psql(command){
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[member.problem];
-                        pushmessage([msg,self_intro,text],member[mode]);
+                        pushmessage([msg,self_intro,text],member['angle_id']);
                     }
                 ); 
 

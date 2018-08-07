@@ -15,7 +15,27 @@ const pool = new Pool({
     //ssl: true,
 });
 const graph_url = [
-
+    "https://upload.wikimedia.org/wikipedia/commons/1/19/ESA_Planck_CMB.jpg",
+    "https://i.imgur.com/EdQ8tTf.jpg",
+    "https://i.imgur.com/UMmVO2T.jpg",
+    "https://i.imgur.com/z92G7KI.jpg",
+    "https://i.imgur.com/x7MgwKt.jpg",
+    "https://i.imgur.com/lOs5GOf.jpg",
+    "https://i.imgur.com/NXcWALK.png",
+    "https://i.imgur.com/EaQs6YU.jpg",
+    "https://i.imgur.com/KiLqxHf.jpg",
+    "https://i.imgur.com/lwD1F9v.jpg",
+    "https://i.imgur.com/yFpbwmu.jpg",
+    "https://i.imgur.com/med3yMO.jpg",
+    "https://i.imgur.com/pMLQd6V.jpg",
+    "https://i.imgur.com/Pe55Oc5.jpg",
+    "https://i.imgur.com/I2PDbe1.jpg",
+    "https://i.imgur.com/QXaebkU.jpg",
+    "https://i.imgur.com/xYjIwWU.jpg",
+    "https://i.imgur.com/Xx7ruza.jpg",
+    "https://i.imgur.com/OcVrc0J.jpg",
+    "https://i.imgur.com/DbSuGNf.png",
+    "https://i.imgur.com/Dw1kRP0.png"
 ]
 
 const app = express(); //建立一個express 伺服器
