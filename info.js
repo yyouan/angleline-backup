@@ -334,22 +334,40 @@ function chatParser(req ,res){
                     if(res.length==1){
                         loc = gamelocation[res[0].locationproblem];
                         console.log(loc);
-                        
+
                         if(Math.abs((msg.latitude - loc[0]))<0.0001 || Math.abs((msg.longitude - loc[1]))<0.0001){
+
                             text.text = "!!!!抵達目標，恭喜答對!!!!"                           
 
                             psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                            psql("UPDATE ACCOUNT SET location_problem="+ String((res[0].location_problem+1)%game_item.locationproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                            let msg = [
-                                {
-                                    "type":"text",
-                                    "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
-                                },
-                                {
-                                    "type":"text",
-                                    "text":"下一關的題目："+game_item.locationproblem[(res[0].location_problem+1)%game_item.locationproblem.length]
-                                }
-                            ];
+                            let msg =[]
+                            if(res[0].location_count < game_item.locationproblem.length){
+
+                                psql("UPDATE ACCOUNT SET location_problem="+ String((res[0].location_problem+1)%game_item.locationproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                msg = [
+                                    {
+                                        "type":"text",
+                                        "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
+                                    },
+                                    {
+                                        "type":"text",
+                                        "text":"[地點遊戲]下一關的題目："+game_item.locationproblem[(res[0].location_problem+1)%game_item.locationproblem.length]
+                                    }
+                                ];
+
+                            }else{
+                                msg = [
+                                    {
+                                        "type":"text",
+                                        "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
+                                    },
+                                    {
+                                        "type":"text",
+                                        "text":"[地點遊戲]已經全部通關完畢，在此致上製作團隊八十七分的敬意"
+                                    }
+                                ];
+                            }
+                            
                             replymessage([text,msg[0],msg[1]]);
                            
                         }else if(Math.abs((msg.latitude - loc[0]))<0.0002 || Math.abs((msg.longitude - loc[1]))<0.0002){

@@ -854,7 +854,7 @@ function GameProceessor(req,res){
                                                 },
                                                 {
                                                     "type":"text",
-                                                    "text":"QRcode下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
+                                                    "text":"[QRcode遊戲]下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
                                                 }
                                             ]
                                         }else{
@@ -865,7 +865,7 @@ function GameProceessor(req,res){
                                                 },
                                                 {
                                                     "type":"text",
-                                                    "text":"QRcode全部的關卡都破完了，獻上製作委員會的特別感謝!!你們是最棒的小天使與小主人!!"
+                                                    "text":"[QRcode遊戲]全部的關卡都破完了，獻上製作委員會的特別感謝!!你們是最棒的小天使與小主人!!"
                                                 }
                                             ]
                                         }
@@ -905,7 +905,7 @@ function GameProceessor(req,res){
                                     },
                                     {
                                         "type":"text",
-                                        "text":"QRcode下一關的題目："+game_item.gameproblem[(req[0].problem+1)%game_item.gameproblem.length]
+                                        "text":"[QRcode遊戲]下一關的題目："+game_item.gameproblem[(req[0].problem+1)%game_item.gameproblem.length]
                                     }
                                 ]
 
@@ -917,7 +917,7 @@ function GameProceessor(req,res){
                                     },
                                     {
                                         "type":"text",
-                                        "text":"QRcode全部的關卡都破完了，獻上製作委員會的特別感謝!!你們是最棒的小天使與小主人!!"
+                                        "text":"[QRcode遊戲]全部的關卡都破完了，獻上製作委員會的特別感謝!!你們是最棒的小天使與小主人!!"
                                     }
                                 ]
                             }
