@@ -137,7 +137,7 @@ function psql(command){
                         };
                         text.text +=game_item.gameproblem[member.problem];
                         text2.text += game_item.locationproblem[member.location_problem];
-                        pushmessage([msg,self_intro,text],member['angle_id']);
+                        pushmessage([msg,self_intro,text,text2],member['angle_id']);
                     }
                 ); 
 
@@ -187,7 +187,7 @@ function psql(command){
                         };
                         text.text +=game_item.gameproblem[angles[0].problem];
                         text2.text += game_item.locationproblem[angles[0].location_problem];
-                        pushmessage([msg,self_intro,text],member[mode]);
+                        pushmessage([msg,self_intro,text,text2],member[mode]);
                     }
                 );
             }
