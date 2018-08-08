@@ -82,7 +82,11 @@ function psql(command){
 
             let text ={
                 "type":"text",
-                "text":"遊戲問題\n"
+                "text":"QRcode遊戲問題\n"
+            }
+            let text2={
+                "type":"text",
+                "text":"地點遊戲問題\n"
             }
 
             if(mode == 'master_id'){
@@ -132,7 +136,8 @@ function psql(command){
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[member.problem];
-                        pushmessage([msg,self_intro,text],member[mode]);
+                        text2.text += game_item.locationproblem[angles[0].location_problem];
+                        pushmessage([msg,self_intro,text,text2],member[mode]);
                     }
                 ); 
 
@@ -179,9 +184,10 @@ function psql(command){
                             "type": "flex",
                             "altText": "大講堂有消息，請借台手機開啟",
                             "contents":bubble 
-                        };
-                        text.text +=game_item.gameproblem[angles[0].problem];
-                        pushmessage([msg,self_intro,text],member[mode]);
+                        };                        
+                        text.text += game_item.gameproblem[angles[0].problem];
+                        text2.text += game_item.locationproblem[angles[0].location_problem];
+                        pushmessage([msg,self_intro,text,text2],member[mode]);
                     }
                 );
             }

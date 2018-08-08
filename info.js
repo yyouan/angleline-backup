@@ -332,21 +332,22 @@ function chatParser(req ,res){
                         "text":""
                     }
                     if(res.length==1){
-                        loc = gamelocation[res[0].problem];
+                        loc = gamelocation[res[0].locationproblem];
                         console.log(loc);
+                        
                         if(Math.abs((msg.latitude - loc[0]))<0.0001 || Math.abs((msg.longitude - loc[1]))<0.0001){
                             text.text = "!!!!抵達目標，恭喜答對!!!!"                           
 
                             psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                            psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                            psql("UPDATE ACCOUNT SET location_problem="+ String((res[0].location_problem+1)%game_item.locationproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                             let msg = [
                                 {
                                     "type":"text",
-                                    "text":"恭喜破關!現在你的分數為"+String(res[0].score+20)
+                                    "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
                                 },
                                 {
                                     "type":"text",
-                                    "text":"下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
+                                    "text":"下一關的題目："+game_item.locationproblem[(res[0].location_problem+1)%game_item.locationproblem.length]
                                 }
                             ];
                             replymessage([text,msg[0],msg[1]]);

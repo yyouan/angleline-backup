@@ -82,7 +82,11 @@ function psql(command){
 
             let text ={
                 "type":"text",
-                "text":"遊戲問題\n"
+                "text":"QRcode遊戲問題\n"
+            }
+            let text2={
+                "type":"text",
+                "text":"地點遊戲問題\n"
             }
 
             if(mode == 'master_id'){
@@ -132,6 +136,7 @@ function psql(command){
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[member.problem];
+                        text2.text += game_item.locationproblem[angles[0].location_problem];
                         pushmessage([msg,self_intro,text],member['angle_id']);
                     }
                 ); 
@@ -181,6 +186,7 @@ function psql(command){
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[angles[0].problem];
+                        text2.text += game_item.locationproblem[angles[0].location_problem];
                         pushmessage([msg,self_intro,text],member[mode]);
                     }
                 );

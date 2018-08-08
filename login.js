@@ -59,9 +59,9 @@ app.post('')
 
 //SQL
 /**
-     angle_nickname |   angle_id    | master_name     |master_group|  master_id   | department | email              | head_url |self_intro|name  |phone           |score  |ticket |Group
-    ----------------+---------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------
-    友安            | 0123456789012 | 另友安           |        7   | 123456789012 | phys/psy   |xu.6u.30@gmail.com  |url      |longtext  |劉友安 |0926372361  |0      |0      |  8  
+     angle_nickname |   angle_id    | master_name     |master_group|  master_id   | department | email              | head_url |self_intro|name  |phone           |score  |ticket |Group|problem|location_problem|problem_count|location_count                      
+    ----------------+---------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    友安            | 0123456789012 | 另友安           |        7   | 123456789012 | phys/psy   |xu.6u.30@gmail.com  |url      |longtext  |劉友安 |0926372361       |0      |0      |  8  |0      |0              |      <6       |     <6 
     /
 */  
 
@@ -170,8 +170,51 @@ function loginParser(req ,res){
                                 let text2 = {
                                     "type":"text",
                                     "text":"已選取圖片"
-                                }                        
-                                let msg =[text2];
+                                }
+                                
+                                let bubble ={
+                                    "type": "bubble",
+                                    "header": {
+                                      "type": "box",
+                                      "layout": "vertical",
+                                      "contents": [
+                                        {
+                                          "type": "text",
+                                          "text": "你的小天使"
+                                        }
+                                      ]
+                                    },
+                                    "hero": {
+                                      "type": "image",
+                                      "url": members[0].head_url.replace(/\s+/g, ""),
+                                    },
+                                    "body": {
+                                      "type": "box",
+                                      "layout": "vertical",
+                                      "contents": [
+                                        
+                                            {//暱稱
+                                                "type": "text",
+                                                "text": "暱稱： "+members[0].angle_nickname.replace(/\s+/g, ""),
+                                              },
+                                      ]
+                                    }
+                                    
+                                };
+                                
+                                let self_intro =                
+                                {//自我介紹
+                                    "type": "text",
+                                    "text": "自我介紹： "+ members[0].self_intro,
+                                };
+        
+                                let msg2 ={  
+                                    "type": "flex",
+                                    "altText": "大講堂有消息，請借台手機開啟",
+                                    "contents":bubble 
+                                };
+                                
+                                let msg =[text2,msg2,self_intro];
                                 
                                 if(gate){
 
@@ -559,7 +602,10 @@ function FormReceiver(req,res){
                     psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET self_intro=\'"+ post['self-intro'] +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
+                    psql("UPDATE ACCOUNT SET location_problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET score=0 WHERE email=\'" + post.email +"\';");
+                    psql("UPDATE ACCOUNT SET problem_count=0 WHERE email=\'" + post.email +"\';");
+                    psql("UPDATE ACCOUNT SET location_count=0 WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET ticket=0 WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET groupindex="+post.group+" WHERE email=\'" + post.email +"\';");                
                     psql("UPDATE ACCOUNT SET name=\'"+ post.name +"\' WHERE email=\'" + post.email +"\';"); 
@@ -712,8 +758,53 @@ function imgReceiver(req,res){
                                 let text2 = {
                                     "type":"text",
                                     "text":"已上傳圖片為頭貼"
-                                }                        
-                                let msg =[text2];
+                                }                       
+                                
+
+                                let bubble ={
+                                    "type": "bubble",
+                                    "header": {
+                                      "type": "box",
+                                      "layout": "vertical",
+                                      "contents": [
+                                        {
+                                          "type": "text",
+                                          "text": "你的小天使"
+                                        }
+                                      ]
+                                    },
+                                    "hero": {
+                                      "type": "image",
+                                      "url": res[0].head_url.replace(/\s+/g, ""),
+                                    },
+                                    "body": {
+                                      "type": "box",
+                                      "layout": "vertical",
+                                      "contents": [
+                                        
+                                            {//暱稱
+                                                "type": "text",
+                                                "text": "暱稱： "+res[0].angle_nickname.replace(/\s+/g, ""),
+                                              },
+                                      ]
+                                    }
+                                    
+                                };
+                                
+                                let self_intro =                
+                                {//自我介紹
+                                    "type": "text",
+                                    "text": "自我介紹： "+ res[0].self_intro,
+                                };
+        
+                                let msg2 ={  
+                                    "type": "flex",
+                                    "altText": "大講堂有消息，請借台手機開啟",
+                                    "contents":bubble 
+                                };
+
+                                let msg =[text2,msg2,self_intro];
+
                                 if(gate){
                                     let text ={
                                         "type":"text",
