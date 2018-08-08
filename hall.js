@@ -845,7 +845,7 @@ function GameProceessor(req,res){
                                         //send next problem to partner
                                         let msg=[]
 
-                                        if(res[0].problem_count < game_item.gameproblem.length){
+                                        if(res[0].problem_count < (game_item.gameproblem.length-1) ){
                                             psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                             msg = [
                                                 {
@@ -895,7 +895,7 @@ function GameProceessor(req,res){
                             psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                             psql("UPDATE ACCOUNT SET problem_count="+ String(req[0].problem_count+1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                             let msg=[]
-                            if(req[0].problem_count < game_item.gameproblem.length){
+                            if(req[0].problem_count < (game_item.gameproblem.length-1) ){
                                 
                                 psql("UPDATE ACCOUNT SET problem="+ String((req[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                                  msg = [
