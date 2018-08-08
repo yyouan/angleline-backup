@@ -241,7 +241,7 @@ function chatParser(req ,res){
 
                             
                             let msg =[]
-                            if(res[0].location_count < (game_item.locationproblem.length-1) ){
+                            if(res[0].location_count < (game_item.locationproblem.length - 1) ){
 
                                 psql("UPDATE ACCOUNT SET score="+ String(res[0].score+10) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                 psql("UPDATE ACCOUNT SET location_count="+ String(res[0].location_count +1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
