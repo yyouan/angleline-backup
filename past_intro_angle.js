@@ -136,7 +136,7 @@ function psql(command){
                             "contents":bubble 
                         };
                         text.text +=game_item.gameproblem[member.problem];
-                        text2.text += game_item.locationproblem[angles[0].location_problem];
+                        text2.text += game_item.locationproblem[member.location_problem];
                         pushmessage([msg,self_intro,text,text2],member[mode]);
                     }
                 ); 
