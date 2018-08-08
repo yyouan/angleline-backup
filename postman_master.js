@@ -201,7 +201,9 @@ function chatParser(req ,res){
       var replyToken = post.events[0].replyToken;
       var posttype = post.events[0].type;
       var line_id = post.events[0].source.userId;
-      
+      if( post.events[0].source.type == 'group'){
+        line_id = post.events[0].source.groupId;
+    }
       /**var userMessage = post.events[0].message.text;
       console.log(replyToken);
       console.log(userMessage);**/
