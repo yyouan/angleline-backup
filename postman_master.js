@@ -209,8 +209,8 @@ function chatParser(req ,res){
           return;
       }      
             
-      if (posttype == 'message'){
-          
+      if (posttype == 'message'){        
+
           let gate = false;
           if(post.events[0].message.type == 'video' || post.events[0].message.type=='audio'){
             let text={
@@ -220,7 +220,7 @@ function chatParser(req ,res){
             replymessage([text]);
             gate=true;
           }          
-          if(type == 'location'){
+          if(post.events[0].message.type == 'location'){
             
             let msg = post.events[0].message; 
 

@@ -221,7 +221,7 @@ function chatParser(req ,res){
             gate=true;
           }
 
-          if(type == 'location'){
+          if(post.events[0].message.type == 'location'){
             
             let msg = post.events[0].message; 
 
