@@ -220,7 +220,78 @@ function chatParser(req ,res){
             replymessage([text]);
             gate=true;
           }          
-          if(gate == false){
+          if(type == 'location'){
+            
+            let msg = post.events[0].message; 
+
+            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + line_id +"\';").then(
+                (res)=>{
+                    let text ={
+                        "type":"text",
+                        "text":""
+                    }
+                    if(res.length==1){
+                        loc = gamelocation[res[0].location_problem];
+                        console.log(loc);
+
+                        if(Math.abs((msg.latitude - loc[0]))<0.0001 || Math.abs((msg.longitude - loc[1]))<0.0001){
+
+                            text.text = "!!!!抵達目標，恭喜答對!!!!"                           
+
+                            psql("UPDATE ACCOUNT SET score="+ String(res[0].score+10) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                            psql("UPDATE ACCOUNT SET score="+ String(res[0].location_count +1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                            let msg =[]
+                            if(res[0].location_count < (game_item.locationproblem.length-1) ){
+
+                                psql("UPDATE ACCOUNT SET location_problem="+ String((res[0].location_problem+1)%game_item.locationproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                msg = [
+                                    {
+                                        "type":"text",
+                                        "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
+                                    },
+                                    {
+                                        "type":"text",
+                                        "text":"[地點遊戲]下一關的題目："+game_item.locationproblem[(res[0].location_problem+1)%game_item.locationproblem.length]
+                                    }
+                                ];
+
+                            }else{
+                                msg = [
+                                    {
+                                        "type":"text",
+                                        "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
+                                    },
+                                    {
+                                        "type":"text",
+                                        "text":"[地點遊戲]已經全部通關完畢，在此致上製作團隊八十七分的敬意"
+                                    }
+                                ];
+                            }
+                            
+                            replymessage([text,msg[0],msg[1]]);
+                           
+                        }else if(Math.abs((msg.latitude - loc[0]))<0.0002 || Math.abs((msg.longitude - loc[1]))<0.0002){
+                            text.text = "!!距離目標還有約20公尺!!"
+                            replymessage([text]);
+                        }else if(Math.abs((msg.latitude - loc[0]))<0.0003 || Math.abs((msg.longitude - loc[1]))<0.0003){
+                            text.text = "!距離目標還有約30公尺!"
+                            replymessage([text]);
+                        }else if(Math.abs((msg.latitude - loc[0]))<0.0005 || Math.abs((msg.longitude - loc[1]))<0.0005){
+                            text.text = "\\距離目標還有約50公尺/"
+                            replymessage([text]);
+                        }else if(Math.abs((msg.latitude - loc[0]))<0.001 || Math.abs((msg.longitude - loc[1]))<0.001){
+                            text.text = "距離目標還有約100公尺"
+                            replymessage([text]);
+                        }else{
+                            text.text = "距離目標太遠(約100公尺以上)"
+                            replymessage([text]);
+                        }
+                    }else{
+                        //debug code
+                    }
+                }
+            );                    
+        }else if(gate == false){
 
               psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                 (writers)=>{
