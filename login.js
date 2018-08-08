@@ -598,7 +598,7 @@ function FormReceiver(req,res){
                     psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET master_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET master_name=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET head_url=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
+                    psql("UPDATE ACCOUNT SET head_url=\'"+ "https://i.imgur.com/tuwOCYc.jpg" +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET self_intro=\'"+ post['self-intro'] +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
