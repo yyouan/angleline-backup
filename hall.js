@@ -836,60 +836,67 @@ function GameProceessor(req,res){
                     }else{
                         //0.one of pair know the person will win the score 1                        
                         if(req[0].problem != game_index){
+                            
                             psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+req[0].angle_id+"\';").then(
                                 (res)=>{
-                                    if(res[0].problem == game_index){                                        
-                                        //go to next problem
-                                        //send next problem to partner
-                                        let msg=[]
 
-                                        if(res[0].problem_count < (game_item.gameproblem.length-1) ){
-                                            psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                                            psql("UPDATE ACCOUNT SET problem_count="+ String(res[0].problem_count+1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                    if(res.length == 1){
 
-                                            psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                                            msg = [
-                                                {
-                                                    "type":"text",
-                                                    "text":"恭喜破關!現在小組分數為"+String(res[0].score+20)
-                                                },
-                                                {
-                                                    "type":"text",
-                                                    "text":"[QRcode遊戲]下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
-                                                }
-                                            ]
-                                        }else{
-                                            msg = [
-                                                {
-                                                    "type":"text",
-                                                    "text":"恭喜破關!現在小組分數為"+String(res[0].score+20)
-                                                },
-                                                {
-                                                    "type":"text",
-                                                    "text":"[QRcode遊戲]全部的關卡都破完了，獻上製作委員會的特別感謝!!你們是最棒的小天使與小主人!!"
-                                                }
-                                            ]
-                                        }
-                                        
-                                        pushtoMaster(msg,res[0].angle_id);
-                                        pushtoAngle(msg,res[0].master_id);
-                                    }else{
-                                        psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                                        psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
-                                        let msg = [
-                                            {
-                                                "type":"text",
-                                                "text":"問錯人了!現在小組分數為"+String(res[0].score-1)
-                                            },
-                                            {
-                                                "type":"text",
-                                                "text":"提醒題目："+game_item.gameproblem[res[0].problem]
+                                        if(res[0].problem == game_index){                                        
+                                            //go to next problem
+                                            //send next problem to partner
+                                            let msg=[]
+    
+                                            if(res[0].problem_count < (game_item.gameproblem.length-1) ){
+    
+                                                psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                                psql("UPDATE ACCOUNT SET problem_count="+ String(res[0].problem_count+1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+    
+                                                psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                                msg = [
+                                                    {
+                                                        "type":"text",
+                                                        "text":"恭喜破關!現在小組分數為"+String(res[0].score+20)
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":"[QRcode遊戲]下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
+                                                    }
+                                                ]
+                                            }else{
+                                                msg = [
+                                                    {
+                                                        "type":"text",
+                                                        "text":"恭喜破關!現在小組分數為"+String(res[0].score+20)
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":"[QRcode遊戲]全部的關卡都破完了，獻上製作委員會的特別感謝!!你們是最棒的小天使與小主人!!"
+                                                    }
+                                                ]
                                             }
-                                        ]
-                                        pushtoMaster(msg,res[0].angle_id);
-                                        pushtoAngle(msg,res[0].master_id);
-                                        pushtoAngle(msg,req[0].master_id);
+                                            
+                                            pushtoMaster(msg,res[0].angle_id);
+                                            pushtoAngle(msg,res[0].master_id);
+                                        }else{
+                                            psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                            psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                                            let msg = [
+                                                {
+                                                    "type":"text",
+                                                    "text":"問錯人了!現在小組分數為"+String(res[0].score-1)
+                                                },
+                                                {
+                                                    "type":"text",
+                                                    "text":"提醒題目："+game_item.gameproblem[res[0].problem]
+                                                }
+                                            ]
+                                            pushtoMaster(msg,res[0].angle_id);
+                                            pushtoAngle(msg,res[0].master_id);
+                                            pushtoAngle(msg,req[0].master_id);
+                                        }
                                     }
+                                    
                                 }
                             );
                         }else{
