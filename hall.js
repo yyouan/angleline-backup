@@ -838,14 +838,15 @@ function GameProceessor(req,res){
                         if(req[0].problem != game_index){
                             psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+req[0].angle_id+"\';").then(
                                 (res)=>{
-                                    if(res[0].problem == game_index){
-                                        psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                                        psql("UPDATE ACCOUNT SET problem_count="+ String(res[0].problem_count+1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                    if(res[0].problem == game_index){                                        
                                         //go to next problem
                                         //send next problem to partner
                                         let msg=[]
 
                                         if(res[0].problem_count < (game_item.gameproblem.length-1) ){
+                                            psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                            psql("UPDATE ACCOUNT SET problem_count="+ String(res[0].problem_count+1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+
                                             psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                             msg = [
                                                 {
@@ -892,11 +893,12 @@ function GameProceessor(req,res){
                                 }
                             );
                         }else{
-                            psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
-                            psql("UPDATE ACCOUNT SET problem_count="+ String(req[0].problem_count+1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                            
                             let msg=[]
                             if(req[0].problem_count < (game_item.gameproblem.length-1) ){
-                                
+                                psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                                psql("UPDATE ACCOUNT SET problem_count="+ String(req[0].problem_count+1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+
                                 psql("UPDATE ACCOUNT SET problem="+ String((req[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                                  msg = [
                                     {

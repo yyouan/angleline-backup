@@ -239,11 +239,13 @@ function chatParser(req ,res){
 
                             text.text = "!!!!抵達目標，恭喜答對!!!!"                           
 
-                            psql("UPDATE ACCOUNT SET score="+ String(res[0].score+10) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                            psql("UPDATE ACCOUNT SET location_count="+ String(res[0].location_count +1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                            
                             let msg =[]
                             if(res[0].location_count < (game_item.locationproblem.length-1) ){
 
+                                psql("UPDATE ACCOUNT SET score="+ String(res[0].score+10) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                psql("UPDATE ACCOUNT SET location_count="+ String(res[0].location_count +1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                
                                 psql("UPDATE ACCOUNT SET location_problem="+ String((res[0].location_problem+1)%game_item.locationproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                 msg = [
                                     {
