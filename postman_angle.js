@@ -262,7 +262,7 @@ function chatParser(req ,res){
                                 msg = [
                                     {
                                         "type":"text",
-                                        "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
+                                        "text":"現在你的分數為"+String(res[0].score)
                                     },
                                     {
                                         "type":"text",

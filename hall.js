@@ -826,7 +826,7 @@ function GameProceessor(req,res){
         .then(
             (req)=>{
                 if(game_index!=-1){
-                    
+
                     if(req.length!=1){
                         let text ={
                             "type":"text",
@@ -868,7 +868,7 @@ function GameProceessor(req,res){
                                                 msg = [
                                                     {
                                                         "type":"text",
-                                                        "text":"恭喜破關!現在小組分數為"+String(res[0].score+20)
+                                                        "text":"現在小組分數為"+String(res[0].score)
                                                     },
                                                     {
                                                         "type":"text",
@@ -923,7 +923,7 @@ function GameProceessor(req,res){
                                 msg = [
                                     {
                                         "type":"text",
-                                        "text":"恭喜破關!現在小組分數為"+String(req[0].score+20)
+                                        "text":"現在小組分數為"+String(req[0].score)
                                     },
                                     {
                                         "type":"text",
