@@ -332,7 +332,7 @@ function chatParser(req ,res){
                         "text":""
                     }
                     if(res.length==1){
-                        loc = gamelocation[res[0].locationproblem];
+                        loc = gamelocation[res[0].location_problem];
                         console.log(loc);
 
                         if(Math.abs((msg.latitude - loc[0]))<0.0001 || Math.abs((msg.longitude - loc[1]))<0.0001){
