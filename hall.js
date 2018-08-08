@@ -826,6 +826,7 @@ function GameProceessor(req,res){
         .then(
             (req)=>{
                 if(game_index!=-1){
+                    
                     if(req.length!=1){
                         let text ={
                             "type":"text",
@@ -836,7 +837,7 @@ function GameProceessor(req,res){
                     }else{
                         //0.one of pair know the person will win the score 1                        
                         if(req[0].problem != game_index){
-                            
+
                             psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+req[0].angle_id+"\';").then(
                                 (res)=>{
 
