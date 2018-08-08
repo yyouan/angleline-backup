@@ -186,7 +186,7 @@ function loginParser(req ,res){
                                     },
                                     "hero": {
                                       "type": "image",
-                                      "url": members[0].head_url.replace(/\s+/g, ""),
+                                      "url": data.url,
                                     },
                                     "body": {
                                       "type": "box",
@@ -775,7 +775,7 @@ function imgReceiver(req,res){
                                     },
                                     "hero": {
                                       "type": "image",
-                                      "url": res[0].head_url.replace(/\s+/g, ""),
+                                      "url": post.url,
                                     },
                                     "body": {
                                       "type": "box",
