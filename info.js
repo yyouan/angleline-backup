@@ -667,7 +667,9 @@ function chatParser(req ,res){
             replymessage([text]);
 
         }else if("send" in data){
+
             if("nick" in data){
+
                 console.log("nick_send");
                 let msg_stored = JSON.parse(data.msg);
                 let nickname = data.nick;
@@ -707,7 +709,7 @@ function chatParser(req ,res){
                     }
                 )
             };
-            
+            psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
 
         }else if("complete" in data){
             console.log("complete");
@@ -722,6 +724,15 @@ function chatParser(req ,res){
                 "text":"輸入完成要求者姓名："
             }            
             replymessage([finish_button,text]);
+            psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
+        
+        }else if("said" in data){
+
+            let text ={
+                "type":"text",
+                "text":"已經說完此真心話"
+            }            
+            replymessage([text]);
             psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
         }
                  

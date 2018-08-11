@@ -484,7 +484,7 @@ function chatParser(req ,res){
                             {
                                 "type": "postback",
                                 "label": "寄出",
-                                "data": "send=1"
+                                "data": "send=1"+"&msgid="+msgid
                             },
                             {
                                 "type": "postback",
@@ -579,7 +579,7 @@ function chatParser(req ,res){
                             {
                                 "type": "postback",
                                 "label": "寄出",
-                                "data": "send=1"
+                                "data": "send=1"+"&msgid="+msgid
                             },
                             {
                                 "type": "postback",
@@ -683,6 +683,10 @@ function chatParser(req ,res){
                                 "type": "postback",
                                 "label": "拒絕且回覆",
                                 "data": "reply_id="+line_id+"&msgid="+msgid     
+                            },{
+                                "type": "postback",
+                                "label": "唸完了",
+                                "data": "said=1"+"&msgid="+msgid
                             }
                         ]
                     }
