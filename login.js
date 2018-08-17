@@ -355,7 +355,9 @@ function loginParser(req ,res){
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],line_id);
                                 }
                                 
-                                pushmessage(msg,line_id);
+                                setTimeout(() => {
+                                    pushmessage(msg,line_id);
+                                }, 3000); 
                             }                    
                         )
                         
@@ -958,7 +960,9 @@ function imgReceiver(req,res){
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
                                 }
                                
-                               pushmessage(msg,res[0].angle_id);
+                               setTimeout( () => {
+                                pushmessage(msg,res[0].angle_id);
+                               }, 3000); 
                            }
                        ) 
                        
