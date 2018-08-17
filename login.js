@@ -350,12 +350,9 @@ function loginParser(req ,res){
                                                 ]
                                                 }             
                                             }
-                                    };
-            
-                                    msg.push(ad_msg_angle);
-                                    msg.push(ad_msg_master);
-                                    msg.push(ad_msg_info);
+                                    };           
                                     
+                                    pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],line_id);
                                 }
                                 
                                 pushmessage(msg,line_id);
@@ -958,9 +955,7 @@ function imgReceiver(req,res){
                                                 }             
                                             }
                                     };
-                                    msg.push(ad_msg_angle);
-                                    msg.push(ad_msg_master);
-                                    msg.push(ad_msg_info);
+                                    pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
                                 }
                                
                                pushmessage(msg,res[0].angle_id);
