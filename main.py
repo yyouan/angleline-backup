@@ -53,13 +53,13 @@ if(__name__ == "__main__"):
 if name =="show":
     print("log out file is on list.txt")
     print(os.system("heroku pg:psql --app angleline < main.sql > list.txt"))
-    print(os.system("heroku pg:psql --app angleline < main.sql"))
+    #print(os.system("heroku pg:psql --app angleline < main.sql"))
     print(os.system("notepad list.txt"))
 
 if name == "pair":
     print("log out file is on pair.txt")
     print(os.system("heroku pg:psql --app angleline < main.sql > pair.txt"))
-    print(os.system("heroku pg:psql --app angleline < pair.sql"))
+    #print(os.system("heroku pg:psql --app angleline < pair.sql"))
     print(os.system("notepad pair.txt"))
 
 if name =="console":
