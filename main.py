@@ -78,7 +78,8 @@ if name =="console":
     print(os.system("git pull https://github.com/yyouan/informationdesk.git master"))
     print("please fix conflict problem in package.json") 
     print("please input:SELECT * FROM ACCOUNT; afer >>  (DELETE USE DELETE enter enter ;)")
-    print(os.system("heroku pg:psql --app angleline < main.sql"))
+    print(os.system("heroku pg:psql --app angleline < main.sql > list.txt"))
+    print(os.system("notepad list.txt"))
     
 elif name == "check:master":    
     print(os.system("heroku pg:psql --app angleline < check_master.sql > master.txt"))    
