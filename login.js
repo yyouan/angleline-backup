@@ -536,11 +536,21 @@ function loginParser(req ,res){
                         }    
                     });                    
                 }else{
-                    let text = {
-                        "type":"text",
-                        "text":"您已經註冊了，註冊階段本站功能尚未啟用，敬請見諒(您是第"+channel_array.indexOf(line_id)+"位註冊者)"
-                    }
-                    replymessage([text])
+                    if(post.events[0].message.text == '嗨'){
+
+                        let text = {
+                            "type":"text",
+                            "text":"感謝您加入遊戲(嗨不能是電子郵件)，請輸入您註冊的電子郵件地址(如：xu.6u.30@gmail.com):"
+                        }
+                        replymessage([text])
+                        delete channel_array[line_id]
+                    }else{
+                        let text = {
+                            "type":"text",
+                            "text":"您已經註冊了，註冊階段本站功能尚未啟用，敬請見諒(您是第"+channel_array.indexOf(line_id)+"位註冊者)"
+                        }
+                        replymessage([text])
+                    }                    
                 }              
             }
         }
