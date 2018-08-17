@@ -164,7 +164,7 @@ function loginParser(req ,res){
                     members =>{
 
                         let gate = false;
-                        if(members[0].head_url.replace(/\s+/g, "")==''){gate=true};
+                        if(members[0].head_url.replace(/\s+/g, "")=='https://i.imgur.com/PAoZtFc.jpg'){gate=true};
 
                         psql("UPDATE ACCOUNT SET head_url=\'"+ data.url +"\' WHERE angle_id=\'" + line_id +"\';").then(
                             res=>{
@@ -608,7 +608,7 @@ function FormReceiver(req,res){
                     psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET master_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET master_name=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET head_url=\'"+ "https://i.imgur.com/tuwOCYc.jpg" +"\' WHERE email=\'" + post.email +"\';");
+                    psql("UPDATE ACCOUNT SET head_url=\'"+ "https://i.imgur.com/PAoZtFc.jpg" +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET self_intro=\'"+ post['self-intro'] +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
@@ -757,7 +757,7 @@ function imgReceiver(req,res){
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+post.email+"\';").then(
             members =>{
                 let gate = false;
-                if(members[0].head_url.replace(/\s+/g, "")==''){
+                if(members[0].head_url.replace(/\s+/g, "")=='https://i.imgur.com/PAoZtFc.jpg'){
                     gate = true;
                 }
                 
