@@ -438,7 +438,16 @@ function loginParser(req ,res){
                                             }
                                             replymessage([text])
 
-                                        }else{
+                                        }else if(post.events[0].message.text.substr(0,1) == '@'){
+
+                                            let text = {
+                                                "type":"text",
+                                                "text":"功能尚未啟用，請先輸入郵件信箱。"
+                                            }
+                                            replymessage([text])
+
+                                        }
+                                        else{
 
                                             create_member(email,line_id);
                                             let text2 = {
