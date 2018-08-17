@@ -104,6 +104,7 @@ elif name == "check:head_url":
     print(os.system("notepad head_url.txt"))
 
 elif name == "login":
+    print("please deploy angleline-hall again to avoid problem!")
     write_package_json("idle_angle.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
