@@ -631,7 +631,9 @@ function FormGiver(req,res){
 function FormReceiver(req,res){
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
     let post='';
-    req.on('data', function(chunk){   
+    console.log('post')
+    req.on('data', function(chunk){
+        console.log('data')   
         post += chunk;
 
         // Too much POST data, kill the connection!(avoid server attack)
@@ -645,6 +647,7 @@ function FormReceiver(req,res){
     
     // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
     req.on('end', function(){
+        console.log('end')
         post = querystring.parse(post);    
         console.log(post);
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+ post.email +"\';").then(
