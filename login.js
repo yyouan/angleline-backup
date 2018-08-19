@@ -740,7 +740,7 @@ function FormReceiver(req,res){
                                         },
                                         "hero": {
                                             "type": "image",
-                                            "url": "https://i.imgur.com/rGsgMqc.jpg", //use 圖片位址
+                                            "url": "https://i.imgur.com/M6s5AhN.png", //use 圖片位址
                                         },                                        
                                         "footer": {
                                         "type": "box",
