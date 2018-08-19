@@ -254,7 +254,7 @@ function send_master_choosing(){
                                         "action": {
                                           "type": "postback",
                                           "label": "我要這個小主人",
-                                          "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department,                                             
+                                          "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department+"counter=1",                                             
                                         },
                                         "style": "primary",
                                         "color": "#0000ff"
