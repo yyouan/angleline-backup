@@ -660,7 +660,7 @@ function FormReceiver(req,rres){
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+ post.email +"\';").then(
             angles =>{
                 if(angles.length ==0 || angles[0].angle_id==''){
-                    res.end("你還沒有輸入電子郵件喔!")
+                    rres.end("你還沒有輸入電子郵件喔!")
                 }else{
                     psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
                     psql("UPDATE ACCOUNT SET master_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
