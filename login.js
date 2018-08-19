@@ -781,6 +781,7 @@ function FormReceiver(req,res){
 }
 function ImgGiver(req,res){
     res.sendFile(__dirname+'/Imgur-Upload-master/index.html');
+    res.end("OK");
 }
 function imgReceiver(req,res){
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
@@ -1010,5 +1011,6 @@ function imgReceiver(req,res){
         )
                 
     });
+    res.end("OK")
 }
 
