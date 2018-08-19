@@ -435,7 +435,45 @@ function loginParser(req ,res){
                                                 "type":"text",
                                                 "text":"感謝您加入遊戲(嗨不能是電子郵件)，請輸入您註冊的電子郵件地址(如：xu.6u.30@gmail.com):"
                                             }
-                                            replymessage([text])
+                                            var ad_youtube = {  
+                                                "type": "flex",
+                                                "altText": "大講堂有消息，請借台手機開啟",
+                                                "contents":
+                                                    {
+                                                        "type": "bubble",
+                                                        "header": {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "contents": [
+                                                            {
+                                                            "type": "text",
+                                                            "text": "可以先看功能介紹影片"
+                                                            }
+                                                        ]
+                                                        },
+                                                        "footer": {
+                                                        "type": "box",
+                                                        "layout": "vertical",
+                                                        "contents": [
+                                                            {
+                                                            "type": "spacer",
+                                                            "size": "xl"
+                                                            },
+                                                            {
+                                                            "type": "button",
+                                                            "action": {
+                                                                "type": "uri",
+                                                                "label": "看影片",
+                                                                "uri": "https://www.youtube.com/playlist?list=PLfJYz57jQuEn0ZaX7HdD8hGR9xudTxAuo"
+                                                            },
+                                                            "style": "primary",
+                                                            "color": "#ff3333"
+                                                            }
+                                                        ]
+                                                        }             
+                                                    }
+                                            };
+                                            replymessage([ad_youtube,text])
 
                                         }else if(post.events[0].message.text.substr(0,1) == '@'){
 
@@ -702,7 +740,7 @@ function FormReceiver(req,res){
                                         },
                                         "hero": {
                                             "type": "image",
-                                            "url": "https://i.imgur.com/rGsgMqc.jpg", //use 圖片位址
+                                            "url": "https://i.imgur.com/M6s5AhN.png", //use 圖片位址
                                         },                                        
                                         "footer": {
                                         "type": "box",

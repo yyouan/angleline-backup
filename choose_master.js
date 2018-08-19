@@ -254,7 +254,7 @@ function send_master_choosing(){
                                         "action": {
                                           "type": "postback",
                                           "label": "我要這個小主人",
-                                          "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department,                                             
+                                          "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department+"&counter=1",                                             
                                         },
                                         "style": "primary",
                                         "color": "#0000ff"
@@ -489,7 +489,9 @@ function choose_Parser(req ,res){
                             replymessage([text]);
 
                         }else{
-
+                            if('counter' in data){
+                                department = (department == 'phys')? ('psy'):('phys')
+                            }
                             if(dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "") == master_id}) == -1 ){
 
                                 let a,b,c;
@@ -628,65 +630,70 @@ function choose_Parser(req ,res){
                                         pushmessage([msg,self_intro],to_id);
                                     }
                                 }else{
-                                    let c_dept = (department == 'phys')? ('psy'):('phys')
+                                    if('counter' in data){
+                                       //won't happen 
+                                    }else{
+                                        let c_dept = (department == 'phys')? ('psy'):('phys')
 
-                                    for(let cand of dept[ c_dept ]){
-                                        let bubble ={
-                                            "type": "bubble",
-                                            "header": {
-                                              "type": "box",
-                                              "layout": "vertical",
-                                              "contents": [
-                                                {
-                                                  "type": "text",
-                                                  "text": "跟你有緣的小主人"
-                                                }
-                                              ]
-                                            },
-                                            "hero": {
-                                              "type": "image",
-                                              "url": cand.head_url.replace(/\s+/g, ""),
-                                            },
-                                            "body": {
-                                              "type": "box",
-                                              "layout": "vertical",
-                                              "contents": [
-                                                {//暱稱
-                                                    "type": "text",
-                                                    "text": "暱稱： "+cand.angle_nickname.replace(/\s+/g, ""),
-                                                },                
-                                                
-                                              ]
-                                            },
-                                            "footer": {
+                                        for(let cand of dept[ c_dept ]){
+                                            let bubble ={
+                                                "type": "bubble",
+                                                "header": {
                                                 "type": "box",
                                                 "layout": "vertical",
                                                 "contents": [
                                                     {
-                                                        "type": "button",
-                                                        "action": {
-                                                          "type": "postback",
-                                                          "label": "我要這個小主人",
-                                                          "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department,                                             
-                                                        },
-                                                        "style": "primary",
-                                                        "color": "#0000ff"
-                                                      }
+                                                    "type": "text",
+                                                    "text": "跟你有緣的小主人"
+                                                    }
                                                 ]
-                                            }
-                                        };
-                                        let self_intro ={//自我介紹
-                                            "type": "text",
-                                            "text": "自我介紹： "+ cand.self_intro,
-                                        };
-                                        let msg ={  
-                                            "type": "flex",
-                                            "altText": "大講堂有消息，請借台手機開啟",
-                                            "contents":bubble 
-                                        };
-                        
-                                        pushmessage([msg,self_intro],to_id);
+                                                },
+                                                "hero": {
+                                                "type": "image",
+                                                "url": cand.head_url.replace(/\s+/g, ""),
+                                                },
+                                                "body": {
+                                                "type": "box",
+                                                "layout": "vertical",
+                                                "contents": [
+                                                    {//暱稱
+                                                        "type": "text",
+                                                        "text": "暱稱： "+cand.angle_nickname.replace(/\s+/g, ""),
+                                                    },                
+                                                    
+                                                ]
+                                                },
+                                                "footer": {
+                                                    "type": "box",
+                                                    "layout": "vertical",
+                                                    "contents": [
+                                                        {
+                                                            "type": "button",
+                                                            "action": {
+                                                            "type": "postback",
+                                                            "label": "我要這個小主人",
+                                                            "data":"master_id="+cand.angle_id.replace(/\s+/g, "")+"&dept="+department+"&counter=1",                                             
+                                                            },
+                                                            "style": "primary",
+                                                            "color": "#0000ff"
+                                                        }
+                                                    ]
+                                                }
+                                            };
+                                            let self_intro ={//自我介紹
+                                                "type": "text",
+                                                "text": "自我介紹： "+ cand.self_intro,
+                                            };
+                                            let msg ={  
+                                                "type": "flex",
+                                                "altText": "大講堂有消息，請借台手機開啟",
+                                                "contents":bubble 
+                                            };
+                            
+                                            pushmessage([msg,self_intro],to_id);
+                                        }
                                     }
+                                    
                                 }
 
                                 let text ={
