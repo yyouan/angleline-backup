@@ -125,7 +125,7 @@ function psql(command){
     
 }
 
-function loginParser(req ,res){
+function loginParser(req ,rres){
     //route
     var nwimg;
     const domain="https://angleline-hall.herokuapp.com";  
@@ -357,7 +357,8 @@ function loginParser(req ,res){
                                 
                                 setTimeout(() => {
                                     pushmessage(msg,line_id);
-                                }, 3000); 
+                                }, 3000);
+                                rres.end("OK") 
                             }                    
                         )
                         
@@ -411,7 +412,8 @@ function loginParser(req ,res){
                         }             
                     }
             };
-            replymessage([ad_youtube,text])   
+            replymessage([ad_youtube,text])
+            rres.end("OK")   
         }
 
         if (posttype == 'message'){
@@ -552,6 +554,7 @@ function loginParser(req ,res){
                                         text.text ="您似乎使用和他人相同的電子郵件，請換個郵件註冊!\n有問題請洽詢問站";
                                         replymessage([text]);                        
                                     }
+                                    rres.end("OK")
                                 });
                             }else{
                                 let text ={
@@ -560,6 +563,7 @@ function loginParser(req ,res){
                                 }
                                 text.text ="EASTER_EGG!請輸入註冊的郵件信箱";
                                 replymessage([text]);
+                                rres.end("OK")
                             }                        
 
                         }else{
@@ -569,7 +573,7 @@ function loginParser(req ,res){
                                     "text":"您已經註冊了，註冊階段本站功能尚未啟用，敬請見諒"
                                 }
                                 replymessage([text]); 
-                                                    
+                                rres.end("OK")                     
                         }    
                     });                    
                 }else{
@@ -587,7 +591,8 @@ function loginParser(req ,res){
                             "text":"您已經註冊了，註冊階段本站功能尚未啟用，敬請見諒(您是第"+channel_array.indexOf(line_id)+"位註冊者)"
                         }
                         replymessage([text])
-                    }                    
+                    }
+                    rres.end("OK")                    
                 }              
             }
         }
@@ -611,8 +616,10 @@ function loginParser(req ,res){
           });
           
         }        
+    
+    
     });
-    res.end("OK")
+    
 }
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen((process.env.PORT || 8080), function() {
@@ -628,7 +635,7 @@ function FormGiver(req,res){
 /**function UploadPage_giver(req,res){
     res.sendFile(__dirname+'/Imgur-Upload-master/index.html');//Linux on server
 }**/
-function FormReceiver(req,res){
+function FormReceiver(req,rres){
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
     let post='';
     console.log('post')
@@ -769,7 +776,8 @@ function FormReceiver(req,res){
                             };
                             msg.push(text);
                             msg.push(upload_page);                            
-                            setTimeout(()=>{pushmessage(msg,angles[0].angle_id);},3000)                                                                  
+                            setTimeout(()=>{pushmessage(msg,angles[0].angle_id);},3000)
+                            rres.end("請關閉視窗!回到大祭司講堂選取頭貼圖片")                                                                 
                         }
                     );
                 
@@ -780,13 +788,13 @@ function FormReceiver(req,res){
                                         
         
     });
-    res.end("請關閉視窗!回到大祭司講堂選取頭貼圖片")    
+        
 }
-function ImgGiver(req,res){
-    res.sendFile(__dirname+'/Imgur-Upload-master/index.html');
-    res.end("OK");
+function ImgGiver(req,rres){
+    rres.sendFile(__dirname+'/Imgur-Upload-master/index.html');
+    rres.end("OK");
 }
-function imgReceiver(req,res){
+function imgReceiver(req,rres){
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
     let post='';
     req.on('data', function(chunk){   
@@ -1004,7 +1012,8 @@ function imgReceiver(req,res){
                                
                                setTimeout( () => {
                                 pushmessage(msg,res[0].angle_id);
-                               }, 3000); 
+                               }, 3000);
+                               rres.end("OK") 
                            }
                        ) 
                        
@@ -1014,6 +1023,6 @@ function imgReceiver(req,res){
         )
                 
     });
-    res.end("OK")
+    
 }
 
