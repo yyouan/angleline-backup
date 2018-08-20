@@ -68,7 +68,7 @@ app.post('')
 
 //login message with recpt function:
 function create_member(email,line_id){
-    psql("INSERT INTO ACCOUNT (email,angle_id) VALUES (\'"+email+"\',\'"+line_id+"\');");
+    psql("INSERT INTO ACCOUNT (email,angle_id,self_intro) VALUES (\'"+email+"\',\'"+line_id+"\',\'none\');");
 }
 function pushmessage(recpt,id){
     recpt.forEach(element => {
