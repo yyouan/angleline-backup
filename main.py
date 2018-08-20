@@ -87,7 +87,12 @@ elif name == "check:master":
     write_package_json("check_master.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
-    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
+    time.sleep(10)
+    write_package_json("info.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
 
 elif name == "check:login":
@@ -96,7 +101,11 @@ elif name == "check:login":
     write_package_json("check.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
-    print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
+    write_package_json("info.js")
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
     
 elif name == "check:head_url":
