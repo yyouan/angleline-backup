@@ -1,7 +1,7 @@
                       angle_id                      | angle_nickname | master_id | department |                       email                        | head_url | self_intro | name | phone | score | problem | ticket | groupindex | master_group | master_name | location_problem | problem_count | location_count 
 ----------------------------------------------------+----------------+-----------+------------+----------------------------------------------------+----------+------------+------+-------+-------+---------+--------+------------+--------------+-------------+------------------+---------------+----------------
- Ude12f1805c8bdcd7152fc3e12402bcf4                  |                |           |            | colonist288@gmail.com                              |          |            |      |       |       |         |        |            |              |             |                  |               |               
- U0922e4fc0e4b1e27c5451e39d9fa53ad                  |                |           |            | a87120238@yahoo.com.tw                             |          |            |      |       |       |         |        |            |              |             |                  |               |               
  U16d9a54467a170d1b391020bc201f127                  |                |           |            | jjtt6876@gmail.com                                 |          |            |      |       |       |         |        |            |              |             |                  |               |               
-(3 rows)
+ U4dc034c2254148872af705422377292a                  |                |           |            | 嗨                                                +|          |            |      |       |       |         |        |            |              |             |                  |               |               
+                                                    |                |           |            |                                                    |          |            |      |       |       |         |        |            |              |             |                  |               | 
+(2 rows)
 
