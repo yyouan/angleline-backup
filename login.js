@@ -71,7 +71,7 @@ function create_member(email,line_id){
     psql("INSERT INTO ACCOUNT (email,angle_id,self_intro,angle_nickname,master_id,master_name,head_url,department,problem,location_problem,score,problem_count,location_count,ticket,groupindex,name,phone) VALUES (\'"
     +email+"\',\'"+line_id+"\',\'none\',\'預設某個人\',\'\',\'\',\'https://i.imgur.com/PAoZtFc.jpg\',\'phys\',"+
     Math.floor(6*Math.random())+","+Math.floor(6*Math.random())
-    +"0,0,0,0,9,\'none\',\'none\');")    
+    +",0,0,0,0,9,\'none\',\'none\');")    
 }
 function pushmessage(recpt,id){
     recpt.forEach(element => {
