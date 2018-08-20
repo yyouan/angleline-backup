@@ -666,8 +666,8 @@ function FormReceiver(req,rres){
                     rres.end("你還沒有輸入電子郵件喔!")
                 }else{
                     psql("UPDATE ACCOUNT SET (phone,angle_nickname,department,self_intro,groupindex,name"
-                    +")=("+ post.phone +","+post.nickname+","+post.dept+","+post['self-intro']+","+post.group
-                    +","+post.name+") WHERE email=\'" + post.email +"\';").then(
+                    +")=(\'"+ post.phone +"\',\'"+post.nickname+"\',\'"+post.dept+"\',\'"+post['self-intro']+"\',\'"+post.group
+                    +"\',\'"+post.name+"\') WHERE email=\'" + post.email +"\';").then(
                         aa =>{       
                             //main:
                             let msg =[];
