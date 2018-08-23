@@ -68,7 +68,10 @@ app.post('')
 
 //login message with recpt function:
 function create_member(email,line_id){
-    psql("INSERT INTO ACCOUNT (email,angle_id) VALUES (\'"+email+"\',\'"+line_id+"\');");
+    psql("INSERT INTO ACCOUNT (email,angle_id,self_intro,angle_nickname,master_id,master_name,head_url,department,problem,location_problem,score,problem_count,location_count,ticket,groupindex,name,phone) VALUES (\'"
+    +email+"\',\'"+line_id+"\',\'none\',\'預設某個人\',\'\',\'\',\'https://i.imgur.com/PAoZtFc.jpg\',\'phys\',"+
+    Math.floor(6*Math.random())+","+Math.floor(6*Math.random())
+    +",0,0,0,0,9,\'none\',\'none\');")    
 }
 function pushmessage(recpt,id){
     recpt.forEach(element => {
@@ -662,21 +665,9 @@ function FormReceiver(req,rres){
                 if(angles.length ==0 || angles[0].angle_id==''){
                     rres.end("你還沒有輸入電子郵件喔!")
                 }else{
-                    psql("UPDATE ACCOUNT SET angle_nickname=\'"+ post.nickname +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET master_id=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET master_name=\'"+ "" +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET head_url=\'"+ "https://i.imgur.com/PAoZtFc.jpg" +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET department=\'"+ post.dept +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET self_intro=\'"+ post['self-intro'] +"\' WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET location_problem="+ Math.floor(6*Math.random()) +" WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET score=0 WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET problem_count=0 WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET location_count=0 WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET ticket=0 WHERE email=\'" + post.email +"\';");
-                    psql("UPDATE ACCOUNT SET groupindex="+post.group+" WHERE email=\'" + post.email +"\';");                
-                    psql("UPDATE ACCOUNT SET name=\'"+ post.name +"\' WHERE email=\'" + post.email +"\';"); 
-                    psql("UPDATE ACCOUNT SET phone=\'"+ post.phone +"\' WHERE email=\'" + post.email +"\';").then(
+                    psql("UPDATE ACCOUNT SET (phone,angle_nickname,department,self_intro,groupindex,name"
+                    +")=(\'"+ post.phone +"\',\'"+post.nickname+"\',\'"+post.dept+"\',\'"+post['self-intro']+"\',\'"+post.group
+                    +"\',\'"+post.name+"\') WHERE email=\'" + post.email +"\';").then(
                         aa =>{       
                             //main:
                             let msg =[];
