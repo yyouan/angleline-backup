@@ -1,6 +1,5 @@
 function submit(){
-    alert("上傳成功，請回到line對話框輸入註冊的郵件信箱");
-    window.open('https://line.me/R/ti/p/%40kni2367i');
+    alert("上傳成功，請回到line對話框輸入註冊的郵件信箱");   
 }
 var feedback = function(res) {
     if (res.success === true) {
