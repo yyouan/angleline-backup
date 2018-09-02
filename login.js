@@ -904,7 +904,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40ugr1160s"
+                                                        "uri": "https://line.me/R/ti/p/%40mmy5275b"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -946,7 +946,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40tgi5859x"
+                                                        "uri": "https://line.me/R/ti/p/%40vll3075j"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -988,7 +988,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40hzg9436s"
+                                                        "uri": "https://line.me/R/ti/p/%40jnx4465c"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -996,7 +996,7 @@ function imgReceiver(req,rres){
                                                 ]
                                                 }             
                                             }
-                                    };
+                                    };  
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
                                 }
                                
