@@ -659,7 +659,7 @@ function FormReceiver(req,rres){
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+ post.email +"\';").then(
             angles =>{
                 if(angles.length ==0 || angles[0].angle_id==''){
-                    rres.end("你還沒有輸入電子郵件喔!")
+                    rres.end("You don't input your email in Line!")
                 }else{
                     psql("UPDATE ACCOUNT SET (phone,angle_nickname,department,self_intro,groupindex,name"
                     +")=(\'"+ post.phone +"\',\'"+post.nickname+"\',\'"+post.dept+"\',\'"+post['self-intro']+"\',\'"+post.group
@@ -764,7 +764,7 @@ function FormReceiver(req,rres){
                             msg.push(text);
                             msg.push(upload_page);                            
                             setTimeout(()=>{pushmessage(msg,angles[0].angle_id);},3000)
-                            rres.end("請關閉視窗!回到大祭司講堂選取頭貼圖片")                                                                 
+                            rres.sendFile(__dirname+'/relogin.html');                                                                 
                         }
                     );
                 
