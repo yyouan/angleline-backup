@@ -731,7 +731,7 @@ function FormReceiver(req,rres){
                                         "contents": [
                                             {
                                             "type": "text",
-                                            "text": "點我自行上傳圖片(andriod記得open in other app如下圖)"
+                                            "text": "點我自行上傳圖片"
                                             }
                                         ]
                                         },
@@ -746,6 +746,10 @@ function FormReceiver(req,rres){
                                             {
                                             "type": "spacer",
                                             "size": "xl"
+                                            },
+                                            {
+                                                "type":"text",
+                                                "text":"!!! andriod記得open in other app如上圖 !!!"
                                             },
                                             {
                                             "type": "button",
