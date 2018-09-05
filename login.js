@@ -23,21 +23,17 @@ const graph_url = [
     "https://i.imgur.com/sGvULl6.png",
     "https://i.imgur.com/TMarisv.png",
     "https://i.imgur.com/lOs5GOf.jpg",
-    "https://i.imgur.com/NXcWALK.png",
-    "https://i.imgur.com/EaQs6YU.jpg",
-    "https://i.imgur.com/KiLqxHf.jpg",
-    "https://i.imgur.com/lwD1F9v.jpg",
-    "https://i.imgur.com/yFpbwmu.jpg",
-    "https://i.imgur.com/med3yMO.jpg",
     "https://i.imgur.com/pMLQd6V.jpg",
-    "https://i.imgur.com/Pe55Oc5.jpg",
     "https://i.imgur.com/I2PDbe1.jpg",
     "https://i.imgur.com/QXaebkU.jpg",
     "https://i.imgur.com/xYjIwWU.jpg",
     "https://i.imgur.com/Xx7ruza.jpg",
     "https://i.imgur.com/OcVrc0J.jpg",
     "https://i.imgur.com/DbSuGNf.png",
-    "https://i.imgur.com/Dw1kRP0.png"
+    "https://i.imgur.com/Dw1kRP0.png",
+    "https://i.imgur.com/nhqRKDB.png",
+    "https://i.imgur.com/SaMj8YB.png",
+    "https://i.imgur.com/RB5Yfgy.png"
 ]
 
 const app = express(); //建立一個express 伺服器
