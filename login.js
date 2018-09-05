@@ -742,7 +742,11 @@ function FormReceiver(req,rres){
                                         "footer": {
                                         "type": "box",
                                         "layout": "vertical",
-                                        "contents": [                                            
+                                        "contents": [
+                                            {
+                                                "type": "spacer",
+                                                "size": "xl"
+                                            },                                            
                                             {
                                                 "type":"text",
                                                 "text":"!!! andriod記得open in other app !!!"
