@@ -745,7 +745,11 @@ function FormReceiver(req,rres){
                                             "contents": [
                                               {
                                                 "type": "text",
-                                                "text": "!!! andriod記得open in other app !!!\n!! 如上圖 !!!",
+                                                "text": "!!! andriod記得open in other app",
+                                              },
+                                              {
+                                                "type": "text",
+                                                "text": "=/\\= 如上圖 =/\\=",
                                               }
                                             ]
                                         }
