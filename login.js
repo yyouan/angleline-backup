@@ -738,23 +738,22 @@ function FormReceiver(req,rres){
                                         "hero": {
                                             "type": "image",
                                             "url": "https://i.imgur.com/M6s5AhN.png", //use 圖片位址
-                                        },                                        
+                                        },
+                                        "body": {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "!!! andriod記得open in other app !!!\n!! 如上圖 !!!",
+                                              }
+                                            ]
+                                        }
+                                        ,                                        
                                         "footer": {
                                         "type": "box",
                                         "layout": "vertical",
                                         "contents": [
-                                            {
-                                                "type": "spacer",
-                                                "size": "xl"
-                                            },                                            
-                                            {
-                                                "type":"text",
-                                                "text":"!!! andriod記得open in other app !!!"
-                                            },
-                                            {
-                                                "type":"text",
-                                                "text":"!!! 如上圖 !!!"
-                                            },
                                             {
                                                 "type": "spacer",
                                                 "size": "xl"
