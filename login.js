@@ -742,14 +742,18 @@ function FormReceiver(req,rres){
                                         "footer": {
                                         "type": "box",
                                         "layout": "vertical",
-                                        "contents": [
+                                        "contents": [                                            
                                             {
-                                            "type": "spacer",
-                                            "size": "xl"
+                                                "type":"text",
+                                                "text":"!!! andriod記得open in other app !!!"
                                             },
                                             {
                                                 "type":"text",
-                                                "text":"!!! andriod記得open in other app如上圖 !!!"
+                                                "text":"!!! 如上圖 !!!"
+                                            },
+                                            {
+                                                "type": "spacer",
+                                                "size": "xl"
                                             },
                                             {
                                             "type": "button",
