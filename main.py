@@ -95,6 +95,7 @@ elif name == "check:master":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
 
 elif name == "check:login":
     print(os.system("heroku pg:psql --app angleline < check_self_intro.sql > self_intro.txt"))    
@@ -108,6 +109,7 @@ elif name == "check:login":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
     
 elif name == "check:head_url":
     print(os.system("heroku pg:psql --app angleline < check_head_url.sql > head_url.txt"))    
@@ -135,6 +137,7 @@ elif name == "login":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
 elif name == "choose":   
     print(os.system("heroku pg:psql --app angleline < check_self_intro.sql"))
     print(os.system("heroku pg:psql --app angleline < check_head_url.sql"))    
@@ -158,6 +161,7 @@ elif name == "choose":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
 
 elif name == "past":
     print(os.system("heroku pg:psql --app angleline < check_master.sql"))
@@ -181,6 +185,7 @@ elif name == "past":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
 
 elif name == "message":
     write_package_json("postman_angle.js")
@@ -203,6 +208,7 @@ elif name == "message":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
 
 elif name == "finish":
     write_package_json("exchange_id_angle.js")
@@ -229,6 +235,7 @@ elif name == "finish":
     print(os.system("heroku pg:psql --app angleline < main.sql > pair.txt"))
     print(os.system("heroku pg:psql --app angleline < pair.sql"))
     print(os.system("notepad pair.txt"))
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
 
 elif name == "idle":
     print("please deploy angleline-hall again to avoid problem!")
@@ -252,3 +259,4 @@ elif name == "idle":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
