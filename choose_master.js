@@ -89,8 +89,9 @@ function send_master_choosing(){
                     
                     
                     let index_arr = [a,b,c];
-    
-                    for(let index of index_arr){
+                    cursive_wait(test1,index_arr,100)
+                    
+                    function test1(index){
     
                         //console.log(dept[member.department][index].head_url.replace(/\s+/g, ""));
                         
@@ -153,8 +154,9 @@ function send_master_choosing(){
                     }
     
                 }else if(len>0){
-    
-                    for(let cand of dept[department]){
+                    
+                    cursive_wait(test2,dept[department],100)
+                    function test2(cand){
                         let bubble ={
                             "type": "bubble",
                             "header": {
@@ -215,8 +217,9 @@ function send_master_choosing(){
                     let c_dept = (department == 'phys')? ('psy'):('phys')
     
                     console.log("c_dept_length"+dept[ c_dept ].length);
-    
-                    for(let cand of dept[ c_dept ]){
+                    cursive_wait(test3,dept[ c_dept ],100)
+
+                    function test3(cand){
     
                         let bubble ={
                             "type": "bubble",
@@ -507,8 +510,8 @@ function choose_Parser(req ,res){
                                     c=Math.floor((Math.random()*len2+1)+b)%(len);            
                                     
                                     let index_arr = [a,b,c];
-            
-                                    for(let index of index_arr){
+                                    cursive_wait(test4,index_arr,100)
+                                    function test4(index){
             
                                         //console.log(dept[member.department][index].head_url.replace(/\s+/g, ""));
                                         
@@ -571,8 +574,8 @@ function choose_Parser(req ,res){
                                     }
             
                                 }else if(len>0){
-            
-                                    for(let cand of dept[department]){
+                                    cursive_wait(test5,dept[department],100)
+                                    function test5(cand){
                                         let bubble ={
                                             "type": "bubble",
                                             "header": {
@@ -634,8 +637,8 @@ function choose_Parser(req ,res){
                                        //won't happen 
                                     }else{
                                         let c_dept = (department == 'phys')? ('psy'):('phys')
-
-                                        for(let cand of dept[ c_dept ]){
+                                        cursive_wait(test6,dept[ c_dept ],100)
+                                        function test6(cand){
                                             let bubble ={
                                                 "type": "bubble",
                                                 "header": {
@@ -759,3 +762,19 @@ var server = app.listen((process.env.PORT || 8080), function() {
     console.log("App now running on port", port);
 });
 //!!!240
+
+function cursive_wait(work,array,time){
+    
+    (function process(times){
+        if(times < array.length){
+
+            work(array[times]);
+
+            setTimeout(() => {
+                times++;                
+                process(times)
+            }, time);
+        }
+    })(0);    
+    
+}
