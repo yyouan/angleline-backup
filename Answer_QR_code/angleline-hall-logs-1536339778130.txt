@@ -1,0 +1,1311 @@
+2018-09-06T11:05:52.258270+00:00 app[web.1]: > angleline@1.0.0 start /app
+2018-09-06T11:05:52.258272+00:00 app[web.1]: > node .
+2018-09-06T11:05:52.258274+00:00 app[web.1]: 
+2018-09-06T11:05:53.183049+00:00 app[web.1]: App now running on port 26347
+2018-09-06T11:05:53.458736+00:00 heroku[web.1]: State changed from starting to up
+2018-09-06T11:05:55.287943+00:00 heroku[router]: at=info method=GET path="/game?name=1" host=angleline-hall.herokuapp.com request_id=b114d65d-1589-437a-a842-9e487f6c6df0 fwd="140.112.25.16" dyno=web.1 connect=1ms service=214ms status=404 bytes=387 protocol=https
+2018-09-06T11:40:44.231229+00:00 heroku[web.1]: Idling
+2018-09-06T11:40:44.231969+00:00 heroku[web.1]: State changed from up to down
+2018-09-06T11:40:45.139084+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2018-09-06T11:40:45.315316+00:00 heroku[web.1]: Process exited with status 143
+2018-09-07T16:18:33.000000+00:00 app[api]: Build started by user b05202030@ntu.edu.tw
+2018-09-07T16:18:55.825863+00:00 app[api]: Deploy 140f8ede by user b05202030@ntu.edu.tw
+2018-09-07T16:18:56.028918+00:00 heroku[web.1]: State changed from down to starting
+2018-09-07T16:18:55.825863+00:00 app[api]: Release v387 created by user b05202030@ntu.edu.tw
+2018-09-07T16:18:58.000000+00:00 app[api]: Build succeeded
+2018-09-07T16:19:02.426572+00:00 heroku[web.1]: Starting process with command `npm start`
+2018-09-07T16:19:06.423546+00:00 app[web.1]: 
+2018-09-07T16:19:06.423571+00:00 app[web.1]: > angleline@1.0.0 start /app
+2018-09-07T16:19:06.423573+00:00 app[web.1]: > node .
+2018-09-07T16:19:06.423575+00:00 app[web.1]: 
+2018-09-07T16:19:07.240397+00:00 app[web.1]: App now running on port 14203
+2018-09-07T16:19:07.748282+00:00 heroku[web.1]: State changed from starting to up
+2018-09-07T16:30:19.226471+00:00 app[web.1]: { type: 'leave',
+2018-09-07T16:30:19.226492+00:00 app[web.1]:   source: { groupId: 'C68763fe6d3a492ca3321cf4bec222480', type: 'group' },
+2018-09-07T16:30:19.226494+00:00 app[web.1]:   timestamp: 1536337818509 }
+2018-09-07T16:30:24.880811+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=75150594-5e2c-4539-bed1-310061bf6734 fwd="203.104.146.153" dyno=web.1 connect=1ms service=18ms status=200 bytes=119 protocol=https
+2018-09-07T16:30:24.865285+00:00 app[web.1]: { type: 'join',
+2018-09-07T16:30:24.865300+00:00 app[web.1]:   replyToken: '1b029be755c743bca3aee0bc0a9cdaae',
+2018-09-07T16:30:24.865302+00:00 app[web.1]:   source: { groupId: 'C5ddb2a0995df12d28a31a8c4ca23fcc6', type: 'group' },
+2018-09-07T16:30:24.865304+00:00 app[web.1]:   timestamp: 1536337824188 }
+2018-09-07T16:30:25.269833+00:00 app[web.1]: (line)
+2018-09-07T16:30:25.270634+00:00 app[web.1]: {}
+2018-09-07T16:30:49.195476+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/" host=angleline-hall.herokuapp.com request_id=cda766a4-5907-4a41-826e-00a95dc2d11b fwd="203.104.146.156" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
+2018-09-07T16:32:13.927145+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=ee263072-d2bf-43c0-83d0-9fbbcd99164a fwd="203.104.146.152" dyno=web.1 connect=1ms service=5ms status=200 bytes=119 protocol=https
+2018-09-07T16:32:13.926000+00:00 app[web.1]: { type: 'follow',
+2018-09-07T16:32:13.926014+00:00 app[web.1]:   replyToken: 'a8fe18033302413e8d96235908ed370e',
+2018-09-07T16:32:13.926016+00:00 app[web.1]:   source: { userId: 'U0a1afb1ad2264b077d89f0841744a0de', type: 'user' },
+2018-09-07T16:32:13.926018+00:00 app[web.1]:   timestamp: 1536337933246 }
+2018-09-07T16:32:14.563300+00:00 app[web.1]: (line)
+2018-09-07T16:32:14.563454+00:00 app[web.1]: {}
+2018-09-07T16:34:42.246700+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=daf6d053-d4b0-4978-99ac-9d68d6a848bc fwd="203.104.146.155" dyno=web.1 connect=1ms service=3ms status=200 bytes=119 protocol=https
+2018-09-07T16:34:42.244932+00:00 app[web.1]: { type: 'follow',
+2018-09-07T16:34:42.244943+00:00 app[web.1]:   replyToken: 'dc225d7be4cd433793fb596d17c2967e',
+2018-09-07T16:34:42.244946+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:34:42.244948+00:00 app[web.1]:   timestamp: 1536338081558 }
+2018-09-07T16:34:42.789173+00:00 app[web.1]: (line)
+2018-09-07T16:34:42.789302+00:00 app[web.1]: {}
+2018-09-07T16:35:42.631769+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=df1240e4-02d4-4e72-9f03-c299f9330c47 fwd="203.104.146.155" dyno=web.1 connect=0ms service=61ms status=200 bytes=119 protocol=https
+2018-09-07T16:35:42.573416+00:00 app[web.1]: { type: 'message',
+2018-09-07T16:35:42.573430+00:00 app[web.1]:   replyToken: '4e66996d1bb84857b8d8b87faa59ed3b',
+2018-09-07T16:35:42.573432+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:35:42.573434+00:00 app[web.1]:   timestamp: 1536338141888,
+2018-09-07T16:35:42.573435+00:00 app[web.1]:   message: { type: 'text', id: '8538809989012', text: 'jjtt6876@gmail.com' } }
+2018-09-07T16:35:42.573938+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:35:42.621552+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:35:42.622210+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:35:42.629075+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:35:42.629799+00:00 app[web.1]: (psql):INSERT INTO ACCOUNT (email,angle_id,self_intro,angle_nickname,master_id,master_name,head_url,department,problem,location_problem,score,problem_count,location_count,ticket,groupindex,name,phone) VALUES ('jjtt6876@gmail.com','Ub892e1dc3479c2e8a148beb2b981e19a','none','預設某個人','','','https://i.imgur.com/PAoZtFc.jpg','phys',0,1,0,0,0,0,9,'none','none');
+2018-09-07T16:35:42.630257+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:35:42.630341+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:35:42.630412+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:35:42.630482+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:35:42.630549+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:35:42.631269+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:35:42.631273+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:35:42.631276+00:00 app[web.1]:   headers: 
+2018-09-07T16:35:42.631279+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:35:42.631282+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:35:42.631284+00:00 app[web.1]:   json: 
+2018-09-07T16:35:42.631285+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:35:42.631288+00:00 app[web.1]:      messages: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2018-09-07T16:35:42.635042+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:35:43.039589+00:00 app[web.1]: (line)
+2018-09-07T16:35:43.040064+00:00 app[web.1]: {}
+2018-09-07T16:35:59.099672+00:00 heroku[router]: at=info method=GET path="/formhtml" host=angleline-hall.herokuapp.com request_id=700778ac-3fef-4ae2-aee2-aaaefd3d2584 fwd="180.217.136.109" dyno=web.1 connect=1ms service=33ms status=200 bytes=4514 protocol=https
+2018-09-07T16:35:59.583034+00:00 heroku[router]: at=info method=GET path="/Form/css/style.css" host=angleline-hall.herokuapp.com request_id=082ea7b1-2048-400f-b085-e6eeb62f9eb8 fwd="180.217.136.109" dyno=web.1 connect=1ms service=5ms status=200 bytes=13956 protocol=https
+2018-09-07T16:36:02.274685+00:00 heroku[router]: at=info method=GET path="/Form/images/course.jpg" host=angleline-hall.herokuapp.com request_id=1deee135-43f3-4e27-8558-08f35803fdc5 fwd="180.217.136.109" dyno=web.1 connect=0ms service=17ms status=200 bytes=127138 protocol=https
+2018-09-07T16:37:12.741686+00:00 app[web.1]: post
+2018-09-07T16:37:12.741987+00:00 app[web.1]: data
+2018-09-07T16:37:12.742453+00:00 app[web.1]: end
+2018-09-07T16:37:12.745019+00:00 app[web.1]: { email: 'jjtt6876@gmail.com',
+2018-09-07T16:37:12.745022+00:00 app[web.1]:   dept: 'phys',
+2018-09-07T16:37:12.745023+00:00 app[web.1]:   name: '葛',
+2018-09-07T16:37:12.745025+00:00 app[web.1]:   group: '7',
+2018-09-07T16:37:12.745027+00:00 app[web.1]:   nickname: '123',
+2018-09-07T16:37:12.745028+00:00 app[web.1]:   'self-intro': '1245567899「1234677899',
+2018-09-07T16:37:12.745030+00:00 app[web.1]:   phone: '0906945889' }
+2018-09-07T16:37:12.745115+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:37:12.760208+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"預設某個人                                             ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/PAoZtFc.jpg                   ","self_intro":"none                                                                                                                                                  ","name":"none         ","phone":"none      ","score":0,"problem":0,"ticket":0,"groupindex":9,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:37:12.760339+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"預設某個人                                             ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/PAoZtFc.jpg                   ","self_intro":"none                                                                                                                                                  ","name":"none         ","phone":"none      ","score":0,"problem":0,"ticket":0,"groupindex":9,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:37:12.760426+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:37:12.760919+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET (phone,angle_nickname,department,self_intro,groupindex,name)=('0906945889','123','phys','1245567899「1234677899','7','葛') WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:37:12.763359+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:37:12.763961+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.764318+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.764321+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.764323+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.764325+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.764339+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.764341+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.764342+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.764344+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.764909+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.765089+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.765092+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.765093+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.765095+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.765097+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.765099+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.765100+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.765104+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.765505+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.765680+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.765682+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.765684+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.765686+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.765687+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.765689+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.765690+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.765692+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.766037+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.766240+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.766243+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.766244+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.766246+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.766248+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.766249+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.766251+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.766253+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.766711+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.766943+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.766946+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.766947+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.766949+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.766951+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.766952+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.766954+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.766955+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.767272+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.767441+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.767444+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.767446+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.767447+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.767449+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.767451+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.767452+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.767454+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.767764+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.767934+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.767936+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.767938+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.767940+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.767942+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.767943+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.767945+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.767947+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.768297+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.768466+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.768468+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.768470+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.768472+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.768473+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.768475+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.768477+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.768479+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.768782+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.768954+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.768956+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.768958+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.768959+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.768961+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.768963+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.768964+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.768966+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.769269+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.769435+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.769438+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.769440+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.769441+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.769443+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.769445+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.769446+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.769448+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.769747+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.769913+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.769915+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.769917+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.769919+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.769921+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.769922+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.769924+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.769926+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.770222+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.770391+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.770393+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.770395+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.770396+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.770398+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.770400+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.770401+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.770403+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.770711+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.770875+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.770878+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.770879+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.770881+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.770883+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.770884+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.770886+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.770888+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.771213+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.771401+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.771404+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.771405+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.771407+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.771409+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.771410+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.771412+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.771414+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.771716+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.771879+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.771881+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.771883+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.771885+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.771887+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.771888+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.771890+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.771891+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.772220+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.772388+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.772391+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.772392+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.772394+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.772396+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.772397+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.772399+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.772401+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.772700+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.772864+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.772867+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.772868+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.772870+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.772872+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.772873+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.772875+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.772877+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:12.773183+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:12.773348+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:12.773351+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:12.773353+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:12.773355+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:12.773357+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:12.773358+00:00 app[web.1]:   json: 
+2018-09-07T16:37:12.773360+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:12.773361+00:00 app[web.1]:      messages: [ [Object] ] } }
+2018-09-07T16:37:13.132515+00:00 heroku[router]: at=info method=POST path="/form" host=angleline-hall.herokuapp.com request_id=c8528990-922f-48cc-be3b-f8d78145e3cc fwd="180.217.136.109" dyno=web.1 connect=1ms service=391ms status=200 bytes=3121 protocol=https
+2018-09-07T16:37:13.496073+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.496128+00:00 app[web.1]: {}
+2018-09-07T16:37:13.497080+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.497141+00:00 app[web.1]: {}
+2018-09-07T16:37:13.498008+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.498090+00:00 app[web.1]: {}
+2018-09-07T16:37:13.564131+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.564389+00:00 app[web.1]: {}
+2018-09-07T16:37:13.576353+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.576533+00:00 app[web.1]: {}
+2018-09-07T16:37:13.679862+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.680089+00:00 app[web.1]: {}
+2018-09-07T16:37:13.692231+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.692400+00:00 app[web.1]: {}
+2018-09-07T16:37:13.696962+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.697082+00:00 app[web.1]: {}
+2018-09-07T16:37:13.698133+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.698248+00:00 app[web.1]: {}
+2018-09-07T16:37:13.707796+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.707922+00:00 app[web.1]: {}
+2018-09-07T16:37:13.719530+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.719654+00:00 app[web.1]: {}
+2018-09-07T16:37:13.742892+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.743010+00:00 app[web.1]: {}
+2018-09-07T16:37:13.746906+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.747009+00:00 app[web.1]: {}
+2018-09-07T16:37:13.748136+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.748279+00:00 app[web.1]: {}
+2018-09-07T16:37:13.754071+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.754505+00:00 app[web.1]: {}
+2018-09-07T16:37:13.764819+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.764976+00:00 app[web.1]: {}
+2018-09-07T16:37:13.765859+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.765943+00:00 app[web.1]: {}
+2018-09-07T16:37:13.767997+00:00 app[web.1]: (line)
+2018-09-07T16:37:13.768103+00:00 app[web.1]: {}
+2018-09-07T16:37:15.773947+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:15.774074+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:37:15.774373+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:37:15.774377+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:37:15.774378+00:00 app[web.1]:   headers: 
+2018-09-07T16:37:15.774380+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:37:15.774406+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:37:15.774408+00:00 app[web.1]:   json: 
+2018-09-07T16:37:15.774410+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:37:15.774411+00:00 app[web.1]:      messages: [ [Object], [Object] ] } }
+2018-09-07T16:37:16.024439+00:00 app[web.1]: (line)
+2018-09-07T16:37:16.024776+00:00 app[web.1]: {}
+2018-09-07T16:42:02.121106+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:02.121119+00:00 app[web.1]:   replyToken: '94ee7bd6a5c641c48bbbc5a8d9f346fb',
+2018-09-07T16:42:02.121121+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:02.121123+00:00 app[web.1]:   timestamp: 1536338521407,
+2018-09-07T16:42:02.121125+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:02.121332+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:02.132821+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/PAoZtFc.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:02.132959+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/PAoZtFc.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:02.133274+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:02.134832+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:02.137473+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:02.139083+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:02.139200+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:02.139381+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:02.139915+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:02.139918+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:02.139924+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:02.139926+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:02.139929+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:02.139931+00:00 app[web.1]:   json: 
+2018-09-07T16:42:02.139933+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:02.139934+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:02.135865+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=bfc1712b-0a90-4bc9-ad5e-6beb0d7d3287 fwd="203.104.146.155" dyno=web.1 connect=3ms service=25ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:02.420633+00:00 app[web.1]: (line)
+2018-09-07T16:42:02.420783+00:00 app[web.1]: {}
+2018-09-07T16:42:05.142834+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:05.142973+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:05.143077+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:05.143146+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:05.143465+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:05.143468+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:05.143470+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:05.143471+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:05.143483+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:05.143485+00:00 app[web.1]:   json: 
+2018-09-07T16:42:05.143487+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:05.143489+00:00 app[web.1]:      messages: [ [Object], [Object], [Object], [Object] ] } }
+2018-09-07T16:42:05.395270+00:00 app[web.1]: (line)
+2018-09-07T16:42:05.400488+00:00 app[web.1]: {}
+2018-09-07T16:42:06.777416+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:06.777430+00:00 app[web.1]:   replyToken: '49cfb67ead6e49fdb26578613b4264c9',
+2018-09-07T16:42:06.777432+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:06.777434+00:00 app[web.1]:   timestamp: 1536338526311,
+2018-09-07T16:42:06.777435+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:06.777642+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:06.779768+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:06.779894+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:06.779986+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:06.780311+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:06.782068+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:06.783674+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=e4db9928-e416-40cb-8cf3-808714860698 fwd="203.104.146.155" dyno=web.1 connect=0ms service=7ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:08.248501+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=1af930ed-60a8-49be-82c3-3c60ceb58a7e fwd="203.104.146.155" dyno=web.1 connect=1ms service=13ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:08.240306+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:08.240319+00:00 app[web.1]:   replyToken: '6f3a37aa9e32451da1625e876a3d1379',
+2018-09-07T16:42:08.240322+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:08.240324+00:00 app[web.1]:   timestamp: 1536338528128,
+2018-09-07T16:42:08.240325+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:08.241703+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.244242+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.244342+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.244450+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:08.244645+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.246696+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:08.438155+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:08.438160+00:00 app[web.1]:   replyToken: '9b4329c1369f46c89be35405af4744e8',
+2018-09-07T16:42:08.438162+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:08.438164+00:00 app[web.1]:   timestamp: 1536338528327,
+2018-09-07T16:42:08.438166+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:08.442668+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.446919+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.447039+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.447126+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:08.447298+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.449220+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:08.450573+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=0a50893b-efa0-464c-9391-1f6daea4d2de fwd="203.104.146.155" dyno=web.1 connect=0ms service=17ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:08.647549+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=e3a4bbd0-503c-462c-8205-be2495026c99 fwd="203.104.146.155" dyno=web.1 connect=0ms service=9ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:08.641205+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:08.641218+00:00 app[web.1]:   replyToken: '52b8f50e0f32452ab2ef71375d5908bb',
+2018-09-07T16:42:08.641220+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:08.641222+00:00 app[web.1]:   timestamp: 1536338528531,
+2018-09-07T16:42:08.641224+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:08.641369+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.643595+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.643713+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.643980+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:08.644274+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.646219+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:08.853188+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:08.853193+00:00 app[web.1]:   replyToken: 'ec32506aff934363ba3533d9c95fb0ea',
+2018-09-07T16:42:08.853196+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:08.853198+00:00 app[web.1]:   timestamp: 1536338528731,
+2018-09-07T16:42:08.853199+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:08.854353+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.856865+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.856965+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:08.857435+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:08.857729+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:08.859843+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:08.861121+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=3283f4fa-d05b-4ad0-9c42-8fea040ecea9 fwd="203.104.146.155" dyno=web.1 connect=0ms service=10ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:09.047308+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:09.047320+00:00 app[web.1]:   replyToken: '942d7d8c43374cd1b8d9ea8c29a2fdf7',
+2018-09-07T16:42:09.047323+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:09.047324+00:00 app[web.1]:   timestamp: 1536338528933,
+2018-09-07T16:42:09.047326+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:09.048002+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.051095+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.051314+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.051645+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:09.051832+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.054266+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:09.241610+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:09.241614+00:00 app[web.1]:   replyToken: 'ba8a61d47db641e4a67ab7b165c254c4',
+2018-09-07T16:42:09.241616+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:09.241618+00:00 app[web.1]:   timestamp: 1536338529131,
+2018-09-07T16:42:09.241620+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:09.241758+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.244751+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.244854+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.245135+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:09.245325+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.247546+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:09.056322+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=2c6afc9b-4218-4828-aacd-aa8cc76c90a1 fwd="203.104.146.155" dyno=web.1 connect=1ms service=13ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:09.248922+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=d1c3de8e-eaac-4817-ae77-16f3e9daabc6 fwd="203.104.146.155" dyno=web.1 connect=1ms service=10ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:09.439392+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:09.439411+00:00 app[web.1]:   replyToken: '633cfaf0b64f4321b10ca3cf53d02de0',
+2018-09-07T16:42:09.439413+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:09.439415+00:00 app[web.1]:   timestamp: 1536338529321,
+2018-09-07T16:42:09.439416+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:09.439566+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.496992+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.497361+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.497475+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:09.497611+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.500061+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:09.687151+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:09.687157+00:00 app[web.1]:   replyToken: '9c5419eb06294a71a21cce96719b7c25',
+2018-09-07T16:42:09.687159+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:09.687161+00:00 app[web.1]:   timestamp: 1536338529532,
+2018-09-07T16:42:09.687163+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:09.687275+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.697973+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=3dd84a1c-7dd4-49a8-89fd-58db8db4a75d fwd="203.104.146.155" dyno=web.1 connect=0ms service=13ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:09.502103+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=2cd1b4be-bd8e-4d2e-8688-97ffff4dc8ef fwd="203.104.146.155" dyno=web.1 connect=0ms service=71ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:09.690407+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.690539+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.690624+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:09.690721+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.696486+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:09.783258+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:09.783464+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:09.783865+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:09.784651+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:09.784654+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:09.784656+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:09.784658+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:09.784699+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:09.784702+00:00 app[web.1]:   json: 
+2018-09-07T16:42:09.784704+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:09.784706+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:09.881888+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:09.881946+00:00 app[web.1]:   replyToken: '5b36448bca1046bf96d8c06d0aa9383c',
+2018-09-07T16:42:09.881950+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:09.881951+00:00 app[web.1]:   timestamp: 1536338529765,
+2018-09-07T16:42:09.881953+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:09.882591+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.886089+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.886198+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:09.886278+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:09.886377+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:09.891812+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:09.893036+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=2187a5e6-e628-4760-bf1f-cf1445fcae80 fwd="203.104.146.155" dyno=web.1 connect=0ms service=13ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:10.053475+00:00 app[web.1]: (line)
+2018-09-07T16:42:10.055981+00:00 app[web.1]: {}
+2018-09-07T16:42:10.608232+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:10.608245+00:00 app[web.1]:   replyToken: '11d8d86da9df40fa92855f7ba162dca3',
+2018-09-07T16:42:10.608247+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:10.608249+00:00 app[web.1]:   timestamp: 1536338530503,
+2018-09-07T16:42:10.608251+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:10.610181+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:10.613295+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:10.613628+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:10.613719+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:10.613857+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:10.615948+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:10.845397+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:10.845401+00:00 app[web.1]:   replyToken: '8c9e30284a5a4518a58db17864d89adb',
+2018-09-07T16:42:10.845403+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:10.845405+00:00 app[web.1]:   timestamp: 1536338530732,
+2018-09-07T16:42:10.845406+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:10.845545+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:10.847874+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:10.848004+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:10.848103+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:10.848663+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:10.850657+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:10.617573+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=00f34c54-8dd2-42aa-8606-2e78d13e153b fwd="203.104.146.155" dyno=web.1 connect=0ms service=11ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:10.852043+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=2bdb622d-0821-4ef5-8237-5427a2326e3a fwd="203.104.146.155" dyno=web.1 connect=0ms service=8ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:11.046169+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:11.046181+00:00 app[web.1]:   replyToken: 'd17b96d8a1604c5c8a7dc201197f14b0',
+2018-09-07T16:42:11.046183+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:11.046184+00:00 app[web.1]:   timestamp: 1536338530941,
+2018-09-07T16:42:11.046186+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:11.047897+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.050387+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.050687+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.050980+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:11.051106+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.053307+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:11.238614+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:11.238619+00:00 app[web.1]:   replyToken: '0e2395d00a8a4f07a527178fce55db0b',
+2018-09-07T16:42:11.238621+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:11.238622+00:00 app[web.1]:   timestamp: 1536338531124,
+2018-09-07T16:42:11.238624+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:11.238720+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.241036+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.241170+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.241235+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:11.241536+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.243655+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:11.247395+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.247554+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.247638+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.247996+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:11.247999+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:11.248002+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:11.248003+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:11.248006+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:11.248025+00:00 app[web.1]:   json: 
+2018-09-07T16:42:11.248028+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:11.248029+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:11.054901+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=e576022b-8d45-499f-8c25-5fe7e5a83b31 fwd="203.104.146.155" dyno=web.1 connect=0ms service=9ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:11.245004+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=8b5cbe9e-d838-4c78-9b61-27d855a7f8a1 fwd="203.104.146.155" dyno=web.1 connect=0ms service=7ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:11.476767+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=41bfbe0a-ed51-46e0-b97b-e9ecff74e1cb fwd="203.104.146.155" dyno=web.1 connect=0ms service=10ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:11.449658+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.449808+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.449974+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.450584+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:11.450587+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:11.450589+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:11.450591+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:11.450594+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:11.450595+00:00 app[web.1]:   json: 
+2018-09-07T16:42:11.450597+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:11.450599+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:11.469319+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:11.469323+00:00 app[web.1]:   replyToken: '7a6eaae5b4ba4d08b1d8c3b9d56ef713',
+2018-09-07T16:42:11.469325+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:11.469327+00:00 app[web.1]:   timestamp: 1536338531361,
+2018-09-07T16:42:11.469328+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:11.469394+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.471633+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.471726+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.471769+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:11.471875+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.475729+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:11.488011+00:00 app[web.1]: (line)
+2018-09-07T16:42:11.488099+00:00 app[web.1]: {}
+2018-09-07T16:42:11.646833+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.646890+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.646942+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.647161+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:11.647164+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:11.647166+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:11.647168+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:11.647171+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:11.647173+00:00 app[web.1]:   json: 
+2018-09-07T16:42:11.647174+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:11.647176+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:11.670046+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:11.670051+00:00 app[web.1]:   replyToken: '672efe0b12004891b8a9ff43321ccc3e',
+2018-09-07T16:42:11.670053+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:11.670054+00:00 app[web.1]:   timestamp: 1536338531548,
+2018-09-07T16:42:11.670056+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:11.670123+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.676827+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.676909+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.676988+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:11.677058+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.681198+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:11.682431+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=d0e26eee-78ff-4e89-b3cb-0193d307f8c6 fwd="203.104.146.155" dyno=web.1 connect=0ms service=24ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:11.864654+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.864717+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.864785+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:11.865002+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:11.865004+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:11.865006+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:11.865008+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:11.865039+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:11.865042+00:00 app[web.1]:   json: 
+2018-09-07T16:42:11.865043+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:11.865045+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:11.868853+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:11.868856+00:00 app[web.1]:   replyToken: '0263864d328f45769a0b00ba16ae4c4d',
+2018-09-07T16:42:11.868858+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:11.868860+00:00 app[web.1]:   timestamp: 1536338531714,
+2018-09-07T16:42:11.868861+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:11.868944+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.874387+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.874450+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:11.874501+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:11.874580+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:11.878720+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:11.895903+00:00 app[web.1]: (line)
+2018-09-07T16:42:11.895965+00:00 app[web.1]: {}
+2018-09-07T16:42:12.018328+00:00 app[web.1]: (line)
+2018-09-07T16:42:12.018455+00:00 app[web.1]: {}
+2018-09-07T16:42:12.055714+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.055771+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.055844+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.056089+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:12.056092+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:12.056094+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:12.056096+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:12.056098+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:12.056100+00:00 app[web.1]:   json: 
+2018-09-07T16:42:12.056101+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:12.056103+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:12.065492+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:12.065496+00:00 app[web.1]:   replyToken: 'aebe69f4e0be4d6bbba253393f1bf6f7',
+2018-09-07T16:42:12.065498+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:12.065500+00:00 app[web.1]:   timestamp: 1536338531912,
+2018-09-07T16:42:12.065502+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:12.065738+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:12.072491+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:12.072574+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:12.072631+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:12.072709+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:12.077795+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:12.105168+00:00 app[web.1]: (line)
+2018-09-07T16:42:12.105246+00:00 app[web.1]: {}
+2018-09-07T16:42:11.880162+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=fbb0d3dc-fc90-4028-a378-f7b8a73439b6 fwd="203.104.146.155" dyno=web.1 connect=0ms service=15ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:12.079017+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=a2473b38-29a7-44bb-9bcf-00337de99859 fwd="203.104.146.155" dyno=web.1 connect=0ms service=16ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:12.327361+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=3a0c5e92-304d-417e-ab48-ff628ee348c6 fwd="203.104.146.155" dyno=web.1 connect=0ms service=16ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:12.247892+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.247956+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.248111+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.248377+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:12.248379+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:12.248382+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:12.248385+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:12.248388+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:12.248390+00:00 app[web.1]:   json: 
+2018-09-07T16:42:12.248391+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:12.248393+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:12.313746+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:12.313751+00:00 app[web.1]:   replyToken: '0e5c2ed25eec4f808c08ba6d9304d59c',
+2018-09-07T16:42:12.313757+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:12.313758+00:00 app[web.1]:   timestamp: 1536338532208,
+2018-09-07T16:42:12.313760+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/sGvULl6.png' } }
+2018-09-07T16:42:12.313889+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:12.319822+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:12.319917+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:12.319982+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:12.320046+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/sGvULl6.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:12.321269+00:00 app[web.1]: (line)
+2018-09-07T16:42:12.321342+00:00 app[web.1]: {}
+2018-09-07T16:42:12.326070+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:12.493539+00:00 app[web.1]: (line)
+2018-09-07T16:42:12.493636+00:00 app[web.1]: {}
+2018-09-07T16:42:12.504468+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.504481+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.504490+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.504687+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:12.504689+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:12.504691+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:12.504693+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:12.504695+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:12.504697+00:00 app[web.1]:   json: 
+2018-09-07T16:42:12.504699+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:12.504700+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:12.697242+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.697341+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.697801+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.698279+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:12.698281+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:12.698284+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:12.698286+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:12.698289+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:12.698291+00:00 app[web.1]:   json: 
+2018-09-07T16:42:12.698292+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:12.698294+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:12.771725+00:00 app[web.1]: (line)
+2018-09-07T16:42:12.772033+00:00 app[web.1]: {}
+2018-09-07T16:42:12.892792+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.894794+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.894862+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:12.895101+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:12.895104+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:12.895107+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:12.895109+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:12.895111+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:12.895113+00:00 app[web.1]:   json: 
+2018-09-07T16:42:12.895114+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:12.895116+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:12.959731+00:00 app[web.1]: (line)
+2018-09-07T16:42:12.960184+00:00 app[web.1]: {}
+2018-09-07T16:42:13.214571+00:00 app[web.1]: (line)
+2018-09-07T16:42:13.215530+00:00 app[web.1]: {}
+2018-09-07T16:42:13.616389+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:13.616867+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:13.616943+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:13.617472+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:13.617474+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:13.617476+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:13.617478+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:13.617480+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:13.617482+00:00 app[web.1]:   json: 
+2018-09-07T16:42:13.617483+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:13.617485+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:13.852394+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:13.852512+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:13.852587+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:13.852858+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:13.852860+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:13.852862+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:13.852864+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:13.852866+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:13.852868+00:00 app[web.1]:   json: 
+2018-09-07T16:42:13.852869+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:13.852871+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:14.011546+00:00 app[web.1]: (line)
+2018-09-07T16:42:14.011859+00:00 app[web.1]: {}
+2018-09-07T16:42:14.054180+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.054643+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.054717+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.055352+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:14.055355+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:14.055357+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:14.055359+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:14.055361+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:14.055363+00:00 app[web.1]:   json: 
+2018-09-07T16:42:14.055364+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:14.055366+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:14.111870+00:00 app[web.1]: (line)
+2018-09-07T16:42:14.111939+00:00 app[web.1]: {}
+2018-09-07T16:42:14.244400+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.244463+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.244518+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.244767+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:14.244770+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:14.244772+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:14.244774+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:14.244776+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:14.244777+00:00 app[web.1]:   json: 
+2018-09-07T16:42:14.244779+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:14.244781+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:14.317854+00:00 app[web.1]: (line)
+2018-09-07T16:42:14.317910+00:00 app[web.1]: {}
+2018-09-07T16:42:14.475607+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.475658+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.475809+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.476060+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:14.476063+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:14.476065+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:14.476066+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:14.476068+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:14.476070+00:00 app[web.1]:   json: 
+2018-09-07T16:42:14.476072+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:14.476073+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:14.499686+00:00 app[web.1]: (line)
+2018-09-07T16:42:14.499754+00:00 app[web.1]: {}
+2018-09-07T16:42:14.690301+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.690454+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.690572+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.690890+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:14.690892+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:14.690894+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:14.690896+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:14.690898+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:14.690900+00:00 app[web.1]:   json: 
+2018-09-07T16:42:14.690901+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:14.690903+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:14.739284+00:00 app[web.1]: (line)
+2018-09-07T16:42:14.739417+00:00 app[web.1]: {}
+2018-09-07T16:42:14.880382+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.880598+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.880668+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:14.881031+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:14.881034+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:14.881036+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:14.881038+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:14.881040+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:14.881042+00:00 app[web.1]:   json: 
+2018-09-07T16:42:14.881044+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:14.881045+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:14.961950+00:00 app[web.1]: (line)
+2018-09-07T16:42:14.962062+00:00 app[web.1]: {}
+2018-09-07T16:42:15.080416+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:15.080489+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:15.080553+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:15.080813+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:15.080816+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:15.080819+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:15.080820+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:15.080823+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:15.080824+00:00 app[web.1]:   json: 
+2018-09-07T16:42:15.080833+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:15.080835+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:15.159765+00:00 app[web.1]: (line)
+2018-09-07T16:42:15.159927+00:00 app[web.1]: {}
+2018-09-07T16:42:15.595011+00:00 app[web.1]: (line)
+2018-09-07T16:42:15.595172+00:00 app[web.1]: {}
+2018-09-07T16:42:15.326727+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:15.326866+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:15.326948+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:15.327225+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:15.327229+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:15.327231+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:15.327233+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:15.327235+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:15.327236+00:00 app[web.1]:   json: 
+2018-09-07T16:42:15.327238+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:15.327239+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:15.341234+00:00 app[web.1]: (line)
+2018-09-07T16:42:15.343228+00:00 app[web.1]: {}
+2018-09-07T16:42:17.434958+00:00 heroku[router]: at=info method=POST path="/" host=angleline-hall.herokuapp.com request_id=40ad0458-fb94-49d8-8521-f147ba4be02a fwd="203.104.146.155" dyno=web.1 connect=1ms service=9ms status=200 bytes=119 protocol=https
+2018-09-07T16:42:17.431337+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:42:17.431354+00:00 app[web.1]:   replyToken: '1fcd1435b5fa4db987b3de1dfceedabc',
+2018-09-07T16:42:17.431357+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:42:17.431358+00:00 app[web.1]:   timestamp: 1536338536947,
+2018-09-07T16:42:17.431360+00:00 app[web.1]:   postback: { data: 'url=https://i.imgur.com/nhqRKDB.png' } }
+2018-09-07T16:42:17.431494+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:17.433556+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:17.433846+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/sGvULl6.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:42:17.433949+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:42:17.434044+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/nhqRKDB.png' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:42:17.436283+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:42:20.441159+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:20.441289+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:20.441405+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:42:20.441692+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:42:20.441695+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:42:20.441697+00:00 app[web.1]:   headers: 
+2018-09-07T16:42:20.441699+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:42:20.441701+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:42:20.441703+00:00 app[web.1]:   json: 
+2018-09-07T16:42:20.441704+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:42:20.441706+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:42:20.718099+00:00 app[web.1]: (line)
+2018-09-07T16:42:20.718318+00:00 app[web.1]: {}
+2018-09-07T16:42:26.573885+00:00 heroku[router]: at=info method=GET path="/imgGiver" host=angleline-hall.herokuapp.com request_id=a1144d48-6b1d-4193-b018-b0b5059525d0 fwd="180.217.136.109" dyno=web.1 connect=1ms service=7ms status=200 bytes=1340 protocol=https
+2018-09-07T16:42:27.028142+00:00 heroku[router]: at=info method=GET path="/Imgur-Upload-master/css/style.css" host=angleline-hall.herokuapp.com request_id=b0ebe124-3cf8-4b9f-a546-bbbc1d30df00 fwd="180.217.136.109" dyno=web.1 connect=1ms service=4ms status=200 bytes=1438 protocol=https
+2018-09-07T16:42:27.934402+00:00 heroku[router]: at=info method=GET path="/Imgur-Upload-master/js/upload.js" host=angleline-hall.herokuapp.com request_id=6ecb167f-9315-4dd7-9b34-ae87210f0e6f fwd="180.217.136.109" dyno=web.1 connect=0ms service=4ms status=200 bytes=2503 protocol=https
+2018-09-07T16:42:27.937542+00:00 heroku[router]: at=info method=GET path="/Imgur-Upload-master/css/mobile-style.css" host=angleline-hall.herokuapp.com request_id=20773aa6-2fff-4c94-8b68-30ed7a85977b fwd="180.217.136.109" dyno=web.1 connect=1ms service=6ms status=200 bytes=626 protocol=https
+2018-09-07T16:42:27.938019+00:00 heroku[router]: at=info method=GET path="/Imgur-Upload-master/js/imgur.js" host=angleline-hall.herokuapp.com request_id=08820257-a919-4b5d-8a63-ffaaf6caccb1 fwd="180.217.136.109" dyno=web.1 connect=1ms service=6ms status=200 bytes=6373 protocol=https
+2018-09-07T16:42:28.344088+00:00 heroku[router]: at=info method=GET path="/Imgur-Upload-master/css/loading-spin.svg" host=angleline-hall.herokuapp.com request_id=5e11b480-1765-4bd6-b584-caaf45129412 fwd="180.217.136.109" dyno=web.1 connect=1ms service=3ms status=200 bytes=739 protocol=https
+2018-09-07T16:43:09.184199+00:00 app[web.1]: { email: 'jjtt6876@gmail.com',
+2018-09-07T16:43:09.184212+00:00 app[web.1]:   url: 'https://i.imgur.com/i5npLSQ.jpg' }
+2018-09-07T16:43:09.184304+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:43:09.217180+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:09.217302+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:09.217375+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:43:09.218085+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/i5npLSQ.jpg' WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:43:09.220413+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:43:09.220846+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:43:09.222286+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:09.222385+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:09.222455+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:43:09.224845+00:00 heroku[router]: at=info method=POST path="/img" host=angleline-hall.herokuapp.com request_id=8e709c48-9c22-4670-aeb4-578c2384c467 fwd="180.217.136.109" dyno=web.1 connect=0ms service=43ms status=200 bytes=119 protocol=https
+2018-09-07T16:43:12.228222+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:43:12.228242+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:43:12.228244+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:43:12.228246+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:43:12.228248+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:43:12.228250+00:00 app[web.1]:   headers: 
+2018-09-07T16:43:12.228256+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:43:12.228258+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:43:12.228260+00:00 app[web.1]:   json: 
+2018-09-07T16:43:12.228261+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:43:12.228263+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:43:12.546128+00:00 app[web.1]: (line)
+2018-09-07T16:43:12.546201+00:00 app[web.1]: {}
+2018-09-07T16:43:27.937411+00:00 heroku[router]: at=info method=POST path="/img" host=angleline-hall.herokuapp.com request_id=7161704f-b00f-49e4-9a9e-e6d24a84bc28 fwd="180.217.136.109" dyno=web.1 connect=1ms service=43ms status=200 bytes=119 protocol=https
+2018-09-07T16:43:27.910259+00:00 app[web.1]: { email: 'jjtt6876@gmail.com',
+2018-09-07T16:43:27.910266+00:00 app[web.1]:   url: 'https://i.imgur.com/i5npLSQ.jpg' }
+2018-09-07T16:43:27.910313+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:43:27.931380+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:27.931501+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:27.931607+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:43:27.931741+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET head_url='https://i.imgur.com/i5npLSQ.jpg' WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:43:27.933852+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:43:27.934066+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE email='jjtt6876@gmail.com';
+2018-09-07T16:43:27.936996+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:27.937335+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:43:27.938015+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:43:30.940549+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:43:30.944621+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:43:30.944729+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:43:30.944998+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:43:30.945001+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:43:30.945003+00:00 app[web.1]:   headers: 
+2018-09-07T16:43:30.945005+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:43:30.945007+00:00 app[web.1]:      Authorization: 'Bearer DGt+XDIxZS5s7ZWFOV4RxO1TK4QI64buOCduj726zAfkuaVwOZiX1WqP+K9lAr1nEZfRWEbZvRnsybjn/7IYcUrCG9fX7xCgoU6Q7CcS/P2elwP/G7V6tyXSV8hYBAmzLV7mqZnBUDdrDPlAbdUScQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:43:30.945008+00:00 app[web.1]:   json: 
+2018-09-07T16:43:30.945010+00:00 app[web.1]:    { to: 'Ub892e1dc3479c2e8a148beb2b981e19a',
+2018-09-07T16:43:30.945011+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:43:31.189215+00:00 app[web.1]: (line)
+2018-09-07T16:43:31.189219+00:00 app[web.1]: {}
+2018-09-07T16:46:17.000000+00:00 app[api]: Build started by user b05202030@ntu.edu.tw
+2018-09-07T16:46:39.212546+00:00 heroku[web.1]: Restarting
+2018-09-07T16:46:39.219580+00:00 heroku[web.1]: State changed from up to starting
+2018-09-07T16:46:38.935300+00:00 app[api]: Release v388 created by user b05202030@ntu.edu.tw
+2018-09-07T16:46:38.935300+00:00 app[api]: Deploy 843c0954 by user b05202030@ntu.edu.tw
+2018-09-07T16:46:40.320092+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2018-09-07T16:46:40.484278+00:00 heroku[web.1]: Process exited with status 143
+2018-09-07T16:46:42.000000+00:00 app[api]: Build succeeded
+2018-09-07T16:46:45.760277+00:00 heroku[web.1]: Starting process with command `npm start`
+2018-09-07T16:46:48.779533+00:00 app[web.1]: 
+2018-09-07T16:46:48.779557+00:00 app[web.1]: > angleline@1.0.0 start /app
+2018-09-07T16:46:48.779559+00:00 app[web.1]: > node .
+2018-09-07T16:46:48.779560+00:00 app[web.1]: 
+2018-09-07T16:46:49.566786+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT;
+2018-09-07T16:46:49.617834+00:00 app[web.1]: App now running on port 21718
+2018-09-07T16:46:49.744020+00:00 app[web.1]: (psql-query):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:46:49.744215+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:46:49.744341+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:46:49.744499+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:46:49.744757+00:00 app[web.1]: (psql-query-recpt):2
+2018-09-07T16:46:49.745536+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE master_id='U8651152b7704f5ea352373a445354af8                 ';
+2018-09-07T16:46:49.751865+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:46:49.752632+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE master_id='Ub892e1dc3479c2e8a148beb2b981e19a                 ';
+2018-09-07T16:46:49.754872+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:46:49.756009+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE master_id='';
+2018-09-07T16:46:49.779448+00:00 app[web.1]: (psql-query):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:46:49.779579+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:46:49.779795+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:46:49.779935+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:46:49.780068+00:00 app[web.1]: (psql-query-recpt):2
+2018-09-07T16:46:49.781982+00:00 app[web.1]: c_dept_length2
+2018-09-07T16:46:49.783748+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:49.783895+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:49.812658+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:49.813061+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:49.818432+00:00 app[web.1]: c_dept_length2
+2018-09-07T16:46:49.819220+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:49.819527+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:49.825593+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:49.828523+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:46:50.030486+00:00 heroku[web.1]: State changed from starting to up
+2018-09-07T16:46:50.439753+00:00 app[web.1]: (line)
+2018-09-07T16:46:50.441518+00:00 app[web.1]: {}
+2018-09-07T16:46:50.444418+00:00 app[web.1]: (line)
+2018-09-07T16:46:50.444577+00:00 app[web.1]: {}
+2018-09-07T16:46:50.458303+00:00 app[web.1]: (line)
+2018-09-07T16:46:50.459732+00:00 app[web.1]: {}
+2018-09-07T16:46:50.633714+00:00 app[web.1]: (line)
+2018-09-07T16:46:50.634538+00:00 app[web.1]: {}
+2018-09-07T16:47:06.659884+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:47:06.659895+00:00 app[web.1]:   replyToken: '411c9f4715094bf99cfc4a8272941ebe',
+2018-09-07T16:47:06.659897+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:47:06.659899+00:00 app[web.1]:   timestamp: 1536338825937,
+2018-09-07T16:47:06.659901+00:00 app[web.1]:   postback: 
+2018-09-07T16:47:06.659903+00:00 app[web.1]:    { data: 'master_id=U8651152b7704f5ea352373a445354af8&dept=phys&counter=1' } }
+2018-09-07T16:47:06.671169+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:47:06.691047+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:47:06.691197+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"                                                  ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:47:06.691333+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:47:06.693304+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET master_id='U8651152b7704f5ea352373a445354af8' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:47:06.693611+00:00 app[web.1]: 0
+2018-09-07T16:47:06.693689+00:00 app[web.1]: psy
+2018-09-07T16:47:06.694638+00:00 app[web.1]: [ { angle_id: 'U8651152b7704f5ea352373a445354af8                 ',
+2018-09-07T16:47:06.694641+00:00 app[web.1]:     angle_nickname: '顯然是是怎樣鱷魚                                          ',
+2018-09-07T16:47:06.694643+00:00 app[web.1]:     master_id: '                                                  ',
+2018-09-07T16:47:06.694645+00:00 app[web.1]:     department: 'phys                                              ',
+2018-09-07T16:47:06.694646+00:00 app[web.1]:     email: 'xu.6u.30@gmail.com                                ',
+2018-09-07T16:47:06.694648+00:00 app[web.1]:     head_url: 'https://i.imgur.com/nhqRKDB.png                   ',
+2018-09-07T16:47:06.694654+00:00 app[web.1]:     self_intro: '實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ',
+2018-09-07T16:47:06.694656+00:00 app[web.1]:     name: '劉友安          ',
+2018-09-07T16:47:06.694658+00:00 app[web.1]:     phone: '0926372361',
+2018-09-07T16:47:06.694660+00:00 app[web.1]:     score: 20,
+2018-09-07T16:47:06.694661+00:00 app[web.1]:     problem: 1,
+2018-09-07T16:47:06.694663+00:00 app[web.1]:     ticket: 0,
+2018-09-07T16:47:06.694664+00:00 app[web.1]:     groupindex: 1,
+2018-09-07T16:47:06.694666+00:00 app[web.1]:     master_group: null,
+2018-09-07T16:47:06.694668+00:00 app[web.1]:     master_name: '             ',
+2018-09-07T16:47:06.694670+00:00 app[web.1]:     location_problem: 1,
+2018-09-07T16:47:06.694671+00:00 app[web.1]:     problem_count: 1,
+2018-09-07T16:47:06.694673+00:00 app[web.1]:     location_count: 0 },
+2018-09-07T16:47:06.694674+00:00 app[web.1]:   { angle_id: 'Ub892e1dc3479c2e8a148beb2b981e19a                 ',
+2018-09-07T16:47:06.694676+00:00 app[web.1]:     angle_nickname: '123                                               ',
+2018-09-07T16:47:06.694677+00:00 app[web.1]:     master_id: '                                                  ',
+2018-09-07T16:47:06.694679+00:00 app[web.1]:     department: 'phys                                              ',
+2018-09-07T16:47:06.694681+00:00 app[web.1]:     email: 'jjtt6876@gmail.com                                ',
+2018-09-07T16:47:06.694682+00:00 app[web.1]:     head_url: 'https://i.imgur.com/i5npLSQ.jpg                   ',
+2018-09-07T16:47:06.694684+00:00 app[web.1]:     self_intro: '1245567899「1234677899                                                                                                                                 ',
+2018-09-07T16:47:06.694685+00:00 app[web.1]:     name: '葛            ',
+2018-09-07T16:47:06.694687+00:00 app[web.1]:     phone: '0906945889',
+2018-09-07T16:47:06.694688+00:00 app[web.1]:     score: 0,
+2018-09-07T16:47:06.694689+00:00 app[web.1]:     problem: 0,
+2018-09-07T16:47:06.694690+00:00 app[web.1]:     ticket: 0,
+2018-09-07T16:47:06.694691+00:00 app[web.1]:     groupindex: 7,
+2018-09-07T16:47:06.694692+00:00 app[web.1]:     master_group: null,
+2018-09-07T16:47:06.694694+00:00 app[web.1]:     master_name: '             ',
+2018-09-07T16:47:06.694695+00:00 app[web.1]:     location_problem: 1,
+2018-09-07T16:47:06.694696+00:00 app[web.1]:     problem_count: 0,
+2018-09-07T16:47:06.694697+00:00 app[web.1]:     location_count: 0 } ]
+2018-09-07T16:47:06.694898+00:00 app[web.1]: { angle_id: 'U8651152b7704f5ea352373a445354af8                 ',
+2018-09-07T16:47:06.694901+00:00 app[web.1]:   angle_nickname: '顯然是是怎樣鱷魚                                          ',
+2018-09-07T16:47:06.694903+00:00 app[web.1]:   master_id: '                                                  ',
+2018-09-07T16:47:06.694904+00:00 app[web.1]:   department: 'phys                                              ',
+2018-09-07T16:47:06.694923+00:00 app[web.1]:   email: 'xu.6u.30@gmail.com                                ',
+2018-09-07T16:47:06.694925+00:00 app[web.1]:   head_url: 'https://i.imgur.com/nhqRKDB.png                   ',
+2018-09-07T16:47:06.694927+00:00 app[web.1]:   self_intro: '實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ',
+2018-09-07T16:47:06.694929+00:00 app[web.1]:   name: '劉友安          ',
+2018-09-07T16:47:06.694930+00:00 app[web.1]:   phone: '0926372361',
+2018-09-07T16:47:06.694932+00:00 app[web.1]:   score: 20,
+2018-09-07T16:47:06.694934+00:00 app[web.1]:   problem: 1,
+2018-09-07T16:47:06.694935+00:00 app[web.1]:   ticket: 0,
+2018-09-07T16:47:06.694937+00:00 app[web.1]:   groupindex: 1,
+2018-09-07T16:47:06.694939+00:00 app[web.1]:   master_group: null,
+2018-09-07T16:47:06.694940+00:00 app[web.1]:   master_name: '             ',
+2018-09-07T16:47:06.694942+00:00 app[web.1]:   location_problem: 1,
+2018-09-07T16:47:06.694944+00:00 app[web.1]:   problem_count: 1,
+2018-09-07T16:47:06.694945+00:00 app[web.1]:   location_count: 0 }
+2018-09-07T16:47:06.694952+00:00 app[web.1]: U8651152b7704f5ea352373a445354af8
+2018-09-07T16:47:06.695008+00:00 app[web.1]: U8651152b7704f5ea352373a445354af8
+2018-09-07T16:47:06.698512+00:00 app[web.1]: U8651152b7704f5ea352373a445354af8
+2018-09-07T16:47:06.698611+00:00 app[web.1]: Ub892e1dc3479c2e8a148beb2b981e19a
+2018-09-07T16:47:06.698829+00:00 app[web.1]: choose successful
+2018-09-07T16:47:06.698913+00:00 app[web.1]: 1
+2018-09-07T16:47:06.698989+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='U8651152b7704f5ea352373a445354af8';
+2018-09-07T16:47:06.704923+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:47:06.723463+00:00 app[web.1]: (psql-query):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:47:06.726063+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:47:06.726351+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:47:06.727271+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET master_name='劉友安          ' WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:47:06.727591+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET master_group=1 WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:47:06.731432+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:47:06.732138+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:47:06.978039+00:00 app[web.1]: (line)
+2018-09-07T16:47:06.978202+00:00 app[web.1]: {}
+2018-09-07T16:47:13.718452+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:47:13.718474+00:00 app[web.1]:   replyToken: '5cd0863f5baf48a1b24cbf827a0f516f',
+2018-09-07T16:47:13.718477+00:00 app[web.1]:   source: { userId: 'U8651152b7704f5ea352373a445354af8', type: 'user' },
+2018-09-07T16:47:13.718479+00:00 app[web.1]:   timestamp: 1536338833031,
+2018-09-07T16:47:13.718482+00:00 app[web.1]:   postback: 
+2018-09-07T16:47:13.718485+00:00 app[web.1]:    { data: 'master_id=U8651152b7704f5ea352373a445354af8&dept=phys&counter=1' } }
+2018-09-07T16:47:13.718486+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='U8651152b7704f5ea352373a445354af8';
+2018-09-07T16:47:13.727509+00:00 app[web.1]: (psql-query):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:47:13.727759+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:47:13.728012+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:47:13.728376+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:47:13.728533+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:47:14.006739+00:00 app[web.1]: (line)
+2018-09-07T16:47:14.006826+00:00 app[web.1]: {}
+2018-09-07T16:47:14.033927+00:00 app[web.1]: (line)
+2018-09-07T16:47:14.033931+00:00 app[web.1]: {}
+2018-09-07T16:47:19.946442+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:47:19.946465+00:00 app[web.1]:   replyToken: '0fac30b8029d4cc98a6678412f87e421',
+2018-09-07T16:47:19.946467+00:00 app[web.1]:   source: { userId: 'U8651152b7704f5ea352373a445354af8', type: 'user' },
+2018-09-07T16:47:19.946469+00:00 app[web.1]:   timestamp: 1536338839431,
+2018-09-07T16:47:19.946471+00:00 app[web.1]:   postback: 
+2018-09-07T16:47:19.946473+00:00 app[web.1]:    { data: 'master_id=Ub892e1dc3479c2e8a148beb2b981e19a&dept=psy' } }
+2018-09-07T16:47:19.946475+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='U8651152b7704f5ea352373a445354af8';
+2018-09-07T16:47:19.950425+00:00 app[web.1]: (psql-query):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:47:19.950539+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"U8651152b7704f5ea352373a445354af8                 ","angle_nickname":"顯然是是怎樣鱷魚                                          ","master_id":"                                                  ","department":"phys                                              ","email":"xu.6u.30@gmail.com                                ","head_url":"https://i.imgur.com/nhqRKDB.png                   ","self_intro":"實驗室洗澡長期恰恰恰恰恰跨騎卡說錯錯誤                                                                                                                                   ","name":"劉友安          ","phone":"0926372361","score":20,"problem":1,"ticket":0,"groupindex":1,"master_group":null,"master_name":"             ","location_problem":1,"problem_count":1,"location_count":0}
+2018-09-07T16:47:19.950623+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:47:19.950742+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET master_id='Ub892e1dc3479c2e8a148beb2b981e19a' WHERE angle_id='U8651152b7704f5ea352373a445354af8';
+2018-09-07T16:47:19.950884+00:00 app[web.1]: 0
+2018-09-07T16:47:19.950987+00:00 app[web.1]: psy
+2018-09-07T16:47:19.951278+00:00 app[web.1]: [ { angle_id: 'Ub892e1dc3479c2e8a148beb2b981e19a                 ',
+2018-09-07T16:47:19.951281+00:00 app[web.1]:     angle_nickname: '123                                               ',
+2018-09-07T16:47:19.951283+00:00 app[web.1]:     master_id: '                                                  ',
+2018-09-07T16:47:19.951284+00:00 app[web.1]:     department: 'phys                                              ',
+2018-09-07T16:47:19.951286+00:00 app[web.1]:     email: 'jjtt6876@gmail.com                                ',
+2018-09-07T16:47:19.951288+00:00 app[web.1]:     head_url: 'https://i.imgur.com/i5npLSQ.jpg                   ',
+2018-09-07T16:47:19.951292+00:00 app[web.1]:     self_intro: '1245567899「1234677899                                                                                                                                 ',
+2018-09-07T16:47:19.951294+00:00 app[web.1]:     name: '葛            ',
+2018-09-07T16:47:19.951295+00:00 app[web.1]:     phone: '0906945889',
+2018-09-07T16:47:19.951297+00:00 app[web.1]:     score: 0,
+2018-09-07T16:47:19.951299+00:00 app[web.1]:     problem: 0,
+2018-09-07T16:47:19.951300+00:00 app[web.1]:     ticket: 0,
+2018-09-07T16:47:19.951302+00:00 app[web.1]:     groupindex: 7,
+2018-09-07T16:47:19.951304+00:00 app[web.1]:     master_group: null,
+2018-09-07T16:47:19.951306+00:00 app[web.1]:     master_name: '             ',
+2018-09-07T16:47:19.951308+00:00 app[web.1]:     location_problem: 1,
+2018-09-07T16:47:19.951309+00:00 app[web.1]:     problem_count: 0,
+2018-09-07T16:47:19.951311+00:00 app[web.1]:     location_count: 0 } ]
+2018-09-07T16:47:19.951950+00:00 app[web.1]: { angle_id: 'Ub892e1dc3479c2e8a148beb2b981e19a                 ',
+2018-09-07T16:47:19.951952+00:00 app[web.1]:   angle_nickname: '123                                               ',
+2018-09-07T16:47:19.951954+00:00 app[web.1]:   master_id: '                                                  ',
+2018-09-07T16:47:19.951956+00:00 app[web.1]:   department: 'phys                                              ',
+2018-09-07T16:47:19.951958+00:00 app[web.1]:   email: 'jjtt6876@gmail.com                                ',
+2018-09-07T16:47:19.951960+00:00 app[web.1]:   head_url: 'https://i.imgur.com/i5npLSQ.jpg                   ',
+2018-09-07T16:47:19.951962+00:00 app[web.1]:   self_intro: '1245567899「1234677899                                                                                                                                 ',
+2018-09-07T16:47:19.951964+00:00 app[web.1]:   name: '葛            ',
+2018-09-07T16:47:19.951966+00:00 app[web.1]:   phone: '0906945889',
+2018-09-07T16:47:19.951968+00:00 app[web.1]:   score: 0,
+2018-09-07T16:47:19.951970+00:00 app[web.1]:   problem: 0,
+2018-09-07T16:47:19.951972+00:00 app[web.1]:   ticket: 0,
+2018-09-07T16:47:19.951974+00:00 app[web.1]:   groupindex: 7,
+2018-09-07T16:47:19.951975+00:00 app[web.1]:   master_group: null,
+2018-09-07T16:47:19.951977+00:00 app[web.1]:   master_name: '             ',
+2018-09-07T16:47:19.951979+00:00 app[web.1]:   location_problem: 1,
+2018-09-07T16:47:19.951980+00:00 app[web.1]:   problem_count: 0,
+2018-09-07T16:47:19.951982+00:00 app[web.1]:   location_count: 0 }
+2018-09-07T16:47:19.955908+00:00 app[web.1]: Ub892e1dc3479c2e8a148beb2b981e19a
+2018-09-07T16:47:19.956007+00:00 app[web.1]: Ub892e1dc3479c2e8a148beb2b981e19a
+2018-09-07T16:47:19.956140+00:00 app[web.1]: choose successful
+2018-09-07T16:47:19.956241+00:00 app[web.1]: 0
+2018-09-07T16:47:19.956367+00:00 app[web.1]: (psql):SELECT * FROM ACCOUNT WHERE angle_id='Ub892e1dc3479c2e8a148beb2b981e19a';
+2018-09-07T16:47:19.963025+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:47:20.024739+00:00 app[web.1]: (psql-query):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"U8651152b7704f5ea352373a445354af8                 ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":1,"master_name":"劉友安          ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:47:20.024977+00:00 app[web.1]: (psql-query-recpt):{"angle_id":"Ub892e1dc3479c2e8a148beb2b981e19a                 ","angle_nickname":"123                                               ","master_id":"U8651152b7704f5ea352373a445354af8                 ","department":"phys                                              ","email":"jjtt6876@gmail.com                                ","head_url":"https://i.imgur.com/i5npLSQ.jpg                   ","self_intro":"1245567899「1234677899                                                                                                                                 ","name":"葛            ","phone":"0906945889","score":0,"problem":0,"ticket":0,"groupindex":7,"master_group":1,"master_name":"劉友安          ","location_problem":1,"problem_count":0,"location_count":0}
+2018-09-07T16:47:20.024980+00:00 app[web.1]: (psql-query-recpt):1
+2018-09-07T16:47:20.024987+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET master_name='葛            ' WHERE angle_id='U8651152b7704f5ea352373a445354af8';
+2018-09-07T16:47:20.025080+00:00 app[web.1]: (psql):UPDATE ACCOUNT SET master_group=7 WHERE angle_id='U8651152b7704f5ea352373a445354af8';
+2018-09-07T16:47:20.041220+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:47:20.041224+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:47:20.358153+00:00 app[web.1]: (line)
+2018-09-07T16:47:20.358238+00:00 app[web.1]: {}
+2018-09-07T16:47:36.616183+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/" host=angleline-hall.herokuapp.com request_id=cca308b3-fc44-4da8-ac6d-d362fbd6b13b fwd="203.104.146.155" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
+2018-09-07T16:47:43.710768+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/" host=angleline-hall.herokuapp.com request_id=499ca6f2-412e-430d-8c54-b3ea4c836b54 fwd="203.104.146.156" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2018-09-07T16:47:49.918145+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/" host=angleline-hall.herokuapp.com request_id=4e52648f-8a16-4f49-883f-ccc43c0274de fwd="203.104.146.156" dyno=web.1 connect=4ms service=30001ms status=503 bytes=0 protocol=https
+2018-09-07T16:49:56.000000+00:00 app[api]: Build started by user b05202030@ntu.edu.tw
+2018-09-07T16:50:21.277590+00:00 heroku[web.1]: Restarting
+2018-09-07T16:50:21.278092+00:00 heroku[web.1]: State changed from up to starting
+2018-09-07T16:50:22.180623+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2018-09-07T16:50:22.310073+00:00 heroku[web.1]: Process exited with status 143
+2018-09-07T16:50:20.750849+00:00 app[api]: Deploy 90d745f2 by user b05202030@ntu.edu.tw
+2018-09-07T16:50:20.750849+00:00 app[api]: Release v389 created by user b05202030@ntu.edu.tw
+2018-09-07T16:50:23.000000+00:00 app[api]: Build succeeded
+2018-09-07T16:50:27.858393+00:00 heroku[web.1]: Starting process with command `npm start`
+2018-09-07T16:50:31.044359+00:00 app[web.1]: 
+2018-09-07T16:50:31.044384+00:00 app[web.1]: > angleline@1.0.0 start /app
+2018-09-07T16:50:31.044386+00:00 app[web.1]: > node .
+2018-09-07T16:50:31.044388+00:00 app[web.1]: 
+2018-09-07T16:50:31.960133+00:00 app[web.1]: Game URL:
+2018-09-07T16:50:31.969413+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E6%88%91
+2018-09-07T16:50:31.969576+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E9%A9%95
+2018-09-07T16:50:31.969663+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E6%84%9B
+2018-09-07T16:50:31.969734+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E6%88%B0
+2018-09-07T16:50:31.969796+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E7%B5%95
+2018-09-07T16:50:31.969871+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E8%B7%91
+2018-09-07T16:50:31.971204+00:00 app[web.1]: App now running on port 26406
+2018-09-07T16:50:32.525683+00:00 heroku[web.1]: State changed from starting to up
+Disconnected from log stream. There may be events happening that you do not see here! Attempting to reconnect...
+2018-09-07T16:50:31.044388+00:00 app[web.1]: 
+2018-09-07T16:50:31.960133+00:00 app[web.1]: Game URL:
+2018-09-07T16:50:31.969413+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E6%88%91
+2018-09-07T16:50:31.969576+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E9%A9%95
+2018-09-07T16:50:31.969663+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E6%84%9B
+2018-09-07T16:50:31.969734+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E6%88%B0
+2018-09-07T16:50:31.969796+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E7%B5%95
+2018-09-07T16:50:31.969871+00:00 app[web.1]: https://angleline-hall.herokuapp.com/game?name=%E8%B7%91
+2018-09-07T16:50:31.971204+00:00 app[web.1]: App now running on port 26406
+2018-09-07T16:50:32.525683+00:00 heroku[web.1]: State changed from starting to up
+2018-09-07T16:54:52.863988+00:00 app[web.1]: { type: 'message',
+2018-09-07T16:54:52.864003+00:00 app[web.1]:   replyToken: '55e7b35857a6497f96aff9d47554238a',
+2018-09-07T16:54:52.864006+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:54:52.864007+00:00 app[web.1]:   timestamp: 1536339292172,
+2018-09-07T16:54:52.864009+00:00 app[web.1]:   message: { type: 'text', id: '8538857274896', text: '@真心話' } }
+2018-09-07T16:55:02.602302+00:00 app[web.1]: { type: 'message',
+2018-09-07T16:55:02.602316+00:00 app[web.1]:   replyToken: '76443e571313472880857d7d2f8a422d',
+2018-09-07T16:55:02.602318+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:55:02.602319+00:00 app[web.1]:   timestamp: 1536339302070,
+2018-09-07T16:55:02.602321+00:00 app[web.1]:   message: { type: 'text', id: '8538857650300', text: '安怎' } }
+2018-09-07T16:55:02.602424+00:00 app[web.1]: 真心話
+2018-09-07T16:55:02.667917+00:00 app[web.1]: (psql):SELECT * FROM SUPERVISOR;
+2018-09-07T16:55:02.693846+00:00 app[web.1]: (psql):INSERT INTO MESSAGE (content,msgid) VALUES ('[{"type":"text","text":"$真心話："},{"type":"text","id":"8538857650300","text":"安怎"},{"type":"template","altText":"大講堂有消息，請借台手機開啟","template":{"type":"buttons","text":"請按回覆，決定回覆對象，然後輸入回覆文字，再按結束回覆，結束回覆","actions":[{"type":"postback","label":"拒絕且回覆","data":"reply_id=Ub892e1dc3479c2e8a148beb2b981e19a&msgid=8538857650300"},{"type":"postback","label":"唸完了","data":"said=1&msgid=8538857650300"}]}}]','8538857650300');
+2018-09-07T16:55:02.793223+00:00 app[web.1]: (psql-query):{"group_id":"Cf35cce3f4a1244f68a8f1bbb7d02323a                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.793338+00:00 app[web.1]: (psql-query):{"group_id":"Cb8edea41c3f44af846c4d3889f62c86b                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.793429+00:00 app[web.1]: (psql-query):{"group_id":"C0c8d7c7e4a35667592e5fa9c0ae25602                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.796772+00:00 app[web.1]: (psql-query):{"group_id":"C09ee61b90b6223dceff8766318bbc022                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.796862+00:00 app[web.1]: (psql-query):{"group_id":"Ccd3d79602751c6b0d8b3cd77f1b08536                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.796945+00:00 app[web.1]: (psql-query):{"group_id":"C2cce18646114d2a6bfaac423e51af79c                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797024+00:00 app[web.1]: (psql-query):{"group_id":"Ce444ac54185bf0e3a2940e03a9f8babe                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797110+00:00 app[web.1]: (psql-query):{"group_id":"C68763fe6d3a492ca3321cf4bec222480                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797198+00:00 app[web.1]: (psql-query):{"group_id":"Cc53141b38005d99bc191bf28b3b4854b                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797282+00:00 app[web.1]: (psql-query-recpt):{"group_id":"Cf35cce3f4a1244f68a8f1bbb7d02323a                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797373+00:00 app[web.1]: (psql-query-recpt):{"group_id":"Cb8edea41c3f44af846c4d3889f62c86b                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797451+00:00 app[web.1]: (psql-query-recpt):{"group_id":"C0c8d7c7e4a35667592e5fa9c0ae25602                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797524+00:00 app[web.1]: (psql-query-recpt):{"group_id":"C09ee61b90b6223dceff8766318bbc022                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797606+00:00 app[web.1]: (psql-query-recpt):{"group_id":"Ccd3d79602751c6b0d8b3cd77f1b08536                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797690+00:00 app[web.1]: (psql-query-recpt):{"group_id":"C2cce18646114d2a6bfaac423e51af79c                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797773+00:00 app[web.1]: (psql-query-recpt):{"group_id":"Ce444ac54185bf0e3a2940e03a9f8babe                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797843+00:00 app[web.1]: (psql-query-recpt):{"group_id":"C68763fe6d3a492ca3321cf4bec222480                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797917+00:00 app[web.1]: (psql-query-recpt):{"group_id":"Cc53141b38005d99bc191bf28b3b4854b                 ","problem":null,"score":null,"history":null}
+2018-09-07T16:55:02.797993+00:00 app[web.1]: (psql-query-recpt):9
+2018-09-07T16:55:02.798436+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.798511+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.798576+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.799309+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.799312+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.799314+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.799316+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.799323+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.799325+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.799327+00:00 app[web.1]:    { to: 'Cf35cce3f4a1244f68a8f1bbb7d02323a',
+2018-09-07T16:55:02.799328+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.800564+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.800668+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.800743+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.801000+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.801003+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.801005+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.801007+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.801009+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.801011+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.801013+00:00 app[web.1]:    { to: 'Cb8edea41c3f44af846c4d3889f62c86b',
+2018-09-07T16:55:02.801015+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.801487+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.801565+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.801636+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.801817+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.801819+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.801821+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.801823+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.801825+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.801827+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.801828+00:00 app[web.1]:    { to: 'C0c8d7c7e4a35667592e5fa9c0ae25602',
+2018-09-07T16:55:02.801830+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.802256+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.802331+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.802396+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.802579+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.802582+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.802583+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.802585+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.802587+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.802589+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.802590+00:00 app[web.1]:    { to: 'C09ee61b90b6223dceff8766318bbc022',
+2018-09-07T16:55:02.802592+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.803027+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.804611+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.804733+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.804958+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.804961+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.804962+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.804964+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.804966+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.804968+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.804970+00:00 app[web.1]:    { to: 'Ccd3d79602751c6b0d8b3cd77f1b08536',
+2018-09-07T16:55:02.804971+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.805510+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.805627+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.805722+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.805985+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.805988+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.805990+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.805991+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.805993+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.805995+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.805997+00:00 app[web.1]:    { to: 'C2cce18646114d2a6bfaac423e51af79c',
+2018-09-07T16:55:02.805999+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.806655+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.806751+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.806845+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.807108+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.807111+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.807113+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.807114+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.807117+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.807118+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.807120+00:00 app[web.1]:    { to: 'Ce444ac54185bf0e3a2940e03a9f8babe',
+2018-09-07T16:55:02.807122+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.808016+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.808220+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.808397+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.808825+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.808827+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.808829+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.808831+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.808833+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.808835+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.808837+00:00 app[web.1]:    { to: 'C68763fe6d3a492ca3321cf4bec222480',
+2018-09-07T16:55:02.808838+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.809757+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.809833+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.809944+00:00 app[web.1]: pushmessage:[object Object]
+2018-09-07T16:55:02.810483+00:00 app[web.1]: { url: 'https://api.line.me/v2/bot/message/push',
+2018-09-07T16:55:02.810486+00:00 app[web.1]:   method: 'POST',
+2018-09-07T16:55:02.810488+00:00 app[web.1]:   headers: 
+2018-09-07T16:55:02.810490+00:00 app[web.1]:    { 'Content-Type': 'application/json',
+2018-09-07T16:55:02.810492+00:00 app[web.1]:      Authorization: 'Bearer JvjuC4mvec2s/VOxtUkZIZVhqjYebML6k6VKtSUfxwzNf0m98mqIgi2x15uByRqDsi/Kg66gcgPMPz90CeKeigwwTiqGqpwp6IewEfJ2N90tZv+XQoQDVu4YP9BdQzKgjzdoz6vvbRusT9wd+T7tUQdB04t89/1O/w1cDnyilFU=' },
+2018-09-07T16:55:02.810494+00:00 app[web.1]:   json: 
+2018-09-07T16:55:02.810495+00:00 app[web.1]:    { to: 'Cc53141b38005d99bc191bf28b3b4854b',
+2018-09-07T16:55:02.810497+00:00 app[web.1]:      messages: [ [Object], [Object], [Object] ] } }
+2018-09-07T16:55:02.812973+00:00 app[web.1]: (psql-query-recpt):0
+2018-09-07T16:55:03.119917+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.121446+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.125629+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.125728+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.127094+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.127222+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.132764+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.132858+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.144588+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.144707+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.272415+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.273237+00:00 app[web.1]: {}
+2018-09-07T16:55:03.441178+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.441305+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.488503+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.488987+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.491267+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.491565+00:00 app[web.1]: { message: 'Failed to send messages' }
+2018-09-07T16:55:03.892239+00:00 app[web.1]: (line)
+2018-09-07T16:55:03.892565+00:00 app[web.1]: {}
+2018-09-07T16:55:22.836618+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/" host=angleline-hall.herokuapp.com request_id=b8df39ef-9648-421d-9048-5bae1e05f0d7 fwd="203.104.146.155" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2018-09-07T16:55:32.600279+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/" host=angleline-hall.herokuapp.com request_id=17a88573-bfd4-4147-ae8a-0c92da3be8c4 fwd="203.104.146.155" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0 protocol=https
+2018-09-07T16:56:50.918215+00:00 app[web.1]: { type: 'postback',
+2018-09-07T16:56:50.918240+00:00 app[web.1]:   replyToken: '171b2843c8db475bb9ccf150ec82ceec',
+2018-09-07T16:56:50.918243+00:00 app[web.1]:   source: { userId: 'Ub892e1dc3479c2e8a148beb2b981e19a', type: 'user' },
+2018-09-07T16:56:50.918245+00:00 app[web.1]:   timestamp: 1536339410263,
+2018-09-07T16:56:50.918248+00:00 app[web.1]:   postback: 
+2018-09-07T16:56:50.918251+00:00 app[web.1]:    { data: 'master_id=U8651152b7704f5ea352373a445354af8&dept=phys&counter=1' } }
+2018-09-07T16:57:20.911989+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=POST path="/" host=angleline-hall.herokuapp.com request_id=1a756621-30d2-4535-9e97-d6fbce0108c0 fwd="203.104.146.155" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
