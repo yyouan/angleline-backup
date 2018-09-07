@@ -766,6 +766,7 @@ var server = app.listen((process.env.PORT || 8080), function() {
 function cursive_wait(work,array,time){
     
     (function process(times){
+        
         if(times < array.length){
 
             work(array[times]);
