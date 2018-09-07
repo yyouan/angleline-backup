@@ -20,24 +20,20 @@ const graph_url = [
     "https://i.imgur.com/FXikX2G.jpg",
     "https://i.imgur.com/EdQ8tTf.jpg",
     "https://i.imgur.com/UMmVO2T.jpg",
-    "https://i.imgur.com/z92G7KI.jpg",
-    "https://i.imgur.com/x7MgwKt.jpg",
+    "https://i.imgur.com/sGvULl6.png",
+    "https://i.imgur.com/TMarisv.png",
     "https://i.imgur.com/lOs5GOf.jpg",
-    "https://i.imgur.com/NXcWALK.png",
-    "https://i.imgur.com/EaQs6YU.jpg",
-    "https://i.imgur.com/KiLqxHf.jpg",
-    "https://i.imgur.com/lwD1F9v.jpg",
-    "https://i.imgur.com/yFpbwmu.jpg",
-    "https://i.imgur.com/med3yMO.jpg",
     "https://i.imgur.com/pMLQd6V.jpg",
-    "https://i.imgur.com/Pe55Oc5.jpg",
     "https://i.imgur.com/I2PDbe1.jpg",
     "https://i.imgur.com/QXaebkU.jpg",
     "https://i.imgur.com/xYjIwWU.jpg",
     "https://i.imgur.com/Xx7ruza.jpg",
     "https://i.imgur.com/OcVrc0J.jpg",
     "https://i.imgur.com/DbSuGNf.png",
-    "https://i.imgur.com/Dw1kRP0.png"
+    "https://i.imgur.com/Dw1kRP0.png",
+    "https://i.imgur.com/nhqRKDB.png",
+    "https://i.imgur.com/SaMj8YB.png",
+    "https://i.imgur.com/RB5Yfgy.png"
 ]
 
 const app = express(); //建立一個express 伺服器
@@ -261,7 +257,7 @@ function loginParser(req ,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40ugr1160s"
+                                                        "uri": "https://line.me/R/ti/p/%40mmy5275b"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -303,7 +299,7 @@ function loginParser(req ,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40tgi5859x"
+                                                        "uri": "https://line.me/R/ti/p/%40vll3075j"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -345,7 +341,7 @@ function loginParser(req ,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40hzg9436s"
+                                                        "uri": "https://line.me/R/ti/p/%40jnx4465c"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -663,7 +659,7 @@ function FormReceiver(req,rres){
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+ post.email +"\';").then(
             angles =>{
                 if(angles.length ==0 || angles[0].angle_id==''){
-                    rres.end("你還沒有輸入電子郵件喔!")
+                    rres.end("You don't input your email in Line!")
                 }else{
                     psql("UPDATE ACCOUNT SET (phone,angle_nickname,department,self_intro,groupindex,name"
                     +")=(\'"+ post.phone +"\',\'"+post.nickname+"\',\'"+post.dept+"\',\'"+post['self-intro']+"\',\'"+post.group
@@ -735,21 +731,36 @@ function FormReceiver(req,rres){
                                         "contents": [
                                             {
                                             "type": "text",
-                                            "text": "點我自行上傳圖片(andriod記得open in other app如下圖)"
+                                            "text": "點我自行上傳圖片"
                                             }
                                         ]
                                         },
                                         "hero": {
                                             "type": "image",
                                             "url": "https://i.imgur.com/M6s5AhN.png", //use 圖片位址
-                                        },                                        
+                                        },
+                                        "body": {
+                                            "type": "box",
+                                            "layout": "vertical",
+                                            "contents": [
+                                              {
+                                                "type": "text",
+                                                "text": "!!! andriod記得open in other app",
+                                              },
+                                              {
+                                                "type": "text",
+                                                "text": "=/\\= 如上圖 =/\\=",
+                                              }
+                                            ]
+                                        }
+                                        ,                                        
                                         "footer": {
                                         "type": "box",
                                         "layout": "vertical",
                                         "contents": [
                                             {
-                                            "type": "spacer",
-                                            "size": "xl"
+                                                "type": "spacer",
+                                                "size": "xl"
                                             },
                                             {
                                             "type": "button",
@@ -768,7 +779,7 @@ function FormReceiver(req,rres){
                             msg.push(text);
                             msg.push(upload_page);                            
                             setTimeout(()=>{pushmessage(msg,angles[0].angle_id);},3000)
-                            rres.end("請關閉視窗!回到大祭司講堂選取頭貼圖片")                                                                 
+                            rres.sendFile(__dirname+'/relogin.html');                                                                 
                         }
                     );
                 
@@ -904,7 +915,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40ugr1160s"
+                                                        "uri": "https://line.me/R/ti/p/%40mmy5275b"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -946,7 +957,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40tgi5859x"
+                                                        "uri": "https://line.me/R/ti/p/%40vll3075j"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -988,7 +999,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40hzg9436s"
+                                                        "uri": "https://line.me/R/ti/p/%40jnx4465c"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -996,7 +1007,7 @@ function imgReceiver(req,rres){
                                                 ]
                                                 }             
                                             }
-                                    };
+                                    };  
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
                                 }
                                
