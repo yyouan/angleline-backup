@@ -492,6 +492,7 @@ function choose_Parser(req ,res){
                             replymessage([text]);
 
                         }else{
+
                             if('counter' in data){
                                 department = (department == 'phys')? ('psy'):('phys')
                             }
@@ -708,7 +709,7 @@ function choose_Parser(req ,res){
                             }else{
                                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + master_id +"\';").then(
                                     res => {
-                                        if(res[0].master_id == line_id){
+                                        if( master_id == line_id){
                                             
                                             let text ={
                                                 "type":"text",
