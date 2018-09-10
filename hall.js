@@ -925,6 +925,7 @@ function GameProceessor(req,res){
                             
                             let msg=[]
                             if(req[0].problem_count < (game_item.gameproblem.length-1) ){
+
                                 psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                                 psql("UPDATE ACCOUNT SET problem_count="+ String(req[0].problem_count+1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
 
@@ -1004,34 +1005,6 @@ function GameProceessor(req,res){
                                             
                                             pushtoMaster(msg,res[0].angle_id);
                                             pushtoAngle(msg,res[0].master_id);
-                                        }else{
-                                            psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                                            psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
-                                            let msg_master = [
-                                                {
-                                                    "type":"text",
-                                                    "text":"問錯人了!現在小組分數為"+String(res[0].score-1)
-                                                },
-                                                {
-                                                    "type":"text",
-                                                    "text":"提醒題目："+game_item.gameproblem[res[0].problem]
-                                                }
-                                            ]
-                                            
-                                            let msg_angle = [
-                                                {
-                                                    "type":"text",
-                                                    "text":"問錯人了!現在小組分數為"+String(req[0].score-1)
-                                                },
-                                                {
-                                                    "type":"text",
-                                                    "text":"提醒題目："+game_item.gameproblem[req[0].problem]
-                                                }
-                                            ]
-                                            pushtoMaster(msg_master,res[0].angle_id);
-                                            pushtoAngle(msg_master,res[0].master_id);
-                                            pushtoMaster(msg_angle,req[0].angle_id);
-                                            pushtoAngle(msg_angle,req[0].master_id);
                                         }
                                     }
                                     
