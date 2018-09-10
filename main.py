@@ -20,6 +20,7 @@ import time
     python main.py --era idle
 
     if check has problem call them to re-login or --era choose again
+    
 '''
 
 #interface variable
