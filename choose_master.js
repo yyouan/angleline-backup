@@ -709,7 +709,9 @@ function choose_Parser(req ,res){
                             }else{
                                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + master_id +"\';").then(
                                     res => {
-                                        if( master_id == line_id){
+                                        console.log("master:"+ res[0].master_id.replace(/\s+/g, ""))
+                                        console.log("angle:"+ line_id)
+                                        if( res[0].master_id.replace(/\s+/g, "") == line_id){
                                             
                                             let text ={
                                                 "type":"text",
