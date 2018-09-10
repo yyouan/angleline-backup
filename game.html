@@ -7,7 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <script>alert(document.cookie)</script>
+    <script>
+    if (document.cookie == ""){
+
+        document.cookie ="email=" + prompt("請輸入註冊用的電子郵件信箱!")
+        history.go(0)
+
+    }else{
+        alert(document.cookie)
+    }        
+    </script>
     <h>請回小天使和小主人站台看是否成功破關</h>    
 </body>
 </html>

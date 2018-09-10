@@ -833,6 +833,7 @@ function GameProceessor(req,res){
                 if(game_index!=-1){
 
                     if(req.length!=1){
+                        
                         let text ={
                             "type":"text",
                             "text":"有game問題出錯"

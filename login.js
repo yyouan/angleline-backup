@@ -428,6 +428,7 @@ function loginParser(req ,rres){
                             if(post.events[0].message.type == 'text'){
                                 var email = post.events[0].message.text;
                                 psql("SELECT * FROM ACCOUNT WHERE email=\'" + email +"\';").then(recpt=>{
+                                    var emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
                                     if( recpt.length == 0)
                                     {   
                                         if(post.events[0].message.text == '嗨'){
@@ -485,8 +486,16 @@ function loginParser(req ,rres){
                                             replymessage([text])
 
                                         }
-                                        else{
+                                        else if(email.search(emailRule) == -1){
 
+                                            let text = {
+                                                "type":"text",
+                                                "text":"請輸入正確的電子郵件格式"
+                                            }
+                                            replymessage([text])
+
+                                        }
+                                        else{                                            
                                             create_member(email,line_id);
                                             let text2 = {
                                                 "type":"text",
