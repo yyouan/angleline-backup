@@ -31,7 +31,7 @@ function Parser(req ,res){
         replymessage();   
         function replymessage(){ //recpt is message object
             console.log(post)
-            console.log(url)
+            console.log(goal)
             var options = {
                 url: goal,
                 method: 'POST',
