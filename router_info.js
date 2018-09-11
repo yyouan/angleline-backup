@@ -28,13 +28,7 @@ function Parser(req ,res){
         if (typeof replyToken === 'undefined') {
             return;
         }        
-
-        if (posttype == 'message'){
-
-            replymessage();
-
-        }
-
+        replymessage();   
         function replymessage(){ //recpt is message object
             console.log(post)
             console.log(url)

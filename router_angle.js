@@ -29,11 +29,7 @@ function Parser(req ,res){
             return;
         }        
 
-        if (posttype == 'message'){
-
-            replymessage();
-
-        }
+        replymessage(); 
 
         function replymessage(){ //recpt is message object
 
