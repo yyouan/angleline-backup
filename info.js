@@ -515,7 +515,18 @@ function chatParser(req ,res){
 
                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                     res =>{
-                        let nick = res[0].angle_nickname.replace(/\s+/g, "");
+
+                        let nick;
+
+                        if(res.length==0){
+
+                            nick=''
+
+                        }else{
+
+                            nick = res[0].angle_nickname.replace(/\s+/g, "");
+
+                        }                         
 
                         if(type == 'image'){
                             //set adrr
@@ -599,10 +610,19 @@ function chatParser(req ,res){
             channel_array[post.events[0].source.userId] = data.reply_id;
             psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+data.reply_id+"\';").then(
                 res =>{
-                    let text ={
-                        "type":"text",
-                        "text":"##開始回覆"+res[0].angle_nickname.replace(/\s+/g, "")+"："
-                    }            
+                    let text;
+                    if(res.length == 0){
+                        text ={
+                            "type":"text",
+                            "text":"##開始回覆"+res[0].angle_nickname.replace(/\s+/g, "")+"："
+                        }
+                    }else{
+                        text ={
+                            "type":"text",
+                            "text":"##開始回覆"+"："
+                        }
+                    }
+                                
                     replymessage([finish_button,text]);
                 }
             );
