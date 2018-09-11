@@ -263,6 +263,7 @@ function chatParser(req ,res){
   // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
   req.on('end', function(){    
       post = JSON.parse(post);
+      console.log(post);
       console.log(post.events[0]);
       var replyToken = post.events[0].replyToken;
       var posttype = post.events[0].type;

@@ -36,7 +36,8 @@ function Parser(req ,res){
         }
 
         function replymessage(){ //recpt is message object
-
+            console.log(post)
+            console.log(url)
             var options = {
                 url: goal,
                 method: 'POST',
@@ -44,7 +45,6 @@ function Parser(req ,res){
                   'Content-Type':  'application/json',                  
                 },
                 json:post
-
               };
                 
               request(options, function (error, response, body) {

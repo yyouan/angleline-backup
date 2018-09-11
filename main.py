@@ -77,7 +77,7 @@ if name =="console":
     print(os.system("git pull https://github.com/yyouan/angleline.git master"))
     print(os.system("git pull https://github.com/yyouan/angleline-master.git master"))
     print(os.system("git pull https://github.com/yyouan/angleline-hall.git master"))
-    print(os.system("git pull https://github.com/yyouan/informationdesk.git master"))
+    print(os.system("git pull https://github.com/yyouan/informationdesk.git master"))    
     '''for router'''
     write_package_json("router_angle.js")
     print(os.system("git add ."))
