@@ -28,7 +28,25 @@ function Parser(req ,res){
         if (typeof replyToken === 'undefined') {
             return;
         }        
-        replymessage();   
+        replymessage();
+        console.log("test")
+        console.log(post)
+            console.log(goal)
+            var options = {
+                url: goal,
+                method: 'POST',
+                headers: {
+                  'Content-Type':  'application/json',                  
+                },
+                json:post
+              };
+                
+              request(options, function (error, response, body) {
+                  if (error) throw error;
+                  console.log("(line)");
+                  console.log(body);
+                  res.end("");
+              });   
         function replymessage(){ //recpt is message object
             console.log(post)
             console.log(goal)
