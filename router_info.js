@@ -23,11 +23,7 @@ function Parser(req ,res){
     req.on('end', function(){ 
 
         post = JSON.parse(post);
-        console.log(post.events[0]);
-        
-        if (typeof replyToken === 'undefined') {
-            return;
-        }        
+        console.log(post.events[0]);        
         
         console.log("test")
         console.log(post)

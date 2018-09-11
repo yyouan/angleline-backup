@@ -24,13 +24,9 @@ function Parser(req ,res){
 
         post = JSON.parse(post);
         console.log(post.events[0]);
-        
-        if (typeof replyToken === 'undefined') {
-            return;
-        }        
 
         replymessage(); 
-        
+
         function replymessage(){ //recpt is message object
 
             var options = {
