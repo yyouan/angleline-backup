@@ -3,13 +3,13 @@ var request = require('request');
 const querystring = require('querystring');
 const game_item = require('./game_item.js');
 const token = require('./token.js');
-const [AngleToken,MasterToken,HallToken,InfoToken] = [
-    token.AngleToken,
-    token.MasterToken,
-    token.HallToken,
-    token.InfoToken
+const [AngleTokens,MasterTokens,HallTokens,InfoTokens] = [
+    [token.AngleToken,token.AngleToken_2],
+    [token.MasterToken,token.MasterToken_2],
+    [token.HallToken,token.HallToken_2],
+    [token.InfoToken,token.InfoToken_2]
 ]
-var CHANNEL_ACCESS_TOKEN = AngleToken;
+var CHANNEL_ACCESS_TOKEN = AngleTokens;
 const modetype =["angle_id","master_id"];
 const mode = modetype[0];
 const c_mode = modetype[0];
@@ -54,25 +54,29 @@ function psql(command){
     recpt.forEach(element => {
         console.log("pushmessage:"+element);
     });
-  
-    var options = {
-        url: "https://api.line.me/v2/bot/message/push",
-        method: 'POST',
-        headers: {
-          'Content-Type':  'application/json', 
-          'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-        },
-        json: {
-            "to": id.replace(/\s+/g, ""),
-            'messages': recpt
-        }
-      };
-        
-      request(options, function (error, response, body) {
-          if (error) throw error;
-          console.log("(line)");
-          console.log(body);
-      });
+    for(let token of CHANNEL_ACCESS_TOKEN){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }
+    
   
   }
 
@@ -242,24 +246,29 @@ function psql(command){
               replymessage([msg,msg2]);
           }
           function replymessage(recpt){ //recpt is message object
-            var options = {
-              url: "https://api.line.me/v2/bot/message/reply ",
-              method: 'POST',
-              headers: {
-                'Content-Type':  'application/json', 
-                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-              },
-              json: {
-                  'replyToken': replyToken,
-                  'messages': recpt
-              }
-            };
-              
-            request(options, function (error, response, body) {
-                if (error) throw error;
-                console.log("(line)");
-                console.log(body);
-            });
+
+            for(let token of CHANNEL_ACCESS_TOKEN){
+
+                var options = {
+                    url: "https://api.line.me/v2/bot/message/reply ",
+                    method: 'POST',
+                    headers: {
+                      'Content-Type':  'application/json', 
+                      'Authorization':'Bearer ' + token
+                    },
+                    json: {
+                        'replyToken': replyToken,
+                        'messages': recpt
+                    }
+                  };
+                    
+                  request(options, function (error, response, body) {
+                      if (error) throw error;
+                      console.log("(line)");
+                      console.log(body);
+                  });
+
+            }            
             
           }        
       });

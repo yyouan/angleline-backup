@@ -5,14 +5,13 @@ const game_item = require('./game_item.js');
 const gameproblem = game_item.gameproblem;
 const gamelocation = game_item.gamelocation;
 const gameanswer = game_item.gameanswer;
-const token = require('./token.js');
-const [AngleToken,MasterToken,HallToken,InfoToken] = [
-    token.AngleToken,
-    token.MasterToken,
-    token.HallToken,
-    token.InfoToken
+const [AngleTokens,MasterTokens,HallTokens,InfoTokens] = [
+    [token.AngleToken,token.AngleToken_2],
+    [token.MasterToken,token.MasterToken_2],
+    [token.HallToken,token.HallToken_2],
+    [token.InfoToken,token.InfoToken_2]
 ]
-var CHANNEL_ACCESS_TOKEN = InfoToken;
+var CHANNEL_ACCESS_TOKEN = InfoTokens;
 var channel_array ={};
 const domain="https://informationdesk.herokuapp.com";
 
@@ -70,25 +69,29 @@ function pushToSuv(recpt){
           recpt.forEach(element => {
             console.log("pushmessage:"+element);
           });
-      
-          var options = {
-              url: "https://api.line.me/v2/bot/message/push",
-              method: 'POST',
-              headers: {
-                'Content-Type':  'application/json', 
-                'Authorization':'Bearer ' + InfoToken
-              },
-              json: {
-                  "to": group.group_id.replace(/\s+/g, ""),
-                  'messages': recpt
-              }
-            };
-          console.log(options);
-          request(options, function (error, response, body) {
-              if (error) throw error;
-              console.log("(line)");
-              console.log(body);
-          });
+          for(let token of InfoTokens){
+
+            var options = {
+                url: "https://api.line.me/v2/bot/message/push",
+                method: 'POST',
+                headers: {
+                  'Content-Type':  'application/json', 
+                  'Authorization':'Bearer ' + token
+                },
+                json: {
+                    "to": group.group_id.replace(/\s+/g, ""),
+                    'messages': recpt
+                }
+              };
+            console.log(options);
+            request(options, function (error, response, body) {
+                if (error) throw error;
+                console.log("(line)");
+                console.log(body);
+            });
+
+          }
+          
   
         }      
       }
@@ -99,24 +102,29 @@ function pushmessage(recpt,id){
         console.log("pushmessage:"+element);
     });
     console.log("to_id"+id);
-    var options = {
-        url: "https://api.line.me/v2/bot/message/push",
-        method: 'POST',
-        headers: {
-          'Content-Type':  'application/json', 
-          'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-        },
-        json: {
-            "to": id.replace(/\s+/g, ""),
-            'messages': recpt
-        }
-      };
-        
-      request(options, function (error, response, body) {
-          if (error) throw error;
-          console.log("(line)");
-          console.log(body);
-      });
+    for(let token of CHANNEL_ACCESS_TOKEN){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }
+    
   
 }
 function pushtoHall(recpt,id){
@@ -124,24 +132,30 @@ function pushtoHall(recpt,id){
         console.log("pushmessage:"+element);
     });
     console.log("to_id"+id);
-    var options = {
-        url: "https://api.line.me/v2/bot/message/push",
-        method: 'POST',
-        headers: {
-          'Content-Type':  'application/json', 
-          'Authorization':'Bearer ' + HallToken
-        },
-        json: {
-            "to": id.replace(/\s+/g, ""),
-            'messages': recpt
-        }
-      };
-        
-      request(options, function (error, response, body) {
-          if (error) throw error;
-          console.log("(line)");
-          console.log(body);
-      });
+
+    for(let token of HallTokens){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }
+    
   
 }
 function imgpusherS(recpt,img,msgid){
@@ -155,31 +169,36 @@ function imgpusherS(recpt,img,msgid){
         (groups) =>{
     
           for(group of groups){
-            var options = {
-                url: "https://api.line.me/v2/bot/message/push",
-                method: 'POST',
-                headers: {
-                'Content-Type':  'application/json', 
-                'Authorization':'Bearer ' + InfoToken
-                },
-                json: {
-                    'to':group.group_id.replace(/\s+/g, ""),
-                    'messages': [recpt]
-                }
-              };             
-              
-                   
-              app.get(adrr,(req,res)=>{
-                  //res.sendFile(__dirname+"/img.jpg");    
-                  res.writeHead(200, {'Content-Type': 'image/jpeg' });
-                  res.end(img, 'binary');
-              });        
-              
-              request(options, function (error, response, body) {
-                  if (error) throw error;
-                  console.log("(line)");
-                  console.log(body);
-              });
+            for(let token of InfoTokens){
+
+                var options = {
+                    url: "https://api.line.me/v2/bot/message/push",
+                    method: 'POST',
+                    headers: {
+                    'Content-Type':  'application/json', 
+                    'Authorization':'Bearer ' + token
+                    },
+                    json: {
+                        'to':group.group_id.replace(/\s+/g, ""),
+                        'messages': [recpt]
+                    }
+                  };             
+                  
+                       
+                  app.get(adrr,(req,res)=>{
+                      //res.sendFile(__dirname+"/img.jpg");    
+                      res.writeHead(200, {'Content-Type': 'image/jpeg' });
+                      res.end(img, 'binary');
+                  });        
+                  
+                  request(options, function (error, response, body) {
+                      if (error) throw error;
+                      console.log("(line)");
+                      console.log(body);
+                  });
+
+            }
+            
           }
           
         }
@@ -193,33 +212,38 @@ function imgpusherS(recpt,img,msgid){
 function imgpusher(recpt,id,img,msgid){
 
     let adrr ="/"+msgid+".jpg";
-    var options = {
-      url: "https://api.line.me/v2/bot/message/push",
-      method: 'POST',
-      headers: {
-      'Content-Type':  'application/json', 
-      'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-      },
-      json: {
-          'to': id.replace(/\s+/g, ""),
-          'messages': [recpt]
-      }
-    };
+    for(let token of CHANNEL_ACCESS_TOKEN){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+            'Content-Type':  'application/json', 
+            'Authorization':'Bearer ' + token
+            },
+            json: {
+                'to': id.replace(/\s+/g, ""),
+                'messages': [recpt]
+            }
+          };
+          
+          options.json.messages[0].originalContentUrl=(domain+adrr);
+          options.json.messages[0].previewImageUrl=(domain+adrr);
+               
+          app.get(adrr,(req,res)=>{
+              //res.sendFile(__dirname+"/img.jpg");    
+              res.writeHead(200, {'Content-Type': 'image/jpeg' });
+              res.end(img, 'binary');
+          });        
+          
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }
     
-    options.json.messages[0].originalContentUrl=(domain+adrr);
-    options.json.messages[0].previewImageUrl=(domain+adrr);
-         
-    app.get(adrr,(req,res)=>{
-        //res.sendFile(__dirname+"/img.jpg");    
-        res.writeHead(200, {'Content-Type': 'image/jpeg' });
-        res.end(img, 'binary');
-    });        
-    
-    request(options, function (error, response, body) {
-        if (error) throw error;
-        console.log("(line)");
-        console.log(body);
-    });
   }
 //------------build TCP/IP-------------
 function chatParser(req ,res){
@@ -324,77 +348,8 @@ function chatParser(req ,res){
                 }
             )
         }
-
-        if(type == 'location'){
-            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + line_id +"\';").then(
-                (res)=>{
-                    let text ={
-                        "type":"text",
-                        "text":""
-                    }
-                    if(res.length==1){
-                        loc = gamelocation[res[0].location_problem];
-                        console.log(loc);
-
-                        if(Math.abs((msg.latitude - loc[0]))<0.0001 || Math.abs((msg.longitude - loc[1]))<0.0001){
-
-                            text.text = "!!!!抵達目標，恭喜答對!!!!"                           
-
-                            psql("UPDATE ACCOUNT SET score="+ String(res[0].score+10) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                            psql("UPDATE ACCOUNT SET score="+ String(res[0].location_count +1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                            let msg =[]
-                            if(res[0].location_count < (game_item.locationproblem.length-1) ){
-
-                                psql("UPDATE ACCOUNT SET location_problem="+ String((res[0].location_problem+1)%game_item.locationproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
-                                msg = [
-                                    {
-                                        "type":"text",
-                                        "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
-                                    },
-                                    {
-                                        "type":"text",
-                                        "text":"[地點遊戲]下一關的題目："+game_item.locationproblem[(res[0].location_problem+1)%game_item.locationproblem.length]
-                                    }
-                                ];
-
-                            }else{
-                                msg = [
-                                    {
-                                        "type":"text",
-                                        "text":"恭喜破關!現在你的分數為"+String(res[0].score+10)
-                                    },
-                                    {
-                                        "type":"text",
-                                        "text":"[地點遊戲]已經全部通關完畢，在此致上製作團隊八十七分的敬意"
-                                    }
-                                ];
-                            }
-                            
-                            replymessage([text,msg[0],msg[1]]);
-                           
-                        }else if(Math.abs((msg.latitude - loc[0]))<0.0002 || Math.abs((msg.longitude - loc[1]))<0.0002){
-                            text.text = "!!距離目標還有約20公尺!!"
-                            replymessage([text]);
-                        }else if(Math.abs((msg.latitude - loc[0]))<0.0003 || Math.abs((msg.longitude - loc[1]))<0.0003){
-                            text.text = "!距離目標還有約30公尺!"
-                            replymessage([text]);
-                        }else if(Math.abs((msg.latitude - loc[0]))<0.0005 || Math.abs((msg.longitude - loc[1]))<0.0005){
-                            text.text = "\\距離目標還有約50公尺/"
-                            replymessage([text]);
-                        }else if(Math.abs((msg.latitude - loc[0]))<0.001 || Math.abs((msg.longitude - loc[1]))<0.001){
-                            text.text = "距離目標還有約100公尺"
-                            replymessage([text]);
-                        }else{
-                            text.text = "距離目標太遠(約100公尺以上)"
-                            replymessage([text]);
-                        }
-                    }else{
-                        //debug code
-                    }
-                }
-            );                    
-        }
-        else if(post.events[0].source.userId in channel_array){
+        
+        if(post.events[0].source.userId in channel_array){
 
                 let msg = post.events[0].message;                                    
                 let type = msg.type;
@@ -407,36 +362,41 @@ function chatParser(req ,res){
                   //adrr+=".jpg";
                   //console.log(adrr);
                   // Configure the request
-                  let getimage=new Promise((resolve,reject)=>{
-                  let options = {
-                      url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                      method: 'GET',
-                      headers: {                
-                      'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                      },
-                      encoding: null
-                  }
-      
-                  // Start the request
+                  for(let token of CHANNEL_ACCESS_TOKEN){
 
-                  request(options, function (error, response, body) {
-                      if (!error && response.statusCode == 200) {
-                      nwimg = body;
-                      console.log(body);
-                      resolve(body);                  
-                      }else{
-                      //console.log();
-                      reject("!!!!!error when recpt image!!!!!");                
-                      }
-                  });              
-                  });
-                  
-                  getimage
-                  .then((body)=>{imgpusher(msg,receiver_id,body,msgid);})
-                  .catch((err)=>{
-                  console.log("(linebotpromise)"+err);
+                    let getimage=new Promise((resolve,reject)=>{
+                        let options = {
+                            url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                            method: 'GET',
+                            headers: {                
+                            'Authorization':'Bearer ' + token                  
+                            },
+                            encoding: null
+                        }
+            
+                        // Start the request
+      
+                        request(options, function (error, response, body) {
+                            if (!error && response.statusCode == 200) {
+                            nwimg = body;
+                            console.log(body);
+                            resolve(body);                  
+                            }else{
+                            //console.log();
+                            reject("!!!!!error when recpt image!!!!!");                
+                            }
+                        });              
+                        });
+                        
+                        getimage
+                        .then((body)=>{imgpusher(msg,receiver_id,body,msgid);})
+                        .catch((err)=>{
+                        console.log("(linebotpromise)"+err);
+                        }
+                        );
+
                   }
-                  );
+                  
 
                 }else{                    
                     if(receiver_id == "@加卷"){
@@ -553,12 +513,7 @@ function chatParser(req ,res){
 
                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                     res =>{
-                        let nick;
-                        if(res.length == 0){
-                            nick = "";
-                        }else{
-                            nick = res[0].angle_nickname.replace(/\s+/g, "");
-                        }
+                        let nick = res[0].angle_nickname.replace(/\s+/g, "");
 
                         if(type == 'image'){
                             //set adrr
@@ -566,45 +521,50 @@ function chatParser(req ,res){
                             //adrr+=".jpg";
                             //console.log(adrr);
                             // Configure the request
-                            let getimage=new Promise((resolve,reject)=>{
-                            let options = {
-                                url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                                method: 'GET',
-                                headers: {                
-                                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                                },
-                                encoding: null
+                            for(let token of CHANNEL_ACCESS_TOKEN){
+
+                                let getimage=new Promise((resolve,reject)=>{
+                                    let options = {
+                                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                        method: 'GET',
+                                        headers: {                
+                                        'Authorization':'Bearer ' + token                 
+                                        },
+                                        encoding: null
+                                    }
+                        
+                                    // Start the request
+                    
+                                    request(options, function (error, response, body) {
+                                        if (!error && response.statusCode == 200) {
+                                        //nwimg = body;
+                                        console.log(body);
+                                        resolve(body);                  
+                                        }else{
+                                        //console.log();
+                                        reject("!!!!!error when recpt image!!!!!");                
+                                        }
+                                    });              
+                                    });
+                                    
+                                    getimage
+                                    .then((body)=>{
+                                        let text ={
+                                            "type" : "text",
+                                            "text" : "##來自小隊員"+nick+"："
+                                        }                                
+                                        pushToSuv([text]);
+                                        let imagemsg=imgpusherS(msg,body,msgid);
+                                        pushToSuv([reply_button]);
+                                        psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,imagemsg,reply_button])+"\',\'"+msgid+"\');");                                         
+                                    })
+                                    .catch((err)=>{
+                                    console.log("(linebotpromise)"+err);
+                                    }
+                                    );
+
                             }
-                
-                            // Start the request
-            
-                            request(options, function (error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                //nwimg = body;
-                                console.log(body);
-                                resolve(body);                  
-                                }else{
-                                //console.log();
-                                reject("!!!!!error when recpt image!!!!!");                
-                                }
-                            });              
-                            });
                             
-                            getimage
-                            .then((body)=>{
-                                let text ={
-                                    "type" : "text",
-                                    "text" : "##來自小隊員"+nick+"："
-                                }                                
-                                pushToSuv([text]);
-                                let imagemsg=imgpusherS(msg,body,msgid);
-                                pushToSuv([reply_button]);
-                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,imagemsg,reply_button])+"\',\'"+msgid+"\');");                                         
-                            })
-                            .catch((err)=>{
-                            console.log("(linebotpromise)"+err);
-                            }
-                            );
             
                           }else{
                             let text ={
@@ -637,20 +597,11 @@ function chatParser(req ,res){
             channel_array[post.events[0].source.userId] = data.reply_id;
             psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+data.reply_id+"\';").then(
                 res =>{
-                    if(res.length!=0){
-                        let text ={
-                            "type":"text",
-                            "text":"##開始回覆"+res[0].angle_nickname.replace(/\s+/g, "")+"："
-                        }            
-                        replymessage([finish_button,text]);
-                    }else{
-                        let text ={
-                            "type":"text",
-                            "text":"##開始回覆"+"："
-                        }            
-                        replymessage([finish_button,text]);
-                    }
-                   
+                    let text ={
+                        "type":"text",
+                        "text":"##開始回覆"+res[0].angle_nickname.replace(/\s+/g, "")+"："
+                    }            
+                    replymessage([finish_button,text]);
                 }
             );
             psql("SELECT * FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';").then(
@@ -682,9 +633,7 @@ function chatParser(req ,res){
             replymessage([text]);
 
         }else if("send" in data){
-
             if("nick" in data){
-
                 console.log("nick_send");
                 let msg_stored = JSON.parse(data.msg);
                 let nickname = data.nick;
@@ -724,7 +673,7 @@ function chatParser(req ,res){
                     }
                 )
             };
-            psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
+            
 
         }else if("complete" in data){
             console.log("complete");
@@ -740,37 +689,34 @@ function chatParser(req ,res){
             }            
             replymessage([finish_button,text]);
             psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
-        
-        }else if("said" in data){
-
-            let text ={
-                "type":"text",
-                "text":"已經說完此真心話"
-            }            
-            replymessage([text]);
-            psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
         }
                  
     }
       function replymessage(recpt){ //recpt is message object
-        var options = {
-          url: "https://api.line.me/v2/bot/message/reply ",
-          method: 'POST',
-          headers: {
-            'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-          },
-          json: {
-              'replyToken': replyToken,
-              'messages': recpt
-          }
-        };
-          
-        request(options, function (error, response, body) {
-            if (error) throw error;
-            console.log("(line)");
-            console.log(body);
-        });
+        
+        for(let token of CHANNEL_ACCESS_TOKEN){
+
+            var options = {
+                url: "https://api.line.me/v2/bot/message/reply ",
+                method: 'POST',
+                headers: {
+                  'Content-Type':  'application/json', 
+                  'Authorization':'Bearer ' + token
+                },
+                json: {
+                    'replyToken': replyToken,
+                    'messages': recpt
+                }
+              };
+                
+              request(options, function (error, response, body) {
+                  if (error) throw error;
+                  console.log("(line)");
+                  console.log(body);
+              });
+
+        }
+        
         
       }        
   });

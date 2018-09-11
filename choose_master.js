@@ -3,13 +3,13 @@ var request = require('request');
 var url = require('url');
 const querystring = require('querystring');
 const token = require('./token.js');
-const [AngleToken,MasterToken,HallToken,InfoToken] = [
-    token.AngleToken,
-    token.MasterToken,
-    token.HallToken,
-    token.InfoToken
+const [AngleTokens,MasterTokens,HallTokens,InfoTokens] = [
+    [token.AngleToken,token.AngleToken_2],
+    [token.MasterToken,token.MasterToken_2],
+    [token.HallToken,token.HallToken_2],
+    [token.InfoToken,token.InfoToken_2]
 ]
-var CHANNEL_ACCESS_TOKEN = HallToken;
+var CHANNEL_ACCESS_TOKEN = HallTokens;
 var iscompleted = false;
 
 const { Pool } = require('pg');
@@ -321,28 +321,34 @@ function psql(command){
   }
 
   function pushmessage(recpt,id){
+
       recpt.forEach(element => {
           console.log("pushmessage:"+element);
       });
-    
-      var options = {
-          url: "https://api.line.me/v2/bot/message/push",
-          method: 'POST',
-          headers: {
-            'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-          },
-          json: {
-              "to": id.replace(/\s+/g, ""),
-              'messages': recpt
-          }
-        };
-          
-        request(options, function (error, response, body) {
-            if (error) throw error;
-            console.log("(line)");
-            console.log(body);
-        });
+      
+      for(let token of CHANNEL_ACCESS_TOKEN){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+      }
+      
     
   }
   function idleParser(req ,res){
@@ -398,24 +404,29 @@ function psql(command){
                 replymessage([msg,msg2]);
             }
             function replymessage(recpt){ //recpt is message object
-            var options = {
-                url: "https://api.line.me/v2/bot/message/reply ",
-                method: 'POST',
-                headers: {
-                'Content-Type':  'application/json', 
-                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-                },
-                json: {
-                    'replyToken': replyToken,
-                    'messages': recpt
-                }
-            };
-                
-            request(options, function (error, response, body) {
-                if (error) throw error;
-                console.log("(line)");
-                console.log(body);
-            });
+
+                for(let token of CHANNEL_ACCESS_TOKEN){
+
+                    var options = {
+                        url: "https://api.line.me/v2/bot/message/reply ",
+                        method: 'POST',
+                        headers: {
+                        'Content-Type':  'application/json', 
+                        'Authorization':'Bearer ' + token
+                        },
+                        json: {
+                            'replyToken': replyToken,
+                            'messages': recpt
+                        }
+                    };
+                        
+                    request(options, function (error, response, body) {
+                        if (error) throw error;
+                        console.log("(line)");
+                        console.log(body);
+                    });
+
+                }            
             
             }        
         });
@@ -455,24 +466,30 @@ function choose_Parser(req ,res){
             }
             
             function replymessage(recpt){ //recpt is message object
-                var options = {
-                    url: "https://api.line.me/v2/bot/message/reply ",
-                    method: 'POST',
-                    headers: {
-                    'Content-Type':  'application/json', 
-                    'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-                    },
-                    json: {
-                        'replyToken': replyToken,
-                        'messages': recpt
-                    }
-                };
-                    
-                request(options, function (error, response, body) {
-                    if (error) throw error;
-                    console.log("(line)");
-                    console.log(body);
-                });
+
+                for(let token of CHANNEL_ACCESS_TOKEN){
+
+                    var options = {
+                        url: "https://api.line.me/v2/bot/message/reply ",
+                        method: 'POST',
+                        headers: {
+                        'Content-Type':  'application/json', 
+                        'Authorization':'Bearer ' + token
+                        },
+                        json: {
+                            'replyToken': replyToken,
+                            'messages': recpt
+                        }
+                    };
+                        
+                    request(options, function (error, response, body) {
+                        if (error) throw error;
+                        console.log("(line)");
+                        console.log(body);
+                    });
+
+                }
+                
                 
             }
 

@@ -2,13 +2,13 @@ var express = require('express');
 var request = require('request');
 const querystring = require('querystring');
 const token = require('./token.js');
-const [AngleToken,MasterToken,HallToken,InfoToken] = [
-    token.AngleToken,
-    token.MasterToken,
-    token.HallToken,
-    token.InfoToken
+const [AngleTokens,MasterTokens,HallTokens,InfoTokens] = [
+    [token.AngleToken,token.AngleToken_2],
+    [token.MasterToken,token.MasterToken_2],
+    [token.HallToken,token.HallToken_2],
+    [token.InfoToken,token.InfoToken_2]
 ]
-var CHANNEL_ACCESS_TOKEN = MasterToken;
+var CHANNEL_ACCESS_TOKEN = MasterTokens;
 var fs = require('fs');
 const { Client } = require('pg');
 const client = new Client({
@@ -58,24 +58,30 @@ function idleParser(req ,res){
             replymessage([msg,msg2]);
         }
         function replymessage(recpt){ //recpt is message object
-          var options = {
-            url: "https://api.line.me/v2/bot/message/reply ",
-            method: 'POST',
-            headers: {
-              'Content-Type':  'application/json', 
-              'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-            },
-            json: {
-                'replyToken': replyToken,
-                'messages': recpt
+
+            for(let token of CHANNEL_ACCESS_TOKEN){
+
+                var options = {
+                    url: "https://api.line.me/v2/bot/message/reply ",
+                    method: 'POST',
+                    headers: {
+                      'Content-Type':  'application/json', 
+                      'Authorization':'Bearer ' + token
+                    },
+                    json: {
+                        'replyToken': replyToken,
+                        'messages': recpt
+                    }
+                  };
+                    
+                  request(options, function (error, response, body) {
+                      if (error) throw error;
+                      console.log("(line)");
+                      console.log(body);
+                  });
+
             }
-          };
-            
-          request(options, function (error, response, body) {
-              if (error) throw error;
-              console.log("(line)");
-              console.log(body);
-          });
+         
           
         }        
     });
