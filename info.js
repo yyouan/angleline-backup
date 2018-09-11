@@ -612,15 +612,18 @@ function chatParser(req ,res){
                 res =>{
                     let text;
                     if(res.length == 0){
-                        text ={
-                            "type":"text",
-                            "text":"##開始回覆"+res[0].angle_nickname.replace(/\s+/g, "")+"："
-                        }
-                    }else{
+
                         text ={
                             "type":"text",
                             "text":"##開始回覆"+"："
                         }
+                        
+                    }else{
+                        
+                        text ={
+                            "type":"text",
+                            "text":"##開始回覆"+res[0].angle_nickname.replace(/\s+/g, "")+"："
+                        }                        
                     }
                                 
                     replymessage([finish_button,text]);
