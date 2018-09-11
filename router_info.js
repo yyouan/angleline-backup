@@ -23,10 +23,12 @@ function Parser(req ,res){
     req.on('end', function(){ 
 
         post = JSON.parse(post);
-        console.log(post.events[0]);        
-        
-        console.log("test")
-        console.log(post)
+        console.log(post.events[0]);
+            
+        replymessage(); 
+
+        function replymessage(){ //recpt is message object
+            console.log(post)
             console.log(goal)
             var options = {
                 url: goal,
@@ -42,8 +44,7 @@ function Parser(req ,res){
                   console.log("(line)");
                   console.log(body);
                   res.end("");
-              });  
-                
+              });         
           
         }        
     });
