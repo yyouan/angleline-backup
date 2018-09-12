@@ -463,36 +463,42 @@ function psql(command){
                           //adrr+=".jpg";
                           //console.log(adrr);
                           // Configure the request
-                          let getimage=new Promise((resolve,reject)=>{
-                          let options = {
-                              url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                              method: 'GET',
-                              headers: {                
-                              'Authorization':'Bearer ' + ((mode=='angle_id')?AngleTokens:MasterTokens)                   
-                              },
-                              encoding: null
+                          for(let token of ((mode=='angle_id')?AngleTokens:MasterTokens) ){
+
+                            let getimage=new Promise((resolve,reject)=>{
+
+                                let options = {
+                                    url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                    method: 'GET',
+                                    headers: {                
+                                    'Authorization':'Bearer ' + token                   
+                                    },
+                                    encoding: null
+                                }
+                    
+                                // Start the request
+          
+                                request(options, function (error, response, body) {
+                                    if (!error && response.statusCode == 200) {
+                                    //nwimg = body;
+                                    console.log(body);
+                                    resolve(body);                  
+                                    }else{
+                                    console.log(error);
+                                    reject("!!!!!error when recpt image!!!!!");                
+                                    }
+                                });              
+                                });
+                                
+                                getimage
+                                .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
+                                .catch((err)=>{
+                                console.log("(linebotpromise)"+err);
+                                }
+                                );
+
                           }
-              
-                          // Start the request
-    
-                          request(options, function (error, response, body) {
-                              if (!error && response.statusCode == 200) {
-                              //nwimg = body;
-                              console.log(body);
-                              resolve(body);                  
-                              }else{
-                              console.log(error);
-                              reject("!!!!!error when recpt image!!!!!");                
-                              }
-                          });              
-                          });
                           
-                          getimage
-                          .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
-                          .catch((err)=>{
-                          console.log("(linebotpromise)"+err);
-                          }
-                          );
     
                         }else{
                             pushmessage([head_msg,msg],receiver_id);
@@ -529,6 +535,7 @@ function psql(command){
      
     }
         function replymessage(recpt){ //recpt is message object
+            
          for(let token of ((mode=='angle_id')?AngleTokens:MasterTokens) ){
 
             var options = {
