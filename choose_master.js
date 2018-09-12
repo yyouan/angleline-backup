@@ -740,6 +740,18 @@ function choose_Parser(req ,res){
                                             }
                                             replymessage([text,text2]);
 
+                                        }else if( master_id == line_id ){
+
+                                            let text ={
+                                                "type":"text",
+                                                "text":"請選其他選項，你選到的小主人就是你自己"
+                                            }
+                                            let text2 ={
+                                                "type":"text",
+                                                "text":"如果所有選項都有問題，請洽管理員(理論上不可能發生)"
+                                            }
+                                            replymessage([text,text2]);
+
                                         }else{
                                            
                                             psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
