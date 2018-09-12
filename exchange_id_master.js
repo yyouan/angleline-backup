@@ -100,7 +100,7 @@ function psql(command){
             method: 'POST',
             headers: {
               'Content-Type':  'application/json', 
-              'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
+              'Authorization':'Bearer ' + token
             },
             json: {
                 "to": id.replace(/\s+/g, ""),
