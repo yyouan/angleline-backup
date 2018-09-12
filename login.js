@@ -198,7 +198,7 @@ function loginParser(req ,rres){
                                 "action": {
                                     "type": "uri",
                                     "label": "按我加好友",
-                                    "uri": "https://line.me/R/ti/p/%40hnc0868c"
+                                    "uri": "https://line.me/R/ti/p/%40mmy5275b"
                                 },
                                 "style": "primary",
                                 "color": "#ff3333"
@@ -240,7 +240,7 @@ function loginParser(req ,rres){
                                 "action": {
                                     "type": "uri",
                                     "label": "按我加好友",
-                                    "uri": "https://line.me/R/ti/p/%40rpu9491f"
+                                    "uri": "https://line.me/R/ti/p/%40vll3075j"
                                 },
                                 "style": "primary",
                                 "color": "#ff3333"
@@ -282,7 +282,7 @@ function loginParser(req ,rres){
                                 "action": {
                                     "type": "uri",
                                     "label": "按我加好友",
-                                    "uri": "https://line.me/R/ti/p/%40hbl3061e"
+                                    "uri": "https://line.me/R/ti/p/%40jnx4465c"
                                 },
                                 "style": "primary",
                                 "color": "#ff3333"
@@ -393,7 +393,7 @@ function loginParser(req ,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40mmy5275b"
+                                                        "uri": "https://line.me/R/ti/p/%40hnc0868c"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -435,7 +435,7 @@ function loginParser(req ,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40vll3075j"
+                                                        "uri": "https://line.me/R/ti/p/%40rpu9491f"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -477,7 +477,7 @@ function loginParser(req ,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40jnx4465c"
+                                                        "uri": "https://line.me/R/ti/p/%40hbl3061e"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -485,7 +485,7 @@ function loginParser(req ,rres){
                                                 ]
                                                 }             
                                             }
-                                    };           
+                                    };                                               
                                     
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],line_id);
                                     setTimeout(()=>{
@@ -1087,7 +1087,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40mmy5275b"
+                                                        "uri": "https://line.me/R/ti/p/%40hnc0868c"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -1129,7 +1129,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40vll3075j"
+                                                        "uri": "https://line.me/R/ti/p/%40rpu9491f"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -1171,7 +1171,7 @@ function imgReceiver(req,rres){
                                                     "action": {
                                                         "type": "uri",
                                                         "label": "按我加好友",
-                                                        "uri": "https://line.me/R/ti/p/%40jnx4465c"
+                                                        "uri": "https://line.me/R/ti/p/%40hbl3061e"
                                                     },
                                                     "style": "primary",
                                                     "color": "#ff3333"
@@ -1179,7 +1179,7 @@ function imgReceiver(req,rres){
                                                 ]
                                                 }             
                                             }
-                                    };  
+                                    };   
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
                                 }
 
