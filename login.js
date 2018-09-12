@@ -508,7 +508,7 @@ function loginParser(req ,rres){
                                           }
                                         pushmessage([button],line_id);
                                         
-                                    },100)
+                                    },1000)
                                 }
                                 
                                 setTimeout(() => {
@@ -1203,7 +1203,7 @@ function imgReceiver(req,rres){
                                           }
                                         pushmessage([button],line_id);
                                         
-                                },100)
+                                },1000)
 
                                setTimeout( () => {
                                 pushmessage(msg,res[0].angle_id);
