@@ -163,6 +163,137 @@ function loginParser(req ,rres){
             let rawdata = post.events[0].postback.data;
             let data = querystring.parse(rawdata);
 
+            if("newfriend" in data){
+
+                var ad_msg_angle = {  
+                    "type": "flex",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "contents":
+                        {
+                            "type": "bubble",
+                            "header": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                "type": "text",
+                                "text": "按按鈕加小天使為好友"
+                                }
+                            ]
+                            },
+                            "hero": {
+                                "type": "image",
+                                "url": "https://i.imgur.com/4Ut09xB.jpg", //use 圖片位址
+                            } ,
+                            "footer": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                "type": "spacer",
+                                "size": "xl"
+                                },
+                                {
+                                "type": "button",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "按我加好友",
+                                    "uri": "https://line.me/R/ti/p/%40hnc0868c"
+                                },
+                                "style": "primary",
+                                "color": "#ff3333"
+                                }
+                            ]
+                            }             
+                        }
+                };
+                var ad_msg_master = {  
+                    "type": "flex",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "contents":
+                        {
+                            "type": "bubble",
+                            "header": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                "type": "text",
+                                "text": "按按鈕加小主人為好友"
+                                }
+                            ]
+                            },
+                            "hero": {
+                                "type": "image",
+                                "url": "https://i.imgur.com/vQB9JKi.jpg", //use 圖片位址
+                            } ,
+                            "footer": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                "type": "spacer",
+                                "size": "xl"
+                                },
+                                {
+                                "type": "button",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "按我加好友",
+                                    "uri": "https://line.me/R/ti/p/%40rpu9491f"
+                                },
+                                "style": "primary",
+                                "color": "#ff3333"
+                                }
+                            ]
+                            }             
+                        }
+                };
+                var ad_msg_info = {  
+                    "type": "flex",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "contents":
+                        {
+                            "type": "bubble",
+                            "header": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                "type": "text",
+                                "text": "按按鈕加詢問站為好友"
+                                }
+                            ]
+                            },
+                            "hero": {
+                                "type": "image",
+                                "url": "https://i.imgur.com/xffIZIN.jpg", //use 圖片位址
+                            } ,
+                            "footer": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                "type": "spacer",
+                                "size": "xl"
+                                },
+                                {
+                                "type": "button",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "按我加好友",
+                                    "uri": "https://line.me/R/ti/p/%40hbl3061e"
+                                },
+                                "style": "primary",
+                                "color": "#ff3333"
+                                }
+                            ]
+                            }             
+                        }
+                };  
+                pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
+
+            }
             if("url" in data) {
                 psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+line_id+"\';").then(
                     members =>{
@@ -357,6 +488,27 @@ function loginParser(req ,rres){
                                     };           
                                     
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],line_id);
+                                    setTimeout(()=>{
+
+                                        let button =                
+                                        {
+                                            "type": "template",
+                                            "altText": "This is a buttons template",
+                                            "template": {
+                                                "type": "buttons",                                                
+                                                "text": "如果加好友已達上限(如果你的「大祭司講堂」是「大祭司講堂[2]」)",                                                
+                                                "actions": [
+                                                    {
+                                                      "type": "postback",
+                                                      "label": "請按我",
+                                                      "data": "newfriend=1"
+                                                    }
+                                                ]
+                                            }
+                                          }
+                                        pushmessage([button],line_id);
+                                        
+                                    },100)
                                 }
                                 
                                 setTimeout(() => {
@@ -1030,7 +1182,29 @@ function imgReceiver(req,rres){
                                     };  
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
                                 }
-                               
+
+                               setTimeout(()=>{
+
+                                        let button =                
+                                        {
+                                            "type": "template",
+                                            "altText": "This is a buttons template",
+                                            "template": {
+                                                "type": "buttons",                                                
+                                                "text": "如果加好友已達上限(如果你的「大祭司講堂」是「大祭司講堂[2]」)",                                                
+                                                "actions": [
+                                                    {
+                                                      "type": "postback",
+                                                      "label": "請按我",
+                                                      "data": "newfriend=1"
+                                                    }
+                                                ]
+                                            }
+                                          }
+                                        pushmessage([button],line_id);
+                                        
+                                },100)
+
                                setTimeout( () => {
                                 pushmessage(msg,res[0].angle_id);
                                }, 3000);
