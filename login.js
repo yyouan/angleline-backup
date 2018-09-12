@@ -291,7 +291,7 @@ function loginParser(req ,rres){
                             }             
                         }
                 };  
-                pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
+                pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],line_id);
 
             }
             if("url" in data) {
