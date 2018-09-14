@@ -16,6 +16,9 @@ var feedback = function(res) {
             }
         )
         $("#subbut").click(()=>{
+            if(document.cookie == ""){
+                document.cookie = "email=" + prompt("請輸入註冊用的電子郵件信箱：")
+            }
             let array = decodeURIComponent(document.cookie).split(';');
             let jsonthing={}
             for(let str of array){
