@@ -236,7 +236,7 @@ elif name == "finish":
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
     print("log out file is on pair.txt")
-    print(os.system("heroku pg:psql --app angleline < main.sql > pair.txt"))
+    print(os.system("heroku pg:psql --app angleline < pair.sql > pair.txt"))
     print(os.system("heroku pg:psql --app angleline < pair.sql"))
     print(os.system("notepad pair.txt"))
     print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
