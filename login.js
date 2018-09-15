@@ -1303,29 +1303,7 @@ function imgReceiver(req,rres){
                                         };
                                     }   
                                     pushmessage([ad_msg_angle,ad_msg_master,ad_msg_info],res[0].angle_id);
-                                }
-
-                               setTimeout(()=>{
-
-                                        let button =                
-                                        {
-                                            "type": "template",
-                                            "altText": "This is a buttons template",
-                                            "template": {
-                                                "type": "buttons",                                                
-                                                "text": "如果加好友已達上限(如果你的「大祭司講堂」是「大祭司講堂[2]」)",                                                
-                                                "actions": [
-                                                    {
-                                                      "type": "postback",
-                                                      "label": "請按我",
-                                                      "data": "newfriend=1"
-                                                    }
-                                                ]
-                                            }
-                                          }
-                                        pushmessage([button],line_id);
-                                        
-                                },1000)
+                                }                              
 
                                setTimeout( () => {
                                 pushmessage(msg,res[0].angle_id);
