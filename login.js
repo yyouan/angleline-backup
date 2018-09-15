@@ -816,7 +816,7 @@ function FormReceiver(req,rres){
         psql("SELECT * FROM ACCOUNT WHERE email=\'"+ post.email +"\';").then(
             angles =>{
                 if(angles.length ==0 || angles[0].angle_id==''){
-                    rres.end("You don't input your email in Line!")
+                    rres.sendFile(__dirname+'/error_email.html')
                 }else{
                     psql("UPDATE ACCOUNT SET (phone,angle_nickname,department,self_intro,groupindex,name"
                     +")=(\'"+ post.phone +"\',\'"+post.nickname+"\',\'"+post.dept+"\',\'"+post['self-intro']+"\',\'"+post.group
