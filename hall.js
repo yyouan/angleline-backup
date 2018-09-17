@@ -5,13 +5,13 @@ var cookieParser = require('cookie-parser');
 const game_item = require('./game_item.js');
 var url = require('url');
 const token = require('./token.js');
-const [AngleToken,MasterToken,HallToken,InfoToken] = [
-    token.AngleToken,
-    token.MasterToken,
-    token.HallToken,
-    token.InfoToken
+const [AngleTokens,MasterTokens,HallTokens,InfoTokens] = [
+    [token.AngleToken,token.AngleToken_2],
+    [token.MasterToken,token.MasterToken_2],
+    [token.HallToken,token.HallToken_2],
+    [token.InfoToken,token.InfoToken_2]
 ]
-var CHANNEL_ACCESS_TOKEN = HallToken;
+var CHANNEL_ACCESS_TOKEN = HallTokens;
 var channel_array ={};
 const domain="https://angleline-hall.herokuapp.com";
 
@@ -100,75 +100,89 @@ function pushmessage(recpt,id){
     recpt.forEach(element => {
         console.log("pushmessage:"+element);
     });
-  
-    var options = {
-        url: "https://api.line.me/v2/bot/message/push",
-        method: 'POST',
-        headers: {
-          'Content-Type':  'application/json', 
-          'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-        },
-        json: {
-            "to": id.replace(/\s+/g, ""),
-            'messages': recpt
-        }
-      };
-        
-      request(options, function (error, response, body) {
-          if (error) throw error;
-          console.log("(line)");
-          console.log(body);
-      });
+    for(let token of CHANNEL_ACCESS_TOKEN){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }
+    
   
 }
 function pushtoMaster(recpt,id){
+
     recpt.forEach(element => {
         console.log("pushmessage:"+element);
     });
-  
-    var options = {
-        url: "https://api.line.me/v2/bot/message/push",
-        method: 'POST',
-        headers: {
-          'Content-Type':  'application/json', 
-          'Authorization':'Bearer ' + MasterToken
-        },
-        json: {
-            "to": id.replace(/\s+/g, ""),
-            'messages': recpt
-        }
-      };
-        
-      request(options, function (error, response, body) {
-          if (error) throw error;
-          console.log("(line)");
-          console.log(body);
-      });
+
+    for(let token of MasterTokens){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }
+    
   
 }
+
 function pushtoAngle(recpt,id){
     recpt.forEach(element => {
         console.log("pushmessage:"+element);
     });
-  
-    var options = {
-        url: "https://api.line.me/v2/bot/message/push",
-        method: 'POST',
-        headers: {
-          'Content-Type':  'application/json', 
-          'Authorization':'Bearer ' + AngleToken
-        },
-        json: {
-            "to": id.replace(/\s+/g, ""),
-            'messages': recpt
-        }
-      };
-        
-      request(options, function (error, response, body) {
-          if (error) throw error;
-          console.log("(line)");
-          console.log(body);
-      });
+    for(let token of AngleTokens){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }    
   
 }
 function pushToSuv(recpt){
@@ -181,25 +195,27 @@ function pushToSuv(recpt){
           recpt.forEach(element => {
             console.log("pushmessage:"+element);
           });
-      
-          var options = {
-              url: "https://api.line.me/v2/bot/message/push",
-              method: 'POST',
-              headers: {
-                'Content-Type':  'application/json', 
-                'Authorization':'Bearer ' + InfoToken
-              },
-              json: {
-                  "to": group.group_id.replace(/\s+/g, ""),
-                  'messages': recpt
-              }
-            };
-          console.log(options);
-          request(options, function (error, response, body) {
-              if (error) throw error;
-              console.log("(line)");
-              console.log(body);
-          });
+          for(let token of InfoTokens){
+
+            var options = {
+                url: "https://api.line.me/v2/bot/message/push",
+                method: 'POST',
+                headers: {
+                  'Content-Type':  'application/json', 
+                  'Authorization':'Bearer ' + token
+                },
+                json: {
+                    "to": group.group_id.replace(/\s+/g, ""),
+                    'messages': recpt
+                }
+              };
+            console.log(options);
+            request(options, function (error, response, body) {
+                if (error) throw error;
+                console.log("(line)");
+                console.log(body);
+            });
+          }          
   
         }      
       }
@@ -216,31 +232,35 @@ function imgpusherS(recpt,img,msgid){
         (groups) =>{
     
           for(group of groups){
-            var options = {
-                url: "https://api.line.me/v2/bot/message/push",
-                method: 'POST',
-                headers: {
-                'Content-Type':  'application/json', 
-                'Authorization':'Bearer ' + InfoToken
-                },
-                json: {
-                    'to':group.group_id.replace(/\s+/g, ""),
-                    'messages': [recpt]
-                }
-              };             
-              
-                   
-              app.get(adrr,(req,res)=>{
-                  //res.sendFile(__dirname+"/img.jpg");    
-                  res.writeHead(200, {'Content-Type': 'image/jpeg' });
-                  res.end(img, 'binary');
-              });        
-              
-              request(options, function (error, response, body) {
-                  if (error) throw error;
-                  console.log("(line)");
-                  console.log(body);
-              });
+
+            for(let token of InfoTokens){
+                var options = {
+                    url: "https://api.line.me/v2/bot/message/push",
+                    method: 'POST',
+                    headers: {
+                    'Content-Type':  'application/json', 
+                    'Authorization':'Bearer ' + token
+                    },
+                    json: {
+                        'to':group.group_id.replace(/\s+/g, ""),
+                        'messages': [recpt]
+                    }
+                  };             
+                  
+                       
+                  app.get(adrr,(req,res)=>{
+                      //res.sendFile(__dirname+"/img.jpg");    
+                      res.writeHead(200, {'Content-Type': 'image/jpeg' });
+                      res.end(img, 'binary');
+                  });        
+                  
+                  request(options, function (error, response, body) {
+                      if (error) throw error;
+                      console.log("(line)");
+                      console.log(body);
+                  });
+            }
+            
           }
           
         }
@@ -249,36 +269,42 @@ function imgpusherS(recpt,img,msgid){
 
     return recpt;
 
-}  
+}
+
 function imgpusher(recpt,id,img,msgid){
     let adrr ="/"+msgid+".jpg";
-    var options = {
-      url: "https://api.line.me/v2/bot/message/push",
-      method: 'POST',
-      headers: {
-      'Content-Type':  'application/json', 
-      'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-      },
-      json: {
-          'to': id.replace(/\s+/g, ""),
-          'messages': [recpt]
-      }
-    };
-    
-    options.json.messages[0].originalContentUrl=(domain+adrr);
-    options.json.messages[0].previewImageUrl=(domain+adrr);
-         
-    app.get(adrr,(req,res)=>{
-        //res.sendFile(__dirname+"/img.jpg");    
-        res.writeHead(200, {'Content-Type': 'image/jpeg' });
-        res.end(img, 'binary');
-    });        
-    
-    request(options, function (error, response, body) {
-        if (error) throw error;
-        console.log("(line)");
-        console.log(body);
-    });
+
+    for(let token of CHANNEL_ACCESS_TOKEN){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+            'Content-Type':  'application/json', 
+            'Authorization':'Bearer ' + token
+            },
+            json: {
+                'to': id.replace(/\s+/g, ""),
+                'messages': [recpt]
+            }
+          };
+          
+          options.json.messages[0].originalContentUrl=(domain+adrr);
+          options.json.messages[0].previewImageUrl=(domain+adrr);
+               
+          app.get(adrr,(req,res)=>{
+              //res.sendFile(__dirname+"/img.jpg");    
+              res.writeHead(200, {'Content-Type': 'image/jpeg' });
+              res.end(img, 'binary');
+          });        
+          
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+    }    
     return recpt;
   }
 //------------build TCP/IP-------------
@@ -515,46 +541,51 @@ function chatParser(req ,res){
                     //adrr+=".jpg";
                     //console.log(adrr);
                     // Configure the request
-                    let getimage=new Promise((resolve,reject)=>{
-                    let options = {
-                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                        method: 'GET',
-                        headers: {                
-                        'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                        },
-                        encoding: null
+                    for(token of CHANNEL_ACCESS_TOKEN){
+
+                        let getimage=new Promise((resolve,reject)=>{
+                            let options = {
+                                url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                method: 'GET',
+                                headers: {                
+                                'Authorization':'Bearer ' + token                   
+                                },
+                                encoding: null
+                            }
+                
+                            // Start the request
+            
+                            request(options, function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                //nwimg = body;
+                                console.log(body);
+                                resolve(body);                  
+                                }else{
+                                //console.log();
+                                reject("!!!!!error when recpt image!!!!!");                
+                                }
+                            });              
+                            });
+                            
+                            getimage
+                            .then((body)=>{
+                                let text ={
+                                    "type" : "text",
+                                    "text" : "$黑特審核："
+                                }
+                                pushToSuv([text]);
+                                var messagestored = imgpusherS(msg,body,msgid);
+                                reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
+                                pushToSuv([reply_button]);
+                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
+                            })
+                            .catch((err)=>{
+                            console.log("(linebotpromise)"+err);
+                            }
+                            );
+
                     }
-        
-                    // Start the request
-    
-                    request(options, function (error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                        //nwimg = body;
-                        console.log(body);
-                        resolve(body);                  
-                        }else{
-                        //console.log();
-                        reject("!!!!!error when recpt image!!!!!");                
-                        }
-                    });              
-                    });
                     
-                    getimage
-                    .then((body)=>{
-                        let text ={
-                            "type" : "text",
-                            "text" : "$黑特審核："
-                        }
-                        pushToSuv([text]);
-                        var messagestored = imgpusherS(msg,body,msgid);
-                        reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored));
-                        pushToSuv([reply_button]);
-                        psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
-                    })
-                    .catch((err)=>{
-                    console.log("(linebotpromise)"+err);
-                    }
-                    );
     
                   }else{
                     let text ={
@@ -616,46 +647,51 @@ function chatParser(req ,res){
                             //adrr+=".jpg";
                             //console.log(adrr);
                             // Configure the request
-                            let getimage=new Promise((resolve,reject)=>{
-                            let options = {
-                                url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                                method: 'GET',
-                                headers: {                
-                                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN                  
-                                },
-                                encoding: null
+                            for( let token of CHANNEL_ACCESS_TOKEN){
+
+                                let getimage=new Promise((resolve,reject)=>{
+                                    let options = {
+                                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                        method: 'GET',
+                                        headers: {                
+                                        'Authorization':'Bearer ' + token                  
+                                        },
+                                        encoding: null
+                                    }
+                        
+                                    // Start the request
+                    
+                                    request(options, function (error, response, body) {
+                                        if (!error && response.statusCode == 200) {
+                                        //nwimg = body;
+                                        console.log(body);
+                                        resolve(body);                  
+                                        }else{
+                                        //console.log();
+                                        reject("!!!!!error when recpt image!!!!!");                
+                                        }
+                                    });              
+                                });
+                                    
+                                    getimage
+                                    .then((body)=>{
+                                        let text ={
+                                            "type" : "text",
+                                            "text" : "$黑特審核："
+                                        }
+                                        pushToSuv([text,nick]);
+                                        var messagestored = imgpusherS(msg,body,msgid);
+                                        reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored)+"&nick="+nickname);
+                                        pushToSuv([reply_button]);
+                                        psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,nick,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
+                                    })
+                                    .catch((err)=>{
+                                    console.log("(linebotpromise)"+err);
+                                    }
+                                    );
+
                             }
-                
-                            // Start the request
-            
-                            request(options, function (error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                //nwimg = body;
-                                console.log(body);
-                                resolve(body);                  
-                                }else{
-                                //console.log();
-                                reject("!!!!!error when recpt image!!!!!");                
-                                }
-                            });              
-                            });
                             
-                            getimage
-                            .then((body)=>{
-                                let text ={
-                                    "type" : "text",
-                                    "text" : "$黑特審核："
-                                }
-                                pushToSuv([text,nick]);
-                                var messagestored = imgpusherS(msg,body,msgid);
-                                reply_button.template.actions[0].data +=("&msg="+JSON.stringify(messagestored)+"&nick="+nickname);
-                                pushToSuv([reply_button]);
-                                psql("INSERT INTO MESSAGE (content,msgid) VALUES (\'"+JSON.stringify([text,nick,messagestored,reply_button])+"\',\'"+msgid+"\');");                                               
-                            })
-                            .catch((err)=>{
-                            console.log("(linebotpromise)"+err);
-                            }
-                            );
             
                           }else{
                             let text ={
@@ -785,24 +821,30 @@ function chatParser(req ,res){
 
     
       function replymessage(recpt){ //recpt is message object
-        var options = {
-          url: "https://api.line.me/v2/bot/message/reply ",
-          method: 'POST',
-          headers: {
-            'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-          },
-          json: {
-              'replyToken': replyToken,
-              'messages': recpt
-          }
-        };
-          
-        request(options, function (error, response, body) {
-            if (error) throw error;
-            console.log("(line)");
-            console.log(body);
-        });
+
+        for(let token of CHANNEL_ACCESS_TOKEN){
+
+            var options = {
+                url: "https://api.line.me/v2/bot/message/reply ",
+                method: 'POST',
+                headers: {
+                  'Content-Type':  'application/json', 
+                  'Authorization':'Bearer ' + token
+                },
+                json: {
+                    'replyToken': replyToken,
+                    'messages': recpt
+                }
+              };
+                
+              request(options, function (error, response, body) {
+                  if (error) throw error;
+                  console.log("(line)");
+                  console.log(body);
+              });
+
+        }
+        
         
       }        
   });
@@ -833,9 +875,10 @@ function GameProceessor(req,res){
                 if(game_index!=-1){
 
                     if(req.length!=1){
+                        
                         let text ={
                             "type":"text",
-                            "text":"有game問題出錯"
+                            "text":"有人在新的瀏覽器使用cookie"
                         }
                         pushToSuv([text]);
 
@@ -870,10 +913,13 @@ function GameProceessor(req,res){
                                                     }
                                                 ]
                                             }else{
+                                                psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                                psql("UPDATE ACCOUNT SET problem_count="+ String(res[0].problem_count+1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+
                                                 msg = [
                                                     {
                                                         "type":"text",
-                                                        "text":"現在小組分數為"+String(res[0].score)
+                                                        "text":"現在小組分數為"+String(res[0].score+20)
                                                     },
                                                     {
                                                         "type":"text",
@@ -887,7 +933,7 @@ function GameProceessor(req,res){
                                         }else{
                                             psql("UPDATE ACCOUNT SET score="+ String(res[0].score-1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
                                             psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
-                                            let msg = [
+                                            let msg_master = [
                                                 {
                                                     "type":"text",
                                                     "text":"問錯人了!現在小組分數為"+String(res[0].score-1)
@@ -897,9 +943,21 @@ function GameProceessor(req,res){
                                                     "text":"提醒題目："+game_item.gameproblem[res[0].problem]
                                                 }
                                             ]
-                                            pushtoMaster(msg,res[0].angle_id);
-                                            pushtoAngle(msg,res[0].master_id);
-                                            pushtoAngle(msg,req[0].master_id);
+                                            
+                                            let msg_angle = [
+                                                {
+                                                    "type":"text",
+                                                    "text":"問錯人了!現在小組分數為"+String(req[0].score-1)
+                                                },
+                                                {
+                                                    "type":"text",
+                                                    "text":"提醒題目："+game_item.gameproblem[req[0].problem]
+                                                }
+                                            ]
+                                            pushtoMaster(msg_master,res[0].angle_id);
+                                            pushtoAngle(msg_master,res[0].master_id);
+                                            pushtoMaster(msg_angle,req[0].angle_id);
+                                            pushtoAngle(msg_angle,req[0].master_id);
                                         }
                                     }
                                     
@@ -909,6 +967,7 @@ function GameProceessor(req,res){
                             
                             let msg=[]
                             if(req[0].problem_count < (game_item.gameproblem.length-1) ){
+
                                 psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
                                 psql("UPDATE ACCOUNT SET problem_count="+ String(req[0].problem_count+1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
 
@@ -925,10 +984,13 @@ function GameProceessor(req,res){
                                 ]
 
                             }else{
+                                psql("UPDATE ACCOUNT SET score="+ String(req[0].score+20) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                                psql("UPDATE ACCOUNT SET problem_count="+ String(req[0].problem_count+1) +" WHERE angle_id=\'" + req[0].angle_id +"\';");
+                                
                                 msg = [
                                     {
                                         "type":"text",
-                                        "text":"現在小組分數為"+String(req[0].score)
+                                        "text":"現在小組分數為"+String(req[0].score+20)
                                     },
                                     {
                                         "type":"text",
@@ -938,7 +1000,58 @@ function GameProceessor(req,res){
                             }
                             
                             pushtoMaster(msg,req[0].angle_id);
-                            pushtoAngle(msg,req[0].master_id);            
+                            pushtoAngle(msg,req[0].master_id);
+                            
+                            //for two pair has same problem :
+                            psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+req[0].angle_id+"\';").then(
+                                (res)=>{
+
+                                    if(res.length == 1){
+
+                                        if(res[0].problem == game_index){                                        
+                                            //go to next problem
+                                            //send next problem to partner
+                                            let msg=[]
+    
+                                            if(res[0].problem_count < (game_item.gameproblem.length-1) ){
+    
+                                                psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                                psql("UPDATE ACCOUNT SET problem_count="+ String(res[0].problem_count+1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+    
+                                                psql("UPDATE ACCOUNT SET problem="+ String((res[0].problem+1)%game_item.gameproblem.length) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                                msg = [
+                                                    {
+                                                        "type":"text",
+                                                        "text":"恭喜破關!現在小組分數為"+String(res[0].score+20)
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":"[QRcode遊戲]下一關的題目："+game_item.gameproblem[(res[0].problem+1)%game_item.gameproblem.length]
+                                                    }
+                                                ]
+                                            }else{
+                                                psql("UPDATE ACCOUNT SET score="+ String(res[0].score+20) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+                                                psql("UPDATE ACCOUNT SET problem_count="+ String(res[0].problem_count+1) +" WHERE angle_id=\'" + res[0].angle_id +"\';");
+
+                                                msg = [
+                                                    {
+                                                        "type":"text",
+                                                        "text":"現在小組分數為"+String(res[0].score+20)
+                                                    },
+                                                    {
+                                                        "type":"text",
+                                                        "text":"[QRcode遊戲]全部的關卡都破完了，獻上製作委員會的特別感謝!!你們是最棒的小天使與小主人!!"
+                                                    }
+                                                ]
+                                            }
+                                            
+                                            pushtoMaster(msg,res[0].angle_id);
+                                            pushtoAngle(msg,res[0].master_id);
+                                        }
+                                    }
+                                    
+                                }
+                            );
                         }                        
                         
                     }

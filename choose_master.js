@@ -3,13 +3,13 @@ var request = require('request');
 var url = require('url');
 const querystring = require('querystring');
 const token = require('./token.js');
-const [AngleToken,MasterToken,HallToken,InfoToken] = [
-    token.AngleToken,
-    token.MasterToken,
-    token.HallToken,
-    token.InfoToken
+const [AngleTokens,MasterTokens,HallTokens,InfoTokens] = [
+    [token.AngleToken,token.AngleToken_2],
+    [token.MasterToken,token.MasterToken_2],
+    [token.HallToken,token.HallToken_2],
+    [token.InfoToken,token.InfoToken_2]
 ]
-var CHANNEL_ACCESS_TOKEN = HallToken;
+var CHANNEL_ACCESS_TOKEN = HallTokens;
 var iscompleted = false;
 
 const { Pool } = require('pg');
@@ -321,28 +321,34 @@ function psql(command){
   }
 
   function pushmessage(recpt,id){
+
       recpt.forEach(element => {
           console.log("pushmessage:"+element);
       });
-    
-      var options = {
-          url: "https://api.line.me/v2/bot/message/push",
-          method: 'POST',
-          headers: {
-            'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-          },
-          json: {
-              "to": id.replace(/\s+/g, ""),
-              'messages': recpt
-          }
-        };
-          
-        request(options, function (error, response, body) {
-            if (error) throw error;
-            console.log("(line)");
-            console.log(body);
-        });
+      
+      for(let token of CHANNEL_ACCESS_TOKEN){
+
+        var options = {
+            url: "https://api.line.me/v2/bot/message/push",
+            method: 'POST',
+            headers: {
+              'Content-Type':  'application/json', 
+              'Authorization':'Bearer ' + token
+            },
+            json: {
+                "to": id.replace(/\s+/g, ""),
+                'messages': recpt
+            }
+          };
+            
+          request(options, function (error, response, body) {
+              if (error) throw error;
+              console.log("(line)");
+              console.log(body);
+          });
+
+      }
+      
     
   }
   function idleParser(req ,res){
@@ -398,24 +404,29 @@ function psql(command){
                 replymessage([msg,msg2]);
             }
             function replymessage(recpt){ //recpt is message object
-            var options = {
-                url: "https://api.line.me/v2/bot/message/reply ",
-                method: 'POST',
-                headers: {
-                'Content-Type':  'application/json', 
-                'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-                },
-                json: {
-                    'replyToken': replyToken,
-                    'messages': recpt
-                }
-            };
-                
-            request(options, function (error, response, body) {
-                if (error) throw error;
-                console.log("(line)");
-                console.log(body);
-            });
+
+                for(let token of CHANNEL_ACCESS_TOKEN){
+
+                    var options = {
+                        url: "https://api.line.me/v2/bot/message/reply ",
+                        method: 'POST',
+                        headers: {
+                        'Content-Type':  'application/json', 
+                        'Authorization':'Bearer ' + token
+                        },
+                        json: {
+                            'replyToken': replyToken,
+                            'messages': recpt
+                        }
+                    };
+                        
+                    request(options, function (error, response, body) {
+                        if (error) throw error;
+                        console.log("(line)");
+                        console.log(body);
+                    });
+
+                }            
             
             }        
         });
@@ -455,24 +466,30 @@ function choose_Parser(req ,res){
             }
             
             function replymessage(recpt){ //recpt is message object
-                var options = {
-                    url: "https://api.line.me/v2/bot/message/reply ",
-                    method: 'POST',
-                    headers: {
-                    'Content-Type':  'application/json', 
-                    'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-                    },
-                    json: {
-                        'replyToken': replyToken,
-                        'messages': recpt
-                    }
-                };
-                    
-                request(options, function (error, response, body) {
-                    if (error) throw error;
-                    console.log("(line)");
-                    console.log(body);
-                });
+
+                for(let token of CHANNEL_ACCESS_TOKEN){
+
+                    var options = {
+                        url: "https://api.line.me/v2/bot/message/reply ",
+                        method: 'POST',
+                        headers: {
+                        'Content-Type':  'application/json', 
+                        'Authorization':'Bearer ' + token
+                        },
+                        json: {
+                            'replyToken': replyToken,
+                            'messages': recpt
+                        }
+                    };
+                        
+                    request(options, function (error, response, body) {
+                        if (error) throw error;
+                        console.log("(line)");
+                        console.log(body);
+                    });
+
+                }
+                
                 
             }
 
@@ -492,6 +509,7 @@ function choose_Parser(req ,res){
                             replymessage([text]);
 
                         }else{
+
                             if('counter' in data){
                                 department = (department == 'phys')? ('psy'):('phys')
                             }
@@ -705,31 +723,66 @@ function choose_Parser(req ,res){
                                 }
                                 replymessage([text]);                    
             
-                            }else{    
-                                psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
-                                var index =dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "")==master_id});
-                                console.log(index);
-                                console.log(department);
-                                console.log(dept[department]);
-                                console.log(dept[department][index]);
-                                for(let mem of dept[department]){
-                                    console.log(master_id);
-                                    console.log(mem.angle_id.replace(/\s+/g, ""));
-                                }
-                                dept[department].splice(dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "")==master_id}),1);
-                                console.log("choose successful");
-                                console.log(dept[department].length);
-                                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+ master_id +"\';").then(
-                                    res =>{
-                                        psql("UPDATE ACCOUNT SET master_name=\'"+ res[0].name +"\' WHERE angle_id=\'" + line_id +"\';");
-                                        psql("UPDATE ACCOUNT SET master_group="+ res[0].groupindex +" WHERE angle_id=\'" + line_id +"\';");
+                            }else{
+                                psql("SELECT * FROM ACCOUNT WHERE angle_id=\'" + master_id +"\';").then(
+                                    res => {
+                                        console.log("master:"+ res[0].master_id.replace(/\s+/g, ""))
+                                        console.log("angle:"+ line_id)
+                                        if( res[0].master_id.replace(/\s+/g, "") == line_id){
+                                            
+                                            let text ={
+                                                "type":"text",
+                                                "text":"請選其他選項，你選到的小主人剛好也選你(要防止兩人兩手都牽在一起，導致有人落單)"
+                                            }
+                                            let text2 ={
+                                                "type":"text",
+                                                "text":"如果所有選項都有問題，請洽管理員(理論上不可能發生)"
+                                            }
+                                            replymessage([text,text2]);
+
+                                        }else if( master_id == line_id ){
+
+                                            let text ={
+                                                "type":"text",
+                                                "text":"請選其他選項，你選到的小主人就是你自己"
+                                            }
+                                            let text2 ={
+                                                "type":"text",
+                                                "text":"如果所有選項都有問題，請洽管理員(理論上不可能發生)"
+                                            }
+                                            replymessage([text,text2]);
+
+                                        }else{
+                                           
+                                            psql("UPDATE ACCOUNT SET master_id=\'"+ master_id +"\' WHERE angle_id=\'" + line_id +"\';");
+                                            var index =dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "")==master_id});
+                                            console.log(index);
+                                            console.log(department);
+                                            console.log(dept[department]);
+                                            console.log(dept[department][index]);
+                                            for(let mem of dept[department]){
+                                                console.log(master_id);
+                                                console.log(mem.angle_id.replace(/\s+/g, ""));
+                                            }
+                                            dept[department].splice(dept[department].findIndex((ele)=>{return ele.angle_id.replace(/\s+/g, "")==master_id}),1);
+                                            console.log("choose successful");
+                                            console.log(dept[department].length);
+                                            psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+ master_id +"\';").then(
+                                                res =>{
+                                                    psql("UPDATE ACCOUNT SET master_name=\'"+ res[0].name +"\' WHERE angle_id=\'" + line_id +"\';");
+                                                    psql("UPDATE ACCOUNT SET master_group="+ res[0].groupindex +" WHERE angle_id=\'" + line_id +"\';");
+                                                }
+                                            );
+                                            let text ={
+                                                "type":"text",
+                                                "text":"恭喜你選到你的小主人!"
+                                            }
+                                            replymessage([text]);
+
+                                        }
                                     }
-                                );
-                                let text ={
-                                    "type":"text",
-                                    "text":"恭喜你選到你的小主人!"
-                                }
-                                replymessage([text]);
+                                )
+                               
                             }
 
                         }

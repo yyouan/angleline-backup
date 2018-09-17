@@ -20,6 +20,7 @@ import time
     python main.py --era idle
 
     if check has problem call them to re-login or --era choose again
+    
 '''
 
 #interface variable
@@ -76,7 +77,10 @@ if name =="console":
     print(os.system("git pull https://github.com/yyouan/angleline.git master"))
     print(os.system("git pull https://github.com/yyouan/angleline-master.git master"))
     print(os.system("git pull https://github.com/yyouan/angleline-hall.git master"))
-    print(os.system("git pull https://github.com/yyouan/informationdesk.git master"))
+    print(os.system("git pull https://github.com/yyouan/informationdesk.git master"))    
+    '''for router'''
+    '''line only need to res success for one time then we can change to other server'''
+    '''end'''
     print("please fix conflict problem in package.json")
     print("please input:SELECT * FROM ACCOUNT; afer >>  (DELETE USE DELETE enter enter ;)")
     print(os.system("heroku pg:psql --app angleline < main.sql > list.txt"))
@@ -131,7 +135,7 @@ elif name == "login":
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
-    time.sleep(5)
+    time.sleep(5)    
     write_package_json("info.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
@@ -145,7 +149,7 @@ elif name == "choose":
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/angleline-hall.git master"))
-    time.sleep(5)
+    time.sleep(5)    
     write_package_json("idle_angle.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
@@ -161,7 +165,7 @@ elif name == "choose":
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
-    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))        
 
 elif name == "past":
     print(os.system("heroku pg:psql --app angleline < check_master.sql"))
@@ -232,7 +236,7 @@ elif name == "finish":
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
     time.sleep(5)
     print("log out file is on pair.txt")
-    print(os.system("heroku pg:psql --app angleline < main.sql > pair.txt"))
+    print(os.system("heroku pg:psql --app angleline < pair.sql > pair.txt"))
     print(os.system("heroku pg:psql --app angleline < pair.sql"))
     print(os.system("notepad pair.txt"))
     print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))

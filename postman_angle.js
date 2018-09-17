@@ -2,16 +2,16 @@ var express = require('express');
 var request = require('request');
 const querystring = require('querystring');
 const token = require('./token.js');
-const [AngleToken,MasterToken,HallToken,InfoToken] = [
-    token.AngleToken,
-    token.MasterToken,
-    token.HallToken,
-    token.InfoToken
+const [AngleTokens,MasterTokens,HallTokens,InfoTokens] = [
+    [token.AngleToken,token.AngleToken_2],
+    [token.MasterToken,token.MasterToken_2],
+    [token.HallToken,token.HallToken_2],
+    [token.InfoToken,token.InfoToken_2]
 ]
 const game_item = require('./game_item.js');
 const modetype =["angle_id","master_id"];
 const mode = modetype[0];
-var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleToken:MasterToken); //for reply
+var CHANNEL_ACCESS_TOKEN = ((mode=='angle_id')?AngleTokens:MasterTokens); //for reply
 var domain="https://angleline"+((mode=="angle_id")?"":"-master")+".herokuapp.com";
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -100,25 +100,30 @@ function pushToSuv(recpt){
         recpt.forEach(element => {
           console.log("pushmessage:"+element);
         });
-    
-        var options = {
-            url: "https://api.line.me/v2/bot/message/push",
-            method: 'POST',
-            headers: {
-              'Content-Type':  'application/json', 
-              'Authorization':'Bearer ' + InfoToken
-            },
-            json: {
-                "to": group.group_id.replace(/\s+/g, ""),
-                'messages': recpt
-            }
-          };
-        console.log(options);
-        request(options, function (error, response, body) {
-            if (error) throw error;
-            console.log("(line)");
-            console.log(body);
-        });
+
+        for(let token of InfoTokens){
+
+            var options = {
+                url: "https://api.line.me/v2/bot/message/push",
+                method: 'POST',
+                headers: {
+                  'Content-Type':  'application/json', 
+                  'Authorization':'Bearer ' + token
+                },
+                json: {
+                    "to": group.group_id.replace(/\s+/g, ""),
+                    'messages': recpt
+                }
+              };
+            console.log(options);
+            request(options, function (error, response, body) {
+                if (error) throw error;
+                console.log("(line)");
+                console.log(body);
+            });
+
+        }
+        
 
       }      
     }
@@ -130,55 +135,66 @@ function pushmessage(recpt,id){
       console.log("pushmessage:"+element);
   });
 
-  var options = {
-      url: "https://api.line.me/v2/bot/message/push",
-      method: 'POST',
-      headers: {
-        'Content-Type':  'application/json', 
-        'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken)
-      },
-      json: {
-          "to": id.replace(/\s+/g, ""),
-          'messages': recpt
-      }
-    };
-    console.log(options);
-    request(options, function (error, response, body) {
-        if (error) throw error;
-        console.log("(line)");
-        console.log(body);
-    });
+  for(let token of ((mode=='angle_id')?MasterTokens:AngleTokens) ){
+
+    var options = {
+        url: "https://api.line.me/v2/bot/message/push",
+        method: 'POST',
+        headers: {
+          'Content-Type':  'application/json', 
+          'Authorization':'Bearer ' + token
+        },
+        json: {
+            "to": id.replace(/\s+/g, ""),
+            'messages': recpt
+        }
+      };
+      console.log(options);
+      request(options, function (error, response, body) {
+          if (error) throw error;
+          console.log("(line)");
+          console.log(body);
+      });
+
+  }
+  
 
 }
 
 function imgpusher(recpt,id,img,msgid){
-  var options = {
-    url: "https://api.line.me/v2/bot/message/push",
-    method: 'POST',
-    headers: {
-    'Content-Type':  'application/json', 
-    'Authorization':'Bearer ' + ((mode=='angle_id')?MasterToken:AngleToken) 
-    },
-    json: {
-        'to': id.replace(/\s+/g, ""),
-        'messages': [recpt]
-    }
-  };
-  var adrr ="/"+msgid+".jpg";
-  options.json.messages[0].originalContentUrl=(domain+adrr);
-  options.json.messages[0].previewImageUrl=(domain+adrr);
-       
-  app.get(adrr,(req,res)=>{
-      //res.sendFile(__dirname+"/img.jpg");    
-      res.writeHead(200, {'Content-Type': 'image/jpeg' });
-      res.end(img, 'binary');
-  });        
+
+  for(let token of ((mode=='angle_id')?MasterTokens:AngleTokens) ){
+
+    var options = {
+        url: "https://api.line.me/v2/bot/message/push",
+        method: 'POST',
+        headers: {
+        'Content-Type':  'application/json', 
+        'Authorization':'Bearer ' + token 
+        },
+        json: {
+            'to': id.replace(/\s+/g, ""),
+            'messages': [recpt]
+        }
+      };
+      var adrr ="/"+msgid+".jpg";
+      options.json.messages[0].originalContentUrl=(domain+adrr);
+      options.json.messages[0].previewImageUrl=(domain+adrr);
+           
+      app.get(adrr,(req,res)=>{
+          //res.sendFile(__dirname+"/img.jpg");    
+          res.writeHead(200, {'Content-Type': 'image/jpeg' });
+          res.end(img, 'binary');
+      });        
+      
+      request(options, function (error, response, body) {
+          if (error) throw error;
+          console.log("(line)");
+          console.log(body);
+      });
+
+  }
   
-  request(options, function (error, response, body) {
-      if (error) throw error;
-      console.log("(line)");
-      console.log(body);
-  });
 }
 
 //------------build TCP/IP-------------
@@ -348,36 +364,41 @@ function chatParser(req ,res){
                         //adrr+=".jpg";
                         //console.log(adrr);
                         // Configure the request
-                        let getimage=new Promise((resolve,reject)=>{
-                        let options = {
-                            url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                            method: 'GET',
-                            headers: {                
-                            'Authorization':'Bearer ' + ((mode=='angle_id')?AngleToken:MasterToken)                   
-                            },
-                            encoding: null
-                        }
-            
-                        // Start the request
-  
-                        request(options, function (error, response, body) {
-                            if (!error && response.statusCode == 200) {
-                            nwimg = body;
-                            console.log(body);
-                            resolve(body);                  
-                            }else{
-                            //console.log();
-                            reject("!!!!!error when recpt image!!!!!");                
-                            }
-                        });              
-                        });
-                        
-                        getimage
-                        .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
-                        .catch((err)=>{
-                        console.log("(linebotpromise)"+err);
-                        }
-                        );
+                        for(let token of ((mode=='angle_id')?AngleTokens:MasterTokens) ){
+
+                            let getimage=new Promise((resolve,reject)=>{
+
+                                let options = {
+                                    url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                    method: 'GET',
+                                    headers: {                
+                                    'Authorization':'Bearer ' + token                   
+                                    },
+                                    encoding: null
+                                }
+                    
+                                // Start the request
+          
+                                request(options, function (error, response, body) {
+                                    if (!error && response.statusCode == 200) {
+                                    nwimg = body;
+                                    console.log(body);
+                                    resolve(body);                  
+                                    }else{
+                                    //console.log();
+                                    reject("!!!!!error when recpt image!!!!!");                
+                                    }
+                                });              
+                            });
+                                
+                                getimage
+                                .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
+                                .catch((err)=>{
+                                console.log("(linebotpromise)"+err);
+                                }
+                                );
+
+                        }                        
   
                       }else{
                           pushmessage([head_msg,msg],receiver_id);                          
@@ -393,37 +414,42 @@ function chatParser(req ,res){
                             //adrr+=".jpg";
                             //console.log(adrr);
                             // Configure the request
-                            let getimage=new Promise((resolve,reject)=>{
-                            let options = {
-                                url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
-                                method: 'GET',
-                                headers: {                
-                                'Authorization':'Bearer ' + ((mode=='angle_id')?AngleToken:MasterToken)                   
-                                },
-                                encoding: null
+                            for(let token of ((mode=='angle_id')?AngleTokens:MasterTokens) ){
+
+                                let getimage=new Promise((resolve,reject)=>{
+                                    let options = {
+                                        url: 'https://api.line.me/v2/bot/message/'+ msgid +'/content',
+                                        method: 'GET',
+                                        headers: {                
+                                        'Authorization':'Bearer ' + token                   
+                                        },
+                                        encoding: null
+                                    }
+                        
+                                    // Start the request
+              
+                                    request(options, function (error, response, body) {
+                                        if (!error && response.statusCode == 200) {
+                                        nwimg = body;
+                                        console.log(body);
+                                        resolve(body);                  
+                                        }else{
+                                        //console.log();
+                                        reject("!!!!!error when recpt image!!!!!");                
+                                        }
+                                    });              
+                                    });
+                                    
+                                    getimage
+                                    .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
+                                    .catch((err)=>{
+                                    console.log("(linebotpromise)"+err);
+                                    }
+                                    );
+              
+
                             }
-                
-                            // Start the request
-      
-                            request(options, function (error, response, body) {
-                                if (!error && response.statusCode == 200) {
-                                nwimg = body;
-                                console.log(body);
-                                resolve(body);                  
-                                }else{
-                                //console.log();
-                                reject("!!!!!error when recpt image!!!!!");                
-                                }
-                            });              
-                            });
                             
-                            getimage
-                            .then((body)=>{pushmessage([head_msg],receiver_id);imgpusher(msg,receiver_id,body,msgid);})
-                            .catch((err)=>{
-                            console.log("(linebotpromise)"+err);
-                            }
-                            );
-      
                           }else{
                               pushmessage([head_msg,msg],receiver_id);
                           } 
@@ -460,24 +486,30 @@ function chatParser(req ,res){
       }
 
       function replymessage(recpt){ //recpt is message object //for bug detecter
-        var options = {
-          url: "https://api.line.me/v2/bot/message/reply ",
-          method: 'POST',
-          headers: {
-            'Content-Type':  'application/json', 
-            'Authorization':'Bearer ' + CHANNEL_ACCESS_TOKEN
-          },
-          json: {
-              'replyToken': replyToken,
-              'messages': recpt
-          }
-        };
-          
-        request(options, function (error, response, body) {
-            if (error) throw error;
-            console.log("(line)");
-            console.log(body);
-        });
+
+        for(let token of CHANNEL_ACCESS_TOKEN){
+
+            var options = {
+                url: "https://api.line.me/v2/bot/message/reply ",
+                method: 'POST',
+                headers: {
+                  'Content-Type':  'application/json', 
+                  'Authorization':'Bearer ' + token
+                },
+                json: {
+                    'replyToken': replyToken,
+                    'messages': recpt
+                }
+              };
+                
+              request(options, function (error, response, body) {
+                  if (error) throw error;
+                  console.log("(line)");
+                  console.log(body);
+              });
+
+        }
+        
         
       }        
   });
