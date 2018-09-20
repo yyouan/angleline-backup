@@ -26,7 +26,7 @@ var dept ={
 }
 
 //1.send candidate:
-psql("SELECT * FROM ACCOUNT WHERE head_url=\'\';").then(
+psql("SELECT * FROM ACCOUNT WHERE head_url=\'https://i.imgur.com/tuwOCYc.jpg\';").then(
     members =>{        
         
         for(let member of members){
@@ -39,7 +39,7 @@ psql("SELECT * FROM ACCOUNT WHERE head_url=\'\';").then(
         
     }
 );
-psql("SELECT * FROM ACCOUNT WHERE self_intro=\'\';").then(
+psql("SELECT * FROM ACCOUNT WHERE self_intro=\'none\';").then(
     members =>{        
         
         for(let member of members){
