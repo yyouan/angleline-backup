@@ -98,7 +98,7 @@ psql("SELECT * FROM ACCOUNT WHERE self_intro=\'\';").then(
                             ]
                         }
                 };
-                pushmessage([text2,login_button,relogin_button,text,img],member.angle_id)
+                pushmessage([login_button,relogin_button,text,img],member.angle_id)
             },1000)         
         }
         
