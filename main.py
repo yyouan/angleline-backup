@@ -108,6 +108,7 @@ elif name == "check:login":
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
     print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
+    time.sleep(20)
     write_package_json("info.js")
     print(os.system("git add ."))
     print(os.system("git commit -m \"login\""))
