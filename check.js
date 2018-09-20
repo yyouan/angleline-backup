@@ -32,7 +32,7 @@ psql("SELECT * FROM ACCOUNT WHERE head_url=\'\';").then(
         for(let member of members){
             let text ={
                 "type":"text",
-                "text":"下階段要開始了，請選擇圖片，有問題請洽詢問站"
+                "text":"下階段要開始了,請選擇圖片，否則您將使用預設圖片，有問題請洽詢問站"
             }
             pushmessage(text,member.angle_id)         
         }
@@ -47,7 +47,59 @@ psql("SELECT * FROM ACCOUNT WHERE self_intro=\'\';").then(
                 "type":"text",
                 "text":"下階段要開始了，請按按我註冊進行註冊，有問題請洽詢問站"
             }
-            pushmessage([text],member.angle_id)         
+            pushmessage([text],member.angle_id)
+            setTimeout(()=>{
+                let text = {
+                    "type":"text",
+                    "text":"請點選上面的按鈕，進到瀏覽器註冊，之後注意andriod手機請點選open in other app(如下圖)，iOS則不用"
+                }
+                let img = {
+                    "type": "image",
+                    "originalContentUrl": "https://i.imgur.com/rGsgMqc.jpg",
+                    "previewImageUrl": "https://i.imgur.com/rGsgMqc.jpg"
+                }
+                let login_button ={
+                    "type": "template",
+                    "altText": "大講堂有消息，請借台手機開啟",
+                    "template": {
+                        "type": "buttons",
+                        "thumbnailImageUrl": "https://i.imgur.com/XQgkcW5.jpg",
+                        "imageAspectRatio": "rectangle",
+                        "imageSize": "cover",
+                        "imageBackgroundColor": "#FFFFFF",
+                        "text": "按我註冊",
+                        "defaultAction": {
+                            "type": "uri",
+                            "label": "註冊",
+                            "uri": "https://angleline-hall.herokuapp.com/formhtml"
+                        },
+                        "actions": [
+                            {
+                              "type": "uri",
+                              "label": "註冊",
+                              "uri": "https://angleline-hall.herokuapp.com/formhtml"
+                            }
+                        ]
+                    }
+                }
+                let relogin_button =
+                    {
+                        "type": "template",
+                        "altText": "大講堂有消息，請借台手機開啟",
+                        "template": {
+                            "type": "buttons",                            
+                            "text": "如果註冊失敗，可按我重新註冊",                            
+                            "actions": [                                    
+                                {
+                                    "type": "uri",
+                                    "label": "點我重新註冊",
+                                    "uri":"https://angleline-hall.herokuapp.com/formhtml"     
+                                }
+                            ]
+                        }
+                };
+                pushmessage([text2,login_button,relogin_button,text,img],member.angle_id)
+            },1000)         
         }
         
     }
