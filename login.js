@@ -44,6 +44,7 @@ app.post('/form',FormReceiver);
 app.get('/formhtml',FormGiver);
 app.get('/imgGiver',ImgGiver);
 app.post('/img',imgReceiver);
+app.get('/check',checkReceiver);
 //app.get('/uploadhtml',UploadPage_giver)
 app.post('')
 /**
@@ -952,6 +953,7 @@ function FormReceiver(req,rres){
 function ImgGiver(req,rres){
     rres.sendFile(__dirname+'/Imgur-Upload-master/index.html');
 }
+
 function imgReceiver(req,rres){
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
     let post='';
@@ -1314,6 +1316,41 @@ function imgReceiver(req,rres){
                        
                     }
                    );
+            }
+        )
+                
+    });
+    
+}
+
+function imgReceiver(req,rres){
+    // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
+    let post='';
+    req.on('data', function(chunk){   
+        post += chunk;
+
+        // Too much POST data, kill the connection!(avoid server attack)
+            // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+            if (post > 1e6){
+                request.connection.destroy();
+                console.log("!!!!!!!!!FLOD Attack!!!!!!!!");
+            }                
+
+    });
+ 
+    // 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。
+    req.on('end', function(){
+        post = querystring.parse(post);    
+        console.log(post);
+        psql("SELECT * FROM ACCOUNT WHERE email=\'"+post.email+"\';").then(
+            members =>{
+                
+                if(members[0].self_intro.replace(/\s+/g, "")=='none'){
+                    rres.end("no")
+                }else{
+                    rres.end("yes")
+                }              
+               
             }
         )
                 

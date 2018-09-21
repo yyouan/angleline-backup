@@ -7,10 +7,12 @@
     <title>請回到Line確認：</title>
 </head>
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         function back(){
             history.back();
         }
+
     </script>
     <style>
         .myButton {
@@ -37,6 +39,7 @@
             padding:18px 54px;
             text-decoration:none;
             text-shadow:0px 1px 0px #4d3534;
+            visibility: hidden;
         }
         .myButton:hover {
             background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #634b30), color-stop(1, #7d5d3b));
@@ -52,11 +55,41 @@
             position:relative;
             top:1px;           
         }
+        
     </style>
-    <h1>請回到line確認：</h1>
-    <p>成功註冊，會在line看到以下圖片</p>
-    <img src="https://i.imgur.com/Nhu80vA.png">
-    <p>失敗註冊，則請想辦法按上一頁，重按送出(小心，可以回Line確認是否郵件信箱輸入錯誤)</p>
-    <button type="button" onclick="back()" class="myButton">返回上一頁，且送出</button> 
+    <h1>請稍作等候，網站還在跑……</h1>
+    <script>
+    setTimeout(()=>{
+        if(document.cookie == ""){
+                document.cookie = "email=" + prompt("請輸入註冊用的電子郵件信箱：")
+        }
+        let array = decodeURIComponent(document.cookie).split(';');
+        let jsonthing={}
+        for(let str of array){
+                let raw = str.split('=');
+                if(raw.length == 2){
+                    jsonthing[raw[0].replace(/\s+/g, "")]=raw[1];
+                }
+        }
+        $.post("/check",
+            {                
+                email: jsonthing['email'],
+            },
+            function(data,status){
+                console.log("(data):"+data)                
+                if(data == "yes"){
+                    $("#result").html("成功註冊，關閉分頁，在Line會看見以下圖片")
+                    $("#img").html("<img src=\"https://i.imgur.com/Nhu80vA.png\">")
+                }else{
+                    $("#result").html("失敗註冊，則請想辦法按上一頁，重按送出(小心，可以回Line確認是否郵件信箱輸入錯誤)")
+                    $(".myButton").css("visibility","visible")
+                }
+            }
+        );
+    },5000)        
+    </script> 
+    <p id="result"></p>
+    <section id="img"></section> 
+    <button type="button" onclick="back()" class="myButton" >返回上一頁，且送出</button>
 </body>
 </html>
