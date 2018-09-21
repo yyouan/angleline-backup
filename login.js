@@ -1323,7 +1323,7 @@ function imgReceiver(req,rres){
     
 }
 
-function imgReceiver(req,rres){
+function checkReceiver(req,rres){
     // 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中
     let post='';
     req.on('data', function(chunk){   
