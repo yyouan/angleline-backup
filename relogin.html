@@ -60,6 +60,7 @@
     <h1>請稍作等候，網站還在跑……</h1>
     <script>
     setTimeout(()=>{
+        alert("等候完成")
         if(document.cookie == ""){
                 document.cookie = "email=" + prompt("請輸入註冊用的電子郵件信箱：")
         }
@@ -86,7 +87,7 @@
                 }
             }
         );
-    },5000)        
+    },3000)        
     </script> 
     <p id="result"></p>
     <section id="img"></section> 
