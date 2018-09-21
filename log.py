@@ -4,6 +4,12 @@ import sys
 import webbrowser
 import time
 
+'''
+
+command : python log.py
+
+'''
+
 while True:
     os.system("heroku logs -n 1500 --app angleline-hall >> ../hall_logs.txt")
     os.system("heroku logs -n 1500 --app angleline >> ../angle_logs.txt")
