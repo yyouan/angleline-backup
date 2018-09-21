@@ -34,7 +34,7 @@ psql("SELECT * FROM ACCOUNT WHERE head_url=\'https://i.imgur.com/tuwOCYc.jpg\';"
                 "type":"text",
                 "text":"下階段要開始了,請選擇圖片，否則您將使用預設圖片，有問題請洽詢問站"
             }
-            pushmessage(text,member.angle_id)         
+            pushmessage([text],member.angle_id)         
         }
         
     }
