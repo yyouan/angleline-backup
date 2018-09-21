@@ -44,7 +44,7 @@ app.post('/form',FormReceiver);
 app.get('/formhtml',FormGiver);
 app.get('/imgGiver',ImgGiver);
 app.post('/img',imgReceiver);
-app.get('/check',checkReceiver);
+app.post('/check',checkReceiver);
 //app.get('/uploadhtml',UploadPage_giver)
 app.post('')
 /**
