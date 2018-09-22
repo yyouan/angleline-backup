@@ -1056,7 +1056,7 @@ function GameProceessor(req,res){
                         
                     }
                 }else{ //4.wrong answer will let score descrese by 1
-                    psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE email=\'"+cookie+"\';");
+                    psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE email=\'"+cookie.email+"\';");
                     psql("UPDATE ACCOUNT SET score="+ String(req[0].score-1) +" WHERE angle_id=\'"+req[0].master_id+"\';");
                     let msg = [
                         {
