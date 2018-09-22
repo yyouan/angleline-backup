@@ -699,7 +699,7 @@ function chatParser(req ,res){
                 )
             };
             
-
+            psql("DELETE FROM MESSAGE WHERE msgid=\'"+data.msgid+"\';")
         }else if("complete" in data){
             console.log("complete");
             psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+data.complete+"\';").then(
