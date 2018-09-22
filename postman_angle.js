@@ -240,6 +240,23 @@ function chatParser(req ,res){
             gate=true;
           }
 
+          if(post.events[0].message.type == 'text' && post.events[0].message.text == '@問問題'){
+            psql("SELECT * FROM ACCOUNT WHERE master_id=\'"+line_id+"\';").then(
+                res =>{
+                    let qr_problem ={
+                        "type":"text",
+                        "text":"找人問題："+game_item.gameproblem[res[0].problem]
+                    }
+                    let location_problem={
+                        "type":"text",
+                        "text":"地點問題："+game_item.locationproblem[res[0].location_problem]
+                    }
+                    replymessage([qr_problem,location_problem])
+                }
+            )
+            gate=true;
+          }
+
           if(post.events[0].message.type == 'location'){
             
             let msg = post.events[0].message; 
