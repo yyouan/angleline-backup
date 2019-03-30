@@ -694,7 +694,7 @@ function chatParser(req ,res){
             psql_2("SELECT * FROM BOX WHERE box_id=\'"+data.boxid+"\';").then(
                 recpt =>{
                     if(recpt.length == 0){
-                        psql_2("CREATE TABLE "+data.box_id+"_cash(cash_id char(50));");                        
+                        psql_2("CREATE TABLE "+data.boxid+"_cash(cash_id char(50));");                        
                     }
                 }
             )            
