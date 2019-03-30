@@ -698,7 +698,7 @@ function chatParser(req ,res){
                     }
                 }
             )            
-            psql_2("INSERT INTO CLIENT (box_id,connect_line_id,balance,cash_array,menu_array) VALUES (\'"
+            psql_2("INSERT INTO BOX (box_id,connect_line_id,balance,cash_array,menu_array) VALUES (\'"
             +data.boxid+"\',\'"+data.line_id+"\',0,\'\',\'\');");
             
         }else if("complete" in data){
