@@ -21,6 +21,10 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     //ssl: true,
 });
+const pool_2 = new Pool({
+    connectionString: process.env.HEROKU_POSTGRESQL_PINK_URL,
+    //ssl: true,
+});
 
 const app = express(); //建立一個express 伺服器
 app.post('/' , chatParser); // POST 方法**/
@@ -59,6 +63,35 @@ function psql(command){
   
   
 }
+function psql_2(command){
+   
+    return new Promise((resolve,reject)=>{
+        //while(is_conn_psql){console.log("(psql):pararell gate");};
+        //if(!is_conn_psql){client.connect();is_conn_psql = true;}
+        let recpt =[];
+        let error;
+        console.log("(psql_2):" + command );
+        pool_2.connect()
+        .then(client=>{            
+            client.query(command)
+            .then(res => {
+                client.release();
+                for (let row of res.rows) {                
+                    recpt.push(row);
+                    console.log( "(psql_2-query):"+ JSON.stringify(row));
+                }
+                resolve(recpt);
+                for(let row of recpt){
+                    console.log( "(psql_2-query-recpt):"+ JSON.stringify(row));
+                }
+                console.log( "(psql_2-query-recpt):"+ recpt.length);    
+            })
+            .catch(e => {client.release(); console.error("(psql_2):" + e.stack);reject(e);});            
+        });
+    });
+    
+    
+  }
 function pushToSuv(recpt){
 
     psql("SELECT * FROM SUPERVISOR;").then(
@@ -657,9 +690,17 @@ function chatParser(req ,res){
             }            
             replymessage([text]);
 
-        }else if("send" in data){            
-            psql("INSERT INTO CLIENT (box_id,connect_line_id,balance,cash_array,menu_array) VALUES (\'"
-            +email+"\',\'"+line_id+"\',0,\'\',\'\');");
+        }else if("send" in data){
+            psql_2("SELECT * FROM BOX WHERE box_id=\'"+data.boxid+"\';").then(
+                recpt =>{
+                    if(recpt.length == 0){
+                        psql_2("CREATE TABLE "+data.box_id+"_cash(cash_id char(50));");                        
+                    }
+                }
+            )            
+            psql_2("INSERT INTO CLIENT (box_id,connect_line_id,balance,cash_array,menu_array) VALUES (\'"
+            +data.boxid+"\',\'"+data.line_id+"\',0,\'\',\'\');");
+            
         }else if("complete" in data){
             console.log("complete");
             psql("SELECT * FROM ACCOUNT WHERE angle_id=\'"+data.complete+"\';").then(
@@ -716,7 +757,6 @@ var server = app.listen((process.env.PORT || 8080), function() {
     console.log("App now running on port", port);
 });
 //!!!240
-
 
 
 
