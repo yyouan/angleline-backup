@@ -101,6 +101,15 @@ elif name == "check:master":
     time.sleep(5)
     print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
 
+elif name == "info_boxflow":  
+    
+    write_package_json("info_boxflow.js")    
+    print(os.system("git add ."))
+    print(os.system("git commit -m \"login\""))
+    print(os.system("git push https://github.com/yyouan/informationdesk.git master"))
+    time.sleep(5)
+    print(os.system("git push https://github.com/yyouan/angleline-backup.git master"))
+
 elif name == "check:login":
     print(os.system("heroku pg:psql --app angleline < check_self_intro.sql > self_intro.txt"))    
     print(os.system("notepad self_intro.txt"))    
