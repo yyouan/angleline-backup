@@ -22,7 +22,7 @@ const pool = new Pool({
     //ssl: true,
 });
 const pool_2 = new Pool({
-    connectionString: process.env.HEROKU_POSTGRESQL_PINK_URL,
+    connectionString: process.env.HEROKU_POSTGRESQL_ONYX_URL,
     //ssl: true,
 });
 
